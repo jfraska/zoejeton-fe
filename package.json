@@ -30,6 +30,7 @@
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
     "sass": "^1.69.5",
+    "styled-components": "^6.1.8",
     "swiper": "^11.0.4",
     "tailwindcss": "3.3.3",
     "three": "^0.156.1"

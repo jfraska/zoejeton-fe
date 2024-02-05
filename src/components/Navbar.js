@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
-// import Hamburger from "./Hamburger";
+import Hamburger from "./Hamburger";
 import localFont from "next/font/local";
 import Link from "next/link";
 import { navLinks } from "@/constants";
@@ -48,7 +48,7 @@ export default function Navbar() {
             : "absolute bg-transparent text-white"
         } transition-all ease-linear`}
       >
-        {/* <Hamburger open={toggle} setOpen={setToggle} scroll={scrolled} /> */}
+        <Hamburger open={toggle} setOpen={setToggle} scroll={scrolled} />
 
         <h1
           className={`${runalto.className} font-bold ${
