@@ -1,0 +1,27 @@
+.footer-shadow {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.hover-footer-underline-animation {
+  position: relative;
+}
+.hover-footer-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+  @apply bg-white;
+}
+.hover-footer-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
