@@ -1,6 +1,6 @@
 "use client";
-// import "./style.css";
-// import "locomotive-scroll/dist/locomotive-scroll.css";
+import "./style.css";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 
 import { useEffect, useRef } from "react";
 import {
@@ -77,7 +77,7 @@ export default function Home() {
 
   return (
     <Scroll {...settings} containerRef={containerRef}>
-      {/* <Navbar /> */}
+      <Navbar />
       <div data-scroll-container ref={containerRef}>
         <Hero />
         <About />
