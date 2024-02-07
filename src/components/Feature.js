@@ -1,5 +1,6 @@
 "use client";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -12,7 +13,7 @@ export default function Feature() {
   const { scroll } = useLocomotiveScroll();
   const ref = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let ctx;
     if (scroll) {
       const element = scroll?.el;
@@ -36,60 +37,72 @@ export default function Feature() {
       });
 
       ScrollTrigger.addEventListener("refresh", () => scroll?.update());
-
-      ctx = gsap.context(() => {
-        // let sections = gsap.utils.toArray(".container-featured");
-        gsap.to(ref.current, {
-          // xPercent: -100 * (sections.length - 1),
-          scrollTrigger: {
-            trigger: ref.current,
-            scroller: scroll?.el,
-            start: "top top",
-            end: () => "+=" + ref.current.offsetWidth,
-            scrub: true,
-            markers: true,
-            pin: true,
-            onRefresh: (self) => console.log("refresh", self.start, self.end),
-          },
-        });
-        ScrollTrigger.refresh();
-      }, ref);
+      ScrollTrigger.refresh();
     }
+
+    ctx = gsap.context(() => {
+      // const panels = gsap.utils.toArray("#panels-container");
+      gsap.to(ref.current, {
+        // xPercent: -100 * (ref.current.offsetWidth - 1),
+        x: "-75%",
+        scrollTrigger: {
+          trigger: ref.current,
+          scroller: scroll?.el,
+          start: "top top",
+          end: "top -200%",
+          scrub: 1,
+          pin: true,
+          markers: true,
+        },
+      });
+    }, ref);
+
     return () => ctx && ctx.revert();
   }, [scroll]);
 
   return (
     <section
       data-scroll-section
-      ref={ref}
-      className="relative w-full h-screen"
+      className="relative flex overflow-hidden h-screen"
       id="feature"
     >
       <div
+        ref={ref}
         data-scroll
-        data-scroll-speed="10"
+        data-scroll-speed="-10"
         data-scroll-target="#feature"
-        className="z-0 w-full h-full"
+        id="panels-container"
+        className="relative h-full flex flex-nowrap bg-[#121212]"
       >
-        <div className="container-featured relative w-full h-full bg-[#121212]">
-          <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
-            Feature
-          </h1>
+        <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
+          Feature
+        </h1>
 
-          <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
-            Premium
-          </h1>
-        </div>
+        <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
+          Premium
+        </h1>
 
-        <div className="container-featured relative w-full h-full  bg-[#121212]">
-          <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
-            Feature
-          </h1>
-
-          <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
-            Premium
-          </h1>
-        </div>
+        <div
+          className="w-[1200px]"
+          style={{
+            backgroundImage:
+              "url('https://source.unsplash.com/collection/2091539/1000x300')",
+          }}
+        />
+        <div
+          className="w-[1200px]"
+          style={{
+            backgroundImage:
+              "url('https://source.unsplash.com/collection/2091539/1000x200')",
+          }}
+        />
+        <div
+          className="w-[1200px]"
+          style={{
+            backgroundImage:
+              "url('https://source.unsplash.com/collection/2091539/1000x100')",
+          }}
+        />
       </div>
 
       {/* <div className="flex mt-10 w-full items-center">

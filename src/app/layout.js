@@ -46,7 +46,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${MonumentExtended.variable} ${NeueMontreal.variable}`}>
+      <body
+        className={`${MonumentExtended.variable} ${NeueMontreal.variable} font-sans`}
+      >
         {children}
       </body>
     </html>
