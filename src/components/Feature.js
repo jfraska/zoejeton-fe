@@ -1,20 +1,21 @@
 "use client";
-import { useEffect, useRef } from "react";
-import Image from "next/image";
+import { useLayoutEffect, useRef } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Icon } from "@iconify/react";
 import { feature } from "@/constants";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Feature() {
   const { scroll } = useLocomotiveScroll();
-  const ref = useRef(null);
+  const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
 
-  useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useLayoutEffect(() => {
     let ctx;
+
     if (scroll) {
       const element = scroll?.el;
       scroll.on("scroll", ScrollTrigger.update);
@@ -37,25 +38,27 @@ export default function Feature() {
       });
 
       ScrollTrigger.addEventListener("refresh", () => scroll?.update());
-      ScrollTrigger.refresh();
-    }
-
-    ctx = gsap.context(() => {
-      // const panels = gsap.utils.toArray("#panels-container");
-      gsap.to(ref.current, {
-        // xPercent: -100 * (ref.current.offsetWidth - 1),
-        x: "-75%",
-        scrollTrigger: {
-          trigger: ref.current,
-          scroller: scroll?.el,
-          start: "top top",
-          end: "top -200%",
-          scrub: 1,
-          pin: true,
-          markers: true,
-        },
+      ScrollTrigger.defaults({
+        scroller: scroll?.el,
       });
-    }, ref);
+
+      ctx = gsap.context(() => {
+        gsap.to(sectionRef.current, {
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: "top top",
+            end: () => "+=" + sectionRef.current.offsetWidth,
+            // end: "+=100%",
+            scrub: 0.5,
+            pin: true,
+          },
+          x: "-400vw",
+          ease: "none",
+        });
+
+        ScrollTrigger.refresh();
+      }, triggerRef);
+    }
 
     return () => ctx && ctx.revert();
   }, [scroll]);
@@ -63,48 +66,45 @@ export default function Feature() {
   return (
     <section
       data-scroll-section
-      className="relative flex overflow-hidden h-screen"
-      id="feature"
+      className="relative overflow-hidden h-screen"
+      // id="feature"
     >
-      <div
-        ref={ref}
-        data-scroll
-        data-scroll-speed="-10"
-        data-scroll-target="#feature"
-        id="panels-container"
-        className="relative h-full flex flex-nowrap bg-[#121212]"
-      >
-        <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
-          Feature
-        </h1>
+      <div ref={triggerRef}>
+        <div
+          ref={sectionRef}
+          className="relative w-[400vw] h-full flex flex-nowrap bg-[#121212]"
+        >
+          <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
+            Feature
+          </h1>
 
-        <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
-          Premium
-        </h1>
+          <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
+            Premium
+          </h1>
 
-        <div
-          className="w-[1200px]"
-          style={{
-            backgroundImage:
-              "url('https://source.unsplash.com/collection/2091539/1000x300')",
-          }}
-        />
-        <div
-          className="w-[1200px]"
-          style={{
-            backgroundImage:
-              "url('https://source.unsplash.com/collection/2091539/1000x200')",
-          }}
-        />
-        <div
-          className="w-[1200px]"
-          style={{
-            backgroundImage:
-              "url('https://source.unsplash.com/collection/2091539/1000x100')",
-          }}
-        />
+          <div
+            className="w-screen h-screen"
+            style={{
+              backgroundImage:
+                "url('https://source.unsplash.com/collection/2091539/1000x300')",
+            }}
+          />
+          <div
+            className="w-screen h-screen"
+            style={{
+              backgroundImage:
+                "url('https://source.unsplash.com/collection/2091539/1000x200')",
+            }}
+          />
+          <div
+            className="w-screen h-screen"
+            style={{
+              backgroundImage:
+                "url('https://source.unsplash.com/collection/2091539/1000x100')",
+            }}
+          />
+        </div>
       </div>
-
       {/* <div className="flex mt-10 w-full items-center">
         <div className="w-[40%]">
           <div className="w-[50%] m-auto">

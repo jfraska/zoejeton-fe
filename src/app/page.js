@@ -2,8 +2,9 @@
 import "./style.css";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
-import { useRef } from "react";
-import { LocomotiveScrollProvider as Scroll } from "react-locomotive-scroll";
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -17,6 +18,7 @@ import Message from "@/components/Message";
 
 const settings = {
   options: {
+    // el: "smooth-scroll",
     smooth: true,
     multiplier: 0.8,
     smartphone: {
@@ -25,6 +27,7 @@ const settings = {
     tablet: {
       smooth: true,
     },
+    class: "is-reveal",
   },
   onLocationChange: (scroll) =>
     scroll.scrollTo(0, { duration: 0, disableLerp: true }),
@@ -32,9 +35,15 @@ const settings = {
 
 export default function Home() {
   const scrollWrapper = useRef(null);
+  const { asPath } = useRouter();
 
   return (
-    <Scroll {...settings} containerRef={scrollWrapper}>
+    <GlobalScroll
+      {...settings}
+      // watch={[]}
+      location={asPath}
+      containerRef={scrollWrapper}
+    >
       <Navbar />
       <div data-scroll-container id="smooth-scroll" ref={scrollWrapper}>
         <Hero />
@@ -46,6 +55,6 @@ export default function Home() {
         <Message />
         <Footer />
       </div>
-    </Scroll>
+    </GlobalScroll>
   );
 }
