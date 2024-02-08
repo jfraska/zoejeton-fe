@@ -6,12 +6,12 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Icon } from "@iconify/react";
 import { feature } from "@/constants";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Feature() {
   const { scroll } = useLocomotiveScroll();
   const sectionRef = useRef(null);
-  const triggerRef = useRef(null);
-
-  gsap.registerPlugin(ScrollTrigger);
+  const trigerRef = useRef(null);
 
   useLayoutEffect(() => {
     let ctx;
@@ -34,7 +34,7 @@ export default function Feature() {
             height: window.innerHeight,
           };
         },
-        pinType: element.style.transform ? "transform" : "fixed",
+        pinType: trigerRef.current.style.transform ? "transform" : "fixed",
       });
 
       ScrollTrigger.addEventListener("refresh", () => scroll?.update());
@@ -44,20 +44,19 @@ export default function Feature() {
 
       ctx = gsap.context(() => {
         gsap.to(sectionRef.current, {
+          x: "-300vw",
+          ease: "none",
           scrollTrigger: {
-            trigger: triggerRef.current,
+            trigger: sectionRef.current,
             start: "top top",
-            end: () => "+=" + sectionRef.current.offsetWidth,
-            // end: "+=100%",
+            end: "+=100%",
             scrub: 0.5,
             pin: true,
           },
-          x: "-400vw",
-          ease: "none",
         });
 
         ScrollTrigger.refresh();
-      }, triggerRef);
+      }, sectionRef);
     }
 
     return () => ctx && ctx.revert();
@@ -66,44 +65,46 @@ export default function Feature() {
   return (
     <section
       data-scroll-section
-      className="relative overflow-hidden h-screen"
-      // id="feature"
+      className="relative overflow-hidden h-[120vh]"
+      ref={trigerRef}
+      id="feature"
     >
-      <div ref={triggerRef}>
+      <div
+        data-scroll
+        data-scroll-sticky
+        data-scroll-target="#feature"
+        ref={sectionRef}
+        className="relative w-[400vw] h-full flex flex-nowrap bg-[#121212]"
+      >
+        <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
+          Feature
+        </h1>
+
+        <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
+          Premium
+        </h1>
+
         <div
-          ref={sectionRef}
-          className="relative w-[400vw] h-full flex flex-nowrap bg-[#121212]"
-        >
-          <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
-            Feature
-          </h1>
-
-          <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
-            Premium
-          </h1>
-
-          <div
-            className="w-screen h-screen"
-            style={{
-              backgroundImage:
-                "url('https://source.unsplash.com/collection/2091539/1000x300')",
-            }}
-          />
-          <div
-            className="w-screen h-screen"
-            style={{
-              backgroundImage:
-                "url('https://source.unsplash.com/collection/2091539/1000x200')",
-            }}
-          />
-          <div
-            className="w-screen h-screen"
-            style={{
-              backgroundImage:
-                "url('https://source.unsplash.com/collection/2091539/1000x100')",
-            }}
-          />
-        </div>
+          className="w-screen h-screen"
+          style={{
+            backgroundImage:
+              "url('https://source.unsplash.com/collection/2091539/1000x300')",
+          }}
+        />
+        <div
+          className="w-screen h-screen"
+          style={{
+            backgroundImage:
+              "url('https://source.unsplash.com/collection/2091539/1000x200')",
+          }}
+        />
+        <div
+          className="w-screen h-screen"
+          style={{
+            backgroundImage:
+              "url('https://source.unsplash.com/collection/2091539/1000x100')",
+          }}
+        />
       </div>
       {/* <div className="flex mt-10 w-full items-center">
         <div className="w-[40%]">
