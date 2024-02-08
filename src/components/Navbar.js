@@ -49,7 +49,6 @@ export default function Navbar() {
         } transition-all ease-linear`}
       >
         <Hamburger open={toggle} setOpen={setToggle} scroll={scrolled} />
-
         <h1
           className={`${runalto.className} font-bold ${
             toggle ? "text-black" : null
@@ -71,16 +70,23 @@ export default function Navbar() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: -divHeight }}
-        animate={{ opacity: toggle ? 1 : 0, y: toggle ? 0 : -divHeight }}
+        initial={{ opacity: 1, y: -divHeight }}
+        animate={{ y: toggle ? 0 : -divHeight }}
         transition={{
           delay: toggle ? 0.3 : 0,
           duration: 0.3,
           ease: "easeInOut",
         }}
-        className={`flex fixed justify-stretch top-0 z-40 items-end w-full h-[70%] pb-10 pt-20 px-[4%] bg-white shadow-lg`}
+        className={`flex fixed justify-stretch top-0 z-40 items-end w-full h-[75%] pb-10 pt-20 px-[4%] bg-white shadow-lg`}
       >
         <div className="hidden md:flex gap-5 items-end w-[70%]">
+          <button
+            className={`${
+              toggle ? "block" : "hidden"
+            } text-black text-lg absolute top-0 py-2 ml-4`}
+          >
+            Close
+          </button>
           <Link href="#">
             <Image
               className="img-gray"
@@ -178,14 +184,14 @@ export default function Navbar() {
       </motion.div>
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: -divHeight }}
-        animate={{ opacity: toggle ? 1 : 0, y: toggle ? 0 : -divHeight }}
+        initial={{ opacity: 1, y: -divHeight }}
+        animate={{ y: toggle ? 0 : -divHeight }}
         transition={{
           delay: toggle ? 0 : 0.3,
           duration: 0.3,
           ease: "easeInOut",
         }}
-        className={`flex fixed flex-col top-0 z-30 justify-end w-full h-[85%] px-[4%] p-5 bg-white shadow-md`}
+        className={`flex fixed flex-col top-0 z-30 justify-end w-full h-[90%] px-[4%] p-5 bg-white shadow-md`}
       >
         <div className="flex justify-stretch items-end">
           <h3 className="hidden md:block w-[70%] text-[210px] h-[230px]">
