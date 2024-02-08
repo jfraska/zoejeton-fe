@@ -5,11 +5,13 @@ import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { motion } from "framer-motion";
 
 import { Icon } from "@iconify/react";
-import { feature } from "@/constants";
+import { faq } from "@/constants";
+import FAQ from "@/components/FAQ";
 
 export default function Footer() {
   const formRef = useRef();
   // const { scroll } =  useLocomotiveScroll();
+  const [faqs, setFaqs] = useState(faq);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -48,6 +50,20 @@ export default function Footer() {
   //   };
   // }, [scroll]);
 
+  const toggleFAQ = (index) => {
+    setFaqs(
+      faqs.map((faq, i) => {
+        if (i === index) {
+          faq.open = !faq.open;
+        } else {
+          faq.open = false;
+        }
+
+        return faq;
+      })
+    );
+  };
+
   return (
     <footer
       data-scroll-section
@@ -61,7 +77,7 @@ export default function Footer() {
         data-scroll-target="#footer"
         className="z-0"
       >
-        <section className="">
+        <section className="h-[50vh]" id="faq">
           <div className="w-full pl-5 pr-20 flex justify-around">
             <div className="w-full">
               <h1 className="text-5xl w-2/4">
@@ -69,23 +85,19 @@ export default function Footer() {
               </h1>
             </div>
             <div className="w-full">
-              {feature.map((e) => (
-                <div
-                  key={e.id}
-                  className="flex w-full py-2 pr-2 border-b border-white items-end justify-between"
-                >
-                  <h1 className="text-lg leading-tight">
-                    {e.title}
-                    {/* <span className="text-base">{e.desc}</span> */}
-                  </h1>
-                  <Icon icon="ic:outline-plus" color="white" width="20" />
-                </div>
+              {faqs.map((faq, index) => (
+                <FAQ
+                  faq={faq}
+                  index={index}
+                  key={index}
+                  toggleFAQ={toggleFAQ}
+                />
               ))}
             </div>
           </div>
-          <div className="w-full mt-16 border-b border-white" />
         </section>
-        <section className="pt-[2%]">
+        <section className="h-[50vh]" id="contact">
+          <div className="w-full mb-10 border-b border-white" />
           <div className="w-full pl-5 pr-20 flex justify-around">
             <div className="w-full pl-5 flex">
               <div className="mt-2 flex flex-col w-2/6">
@@ -94,6 +106,9 @@ export default function Footer() {
                 <h2 className="">About Us</h2>
                 <h2 className="">Featured</h2>
                 <h2 className="">Katalog</h2>
+                <h2 className="">Pricing</h2>
+                <h2 className="">FAQ</h2>
+                <h2 className="">Contact Us</h2>
               </div>
               <div className="mt-2 flex flex-col w-2/6">
                 <h1 className="font-light tracking-wide">Support</h1>
@@ -144,9 +159,9 @@ export default function Footer() {
               </form>
             </div>
           </div>
-          <div className="w-full mt-16 border-b border-white" />
-          <h1 className="w-fit ml-auto mt-2 text-xs">copyright © zoejeton</h1>
         </section>
+        <div className="w-full mb-2 border-b border-white" />
+        <h1 className="w-fit ml-auto text-xs">copyright © zoejeton</h1>
       </div>
     </footer>
   );

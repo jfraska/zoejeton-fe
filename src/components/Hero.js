@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
+import { gsap } from "gsap/dist/gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { motion, useAnimation } from "framer-motion";
 import { Icon } from "@iconify/react";
 
@@ -12,7 +12,7 @@ import { Parallax, Pagination, Controller } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import Statue from "./canvas/Statue";
+import Statue from "./Canvas/Statue";
 
 const params = {
   style: {
@@ -36,22 +36,70 @@ const params = {
   },
 };
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Hero() {
   const { scroll } = useLocomotiveScroll();
   const ref = useRef(null);
+  const bgRef = useRef(null);
+  const trigerRef = useRef(null);
   const controls = useAnimation();
   const [carouselBackground, setCarouselBackground] = useState(null);
   const [carouselMain, setCarouselMain] = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    let ctx;
+
     if (scroll) {
-      scroll.on("scroll", (args) => {
-        controls.start({ opacity: 1 - args.scroll.y / 600 });
+      const element = scroll?.el;
+      scroll.on("scroll", ScrollTrigger.update);
+
+      ScrollTrigger.scrollerProxy(element, {
+        scrollTop(value) {
+          return arguments.length
+            ? scroll.scrollTo(value, { duration: 0, disableLerp: true })
+            : scroll.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        },
+        pinType: trigerRef.current.style.transform ? "transform" : "fixed",
       });
+
+      ScrollTrigger.addEventListener("refresh", () => scroll?.update());
+      ScrollTrigger.defaults({
+        scroller: scroll?.el,
+      });
+
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: trigerRef.current,
+            start: "20% top",
+            end: "+=75%",
+            scrub: true,
+            // markers: true,
+          },
+        });
+        gsap.set(bgRef.current, { opacity: 1 });
+        tl.to(bgRef.current, { opacity: 0 });
+
+        ScrollTrigger.refresh();
+      }, bgRef);
     }
 
     return () => {
-      scroll && scroll.destroy();
+      if (scroll) {
+        ctx && ctx.revert();
+        ScrollTrigger.removeEventListener("refresh", () => scroll?.update());
+        scroll.destroy();
+        console.log("Kill", scroll);
+      }
     };
   }, [scroll]);
 
@@ -62,8 +110,12 @@ export default function Hero() {
       id="beranda"
       ref={ref}
     >
-      <div className="carousel_sticky-area" id="carousel-sticky-area" />
-      <motion.div
+      <div
+        ref={trigerRef}
+        className="carousel_sticky-area"
+        id="carousel-sticky-area"
+      />
+      <div
         className="fixed inset-0"
         data-scroll
         data-scroll-sticky
@@ -71,8 +123,7 @@ export default function Hero() {
         data-scroll-call="noShrinkTop"
         data-scroll-repeat
         data-scroll-position="top"
-        initial={{ opacity: 1 }}
-        animate={controls}
+        ref={bgRef}
       >
         <Swiper
           initialSlide={0}
@@ -111,7 +162,7 @@ export default function Hero() {
             />
           </SwiperSlide>
         </Swiper>
-      </motion.div>
+      </div>
 
       <Swiper
         {...params}
@@ -199,9 +250,9 @@ export default function Hero() {
         data-scroll-target="#beranda"
         data-scroll-speed="2"
         data-scroll-position="top"
-        className="absolute w-full flex flex-col items-center gap-2 md:text-start md:w-fit bottom-[5%] md:bottom-[8%] md:right-[3%] text-lg text-white"
+        className="absolute z-10 w-full flex flex-col items-center gap-2 md:text-start md:w-fit bottom-[5%] md:bottom-[8%] md:right-[3%] text-lg text-white"
       >
-        <h1>(Scroll)</h1>
+        <button onClick={() => scroll.scrollTo("#about")}>(Scroll)</button>
         <Icon
           className="block md:hidden"
           icon="uim:triangle"

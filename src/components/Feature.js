@@ -59,7 +59,14 @@ export default function Feature() {
       }, sectionRef);
     }
 
-    return () => ctx && ctx.revert();
+    return () => {
+      if (scroll) {
+        ctx && ctx.revert();
+        ScrollTrigger.removeEventListener("refresh", () => scroll?.update());
+        scroll.destroy();
+        console.log("Kill", scroll);
+      }
+    };
   }, [scroll]);
 
   return (

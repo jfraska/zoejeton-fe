@@ -70,8 +70,8 @@ export default function Navbar() {
       </div>
 
       <motion.div
-        initial={{ opacity: 1, y: -divHeight }}
-        animate={{ y: toggle ? 0 : -divHeight }}
+        initial={{ opacity: 0, y: -divHeight }}
+        animate={{ opacity: toggle ? 1 : 0, y: toggle ? 0 : -divHeight }}
         transition={{
           delay: toggle ? 0.3 : 0,
           duration: 0.3,
@@ -87,36 +87,32 @@ export default function Navbar() {
           >
             Close
           </button>
-          <Link href="#">
-            <Image
-              className="img-gray"
-              src="/atm-bersama.svg"
-              width={65}
-              height={65}
-              alt="atm bersama"
-            />
-          </Link>
-          <Link href="#">
-            <Image
-              className="img-gray"
-              src="/gopay.svg"
-              width={70}
-              height={70}
-              alt="gopay"
-            />
-          </Link>
-          <Link href="#">
-            <Image
-              className="img-gray"
-              src="/dana.svg"
-              width={70}
-              height={70}
-              alt="dana"
-            />
-          </Link>
-          <Link href="#">
-            <Image src="/qris.svg" width={60} height={60} alt="qris" />
-          </Link>
+
+          <Image
+            className="img-gray"
+            src="/atm-bersama.svg"
+            width={65}
+            height={65}
+            alt="atm bersama"
+          />
+
+          <Image
+            className="img-gray"
+            src="/gopay.svg"
+            width={70}
+            height={70}
+            alt="gopay"
+          />
+
+          <Image
+            className="img-gray"
+            src="/dana.svg"
+            width={70}
+            height={70}
+            alt="dana"
+          />
+
+          <Image src="/qris.svg" width={60} height={60} alt="qris" />
         </div>
 
         <div className="text-xl flex flex-col h-full justify-between items-start gap-4">
@@ -125,7 +121,10 @@ export default function Navbar() {
               <Link
                 className="cursor-pointer"
                 href="#"
-                onClick={() => setToggle(false)}
+                onClick={() => {
+                  setToggle(false);
+                  scroll.scrollTo("#beranda");
+                }}
               >
                 Beranda
               </Link>
@@ -134,7 +133,10 @@ export default function Navbar() {
               <Link
                 className="cursor-pointer"
                 href="#"
-                onClick={() => setToggle(false)}
+                onClick={() => {
+                  setToggle(false);
+                  scroll.scrollTo("#about");
+                }}
               >
                 About Us
               </Link>
@@ -143,7 +145,10 @@ export default function Navbar() {
               <Link
                 className="cursor-pointer"
                 href="#"
-                onClick={() => setToggle(false)}
+                onClick={() => {
+                  setToggle(false);
+                  scroll.scrollTo("#feature");
+                }}
               >
                 Featured
               </Link>
@@ -152,9 +157,12 @@ export default function Navbar() {
               <Link
                 className="cursor-pointer"
                 href="#"
-                onClick={() => setToggle(false)}
+                onClick={() => {
+                  setToggle(false);
+                  scroll.scrollTo("#template");
+                }}
               >
-                Template
+                Katalog
               </Link>
             </li>
             <li>
@@ -164,6 +172,30 @@ export default function Navbar() {
                 onClick={() => setToggle(false)}
               >
                 Pricing
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="cursor-pointer"
+                href="#"
+                onClick={() => {
+                  setToggle(false);
+                  scroll.scrollTo("#faq");
+                }}
+              >
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="cursor-pointer"
+                href="#"
+                onClick={() => {
+                  setToggle(false);
+                  scroll.scrollTo("#contact");
+                }}
+              >
+                Contact Us
               </Link>
             </li>
           </ul>
@@ -184,8 +216,8 @@ export default function Navbar() {
       </motion.div>
       <motion.div
         ref={ref}
-        initial={{ opacity: 1, y: -divHeight }}
-        animate={{ y: toggle ? 0 : -divHeight }}
+        initial={{ opacity: 0, y: -divHeight }}
+        animate={{ opacity: toggle ? 1 : 0, y: toggle ? 0 : -divHeight }}
         transition={{
           delay: toggle ? 0 : 0.3,
           duration: 0.3,

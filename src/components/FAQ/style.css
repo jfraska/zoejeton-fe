@@ -1,0 +1,35 @@
+.faq-question::after {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s ease;
+}
+
+.faq-question::after {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s ease;
+}
+
+.faq-answer {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faq.open .faq-question {
+  margin-bottom: 15px;
+}
+
+.faq.open .faq-answer {
+  max-height: 1000px;
+  opacity: 1;
+}
