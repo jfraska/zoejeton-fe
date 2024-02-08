@@ -12,7 +12,7 @@ import { Parallax, Pagination, Controller } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import Statue from "./Canvas/Statue";
+import Statue from "./canvas/Statue";
 
 const params = {
   style: {

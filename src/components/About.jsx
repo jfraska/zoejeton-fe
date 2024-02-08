@@ -1,6 +1,6 @@
 "use client";
 import { Icon } from "@iconify/react";
-import Statue from "./Canvas/Statue";
+import Statue from "./canvas/Statue";
 
 export default function About() {
   return (
