@@ -10,11 +10,11 @@ const FAQ = ({ faq, index, toggleFAQ }) => {
     >
       <div className={"faq " + (faq.open ? "open" : "")}>
         <div className={"flex items-end justify-between faq-question"}>
-          <h1 className="text-lg leading-tight">{faq.question}</h1>
+          <h1 className="md:text-lg text-sm leading-tight">{faq.question}</h1>
           <Icon icon="ic:outline-plus" color="white" width="20" />
         </div>
         <div className="faq-answer">
-          <h1 className="text-sm leading-tight">{faq.answer}</h1>
+          <h1 className="md:text-sm text-xs leading-tight">{faq.answer}</h1>
         </div>
       </div>
     </div>

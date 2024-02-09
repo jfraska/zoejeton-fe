@@ -77,10 +77,10 @@ export default function Footer() {
         data-scroll-target="#footer"
         className="z-0"
       >
-        <section className="h-[50vh]" id="faq">
-          <div className="w-full pl-5 pr-20 flex justify-around">
+        <section className="mb-16" id="faq">
+          <div className="w-full pl-5 md:pr-20 pr-5 flex justify-around">
             <div className="w-full">
-              <h1 className="text-5xl w-2/4">
+              <h1 className="md:text-5xl text-2xl w-2/4">
                 Frequently Asked Question (FAQ)
               </h1>
             </div>
@@ -98,8 +98,8 @@ export default function Footer() {
         </section>
         <section className="h-[50vh]" id="contact">
           <div className="w-full mb-10 border-b border-white" />
-          <div className="w-full pl-5 pr-20 flex justify-around">
-            <div className="w-full pl-5 flex">
+          <div className="w-full pl-5 md:pr-20 pr-2 flex justify-around">
+            <div className="w-full md:text-base text-sm flex gap-2">
               <div className="mt-2 flex flex-col w-2/6">
                 <h1 className="font-light tracking-wide">Menu</h1>
                 <h2 className="mt-5">Beranda</h2>
@@ -117,11 +117,11 @@ export default function Footer() {
               </div>
             </div>
             <div className="w-full">
-              <h1 className="text-5xl font-medium">Hubungi Kami</h1>
+              <h1 className="md:text-5xl text-4xl font-medium">Hubungi Kami</h1>
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="w-2/3 mt-5 flex flex-col gap-2 text-base"
+                className="md:w-2/3 w-5/6 mt-5 flex flex-col gap-2 text-base"
               >
                 <input
                   type="text"
@@ -148,7 +148,9 @@ export default function Footer() {
                   </select>
                 </div>
                 <button className="flex px-2 mt-5 items-center gap-1 bg-white rounded-full w-fit text-black">
-                  <h1 className="uppercase text-lg">send whatsapp</h1>
+                  <h1 className="uppercase md:text-lg text-sm">
+                    send whatsapp
+                  </h1>
                   <Icon
                     icon="carbon:arrow-up"
                     rotate={1}
@@ -161,7 +163,7 @@ export default function Footer() {
           </div>
         </section>
         <div className="w-full mb-2 border-b border-white" />
-        <h1 className="w-fit ml-auto text-xs">copyright © zoejeton</h1>
+        <h1 className="w-fit ml-auto mb-1 text-xs">copyright © zoejeton</h1>
       </div>
     </footer>
   );

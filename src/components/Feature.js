@@ -44,12 +44,12 @@ export default function Feature() {
 
       ctx = gsap.context(() => {
         gsap.to(sectionRef.current, {
-          x: "-300vw",
+          x: "-150%",
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: "+=100%",
+            end: "+=150%",
             scrub: 0.5,
             pin: true,
           },
@@ -72,7 +72,7 @@ export default function Feature() {
   return (
     <section
       data-scroll-section
-      className="relative overflow-hidden h-[120vh]"
+      className="relative overflow-hidden h-[150vh]"
       ref={trigerRef}
       id="feature"
     >
@@ -81,37 +81,51 @@ export default function Feature() {
         data-scroll-sticky
         data-scroll-target="#feature"
         ref={sectionRef}
-        className="relative w-[400vw] h-full flex flex-nowrap bg-[#121212]"
+        className="w-[400vw] h-screen flex flex-nowrap bg-[#121212]"
       >
-        <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
-          Feature
-        </h1>
+        <div className="relative w-screen h-full">
+          <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
+            Feature
+          </h1>
 
-        <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
-          Premium
-        </h1>
-
-        <div
-          className="w-screen h-screen"
-          style={{
-            backgroundImage:
-              "url('https://source.unsplash.com/collection/2091539/1000x300')",
-          }}
-        />
-        <div
-          className="w-screen h-screen"
-          style={{
-            backgroundImage:
-              "url('https://source.unsplash.com/collection/2091539/1000x200')",
-          }}
-        />
-        <div
-          className="w-screen h-screen"
-          style={{
-            backgroundImage:
-              "url('https://source.unsplash.com/collection/2091539/1000x100')",
-          }}
-        />
+          <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
+            Premium
+          </h1>
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage:
+                "url('https://source.unsplash.com/collection/2091539/1000x300')",
+            }}
+          />
+        </div>
+        <div className="relative w-screen h-full">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage:
+                "url('https://source.unsplash.com/collection/2091539/1000x200')",
+            }}
+          />
+        </div>
+        <div className="relative w-screen h-full">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage:
+                "url('https://source.unsplash.com/collection/2091539/1000x100')",
+            }}
+          />
+        </div>
+        <div className="relative w-screen h-full">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage:
+                "url('https://source.unsplash.com/collection/2091539/1000x600')",
+            }}
+          />
+        </div>
       </div>
       {/* <div className="flex mt-10 w-full items-center">
         <div className="w-[40%]">

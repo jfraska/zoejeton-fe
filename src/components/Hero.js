@@ -4,7 +4,6 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { motion, useAnimation } from "framer-motion";
 import { Icon } from "@iconify/react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -40,10 +39,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const { scroll } = useLocomotiveScroll();
-  const ref = useRef(null);
   const bgRef = useRef(null);
   const trigerRef = useRef(null);
-  const controls = useAnimation();
   const [carouselBackground, setCarouselBackground] = useState(null);
   const [carouselMain, setCarouselMain] = useState(null);
 
@@ -80,7 +77,7 @@ export default function Hero() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: trigerRef.current,
-            start: "20% top",
+            start: "10% top",
             end: "+=75%",
             scrub: true,
             // markers: true,
@@ -108,7 +105,6 @@ export default function Hero() {
       data-scroll-section
       className="relative w-full h-screen"
       id="beranda"
-      ref={ref}
     >
       <div
         ref={trigerRef}
@@ -176,9 +172,9 @@ export default function Hero() {
             data-scroll-speed="2.5"
             data-scroll-position="top"
             data-swiper-parallax="-200"
-            className="absolute z-10 m-auto text-center inset-x-0 bottom-[40%] md:bottom-[30%]"
+            className="absolute z-10 m-auto px-[8%] text-center inset-x-0 bottom-[35%] md:bottom-[30%]"
           >
-            <div className="flex flex-col font-serif uppercase text-4xl md:text-6xl">
+            <div className="flex flex-col font-serif uppercase text-3xl md:text-6xl">
               <h1 className="text-slate-200 leading-[0.8]">
                 Premium Invitation
               </h1>
