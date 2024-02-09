@@ -11,7 +11,7 @@ import FAQ from "@/components/FAQ";
 export default function Footer() {
   const formRef = useRef();
   // const { scroll } =  useLocomotiveScroll();
-  const [faqs, setFaqs] = useState(faq);
+  const [selected, setSelected] = useState(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -30,45 +30,18 @@ export default function Footer() {
 
   const handleSubmit = (e) => {};
 
-  // useEffect(() => {
-  //   if (scroll) {
-  //     // scroll.on("call", (value, way, obj) => {
-  //     //   if (way === "enter") {
-  //     //     if (value === "noShrinkBottom") {
-  //     //     }
-  //     //   }
-  //     //   // else if (way === "exit") {
-  //     //   //   if (value === "noShrinkBottom") {
-  //     //   //     bottom = false;
-  //     //   //   }
-  //     //   // }
-  //     // });
-  //   }
-
-  //   return () => {
-  //     scroll && scroll.destroy();
-  //   };
-  // }, [scroll]);
-
-  const toggleFAQ = (index) => {
-    setFaqs(
-      faqs.map((faq, i) => {
-        if (i === index) {
-          faq.open = !faq.open;
-        } else {
-          faq.open = false;
-        }
-
-        return faq;
-      })
-    );
+  const toggle = (index) => {
+    if (selected === index) {
+      return setSelected(null);
+    }
+    setSelected(index);
   };
 
   return (
     <footer
       data-scroll-section
       id="footer"
-      className="relative w-full bg-[#121212] text-white px-[3%] pt-[4%] pb-[1%]"
+      className="relative w-full bg-[#121212] text-white px-[3%] pt-[5%] pb-[1%]"
     >
       <div className="absolute w-full top-0 left-0 h-3 footer-shadow" />
       <div
@@ -85,18 +58,19 @@ export default function Footer() {
               </h1>
             </div>
             <div className="w-full">
-              {faqs.map((faq, index) => (
+              {faq.map((faq, index) => (
                 <FAQ
                   faq={faq}
                   index={index}
                   key={index}
-                  toggleFAQ={toggleFAQ}
+                  toggle={toggle}
+                  selected={selected}
                 />
               ))}
             </div>
           </div>
         </section>
-        <section className="h-[50vh]" id="contact">
+        <section className="mb-20" id="contact">
           <div className="w-full mb-10 border-b border-white" />
           <div className="w-full pl-5 md:pr-20 pr-2 flex justify-around">
             <div className="w-full md:text-base text-sm flex gap-2">
@@ -131,7 +105,15 @@ export default function Footer() {
                   placeholder="Name"
                   className="appearance-none hover-footer-underline-animation bg-transparent py-2 focus:outline-none placeholder:text-white text-white border-b border-slate-400"
                 />
-                <div className="flex justify-around gap-10">
+                <textarea
+                  type="text"
+                  name="pesan"
+                  value={form.pesan}
+                  onChange={handleChange}
+                  placeholder="Pesan"
+                  className="appearance-none hover-footer-underline-animation bg-transparent py-2 focus:outline-none placeholder:text-white text-white border-b border-slate-400"
+                />
+                {/* <div className="flex justify-around gap-10">
                   <select className="block appearance-none hover-footer-underline-animation text-white w-full bg-transparent border-b border-slate-400 py-2 leading-tight focus:outline-none">
                     <option>
                       Really long option that will likely overlap the chevron
@@ -146,7 +128,7 @@ export default function Footer() {
                     <option>Option 2</option>
                     <option>Option 3</option>
                   </select>
-                </div>
+                </div> */}
                 <button className="flex px-2 mt-5 items-center gap-1 bg-white rounded-full w-fit text-black">
                   <h1 className="uppercase md:text-lg text-sm">
                     send whatsapp
@@ -163,7 +145,7 @@ export default function Footer() {
           </div>
         </section>
         <div className="w-full mb-2 border-b border-white" />
-        <h1 className="w-fit ml-auto mb-1 text-xs">copyright © zoejeton</h1>
+        <h1 className="w-fit ml-auto mb-2 text-xs">copyright © zoejeton</h1>
       </div>
     </footer>
   );
