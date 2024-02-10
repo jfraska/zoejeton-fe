@@ -72,7 +72,7 @@ export default function Feature() {
   return (
     <section
       data-scroll-section
-      className="relative overflow-hidden h-[150vh]"
+      className="relative overflow-hidden h-[150vh] bg-[#121212]"
       ref={trigerRef}
       id="feature"
     >
@@ -81,7 +81,7 @@ export default function Feature() {
         data-scroll-sticky
         data-scroll-target="#feature"
         ref={sectionRef}
-        className="w-[400vw] h-screen flex flex-nowrap bg-[#121212]"
+        className="w-[400vw] h-screen flex flex-nowrap"
       >
         <div className="relative w-screen h-full">
           <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">

@@ -50,7 +50,7 @@ export default function Footer() {
         data-scroll-target="#footer"
         className="z-0"
       >
-        <section className="mb-16" id="faq">
+        <section className="md:h-[50vh] h-[70vh]" id="faq">
           <div className="w-full pl-5 md:pr-20 pr-5 flex justify-around">
             <div className="w-full">
               <h1 className="md:text-5xl text-2xl w-2/4">

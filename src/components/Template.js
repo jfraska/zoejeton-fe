@@ -1,9 +1,10 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
 
 export default function Template() {
+  const router = useRouter();
   const numberOfColumns = 4;
   const elementsPerColumn = Math.ceil(templates.length / numberOfColumns);
 
@@ -34,9 +35,11 @@ export default function Template() {
     <section data-scroll-section id="template" className="px-[3%]">
       <div className="w-full mt-1.5 border-b border-black" />
       {/* <h1 className="text-sm">Showing 8 of 12 template invitation</h1> */}
-      <div className="flex justify-between items-end mt-4 font-medium">
+      <div className="flex justify-between items-start mt-4 font-medium">
         <h1 className="text-3xl">Katalog</h1>
-        <h1 className="text-base">Showing 8 of 12 template invitation</h1>
+        <h1 className="text-sm md:block hidden">
+          Showing 8 of 12 template invitation
+        </h1>
       </div>
       <div className="flex flex-col md:flex-row mt-6 w-full justify-between items-center">
         {columns.map((column, index) => (
@@ -48,16 +51,34 @@ export default function Template() {
             } flex-col max-w-[320px] w-full md:w-[23%] gap-5`}
           >
             {column.map((e) => (
-              <div key={e.id} className="flex flex-col w-full">
-                <div className="relative w-full h-[350px] lg:h-[400px] border border-black rounded-lg">
-                  <div className="absolute bottom-4 left-4">
-                    <h1 className="text-lg font-medium">{e.title}</h1>
-                    <h1>{e.price}</h1>
+              <div
+                key={e.id}
+                className="group flex flex-col w-full cursor-pointer hover:bg-[#ffffffc0] transition-all ease-in-out"
+                // onClick={() => router.push("/minimalis")}
+              >
+                <div className="relative w-full h-[370px] lg:h-[400px] border border-black rounded-lg overflow-hidden">
+                  <div className="absolute top-5 right-5 group-hover:block hidden bg-black p-3 rounded-full">
+                    <Icon icon="ph:eye" width="20" color="white" />
                   </div>
-                  <div className="absolute bottom-4 right-4">
+                  <div className="absolute bottom-4 left-4">
+                    <h1 className="text-lg font-medium bg-black text-white w-fit leading-tight">
+                      {e.title}
+                    </h1>
+                    <h1 className="text-base font-normal bg-black text-white w-fit leading-tight">
+                      {e.price}
+                    </h1>
+                  </div>
+                  <div
+                    className="absolute inset-0 -z-10 bg-cover bg-blend-overlay bg-[#00000025]"
+                    style={{
+                      backgroundImage:
+                        "url('https://source.unsplash.com/collection/2091539/500x400')",
+                    }}
+                  />
+                  <div className="absolute bottom-4 right-4 bg-black w-fit">
                     <Icon
                       icon="carbon:arrow-up"
-                      color="black"
+                      color="white"
                       width="30"
                       rotate={1}
                     />

@@ -33,8 +33,8 @@ export const feature = [
 
 export const templates = [
   {
-    id: "1",
-    title: "About",
+    id: "M01",
+    title: "Minimalis",
     price: "IDR 199.000 - IDR 365.000",
   },
   {

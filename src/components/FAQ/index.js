@@ -5,7 +5,7 @@ const FAQ = ({ faq, index, toggle, selected }) => {
   return (
     <div className="w-full py-2 pr-2 border-b border-white">
       <div
-        className={"flex items-end justify-between"}
+        className={"flex items-end justify-between cursor-pointer"}
         onClick={() => toggle(index)}
       >
         <h1 className="md:text-lg text-sm leading-tight">{faq.question}</h1>

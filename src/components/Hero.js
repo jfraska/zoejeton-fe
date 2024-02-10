@@ -18,16 +18,16 @@ const params = {
     "--swiper-pagination-color": "#fff",
     "--swiper-pagination-bullet-inactive-color": "transparent",
     "--swiper-pagination-bullet-inactive-opacity": "1",
-    "--swiper-pagination-bullet-size": "12px",
-    "--swiper-pagination-bullet-horizontal-gap": "12px",
+    "--swiper-pagination-bullet-size": "10px",
+    "--swiper-pagination-bullet-horizontal-gap": "10px",
   },
   modules: [Parallax, Pagination, Controller],
   initialSlide: 0,
   slidesPerView: 1,
   loop: true,
   parallax: true,
-  speed: 500,
-  spaceBetween: 0,
+  speed: 800,
+  // spaceBetween: 0,
   effect: "slide",
   pagination: {
     clickable: true,
@@ -128,6 +128,7 @@ export default function Hero() {
           onSwiper={setCarouselBackground}
           controller={{ control: carouselMain }}
           id="carousel-wrapper"
+          className="bg-black"
         >
           <SwiperSlide>
             <div
@@ -139,14 +140,8 @@ export default function Hero() {
             />
           </SwiperSlide>
           <SwiperSlide>
-            <div
-              className="parallax-bg "
-              style={{
-                backgroundColor: "#000000",
-              }}
-            >
-              <Statue />
-            </div>
+            <div className="absolute inset-0 bg-black border-none" />
+            <Statue />
           </SwiperSlide>
           <SwiperSlide>
             <div
@@ -166,33 +161,49 @@ export default function Hero() {
         controller={{ control: carouselBackground }}
       >
         <SwiperSlide>
-          <div
-            data-scroll
-            data-scroll-target="#beranda"
-            data-scroll-speed="2.5"
-            data-scroll-position="top"
-            data-swiper-parallax="-200"
-            className="absolute z-10 m-auto px-[8%] text-center inset-x-0 bottom-[35%] md:bottom-[30%]"
-          >
-            <div className="flex flex-col font-serif uppercase text-3xl md:text-6xl">
-              <h1 className="text-slate-200 leading-[0.8]">
+          <div className="absolute z-10 m-auto px-[8%] text-center inset-x-0 bottom-[35%] md:bottom-[30%]">
+            <div
+              data-scroll
+              data-scroll-target="#beranda"
+              data-scroll-speed="2.5"
+              // data-scroll-position="top"
+              className="flex flex-col font-serif uppercase text-3xl md:text-6xl cursor-default"
+            >
+              <h1
+                data-swiper-parallax="-300"
+                className="text-slate-100 leading-[0.8]"
+              >
                 Premium Invitation
               </h1>
-              <h1 className="text-slate-100 leading-[0.8]">
+              <h1
+                data-swiper-parallax="200"
+                className="text-slate-100 leading-[0.8]"
+              >
                 Premium Invitation
               </h1>
-              <h1 className="text-slate-100 leading-[0.8]">
+              <h1
+                data-swiper-parallax="-200"
+                className="text-slate-100 leading-[0.8]"
+              >
                 Premium Invitation
               </h1>
             </div>
             <br />
-            <p className="text-base md:text-xl text-slate-100">
-              Welcome to the future of event invitations!
-            </p>
-            <p className="text-base md:text-xl text-slate-100">
-              We specialize in delivering digital elegance right to your
-              fingertips.
-            </p>
+            <div
+              data-scroll
+              data-scroll-target="#beranda"
+              data-scroll-speed="1"
+              data-swiper-parallax="-100"
+              className="cursor-default"
+            >
+              <p className="text-base md:text-xl text-slate-100">
+                Welcome to the future of event invitations!
+              </p>
+              <p className="text-base md:text-xl text-slate-100">
+                We specialize in delivering digital elegance right to your
+                fingertips.
+              </p>
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -236,7 +247,7 @@ export default function Hero() {
         <div
           data-scroll
           data-scroll-target="#beranda"
-          data-scroll-speed="2"
+          data-scroll-speed="3"
           data-scroll-position="top"
           className="hidden md:block swiper-pagination"
         ></div>
@@ -244,11 +255,13 @@ export default function Hero() {
       <div
         data-scroll
         data-scroll-target="#beranda"
-        data-scroll-speed="2"
+        data-scroll-speed="3"
         data-scroll-position="top"
-        className="absolute z-10 w-full flex flex-col items-center gap-2 md:text-start md:w-fit bottom-[5%] md:bottom-[8%] md:right-[3%] text-lg text-white"
+        className="absolute z-10 w-full flex flex-col items-center gap-2 md:text-start md:w-fit bottom-[5%] md:right-[3%] text-lg text-white"
       >
-        <button onClick={() => scroll.scrollTo("#about")}>(Scroll)</button>
+        <button className="text-sm" onClick={() => scroll.scrollTo("#about")}>
+          Scroll
+        </button>
         <Icon
           className="block md:hidden"
           icon="uim:triangle"
