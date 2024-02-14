@@ -1,6 +1,6 @@
 "use client";
 import { Icon } from "@iconify/react";
-import Statue from "./canvas/Statue";
+import Statue from "./Statue";
 
 export default function About() {
   return (
@@ -22,7 +22,7 @@ export default function About() {
         </div>
         <div className="relative w-16">
           <div className="top-right top-0 right-0">
-            <h1 className="md:text-6xl text-5xl text-white md:text-black font-serif uppercase content whitespace-nowrap">
+            <h1 className="md:text-6xl text-5xl text-white md:text-black font-serif uppercase vertical whitespace-nowrap">
               premium
             </h1>
           </div>

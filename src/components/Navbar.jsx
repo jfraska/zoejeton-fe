@@ -39,6 +39,8 @@ export default function Navbar() {
     };
   }, [scroll]);
 
+  useEffect(() => {});
+
   return (
     <nav>
       <div

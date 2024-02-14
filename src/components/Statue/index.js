@@ -77,10 +77,9 @@ function MousePointLight() {
   return <directionalLight ref={pointLightRef} color="red" intensity={1} />;
 }
 
-export default function Statue() {
+export default function Statue({ className }) {
   return (
-    <Canvas>
-      <ambientLight intensity={0.6} />
+    <Canvas className={className}>
       <directionalLight intensity={0.5} />
       <Suspense fallback={null}>
         <Model position={[-15, -60, 0]} scale={[0.5, 0.5, 0.6]} />

@@ -36,6 +36,7 @@
     "three": "^0.156.1"
   },
   "devDependencies": {
-    "@iconify/react": "^4.1.1"
+    "@iconify/react": "^4.1.1",
+    "webpack-glsl-loader": "^1.0.1"
   }
 }

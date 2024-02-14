@@ -5,13 +5,23 @@ import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Icon } from "@iconify/react";
+import localFont from "next/font/local";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Parallax, Pagination, Controller } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import Statue from "./canvas/Statue";
+import Statue from "./Statue";
+import Liquid from "./Liquid";
+
+const radwave = localFont({
+  src: "../assets/fonts/radwave/radwavefont-demo.woff",
+});
+
+const gunterz = localFont({
+  src: "../assets/fonts/gunterz/gunterz-mediumitalic.woff",
+});
 
 const params = {
   style: {
@@ -27,7 +37,7 @@ const params = {
   loop: true,
   parallax: true,
   speed: 800,
-  // spaceBetween: 0,
+  spaceBetween: 0,
   effect: "slide",
   pagination: {
     clickable: true,
@@ -123,32 +133,47 @@ export default function Hero() {
       >
         <Swiper
           initialSlide={0}
+          modules={[Parallax, Controller]}
           loop
-          modules={[Controller]}
           onSwiper={setCarouselBackground}
           controller={{ control: carouselMain }}
+          parallax={true}
+          speed={800}
+          effect="slide"
+          spaceBetween={0}
           id="carousel-wrapper"
           className="bg-black"
         >
           <SwiperSlide>
+            <Liquid scale={[5, 4, 4]} />
+          </SwiperSlide>
+          <SwiperSlide>
             <div
-              className="parallax-bg"
+              data-scroll
+              data-scroll-target="#beranda"
+              data-scroll-speed="-1"
+              data-swiper-parallax="200"
+              className="w-[30vw] h-[70vh] absolute m-auto inset-0 bg-cover"
               style={{
-                backgroundImage:
-                  "url('https://source.unsplash.com/collection/2091539/1000x500')",
+                backgroundImage: "url('/bg2.jpg')",
               }}
             />
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="absolute inset-0 bg-black border-none" />
-            <Statue />
+            <h1
+              data-scroll
+              data-scroll-target="#beranda"
+              data-scroll-speed="2.5"
+              data-swiper-parallax="-300"
+              className={`absolute inset-0 m-auto w-fit mt-[12%] md:text-9xl text-[40px] text-white ${gunterz.className}`}
+            >
+              Luxury
+            </h1>
+            <Statue data-swiper-parallax="100" />
           </SwiperSlide>
           <SwiperSlide>
             <div
               className="parallax-bg"
               style={{
-                backgroundImage:
-                  "url('https://source.unsplash.com/collection/2091539/1000x400')",
+                backgroundImage: "url('/bg3.jpg')",
               }}
             />
           </SwiperSlide>
@@ -206,42 +231,47 @@ export default function Hero() {
             </div>
           </div>
         </SwiperSlide>
+        <SwiperSlide></SwiperSlide>
         <SwiperSlide>
-          <div className="title" data-swiper-parallax="-300">
-            Slide 2
-          </div>
-          <div className="subtitle" data-swiper-parallax="-200">
-            Subtitle
-          </div>
-          <div className="text" data-swiper-parallax="-100">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-              laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-              Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-              Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-              ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-              tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="title" data-swiper-parallax="-300">
-            Slide 3
-          </div>
-          <div className="subtitle" data-swiper-parallax="-200">
-            Subtitle
-          </div>
-          <div className="text" data-swiper-parallax="-100">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-              laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-              Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-              Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-              ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-              tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-            </p>
+          <div className="flex justify-center items-center h-full">
+            <div
+              data-scroll
+              data-scroll-target="#beranda"
+              data-scroll-speed="2.5"
+              data-swiper-parallax="-300"
+              className="relative md:w-5/6 w-11/12 flex md:flex-row flex-col justify-center md:gap-16 gap-10 items-center"
+            >
+              <div
+                className="relative w-40 h-40 bg-white bg-cover"
+                style={{
+                  backgroundImage: "url('/tm1.jpg')",
+                }}
+              >
+                <h2 className="absolute -top-10 left-0 text-xl text-white">
+                  We specialize
+                </h2>
+              </div>
+              <div
+                className="w-40 h-40 bg-white bg-cover"
+                style={{
+                  backgroundImage: "url('/tm1.jpg')",
+                }}
+              />
+              <div
+                className="w-40 h-40 bg-white bg-cover"
+                style={{
+                  backgroundImage: "url('/tm1.jpg')",
+                }}
+              />
+              <h1
+                data-scroll
+                data-scroll-target="#beranda"
+                data-scroll-speed="3"
+                className={`absolute inset-0 z-10 pt-2 w-fit h-fit m-auto md:text-8xl text-[40px] text-white ${radwave.className}`}
+              >
+                Catalogue
+              </h1>
+            </div>
           </div>
         </SwiperSlide>
         <div
@@ -266,7 +296,7 @@ export default function Hero() {
           className="block md:hidden"
           icon="uim:triangle"
           color="white"
-          width="15"
+          width="12"
           vFlip={true}
         />
       </div>
