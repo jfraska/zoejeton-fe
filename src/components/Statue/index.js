@@ -1,14 +1,15 @@
 "use client";
 import { Suspense, useEffect, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Preload, useGLTF, Stage, OrbitControls } from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useGLTF, useDepthBuffer, SpotLight } from "@react-three/drei";
 import { Vector3 } from "three";
+import CursorProvider from "@/Providers/CursorProvider";
 
 const Model = (props) => {
   const { nodes, materials } = useGLTF("/three_graces/scene.gltf");
   return (
     <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
+      <group>
         <mesh
           geometry={nodes.Object_2.geometry}
           material={materials["Scene_-_Root"]}
@@ -50,40 +51,60 @@ const Model = (props) => {
   );
 };
 
-useGLTF.preload("/three_graces/scene.gltf");
-
-function MousePointLight() {
-  const pointLightRef = useRef();
-  let previousTime = 0;
-
-  useFrame(({ mouse, camera, clock }) => {
-    const elapsedTime = clock.getElapsedTime();
-    const deltaTime = elapsedTime - previousTime;
-    previousTime = elapsedTime;
-
-    // const mousePosition = new Vector3(
-    //   (mouse.x * 8 - pointLightRef.current.position.x) * 2 * deltaTime,
-    //   (mouse.y * 9 + pointLightRef.current.position.y - 2) * deltaTime,
-    //   1.8
-    // );
-
-    const mousePosition = new Vector3(mouse.x - 5, mouse.y - 5, 1.8);
-
-    // camera.position.z += (mouse.y / 3 + camera.position.z) * 2 * deltaTime;
-    // camera.position.x += (mouse.x / 3 - camera.position.x) * 2 * deltaTime;
-    pointLightRef.current.position.copy(mousePosition);
+function MovingLight({ vec = new Vector3(), ...props }) {
+  const light = useRef();
+  const viewport = useThree((state) => state.viewport);
+  useFrame((state) => {
+    light.current.target.position.lerp(
+      vec.set(
+        (state.mouse.x * viewport.width) / 2,
+        (state.mouse.y * viewport.height) / 2,
+        0
+      ),
+      0.1
+    );
+    light.current.target.updateMatrixWorld();
   });
 
-  return <directionalLight ref={pointLightRef} color="red" intensity={1} />;
+  return (
+    <directionalLight
+      castShadow
+      ref={light}
+      penumbra={1}
+      distance={6}
+      angle={0.35}
+      attenuation={5}
+      anglePower={4}
+      intensity={2}
+      {...props}
+    />
+  );
 }
 
-export default function Statue({ className }) {
+function Scene() {
+  const depthBuffer = useDepthBuffer({ frames: 1 });
   return (
-    <Canvas className={className}>
-      <directionalLight intensity={0.5} />
-      <Suspense fallback={null}>
-        <Model position={[-15, -60, 0]} scale={[0.5, 0.5, 0.6]} />
-      </Suspense>
-    </Canvas>
+    <>
+      <MovingLight depthBuffer={depthBuffer} color="#fff" />
+      <Model
+        position={[-17, -52, 16]}
+        scale={[0.5, 0.5, 0.5]}
+        rotation={[-1.95, 0, -0.05]}
+      />
+    </>
+  );
+}
+
+export default function Statue() {
+  return (
+    <Suspense fallback={null}>
+      <CursorProvider>
+        <Canvas shadows dpr={[1, 2]}>
+          <fog attach="fog" args={["#202020", 5, 20]} />
+          <ambientLight intensity={0.015} />
+          <Scene />
+        </Canvas>
+      </CursorProvider>
+    </Suspense>
   );
 }
