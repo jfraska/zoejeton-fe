@@ -1,14 +1,24 @@
 "use client";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, useDepthBuffer, SpotLight } from "@react-three/drei";
-import { Vector3 } from "three";
-import CursorProvider from "@/Providers/CursorProvider";
+import {
+  useGLTF,
+  useDepthBuffer,
+  useHelper,
+  OrbitControls,
+} from "@react-three/drei";
+import { PointLight, PointLightHelper, Vector3 } from "three";
+
+const mesh = {
+  position: null,
+};
 
 const Model = (props) => {
+  const model = useRef();
+  mesh.position = model;
   const { nodes, materials } = useGLTF("/three_graces/scene.gltf");
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={model}>
       <group>
         <mesh
           geometry={nodes.Object_2.geometry}
@@ -51,11 +61,42 @@ const Model = (props) => {
   );
 };
 
-function MovingLight({ vec = new Vector3(), ...props }) {
-  const light = useRef();
+const Camera = () => {
+  const camera = useRef();
+
   const viewport = useThree((state) => state.viewport);
   useFrame((state) => {
-    light.current.target.position.lerp(
+    const parallaxX = (state.mouse.x * viewport.width) / 32;
+    const parallaxY = (state.mouse.y * viewport.height) / 32;
+
+    if (camera.current) {
+      camera.current.position.x += parallaxX - camera.current.position.x;
+      camera.current.position.z -= parallaxY + camera.current.position.z;
+    }
+  });
+  return (
+    <perspectiveCamera
+      ref={camera}
+      fov={75}
+      aspect={viewport.width / viewport.height}
+      near={0.1}
+      far={100}
+    >
+      <Model
+        position={[-3.5, -11.5, 0]}
+        scale={[0.1, 0.1, 0.1]}
+        rotation={[-1.6, 0, 0]}
+      />
+    </perspectiveCamera>
+  );
+};
+
+function MovingLight({ vec = new Vector3(), ...props }) {
+  const light = useRef();
+  // useHelper(light, PointLightHelper, 1);
+  const viewport = useThree((state) => state.viewport);
+  useFrame((state) => {
+    light.current.position.lerp(
       vec.set(
         (state.mouse.x * viewport.width) / 2,
         (state.mouse.y * viewport.height) / 2,
@@ -63,48 +104,36 @@ function MovingLight({ vec = new Vector3(), ...props }) {
       ),
       0.1
     );
-    light.current.target.updateMatrixWorld();
+    light.current.updateMatrixWorld();
   });
 
-  return (
-    <directionalLight
-      castShadow
-      ref={light}
-      penumbra={1}
-      distance={6}
-      angle={0.35}
-      attenuation={5}
-      anglePower={4}
-      intensity={2}
-      {...props}
-    />
-  );
+  return <pointLight castShadow ref={light} {...props} />;
 }
 
 function Scene() {
   const depthBuffer = useDepthBuffer({ frames: 1 });
   return (
     <>
-      <MovingLight depthBuffer={depthBuffer} color="#fff" />
-      <Model
-        position={[-17, -52, 16]}
-        scale={[0.5, 0.5, 0.5]}
-        rotation={[-1.95, 0, -0.05]}
+      <MovingLight
+        depthBuffer={depthBuffer}
+        args={[`white`, 1.2, 120]}
+        position={[-4, 5, 5]}
       />
+      <Camera />
     </>
   );
 }
 
-export default function Statue() {
+export default function Statue({ props }) {
   return (
-    <Suspense fallback={null}>
-      <CursorProvider>
-        <Canvas shadows dpr={[1, 2]}>
-          <fog attach="fog" args={["#202020", 5, 20]} />
-          <ambientLight intensity={0.015} />
-          <Scene />
-        </Canvas>
-      </CursorProvider>
+    <Suspense {...props} fallback={null}>
+      <Canvas shadows dpr={[1, 2]} camera={{ fov: 30, position: [0, 0, 7] }}>
+        <fog attach="fog" args={["#202020", 5, 20]} />
+        <ambientLight intensity={0.015} />
+        <Scene />
+        {/* <OrbitControls />
+        <gridHelper /> */}
+      </Canvas>
     </Suspense>
   );
 }

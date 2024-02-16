@@ -1,8 +1,12 @@
 "use client";
+import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import Statue from "./Statue";
+import CursorProvider from "@/Providers/CursorProvider";
 
 export default function About() {
+  const containerRef = useRef();
+
   return (
     <section
       data-scroll-section
@@ -16,13 +20,18 @@ export default function About() {
         YOUR WEDDING INVITATION PROJECTS WITH US TO GET FEATURED.
       </p>
 
-      <div className="mx-auto mb-14 mt-10 flex w-2/3">
-        <div className="w-full h-[400px] bg-[#000000] rounded-lg">
-          <Statue />
+      <div className="relative mx-auto mb-14 mt-10 flex w-2/3">
+        <div
+          className="w-full h-[400px] bg-[#000000] rounded-lg"
+          ref={containerRef}
+        >
+          <CursorProvider containerRef={containerRef}>
+            <Statue />
+          </CursorProvider>
         </div>
         <div className="relative w-16">
           <div className="top-right top-0 right-0">
-            <h1 className="md:text-6xl text-5xl text-white md:text-black font-serif uppercase vertical whitespace-nowrap">
+            <h1 className="text-6xl md:block hidden text-white md:text-black font-serif uppercase vertical whitespace-nowrap">
               premium
             </h1>
           </div>

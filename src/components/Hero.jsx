@@ -167,7 +167,12 @@ export default function Hero() {
             >
               Luxury
             </h1>
-            <Statue data-swiper-parallax="100" />
+            <Statue
+              data-scroll
+              data-scroll-target="#beranda"
+              data-scroll-speed="-3"
+              data-swiper-parallax="100"
+            />
           </SwiperSlide>
           <SwiperSlide>
             <div
