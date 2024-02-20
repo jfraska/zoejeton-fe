@@ -39,7 +39,10 @@ export default function About() {
       </div>
 
       <div className="ml-auto flex gap-4 md:w-[60%] w-11/12">
-        <div className="flex hover-underline-animation w-full border-b py-2 pr-1 border-black-200 items-end justify-between">
+        <a
+          href="/about"
+          className="flex hover-underline-animation w-full border-b py-2 pr-1 border-black-200 items-end justify-between"
+        >
           <h1 className="md:text-base text-sm text-black">More About Us</h1>
           <Icon
             icon="carbon:arrow-up"
@@ -47,7 +50,7 @@ export default function About() {
             width="20"
             rotate={1}
           />
-        </div>
+        </a>
         <div className="w-full">
           <p className="text-sm mb-5">
             New to our fonts? Be sure to check out our Font Starter Pack. You

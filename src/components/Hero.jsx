@@ -8,12 +8,10 @@ import { Icon } from "@iconify/react";
 import localFont from "next/font/local";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Parallax, Pagination, Controller } from "swiper/modules";
+import { Parallax, Pagination, Controller, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import Statue from "./Statue";
-import Liquid from "./Liquid";
 
 const radwave = localFont({
   src: "../assets/fonts/radwave/radwavefont-demo.woff",
@@ -31,7 +29,7 @@ const params = {
     "--swiper-pagination-bullet-size": "10px",
     "--swiper-pagination-bullet-horizontal-gap": "10px",
   },
-  modules: [Parallax, Pagination, Controller],
+  modules: [Parallax, Pagination, Controller, Autoplay],
   initialSlide: 0,
   slidesPerView: 1,
   loop: true,
@@ -39,6 +37,10 @@ const params = {
   speed: 800,
   spaceBetween: 0,
   effect: "slide",
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+  },
   pagination: {
     clickable: true,
     el: ".swiper-pagination",
@@ -145,33 +147,19 @@ export default function Hero() {
           className="bg-black"
         >
           <SwiperSlide>
-            <Liquid scale={[5, 4, 4]} />
+            <div
+              className="parallax-bg"
+              style={{
+                backgroundImage: "url('/bg1.jpg')",
+              }}
+            />
           </SwiperSlide>
           <SwiperSlide>
             <div
-              data-scroll
-              data-scroll-target="#beranda"
-              data-scroll-speed="-1"
-              data-swiper-parallax="200"
-              className="w-[30vw] h-[70vh] absolute m-auto inset-0 bg-cover"
+              className="parallax-bg"
               style={{
                 backgroundImage: "url('/bg2.jpg')",
               }}
-            />
-            <h1
-              data-scroll
-              data-scroll-target="#beranda"
-              data-scroll-speed="2.5"
-              data-swiper-parallax="-300"
-              className={`absolute inset-0 m-auto w-fit mt-[12%] md:text-9xl text-[40px] text-white ${gunterz.className}`}
-            >
-              Luxury
-            </h1>
-            <Statue
-              data-scroll
-              data-scroll-target="#beranda"
-              data-scroll-speed="-3"
-              data-swiper-parallax="100"
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -191,7 +179,7 @@ export default function Hero() {
         controller={{ control: carouselBackground }}
       >
         <SwiperSlide>
-          <div className="absolute z-10 m-auto px-[8%] text-center inset-x-0 bottom-[35%] md:bottom-[30%]">
+          <div className="absolute z-10 px-[8%] text-center inset-x-0 bottom-[35%] md:bottom-[30%]">
             <div
               data-scroll
               data-scroll-target="#beranda"

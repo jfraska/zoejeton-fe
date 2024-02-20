@@ -12,7 +12,7 @@ import About from "@/components/About";
 import Feature from "@/components/Feature";
 // import Pricing from "@/components/Pricing";
 import ScrollVelocity from "@/components/ScrollVelocity";
-import Template from "@/components/Template";
+import Katalog from "@/components/Katalog";
 import Footer from "@/components/Footer";
 import Message from "@/components/Message";
 
@@ -50,7 +50,7 @@ export default function Home() {
         <About />
         <Feature />
         <ScrollVelocity />
-        <Template />
+        <Katalog />
         {/* <Pricing /> */}
         <Message />
         <Footer />

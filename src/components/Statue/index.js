@@ -66,8 +66,8 @@ const Camera = () => {
 
   const viewport = useThree((state) => state.viewport);
   useFrame((state) => {
-    const parallaxX = (state.mouse.x * viewport.width) / 32;
-    const parallaxY = (state.mouse.y * viewport.height) / 32;
+    const parallaxX = (state.mouse.x * viewport.width) / 128;
+    const parallaxY = (state.mouse.y * viewport.height) / 128;
 
     if (camera.current) {
       camera.current.position.x += parallaxX - camera.current.position.x;
@@ -83,7 +83,7 @@ const Camera = () => {
       far={100}
     >
       <Model
-        position={[-3.5, -11.5, 0]}
+        position={[-3.5, -11, 0]}
         scale={[0.1, 0.1, 0.1]}
         rotation={[-1.6, 0, 0]}
       />
@@ -116,7 +116,7 @@ function Scene() {
     <>
       <MovingLight
         depthBuffer={depthBuffer}
-        args={[`white`, 1.2, 120]}
+        args={[`white`, 4, 100]}
         position={[-4, 5, 5]}
       />
       <Camera />
@@ -128,6 +128,7 @@ export default function Statue({ props }) {
   return (
     <Suspense {...props} fallback={null}>
       <Canvas shadows dpr={[1, 2]} camera={{ fov: 30, position: [0, 0, 7] }}>
+        {/* <color attach="background" args={["#000"]} /> */}
         <fog attach="fog" args={["#202020", 5, 20]} />
         <ambientLight intensity={0.015} />
         <Scene />

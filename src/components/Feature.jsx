@@ -83,16 +83,13 @@ export default function Feature() {
         ref={sectionRef}
         className="w-[400vw] h-screen flex flex-nowrap"
       >
-        <div className="relative w-screen h-full">
-          <h1 className="absolute text-white -left-6 top-1/3 font-serif text-5xl leading-none">
+        <div className="relative w-screen h-full flex justify-center items-center">
+          <h1 className="text-white text-center font-serif text-5xl leading-none">
             Feature
           </h1>
 
-          <h1 className="absolute bottom-1/4 -right-20 font-serif text-white text-6xl leading-none">
-            Premium
-          </h1>
           <div
-            className="w-full h-full"
+            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x300')",
@@ -101,7 +98,7 @@ export default function Feature() {
         </div>
         <div className="relative w-screen h-full">
           <div
-            className="w-full h-full"
+            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x200')",
@@ -110,7 +107,7 @@ export default function Feature() {
         </div>
         <div className="relative w-screen h-full">
           <div
-            className="w-full h-full"
+            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x100')",
@@ -119,7 +116,7 @@ export default function Feature() {
         </div>
         <div className="relative w-screen h-full">
           <div
-            className="w-full h-full"
+            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x600')",
