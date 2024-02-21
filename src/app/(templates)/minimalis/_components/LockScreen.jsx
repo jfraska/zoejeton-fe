@@ -1,4 +1,5 @@
 "use client";
+import SwipeableButton from "@/components/SwipeButton";
 import { Icon } from "@iconify/react";
 import localFont from "next/font/local";
 import Image from "next/image";
@@ -34,10 +35,15 @@ export default function LockScreen({ state, setState }) {
         <span>Jeton</span> <span>&</span> <span>Zoe</span>
       </h1>
 
-      <div>
+      <div className="w-3/6">
         <h1 className="text-center text-sm uppercase mb-2">
           spesial invitation
         </h1>
+        <SwipeableButton
+          color="#000"
+          mainText="buka undangan"
+          onSuccess={() => setState(true)}
+        />
       </div>
     </div>
   );
