@@ -19,3 +19,27 @@
   left: 50%;
   transform-origin: 0 75px;
 }
+
+.bottom-active {
+  background-color: #1e1e1e;
+}
+
+.my-class {
+  border: none !important;
+  background-color: white !important;
+  border-radius: 30px !important;
+  font-size: small;
+  padding-left: 30px !important;
+}
+
+.my-caret-class {
+  background:rgb(0, 0, 0) !important;
+  border: none !important;
+  border-radius: 100% !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.my-overlay-class {
+  background: white !important;
+}

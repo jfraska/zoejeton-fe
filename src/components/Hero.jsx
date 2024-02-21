@@ -38,7 +38,7 @@ const params = {
   spaceBetween: 0,
   effect: "slide",
   autoplay: {
-    delay: 4000,
+    delay: 8000,
     disableOnInteraction: false,
   },
   pagination: {

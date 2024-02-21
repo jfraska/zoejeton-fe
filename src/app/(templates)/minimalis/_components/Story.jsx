@@ -1,10 +1,13 @@
-export default function Date() {
+export default function Story() {
   return (
-    <section className="relative w-full h-fit pt-10 pb-20 px-8 flex flex-col justify-start items-center gap-4 text-center text-white">
-      <div className="mb-4 w-full h-64 bg-[#9D9E9A]"></div>
+    <section
+      className="relative w-full h-fit pt-10 pb-20 px-10 bg-[#9A9A92] flex flex-col justify-start items-center gap-4 text-center"
+      id="story"
+    >
+      <h1 className="mb-4 text-2xl">Love Story</h1>
 
       <div>
-        <h1 className="text-sm font-medium uppercase">Akad</h1>
+        <h1 className="text-sm font-medium">SEMARANG, 19 jUNI 2021</h1>
         <p className="text-sm">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
           turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
@@ -13,7 +16,7 @@ export default function Date() {
       </div>
 
       <div>
-        <h1 className="text-sm font-medium uppercase">Resepsi</h1>
+        <h1 className="text-sm font-medium">SEMARANG, 19 jUNI 2021</h1>
         <p className="text-sm">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
           turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec

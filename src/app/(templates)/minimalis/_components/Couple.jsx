@@ -20,7 +20,7 @@ export default function Couple() {
   }, []);
 
   return (
-    <section className="relative w-full h-fit py-10 text-white">
+    <section className="relative w-full h-fit py-10 text-white" id="couple">
       <div className="relative w-2/3 h-64 bg-[#9A9A92]">
         <div className="absolute -top-[75px] -right-[75px] w-[150px] h-[150px] flex justify-center items-center">
           <div className="text">

@@ -2,7 +2,7 @@
 
 export default function FloatingBar() {
   return (
-    <div className="fixed flex justify-center items-center bottom-16 left-5 z-50 w-10 h-10 border border-transparent rounded-full bg-gray-900 backdrop-filter backdrop-blur-md bg-opacity-60">
+    <div className="sticky flex justify-center items-center bottom-20 left-0 mx-5 z-40 w-10 h-10 border border-transparent rounded-full bg-gray-800 backdrop-filter backdrop-blur-md bg-opacity-60">
       <svg
         width="14"
         height="21"

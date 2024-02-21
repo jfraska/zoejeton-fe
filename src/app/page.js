@@ -45,7 +45,7 @@ export default function Home() {
       containerRef={scrollWrapper}
     >
       <Navbar />
-      <div data-scroll-container id="smooth-scroll" ref={scrollWrapper}>
+      <main data-scroll-container id="smooth-scroll" ref={scrollWrapper}>
         <Hero />
         <About />
         <Feature />
@@ -54,7 +54,7 @@ export default function Home() {
         {/* <Pricing /> */}
         <Message />
         <Footer />
-      </div>
+      </main>
     </GlobalScroll>
   );
 }
