@@ -43,6 +43,13 @@ export default function LockScreen({ state, setState }) {
           color="#000"
           mainText="buka undangan"
           onSuccess={() => setState(true)}
+          caret={
+            <Icon
+              icon="heroicons:envelope-open-20-solid"
+              color="white"
+              width="15"
+            />
+          }
         />
       </div>
     </div>

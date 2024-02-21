@@ -61,16 +61,9 @@
 .rsbcSliderArrow {
   float: left;
   position: absolute;
-  transform: rotate(45deg);
-  border: 2px solid #fff;
-  height: 8px;
-  width: 8px;
   top: 50%;
-  right: 22px;
-  margin-top: -6px;
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  transform-origin: center;
+  right: 18px;
+  margin-top: -8px;
   z-index: 10;
 }
 .rsbcSliderCircle {
