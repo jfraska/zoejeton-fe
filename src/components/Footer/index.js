@@ -135,17 +135,10 @@ export default function Footer() {
               </form>
             </div>
           </div>
-          {/* <div className="w-fit md:block hidden mt-16 md:text-base text-sm">
-            <h1 className="text-black-100 tracking-wide">Menu</h1>
-            <h2 className="mt-5">Beranda</h2>
-            <h2 className="">About Us</h2>
-            <h2 className="">Featured</h2>
-            <h2 className="">Katalog</h2>
-          </div> */}
         </section>
         <div className="w-full mb-2 border-b border-white" />
-        <div className="py-10 h-fit flex md:flex-row flex-col md:justify-around gap-5 justify-center items-center">
-          <div className="flex gap-5 items-center md:w-full">
+        <div className="py-10 h-fit flex md:flex-row flex-col md:justify-around gap-5 justify-center md:items-end items-center">
+          <div className="flex gap-5 items-end md:w-full">
             <Image
               className="img-gray"
               src="/assets/icons/atm-bersama.svg"
@@ -161,7 +154,7 @@ export default function Footer() {
               alt="dana"
             />
           </div>
-          <div className="flex md:flex-row flex-col items-center md:w-full md:justify-between">
+          <div className="flex md:flex-row flex-col md:items-end items-center md:w-full md:justify-between">
             <h1 className="text-xs">Copyright © ZoeJeton</h1>
             <h1 className="text-xs">Website by Jipies</h1>
           </div>

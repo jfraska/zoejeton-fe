@@ -10,11 +10,11 @@ export default function About() {
   return (
     <section
       data-scroll-section
-      className="relative w-full h-[110vh] px-[3%] shadow-lg"
+      className="relative w-full h-[110vh] px-[3%] shadow-xl"
       id="about"
     >
       <div className="w-full mt-2 border-b border-black" />
-      <p className="mt-8 w-3/4 md:text-xl text-lg">
+      <p className="mt-8 md:w-3/4 w-10/12 md:text-xl text-lg">
         HERE ARE SOME BEAUTIFUL PROJECTS SHOWCASING OUR WEDDING INVITATIONS YOU
         CAN EXPLORE OUR INSPIRATION SECTION, AND PLEASE DON'T HESITATE TO SHARE
         YOUR WEDDING INVITATION PROJECTS WITH US TO GET FEATURED.
@@ -41,7 +41,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="md:ml-auto md:mr-0 mx-auto flex items-end gap-4 md:w-[60%] w-11/12">
+      <div className="md:ml-auto md:mr-0 mx-auto flex md:flex-row flex-col-reverse items-end gap-4 md:w-[60%] w-11/12">
         <div className="w-full">
           <a
             href="/about"

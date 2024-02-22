@@ -47,7 +47,7 @@ export default function Katalog() {
             key={index}
             className={`${
               index != 0 ? "hidden md:flex" : "flex"
-            } flex-col max-w-[320px] w-full md:w-[23%] gap-5`}
+            } flex-col md:max-w-[340px] w-11/12 md:w-[24%] gap-5`}
           >
             {column.map((e) => (
               <div
@@ -81,7 +81,7 @@ export default function Katalog() {
           </div>
         ))}
       </div>
-      <div className="my-20 mx-auto flex hover-underline-animation w-2/4 md:w-1/4 py-2 pr-1 items-end justify-between">
+      <div className="my-20 mx-auto flex hover-underline-animation w-11/12 md:w-1/4 py-2 pr-1 items-end justify-between">
         <h1 className="text-base text-black">See all our template</h1>
         <Icon
           icon="carbon:arrow-up"
