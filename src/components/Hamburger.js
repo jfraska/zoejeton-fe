@@ -5,12 +5,27 @@ const StyledBurger = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 30px;
-  height: 20px;
+  width: 25px;
+  height: 15px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+
+  @media only screen and (min-width: 768px) {
+    width: 30px;
+    height: 20px;
+
+    span {
+      width: 25px;
+      height: 2.5px;
+      background: ${({ open, scroll }) =>
+        open || scroll ? "#0D0C1D" : "#EFFFFA"};
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 2px;
+    }
+  }
 
   &:focus {
     outline: none;
@@ -23,7 +38,7 @@ const StyledBurger = styled.button`
       open || scroll ? "#0D0C1D" : "#EFFFFA"};
     transition: all 0.3s linear;
     position: relative;
-    transform-origin: 2px;
+    transform-origin: 2.7px;
   }
 `;
 

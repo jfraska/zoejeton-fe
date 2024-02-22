@@ -55,10 +55,13 @@ export default function Footer() {
         data-scroll-target="#footer"
         className="z-0"
       >
-        <section className="h-[40vh] mb-10 pl-5 md:pr-20 pr-5" id="faq">
-          <div className="w-full flex justify-around">
+        <section
+          className="md:h-[40vh] h-[50vh] mb-10 pl-5 md:pr-20 pr-5"
+          id="faq"
+        >
+          <div className="w-full flex md:flex-row flex-col md:gap-0 gap-4 justify-around">
             <div className="w-full">
-              <h1 className="md:text-5xl text-2xl w-3/4">
+              <h1 className="md:text-5xl text-2xl md:w-3/4 w-full">
                 Frequently Asked Question
               </h1>
               <h1 className="md:text-5xl text-2xl w-3/4">(FAQ)</h1>
@@ -76,9 +79,9 @@ export default function Footer() {
             </div>
           </div>
         </section>
-        <section className="mb-20 md:pr-20 pl-5 pr-2" id="contact">
-          <div className="w-full flex justify-around">
-            <div className="w-full md:text-base text-sm flex gap-2">
+        <section className="mb-20 md:pr-20 pl-5 pr-5" id="contact">
+          <div className="w-full flex md:flex-row flex-col  md:gap-0 gap-4 justify-around">
+            <div className="w-full md:text-base text-sm md:flex hidden gap-2">
               <div className="mt-2 flex flex-col w-2/6">
                 <h1 className="text-[#bfbfbf] tracking-wide">Menu</h1>
                 <h2 className="mt-5">Beranda</h2>
@@ -96,11 +99,11 @@ export default function Footer() {
               </div>
             </div>
             <div className="w-full">
-              <h1 className="md:text-4xl text-4xl">Hubungi Kami</h1>
+              <h1 className="md:text-4xl text-2xl">Hubungi Kami</h1>
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="md:w-full w-5/6 mt-5 flex flex-col gap-2 text-base"
+                className="w-full mt-5 flex flex-col gap-2 md:text-base text-sm"
               >
                 <div className="relative w-full h-fit">
                   <input
@@ -124,8 +127,8 @@ export default function Footer() {
                   />
                   <span class="underline mb-1.5"></span>
                 </div>
-                <button className="flex px-2 mt-5 items-center gap-1 bg-white rounded-full w-fit text-black">
-                  <h1 className="uppercase md:text-lg text-sm">
+                <button className="flex px-1 mt-5 items-center gap-1 bg-white rounded-full w-fit text-black">
+                  <h1 className="uppercase md:text-lg text-sm leading-tight">
                     send whatsapp
                   </h1>
                   <Icon
@@ -138,7 +141,7 @@ export default function Footer() {
               </form>
             </div>
           </div>
-          <div className="w-fit mt-16 md:text-base text-sm">
+          <div className="w-fit md:block hidden mt-16 md:text-base text-sm">
             <h1 className="text-[#bfbfbf] tracking-wide">Menu</h1>
             <h2 className="mt-5">Beranda</h2>
             <h2 className="">About Us</h2>
@@ -146,13 +149,15 @@ export default function Footer() {
             <h2 className="">Katalog</h2>
           </div>
         </section>
-        <div className="w-full mb-2 border-b border-white" />
+        <div className="w-full md:block hidden mb-2 border-b border-white" />
         <div className="py-10 h-fit flex justify-center items-center">
-          {/* <h1>{""}</h1>
-          <h1 className={`${runalto.className} leading-tight text-`}>
+          {/* <h1>{""}</h1> */}
+          <h1
+            className={`${runalto.className} md:hidden block leading-tight text-7xl tracking-widest`}
+          >
             ZoeJeton
-          </h1> */}
-          <h1 className="text-xs">copyright ©2024</h1>
+          </h1>
+          <h1 className="text-xs md:block hidden">copyright ©2024</h1>
         </div>
       </div>
     </footer>
