@@ -5,10 +5,8 @@ const FAQ = ({ faq, index, toggle, selected }) => {
   return (
     <div
       className={`${
-        selected !== index
-          ? "text-[#bfbfbf] border-[#bfbfbf]"
-          : "text-white border-white"
-      }  w-full underline-footer cursor-pointer py-2 pr-2 border-b hover:text-white transition-all ease-linear delay-100`}
+        selected !== index ? "text-[#bfbfbf]" : "text-white"
+      }  w-full underline-footer cursor-pointer py-2 pr-2 hover:text-white transition-all ease-linear`}
     >
       <div
         className={`flex items-end justify-between`}

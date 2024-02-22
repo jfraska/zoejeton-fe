@@ -20,7 +20,10 @@ export default function About() {
         YOUR WEDDING INVITATION PROJECTS WITH US TO GET FEATURED.
       </p>
 
-      <div className="relative mx-auto mb-14 mt-10 flex md:w-2/3 w-full">
+      <div
+        id="paralax-statue"
+        className="relative mx-auto mb-14 mt-10 flex md:w-2/3 w-11/12"
+      >
         <div
           className="w-full h-[400px] bg-[#000000] rounded-lg overflow-hidden"
           ref={containerRef}
@@ -38,11 +41,11 @@ export default function About() {
         </div>
       </div>
 
-      <div className="ml-auto flex items-end gap-4 md:w-[60%] w-full">
+      <div className="md:ml-auto md:mr-0 mx-auto flex items-end gap-4 md:w-[60%] w-11/12">
         <div className="w-full">
           <a
             href="/about"
-            className="flex hover-underline-animation w-full border-b py-2 pr-1 border-black-200 items-end justify-between"
+            className="flex hover-underline-animation w-full  py-2 pr-1  items-end justify-between"
           >
             <h1 className="md:text-base text-sm text-black">More About Us</h1>
             <Icon
@@ -59,7 +62,7 @@ export default function About() {
             get 44 typefaces with a total of 567 weights ● That’s 233 extra
             weights.
           </p>
-          <div className="flex hover-underline-animation w-full border-b py-2 pr-1 border-black-200 items-end justify-between">
+          <div className="flex hover-underline-animation w-full py-2 pr-1 items-end justify-between">
             <h1 className="md:text-base text-sm text-black">Instagram</h1>
             <Icon
               icon="carbon:arrow-up"

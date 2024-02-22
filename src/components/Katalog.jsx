@@ -80,7 +80,7 @@ export default function Katalog() {
           </div>
         ))}
       </div>
-      <div className="my-20 mx-auto flex hover-underline-animation w-2/4 md:w-1/4 border-b py-2 pr-1 border-black-200 items-end justify-between">
+      <div className="my-20 mx-auto flex hover-underline-animation w-2/4 md:w-1/4 py-2 pr-1 items-end justify-between">
         <h1 className="text-base text-black">See all our template</h1>
         <Icon
           icon="carbon:arrow-up"

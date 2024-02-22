@@ -126,4 +126,14 @@ export const faq = [
     answer: "This many!",
     open: false,
   },
+  {
+    question: "How many questions does it take to makes a succesful FAQ Page?",
+    answer: "This many!",
+    open: false,
+  },
+  {
+    question: "How many questions does it take to makes a succesful FAQ Page?",
+    answer: "This many!",
+    open: false,
+  },
 ];

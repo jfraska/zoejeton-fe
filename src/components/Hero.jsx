@@ -39,7 +39,7 @@ const params = {
   effect: "slide",
   autoplay: {
     delay: 8000,
-    disableOnInteraction: false,
+    disableOnInteraction: true,
   },
   pagination: {
     clickable: true,

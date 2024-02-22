@@ -65,18 +65,31 @@
 .hover-underline-animation {
   position: relative;
 }
+
+.hover-underline-animation::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(1);
+  height: 1.3px;
+  bottom: 0;
+  left: 0;
+  background-color: #757575;
+}
+
 .hover-underline-animation::after {
   content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
-  height: 1px;
+  height: 1.3px;
   bottom: 0;
   left: 0;
   transform-origin: bottom right;
   transition: transform 0.5s ease-out;
-  @apply bg-black;
+  background-color: black;
 }
+
 .hover-underline-animation:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;

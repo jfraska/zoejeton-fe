@@ -3,10 +3,15 @@ import "./style.css";
 import { useEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { motion } from "framer-motion";
+import localFont from "next/font/local";
 
 import { Icon } from "@iconify/react";
 import { faq } from "@/constants";
 import FAQ from "@/components/FAQ";
+
+const runalto = localFont({
+  src: "../../assets/fonts/runalto/runalto.ttf",
+});
 
 export default function Footer() {
   const formRef = useRef();
@@ -41,7 +46,7 @@ export default function Footer() {
     <footer
       data-scroll-section
       id="footer"
-      className="relative w-full bg-black text-white px-[3%] md:py-[5%] py-[10%]"
+      className="relative w-full bg-black text-white px-[3%] md:pt-[5%] pt-[10%]"
     >
       <div className="absolute w-full top-0 left-0 h-3 footer-shadow" />
       <div
@@ -50,8 +55,8 @@ export default function Footer() {
         data-scroll-target="#footer"
         className="z-0"
       >
-        <section className="h-[40vh] mb-16" id="faq">
-          <div className="w-full pl-5 md:pr-20 pr-5 flex justify-around">
+        <section className="h-[40vh] mb-10 pl-5 md:pr-20 pr-5" id="faq">
+          <div className="w-full flex justify-around">
             <div className="w-full">
               <h1 className="md:text-5xl text-2xl w-3/4">
                 Frequently Asked Question
@@ -71,8 +76,8 @@ export default function Footer() {
             </div>
           </div>
         </section>
-        <section className="mb-20" id="contact">
-          <div className="w-full pl-5 md:pr-20 pr-2 flex justify-around">
+        <section className="mb-20 md:pr-20 pl-5 pr-2" id="contact">
+          <div className="w-full flex justify-around">
             <div className="w-full md:text-base text-sm flex gap-2">
               <div className="mt-2 flex flex-col w-2/6">
                 <h1 className="text-[#bfbfbf] tracking-wide">Menu</h1>
@@ -133,9 +138,22 @@ export default function Footer() {
               </form>
             </div>
           </div>
+          <div className="w-fit mt-16 md:text-base text-sm">
+            <h1 className="text-[#bfbfbf] tracking-wide">Menu</h1>
+            <h2 className="mt-5">Beranda</h2>
+            <h2 className="">About Us</h2>
+            <h2 className="">Featured</h2>
+            <h2 className="">Katalog</h2>
+          </div>
         </section>
         <div className="w-full mb-2 border-b border-white" />
-        <h1 className="w-fit ml-auto mb-2 text-xs">copyright © zoejeton</h1>
+        <div className="py-10 h-fit flex justify-center items-center">
+          {/* <h1>{""}</h1>
+          <h1 className={`${runalto.className} leading-tight text-`}>
+            ZoeJeton
+          </h1> */}
+          <h1 className="text-xs">copyright ©2024</h1>
+        </div>
       </div>
     </footer>
   );
