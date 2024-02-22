@@ -52,29 +52,30 @@ export default function Katalog() {
             {column.map((e) => (
               <div
                 key={e.id}
-                className="group relative w-full h-[370px] lg:h-[400px] border border-black rounded-lg hover:bg-[#ffffffc0] transition-all ease-in-out bg-cover bg-blend-overlay bg-[#00000025]"
+                className="group relative w-full h-[370px] lg:h-[400px] border border-black rounded-lg hover:bg-[#00000068] transition-all ease-in-out bg-cover bg-blend-overlay"
                 style={{
                   backgroundImage:
                     "url('https://source.unsplash.com/collection/2091539/500x400')",
                 }}
               >
                 <button
-                  className="absolute top-4 right-4 group-hover:block hidden bg-black p-3 rounded-full"
+                  className="absolute top-4 right-4 group-hover:scale-100 scale-0 transition-transform ease-in-out bg-black p-3 rounded-full hover:bg-[#00000068]"
                   // onClick={() => router.push("/minimalis")}
                 >
                   <Icon icon="ph:eye" width="20" color="white" />
                 </button>
+
                 <div className="absolute bottom-4 left-4">
-                  <h1 className="text-lg font-medium bg-black text-white w-fit leading-tight">
+                  <h1 className="text-lg font-medium bg-black text-white w-fit leading-tight rounded">
                     {e.title}
                   </h1>
-                  <h1 className="text-base font-normal bg-black text-white w-fit leading-tight">
+                  <h1 className="text-base font-normal bg-black text-white w-fit leading-tight rounded">
                     {e.price}
                   </h1>
                 </div>
-                <div className="absolute bottom-4 right-4 bg-black w-fit p-1">
+                <button className="absolute bottom-4 right-4 bg-black w-fit p-2 rounded-md hover:bg-[#00000068]">
                   <Icon icon="grommet-icons:shop" color="white" width="20" />
-                </div>
+                </button>
               </div>
             ))}
           </div>
