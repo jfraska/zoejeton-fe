@@ -128,7 +128,7 @@ export default function Footer() {
                   <span class="underline mb-1.5"></span>
                 </div>
                 <button className="flex px-1 mt-5 items-center gap-1 bg-white rounded-full w-fit text-black">
-                  <h1 className="uppercase text-lg leading-tight">
+                  <h1 className="uppercase text-xl leading-tight">
                     send whatsapp
                   </h1>
                   <Icon
@@ -141,13 +141,13 @@ export default function Footer() {
               </form>
             </div>
           </div>
-          <div className="w-fit md:block hidden mt-16 md:text-base text-sm">
+          {/* <div className="w-fit md:block hidden mt-16 md:text-base text-sm">
             <h1 className="text-black-100 tracking-wide">Menu</h1>
             <h2 className="mt-5">Beranda</h2>
             <h2 className="">About Us</h2>
             <h2 className="">Featured</h2>
             <h2 className="">Katalog</h2>
-          </div>
+          </div> */}
         </section>
         <div className="w-full md:block hidden mb-2 border-b border-white" />
         <div className="py-10 h-fit flex justify-center items-center">
