@@ -1,5 +1,4 @@
 .accordion {
-  color: #8b8b8b;
   max-height: 0;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0, 1, 0, 1);
@@ -8,4 +7,24 @@
   height: auto;
   max-height: 9999px;
   transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+}
+
+.underline-footer {
+  position: relative;
+}
+.underline-footer::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+  @apply bg-white;
+}
+.underline-footer:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

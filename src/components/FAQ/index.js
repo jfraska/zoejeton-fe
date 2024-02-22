@@ -3,16 +3,22 @@ import { Icon } from "@iconify/react";
 
 const FAQ = ({ faq, index, toggle, selected }) => {
   return (
-    <div className="w-full py-2 pr-2 border-b border-white">
+    <div
+      className={`${
+        selected !== index
+          ? "text-[#bfbfbf] border-[#bfbfbf]"
+          : "text-white border-white"
+      }  w-full underline-footer cursor-pointer py-2 pr-2 border-b hover:text-white transition-all ease-linear delay-100`}
+    >
       <div
-        className={"flex items-end justify-between cursor-pointer"}
+        className={`flex items-end justify-between`}
         onClick={() => toggle(index)}
       >
-        <h1 className="md:text-lg text-sm leading-tight">{faq.question}</h1>
+        <h1 className="md:text-base text-sm leading-tight">{faq.question}</h1>
         {selected === index ? (
-          <Icon icon="ic:outline-minus" color="white" width="20" />
+          <Icon icon="ic:outline-minus" width="20" />
         ) : (
-          <Icon icon="ic:outline-plus" color="white" width="20" />
+          <Icon icon="ic:outline-plus" width="20" />
         )}
       </div>
       <div className={selected === index ? "accordion show" : "accordion"}>

@@ -92,7 +92,7 @@ export default function Navbar() {
 
           <Image
             className="img-gray"
-            src="/atm-bersama.svg"
+            src="/assets/icons/atm-bersama.svg"
             width={65}
             height={65}
             alt="atm bersama"
@@ -100,7 +100,7 @@ export default function Navbar() {
 
           <Image
             className="img-gray"
-            src="/gopay.svg"
+            src="/assets/icons/gopay.svg"
             width={70}
             height={70}
             alt="gopay"
@@ -108,13 +108,18 @@ export default function Navbar() {
 
           <Image
             className="img-gray"
-            src="/dana.svg"
+            src="/assets/icons/dana.svg"
             width={70}
             height={70}
             alt="dana"
           />
 
-          <Image src="/qris.svg" width={60} height={60} alt="qris" />
+          <Image
+            src="/assets/icons/qris.svg"
+            width={60}
+            height={60}
+            alt="qris"
+          />
         </div>
 
         <div className="text-xl flex flex-col h-full justify-between items-start gap-4">
@@ -204,14 +209,19 @@ export default function Navbar() {
           <div className="flex gap-2">
             <Link href="#">
               <Image
-                src="/instagram.png"
+                src="/assets/icons/instagram.png"
                 width={30}
                 height={30}
                 alt="instagram"
               />
             </Link>
             <Link href="#">
-              <Image src="/tiktok.png" width={30} height={30} alt="tiktok" />
+              <Image
+                src="/assets/icons/tiktok.png"
+                width={30}
+                height={30}
+                alt="tiktok"
+              />
             </Link>
           </div>
         </div>
