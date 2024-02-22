@@ -150,7 +150,7 @@ export default function Hero() {
             <div
               className="parallax-bg"
               style={{
-                backgroundImage: "url('/bg1.jpg')",
+                backgroundImage: "url('/assets/images/bg1.jpg')",
               }}
             />
           </SwiperSlide>
@@ -158,7 +158,7 @@ export default function Hero() {
             <div
               className="parallax-bg"
               style={{
-                backgroundImage: "url('/bg2.jpg')",
+                backgroundImage: "url('/assets/images/bg2.jpg')",
               }}
             />
           </SwiperSlide>
@@ -166,7 +166,7 @@ export default function Hero() {
             <div
               className="parallax-bg"
               style={{
-                backgroundImage: "url('/bg3.jpg')",
+                backgroundImage: "url('/assets/images/bg3.jpg')",
               }}
             />
           </SwiperSlide>
@@ -237,7 +237,7 @@ export default function Hero() {
               <div
                 className="relative w-40 h-40 bg-white bg-cover"
                 style={{
-                  backgroundImage: "url('/tm1.jpg')",
+                  backgroundImage: "url('/assets/images/tm1.jpg')",
                 }}
               >
                 <h2 className="absolute -top-10 left-0 text-xl text-white">

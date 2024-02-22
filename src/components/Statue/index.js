@@ -16,7 +16,9 @@ const mesh = {
 const Model = (props) => {
   const model = useRef();
   mesh.position = model;
-  const { nodes, materials } = useGLTF("/three_graces/scene.gltf");
+  const { nodes, materials } = useGLTF(
+    "/assets/models/three_graces/scene.gltf"
+  );
   return (
     <group {...props} dispose={null} ref={model}>
       <group>
