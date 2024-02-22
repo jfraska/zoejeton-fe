@@ -69,6 +69,15 @@ export default function Navbar() {
           </a>
           <p className=" text-base font-normal">cart</p>
         </div>
+
+        <button
+          className={`${
+            toggle ? "block" : "hidden"
+          } text-black text-lg absolute top-2 md:left-20 left-10 transition-all ease-in-out delay-100`}
+          onClick={() => setToggle(false)}
+        >
+          Close
+        </button>
       </div>
 
       <motion.div
@@ -82,14 +91,6 @@ export default function Navbar() {
         className={`flex fixed justify-stretch top-0 z-40 items-end w-full h-[75%] pb-10 pt-20 px-[4%] bg-white shadow-lg`}
       >
         <div className="hidden md:flex gap-5 items-end w-[70%]">
-          <button
-            className={`${
-              toggle ? "block" : "hidden"
-            } text-black text-lg absolute top-0 py-2 ml-4`}
-          >
-            Close
-          </button>
-
           <Image
             className="img-gray"
             src="/assets/icons/atm-bersama.svg"
@@ -241,7 +242,7 @@ export default function Navbar() {
           <h3 className="hidden md:block w-[70%] text-[210px] h-[230px]">
             Invitation
           </h3>
-          <diV className="flex flex-col font-light">
+          <diV className="flex flex-col text-[#5d5d5d]">
             <div>
               <Link href="#">Tentang Kami</Link>
             </div>

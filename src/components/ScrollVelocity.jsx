@@ -12,7 +12,7 @@ import {
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
-function ParallaxText({ children, baseVelocity = 100 }) {
+function ParallaxText({ children, baseVelocity = 100, className }) {
   const baseX = useMotionValue(0);
   const { scroll } = useLocomotiveScroll();
   const y = useSpring(0, {
@@ -71,7 +71,7 @@ function ParallaxText({ children, baseVelocity = 100 }) {
    * dynamically generated number of children.
    */
   return (
-    <div data-scroll className="parallax leading-none">
+    <div className={`parallax leading-none ${className}`}>
       <motion.div className="scroller" style={{ x }}>
         <span>{children} </span>
         <span>{children} </span>
@@ -85,6 +85,7 @@ function ParallaxText({ children, baseVelocity = 100 }) {
 export default function ScrollVelocity() {
   return (
     <section data-scroll-section className="w-full h-fit">
+      <div className="w-full border-b border-black" />
       <ParallaxText baseVelocity={-0.5}>zoejeton premium *</ParallaxText>
       <div className="w-full border-b border-black" />
       <ParallaxText baseVelocity={0.5}>zoejeton premium *</ParallaxText>

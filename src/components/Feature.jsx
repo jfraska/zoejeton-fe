@@ -72,13 +72,16 @@ export default function Feature() {
   return (
     <section
       data-scroll-section
-      className="relative overflow-hidden h-[150vh] bg-[#121212]"
+      className="relative overflow-hidden h-[150vh]"
       ref={trigerRef}
       id="feature"
     >
       <div
         data-scroll
         data-scroll-sticky
+        data-scroll-repeat
+        // data-scroll-speed="-4"
+        data-scroll-position="top"
         data-scroll-target="#feature"
         ref={sectionRef}
         className="w-[400vw] h-screen flex flex-nowrap"

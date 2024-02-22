@@ -46,7 +46,7 @@ export default function Footer() {
     <footer
       data-scroll-section
       id="footer"
-      className="relative w-full bg-black text-white px-[3%] md:pt-[5%] pt-[10%]"
+      className="relative w-full bg-black text-white px-[3%] md:pt-[5%] pt-[20%]"
     >
       <div className="absolute w-full top-0 left-0 h-3 footer-shadow" />
       <div
@@ -56,7 +56,7 @@ export default function Footer() {
         className="z-0"
       >
         <section
-          className="md:h-[40vh] h-[50vh] mb-10 pl-5 md:pr-20 pr-5"
+          className="h-auto md:min-h-[40vh] min-h-[50vh] mb-10 pl-5 md:pr-20 pr-5"
           id="faq"
         >
           <div className="w-full flex md:flex-row flex-col md:gap-0 gap-4 justify-around">
@@ -83,7 +83,7 @@ export default function Footer() {
           <div className="w-full flex md:flex-row flex-col  md:gap-0 gap-4 justify-around">
             <div className="w-full md:text-base text-sm md:flex hidden gap-2">
               <div className="mt-2 flex flex-col w-2/6">
-                <h1 className="text-[#bfbfbf] tracking-wide">Menu</h1>
+                <h1 className="text-black-100 tracking-wide">Menu</h1>
                 <h2 className="mt-5">Beranda</h2>
                 <h2 className="">About Us</h2>
                 <h2 className="">Featured</h2>
@@ -93,7 +93,7 @@ export default function Footer() {
                 <h2 className="">Contact Us</h2>
               </div>
               <div className="mt-2 flex flex-col w-2/6">
-                <h1 className="text-[#bfbfbf] tracking-wide">Support</h1>
+                <h1 className="text-black-100 tracking-wide">Support</h1>
                 <h2 className="mt-5">Sarasvati</h2>
                 <h2 className="">Xendit</h2>
               </div>
@@ -112,7 +112,7 @@ export default function Footer() {
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Name"
-                    className="appearance-none input w-full bg-transparent py-2 border-b placeholder:text-[#bfbfbf] text-[#bfbfbf] border-[#bfbfbf] hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white"
+                    className="appearance-none input w-full bg-transparent py-2 border-b placeholder:text-black-100 text-black-100 border-[#bfbfbf] hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white"
                   />
                   <span class="underline"></span>
                 </div>
@@ -123,12 +123,12 @@ export default function Footer() {
                     value={form.pesan}
                     onChange={handleChange}
                     placeholder="Pesan"
-                    className="appearance-none input w-full bg-transparent py-2 border-b placeholder:text-[#bfbfbf] text-[#bfbfbf] border-[#bfbfbf] hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white"
+                    className="appearance-none input w-full bg-transparent py-2 border-b placeholder:text-black-100 text-black-100 border-[#bfbfbf] hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white"
                   />
                   <span class="underline mb-1.5"></span>
                 </div>
                 <button className="flex px-1 mt-5 items-center gap-1 bg-white rounded-full w-fit text-black">
-                  <h1 className="uppercase md:text-lg text-sm leading-tight">
+                  <h1 className="uppercase text-lg leading-tight">
                     send whatsapp
                   </h1>
                   <Icon
@@ -142,7 +142,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="w-fit md:block hidden mt-16 md:text-base text-sm">
-            <h1 className="text-[#bfbfbf] tracking-wide">Menu</h1>
+            <h1 className="text-black-100 tracking-wide">Menu</h1>
             <h2 className="mt-5">Beranda</h2>
             <h2 className="">About Us</h2>
             <h2 className="">Featured</h2>

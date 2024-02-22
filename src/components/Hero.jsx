@@ -128,7 +128,6 @@ export default function Hero() {
         data-scroll
         data-scroll-sticky
         data-scroll-target="#carousel-sticky-area"
-        data-scroll-call="noShrinkTop"
         data-scroll-repeat
         data-scroll-position="top"
         ref={bgRef}
