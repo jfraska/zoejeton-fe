@@ -55,10 +55,10 @@ export default function Footer() {
         >
           <div className="w-full flex md:flex-row flex-col md:gap-0 gap-4 justify-around">
             <div className="w-full">
-              <h1 className="md:text-5xl text-2xl md:w-3/4 w-full">
+              <h1 className="text-4xl md:w-3/4 w-full">
                 Frequently Asked Question
               </h1>
-              <h1 className="md:text-5xl text-2xl w-3/4">(FAQ)</h1>
+              <h1 className="text-4xl w-3/4">(FAQ)</h1>
             </div>
             <div className="w-full">
               {faq.map((faq, index) => (
