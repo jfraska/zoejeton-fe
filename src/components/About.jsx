@@ -10,7 +10,7 @@ export default function About() {
   return (
     <section
       data-scroll-section
-      className="relative w-full h-[110vh] px-[3%] shadow-xl"
+      className="relative w-full px-[3%] pb-[5%] shadow-xl"
       id="about"
     >
       <div className="w-full mt-2 border-b border-black" />
