@@ -1,13 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { animatePageOut } from "@/animations";
+// import { animatePageOut } from "@/animations";
 
 export default function TransitionLink({ href, children, className }) {
   const router = useRouter();
 
   const handleClick = () => {
-    animatePageOut(href, router);
+    // animatePageOut(href, router);
   };
 
   return (

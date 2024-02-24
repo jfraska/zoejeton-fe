@@ -231,35 +231,39 @@ export default function Hero() {
               data-scroll-target="#beranda"
               data-scroll-speed="2.5"
               data-swiper-parallax="-300"
-              className="relative md:w-5/6 w-11/12 flex md:flex-row flex-col justify-center md:gap-16 gap-10 items-center"
+              className="relative md:w-5/6 w-11/12 flex justify-center items-center"
             >
-              <div
-                className="relative w-40 h-40 bg-white bg-cover"
-                style={{
-                  backgroundImage: "url('/assets/images/tm1.jpg')",
-                }}
-              >
-                <h2 className="absolute -top-10 left-0 text-xl text-white">
+              <div className="relative flex h-fit md:gap-16 gap-5">
+                <h2
+                  className="absolute -top-10 left-0 md:text-xl text-base
+                  text-white"
+                >
                   We specialize
                 </h2>
+                <div
+                  className="aspect-square w-[15vw] bg-white bg-cover"
+                  style={{
+                    backgroundImage: "url('/assets/images/tm1.jpg')",
+                  }}
+                ></div>
+                <div
+                  className="aspect-square w-[15vw] bg-white bg-cover"
+                  style={{
+                    backgroundImage: "url('/tm1.jpg')",
+                  }}
+                />
+                <div
+                  className="aspect-square w-[15vw] bg-white bg-cover"
+                  style={{
+                    backgroundImage: "url('/tm1.jpg')",
+                  }}
+                />
               </div>
-              <div
-                className="w-40 h-40 bg-white bg-cover"
-                style={{
-                  backgroundImage: "url('/tm1.jpg')",
-                }}
-              />
-              <div
-                className="w-40 h-40 bg-white bg-cover"
-                style={{
-                  backgroundImage: "url('/tm1.jpg')",
-                }}
-              />
               <h1
                 data-scroll
                 data-scroll-target="#beranda"
                 data-scroll-speed="3"
-                className={`absolute inset-0 z-10 pt-2 w-fit h-fit m-auto md:text-8xl text-[40px] text-white ${radwave.className}`}
+                className={`absolute inset-0 flex justify-center items-center xl:text-[150px] md:text-8xl text-4xl text-white leading-tight ${radwave.className}`}
               >
                 Catalogue
               </h1>
@@ -279,7 +283,7 @@ export default function Hero() {
         data-scroll-target="#beranda"
         data-scroll-speed="3"
         data-scroll-position="top"
-        className="absolute z-10 w-full flex flex-col items-center gap-2 md:text-start md:w-fit bottom-[5%] md:right-[3%] text-lg text-white"
+        className="absolute z-10 w-full flex flex-col items-center gap-2 md:text-start md:w-fit md:bottom-[5%] bottom-[10%] md:right-[3%] text-lg text-white"
       >
         <button className="text-sm" onClick={() => scroll.scrollTo("#about")}>
           Scroll
