@@ -25,13 +25,13 @@ export default function Bio() {
           </h1>
         </div>
         <div className="absolute inset-x-0 flex flex-col items-center gap-2 bottom-[10%]">
-          <button
+          <Link
             href="/"
             className="flex justify-between w-[70%] py-3 px-8 items-center gap-1 bg-black border border-transparent rounded-full text-white backdrop-filter backdrop-blur-md bg-opacity-50"
           >
             <h1 className="uppercase text-lg font-medium">Website</h1>
             <Icon icon="carbon:arrow-up" rotate={1} color="white" width="25" />
-          </button>
+          </Link>
           {/* <button className="flex justify-between w-[70%] py-3 px-8 items-center gap-1 bg-black border border-transparent rounded-full text-white backdrop-filter backdrop-blur-md bg-opacity-50">
             <h1 className="uppercase text-lg font-medium">Katalog</h1>
             <Icon icon="carbon:arrow-up" rotate={1} color="white" width="25" />

@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-// import { animatePageOut } from "@/animations";
+// import { animatePageOut } from "./anim";
 
-export default function TransitionLink({ href, children, className }) {
+export default function Transition({ href, children, className }) {
   const router = useRouter();
 
   const handleClick = () => {
@@ -11,8 +11,8 @@ export default function TransitionLink({ href, children, className }) {
   };
 
   return (
-    <button className={className} onClick={handleClick}>
+    <div className={className} onClick={handleClick}>
       {children}
-    </button>
+    </div>
   );
 }
