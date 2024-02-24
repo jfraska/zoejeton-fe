@@ -66,7 +66,7 @@ export default function Preloader() {
           >
             {words[index]}
           </motion.p>
-          <svg>
+          <svg className="md:block hidden">
             <motion.path
               variants={curve}
               initial="initial"

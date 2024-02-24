@@ -57,7 +57,7 @@ export default function About() {
           </a>
         </div>
         <div className="w-full">
-          <p className="text-sm mb-5">
+          <p className="text-sm mb-5 md:text-left text-justify">
             New to our fonts? Be sure to check out our Font Starter Pack. You
             get 44 typefaces with a total of 567 weights ● That’s 233 extra
             weights.

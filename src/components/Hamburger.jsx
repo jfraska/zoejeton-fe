@@ -19,28 +19,32 @@ const StyledBurger = styled.button`
   span {
     width: 100%;
     height: 2.5px;
-    background: ${({ open, scroll }) => (open || scroll ? "#000" : "#fff")};
+    background: ${({ state, scroll }) => (state || scroll ? "#000" : "#fff")};
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
   }
 `;
 
-export default function Hamburger({ open, scroll, setOpen }) {
+export default function Hamburger({ state, scroll, setState }) {
   useEffect(() => {
     const firstChild = document.querySelector("button span:first-child");
     const secondChild = document.querySelector("button span:nth-child(2)");
 
-    firstChild.style.transform = open
+    firstChild.style.transform = state
       ? "rotate(45deg) translate(0, -4.5px)"
       : "rotate(0deg) translate(0, 0)";
-    secondChild.style.transform = open
+    secondChild.style.transform = state
       ? "rotate(-45deg) translate(0, 4.5px)"
       : "rotate(0deg) translate(0, 0)";
-  }, [open]);
+  }, [state]);
 
   return (
-    <StyledBurger open={open} scroll={scroll} onClick={() => setOpen(!open)}>
+    <StyledBurger
+      state={state}
+      scroll={scroll}
+      onClick={() => setState(!state)}
+    >
       <span />
       <span />
     </StyledBurger>

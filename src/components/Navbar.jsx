@@ -1,28 +1,55 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Hamburger from "./Hamburger";
 import localFont from "next/font/local";
 import Link from "next/link";
 import { navLinks } from "@/constants";
 import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 import Image from "next/image";
+import gsap from "gsap";
 
 const runalto = localFont({
   src: "../assets/fonts/runalto/runalto.ttf",
 });
 
 export default function Navbar() {
-  const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const ref = useRef(null);
-  const [divHeight, setDivHeight] = useState(0);
-
   const { scroll } = useLocomotiveScroll();
+  let sidebarMenu = useRef(null);
+  let menuLayer = useRef(null);
+  const menuTimeline = useRef();
+
+  const [menuState, setMenuState] = useState(false);
 
   useEffect(() => {
-    setDivHeight(ref.current.offsetHeight);
+    menuTimeline.current = gsap.timeline({ paused: true });
+    menuTimeline.current.fromTo(
+      [sidebarMenu, menuLayer],
+      {
+        duration: 0,
+        y: "-100%",
+      },
+      {
+        duration: 0.75,
+        y: "0%",
+        ease: "power3.inOut",
+        stagger: {
+          amount: 0.5,
+        },
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    menuState ? menuTimeline.current.play() : menuTimeline.current.reverse();
+  }, [menuState]);
+
+  useEffect(() => {
+    const screen = window.innerHeight;
+
+    // setDivHeight({ container1: screen * 0.75, container2: screen * 0.9 });
 
     if (scroll) {
       scroll.on("scroll", ({ scroll }) => {
@@ -39,8 +66,6 @@ export default function Navbar() {
     };
   }, [scroll]);
 
-  useEffect(() => {});
-
   return (
     <nav>
       <div
@@ -50,10 +75,14 @@ export default function Navbar() {
             : "absolute bg-transparent text-white"
         } transition-all ease-linear`}
       >
-        <Hamburger open={toggle} setOpen={setToggle} scroll={scrolled} />
+        <Hamburger
+          state={menuState}
+          setState={setMenuState}
+          scroll={scrolled}
+        />
         <h1
           className={`${runalto.className} font-bold ${
-            toggle ? "text-black" : null
+            menuState ? "text-black" : null
           } transition-all ease-linear text-lg font-bold`}
         >
           ZoeJeton
@@ -61,7 +90,7 @@ export default function Navbar() {
 
         <div
           className={`hidden md:flex items-center gap-2 text-base font-medium cursor-pointer ${
-            toggle ? "text-black" : null
+            menuState ? "text-black" : null
           } transition-all ease-linear`}
         >
           <a href={`#`}>
@@ -72,23 +101,16 @@ export default function Navbar() {
 
         <button
           className={`${
-            toggle ? "block" : "hidden"
+            menuState ? "block" : "hidden"
           } text-black text-lg absolute top-2 md:left-20 left-10 transition-all ease-in-out delay-100`}
-          onClick={() => setToggle(false)}
+          onClick={() => setMenuState(false)}
         >
           Close
         </button>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: -divHeight }}
-        animate={{ opacity: toggle ? 1 : 0, y: toggle ? 0 : -divHeight }}
-        transition={{
-          delay: toggle ? 0.3 : 0,
-          duration: 0.3,
-          ease: "easeInOut",
-        }}
-        className={`flex fixed justify-stretch top-0 z-40 items-end w-full h-[75%] pb-10 pt-20 px-[4%] bg-white shadow-lg`}
+      <div
+        ref={(el) => (menuLayer = el)}
+        className={`flex fixed h-[75vh] justify-stretch top-0 z-40 items-end w-full pb-10 pt-20 px-[4%] bg-white shadow-lg`}
       >
         <div className="hidden md:flex gap-5 items-end w-[70%]">
           <Image
@@ -130,7 +152,7 @@ export default function Navbar() {
                 className="cursor-pointer"
                 href="#"
                 onClick={() => {
-                  setToggle(false);
+                  setMenuState(false);
                   scroll.scrollTo("#beranda");
                 }}
               >
@@ -142,7 +164,7 @@ export default function Navbar() {
                 className="cursor-pointer"
                 href="#"
                 onClick={() => {
-                  setToggle(false);
+                  setMenuState(false);
                   scroll.scrollTo("#about");
                 }}
               >
@@ -154,7 +176,7 @@ export default function Navbar() {
                 className="cursor-pointer"
                 href="#"
                 onClick={() => {
-                  setToggle(false);
+                  setMenuState(false);
                   scroll.scrollTo("#feature");
                 }}
               >
@@ -166,7 +188,7 @@ export default function Navbar() {
                 className="cursor-pointer"
                 href="#"
                 onClick={() => {
-                  setToggle(false);
+                  setMenuState(false);
                   scroll.scrollTo("#template");
                 }}
               >
@@ -177,7 +199,7 @@ export default function Navbar() {
               <Link
                 className="cursor-pointer"
                 href="#"
-                onClick={() => setToggle(false)}
+                onClick={() => setMenuState(false)}
               >
                 Pricing
               </Link>
@@ -187,7 +209,7 @@ export default function Navbar() {
                 className="cursor-pointer"
                 href="#"
                 onClick={() => {
-                  setToggle(false);
+                  setMenuState(false);
                   scroll.scrollTo("#faq");
                 }}
               >
@@ -199,7 +221,7 @@ export default function Navbar() {
                 className="cursor-pointer"
                 href="#"
                 onClick={() => {
-                  setToggle(false);
+                  setMenuState(false);
                   scroll.scrollTo("#contact");
                 }}
               >
@@ -226,17 +248,11 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
-      </motion.div>
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: -divHeight }}
-        animate={{ opacity: toggle ? 1 : 0, y: toggle ? 0 : -divHeight }}
-        transition={{
-          delay: toggle ? 0 : 0.3,
-          duration: 0.3,
-          ease: "easeInOut",
-        }}
-        className={`flex fixed flex-col top-0 z-30 justify-end w-full h-[90%] px-[4%] p-5 bg-white shadow-md`}
+      </div>
+
+      <div
+        ref={(el) => (sidebarMenu = el)}
+        className={`flex fixed h-[90vh] flex-col top-0 z-30 justify-end w-full px-[4%] p-5 bg-white shadow-md`}
       >
         <div className="flex justify-stretch items-end">
           <h3 className="hidden md:block w-[70%] text-[210px] h-[230px]">
@@ -251,13 +267,13 @@ export default function Navbar() {
             </div>
           </diV>
         </div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: toggle ? 0.3 : 0 }}
-        transition={{ delay: toggle ? 0.3 : 0 }}
-        className={`${toggle ? "fixed " : "hidden"} bg-black z-0 inset-0`}
+      <div
+        className={`${
+          menuState ? "z-10 bg-opacity-20" : "-z-10 bg-opacity-0"
+        } fixed inset-0 bg-black transition-all ease-linear delay-200`}
+        onClick={() => setMenuState(false)}
       />
     </nav>
   );

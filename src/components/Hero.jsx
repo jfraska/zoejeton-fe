@@ -263,7 +263,7 @@ export default function Hero() {
                 data-scroll
                 data-scroll-target="#beranda"
                 data-scroll-speed="3"
-                className={`absolute inset-0 flex justify-center items-center xl:text-[150px] md:text-8xl text-5xl text-white leading-tight ${radwave.className}`}
+                className={`absolute inset-0 flex md:mb-0 mb-1 justify-center items-center xl:text-[150px] md:text-8xl text-5xl text-white leading-tight ${radwave.className}`}
               >
                 Catalogue
               </h1>
