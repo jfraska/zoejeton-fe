@@ -283,7 +283,7 @@ export default function Hero() {
         data-scroll-target="#beranda"
         data-scroll-speed="3"
         data-scroll-position="top"
-        className="absolute z-10 w-full flex flex-col items-center gap-2 md:text-start md:w-fit md:bottom-[5%] bottom-[20%] md:right-[3%] text-lg text-white"
+        className="absolute z-10 w-full flex flex-col items-center gap-2 md:text-start md:w-fit md:bottom-[5%] bottom-[15%] md:right-[3%] text-lg text-white"
       >
         <button className="text-sm" onClick={() => scroll.scrollTo("#about")}>
           Scroll

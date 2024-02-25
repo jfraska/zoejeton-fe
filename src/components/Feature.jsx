@@ -86,12 +86,12 @@ export default function Feature() {
         className="w-[400vw] h-screen flex flex-nowrap"
       >
         <div className="relative w-screen h-full flex justify-center items-center">
-          <h1 className="text-white text-center font-serif text-5xl leading-none">
+          <h1 className="text-[#c7c7c7] text-center font-serif md:text-9xl text-5xl leading-none mix-blend-difference">
             Feature
           </h1>
 
           <div
-            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
+            className="absolute inset-0 m-auto -z-10 md:md:w-[30vw] w-[60vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x300')",
@@ -100,7 +100,7 @@ export default function Feature() {
         </div>
         <div className="relative w-screen h-full">
           <div
-            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
+            className="absolute inset-0 m-auto -z-10 md:w-[30vw] w-[60vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x200')",
@@ -109,7 +109,7 @@ export default function Feature() {
         </div>
         <div className="relative w-screen h-full">
           <div
-            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
+            className="absolute inset-0 m-auto -z-10 md:w-[30vw] w-[60vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x100')",
@@ -118,7 +118,7 @@ export default function Feature() {
         </div>
         <div className="relative w-screen h-full">
           <div
-            className="absolute inset-0 m-auto -z-10 w-[30vw] h-[50vh] bg-cover"
+            className="absolute inset-0 m-auto -z-10 md:w-[30vw] w-[60vw] h-[50vh] bg-cover"
             style={{
               backgroundImage:
                 "url('https://source.unsplash.com/collection/2091539/1000x600')",

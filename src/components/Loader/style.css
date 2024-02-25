@@ -1,0 +1,11 @@
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  animation: rotation 1.5s infinite;
+}
+
+@keyframes rotation {
+  to {
+    transform: perspective(150px) rotateY(0.5turn);
+  }
+}

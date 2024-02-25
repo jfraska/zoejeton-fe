@@ -8,6 +8,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 import { PointLight, PointLightHelper, Vector3 } from "three";
+import Loader from "../Loader";
 
 const mesh = {
   position: null,
@@ -128,7 +129,7 @@ function Scene() {
 
 export default function Statue({ props }) {
   return (
-    <Suspense {...props} fallback={null}>
+    <Suspense {...props} fallback={<Loader />}>
       <Canvas shadows dpr={[1, 2]} camera={{ fov: 30, position: [0, 0, 7] }}>
         {/* <color attach="background" args={["#000"]} /> */}
         <fog attach="fog" args={["#202020", 5, 20]} />
