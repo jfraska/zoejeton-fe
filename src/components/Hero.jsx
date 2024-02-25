@@ -249,13 +249,13 @@ export default function Hero() {
                 <div
                   className="aspect-square md:w-[15vw] w-[20vw] bg-white bg-cover"
                   style={{
-                    backgroundImage: "url('/tm1.jpg')",
+                    backgroundImage: "url('/assets/images/tm1.jpg')",
                   }}
                 />
                 <div
                   className="aspect-square md:w-[15vw] w-[20vw] bg-white bg-cover"
                   style={{
-                    backgroundImage: "url('/tm1.jpg')",
+                    backgroundImage: "url('/assets/images/tm1.jpg')",
                   }}
                 />
               </div>

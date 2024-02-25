@@ -9,7 +9,7 @@ const runalto = localFont({
   src: "../../assets/fonts/runalto/runalto.ttf",
 });
 
-const words = ["ZoeJeton", "Premium", "Luxury", "Elegant", "Minimalis"];
+const words = ["ZoeJeton", "Premium", "Luxury", "Elegant", "Exclusive"];
 
 export default function Preloader() {
   const [index, setIndex] = useState(0);

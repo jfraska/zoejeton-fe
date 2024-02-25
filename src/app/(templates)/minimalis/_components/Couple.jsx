@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
 
 const runalto = localFont({
-  src: "../_assets/fonts/runalto/runalto.ttf",
+  src: "../../../../assets/fonts/runalto/runalto.ttf",
 });
 
 export default function Couple() {
