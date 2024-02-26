@@ -2,32 +2,12 @@
 import "./style.css";
 import { useRef, useState } from "react";
 import Image from "next/image";
-
-import { Icon } from "@iconify/react";
 import { faq } from "@/constants";
-import FAQ from "@/components/FAQ";
+import FAQ from "@/components/Footer/FAQ";
+import Contact from "./Contact";
 
 export default function Footer() {
-  const formRef = useRef();
-  // const { scroll } =  useLocomotiveScroll();
   const [selected, setSelected] = useState(null);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {};
 
   const toggle = (index) => {
     if (selected === index) {
@@ -92,48 +72,7 @@ export default function Footer() {
                 <h2 className="">Xendit</h2>
               </div>
             </div>
-            <div className="w-full">
-              <h1 className="text-4xl">Hubungi Kami</h1>
-              <form
-                ref={formRef}
-                onSubmit={handleSubmit}
-                className="w-full mt-5 flex flex-col gap-2 text-base"
-              >
-                <div className="relative w-full h-fit">
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Name"
-                    className="appearance-none input w-full bg-transparent py-2 border-b placeholder:text-black-100 text-black-100 border-[#bfbfbf] hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white"
-                  />
-                  <span class="underline"></span>
-                </div>
-                <div className="relative w-full h-fit">
-                  <textarea
-                    type="text"
-                    name="pesan"
-                    value={form.pesan}
-                    onChange={handleChange}
-                    placeholder="Pesan"
-                    className="appearance-none input w-full bg-transparent py-2 border-b placeholder:text-black-100 text-black-100 border-[#bfbfbf] hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white"
-                  />
-                  <span class="underline mb-1.5"></span>
-                </div>
-                <button className="flex px-1 mt-5 justify-between items-center bg-white rounded-full w-full text-black">
-                  <h1 className="uppercase text-xl leading-tight">
-                    send whatsapp
-                  </h1>
-                  <Icon
-                    icon="carbon:arrow-up"
-                    rotate={1}
-                    color="black"
-                    width="20"
-                  />
-                </button>
-              </form>
-            </div>
+            <Contact />
           </div>
         </section>
         <div className="w-full mb-2 border-b border-white" />

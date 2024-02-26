@@ -113,10 +113,6 @@
   @apply block mr-7;
 }
 
-.img-gray {
-  filter: grayscale(100%);
-}
-
 .top-right {
   position: absolute;
   transform: rotate(90deg) scaleX(-1);

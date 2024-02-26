@@ -20,7 +20,6 @@ import Preloader from "@/components/Preloader";
 
 const settings = {
   options: {
-    // el: "smooth-scroll",
     smooth: true,
     multiplier: 0.8,
     smartphone: {
@@ -29,7 +28,6 @@ const settings = {
     tablet: {
       smooth: true,
     },
-    class: "is-reveal",
   },
   onLocationChange: (scroll) =>
     scroll.scrollTo(0, { duration: 0, disableLerp: true }),
