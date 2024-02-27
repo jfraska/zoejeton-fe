@@ -38,7 +38,7 @@ export default function Contact() {
             {...register("name", { required: "Nama wajib diisi" })}
             className={`${
               errors.name
-                ? "placeholder:text-red-600 border-red-600"
+                ? "placeholder:text-red-500 border-red-500"
                 : "placeholder:text-black-100 border-[#bfbfbf]"
             } appearance-none input w-full bg-transparent py-2 border-b text-black-100 hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white`}
           />
@@ -51,7 +51,7 @@ export default function Contact() {
             {...register("pesan", { required: "Pesan wajib diisi" })}
             className={`${
               errors.pesan
-                ? "placeholder:text-red-600 border-red-600"
+                ? "placeholder:text-red-500 border-red-500"
                 : "placeholder:text-black-100 border-[#bfbfbf]"
             } appearance-none input w-full bg-transparent py-2 border-b text-black-100 hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white`}
           />

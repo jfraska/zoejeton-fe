@@ -1,10 +1,15 @@
 "use client";
+import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
+import CurrencyFormat from "react-currency-format";
+import CartContext from "@/providers/CartProvider";
 
 export default function Katalog() {
   const router = useRouter();
+  const { addItemToCart } = useContext(CartContext);
+
   const numberOfColumns = 4;
   const elementsPerColumn = Math.ceil(templates.length / numberOfColumns);
 
@@ -31,8 +36,17 @@ export default function Katalog() {
     return style;
   }
 
+  const addToCartHandler = (product) => {
+    addItemToCart({
+      product: product.id,
+      name: product.name,
+      price: product.price,
+      // image: product.images[0].url,
+    });
+  };
+
   return (
-    <section data-scroll-section id="template" className="px-[3%]">
+    <section data-scroll-section id="katalog" className="px-[3%]">
       <div className="w-full mt-1.5 border-b border-black" />
       <div className="flex justify-between items-start mt-4 font-medium">
         <h1 className="text-3xl">Katalog</h1>
@@ -67,13 +81,22 @@ export default function Katalog() {
 
                 <div className="absolute bottom-4 left-4">
                   <h1 className="text-lg font-medium bg-black text-white w-fit leading-tight rounded">
-                    {e.title}
+                    {e.name}
                   </h1>
                   <h1 className="text-base font-normal bg-black text-white w-fit leading-tight rounded">
-                    {e.price}
+                    <CurrencyFormat
+                      value={e.price}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"IDR "}
+                      suffix={".-"}
+                    />
                   </h1>
                 </div>
-                <button className="absolute bottom-4 right-4 bg-black w-fit p-2 rounded-md hover:bg-[#00000068]">
+                <button
+                  onClick={() => addToCartHandler(e)}
+                  className="absolute bottom-4 right-4 bg-black w-fit p-2 rounded-md hover:bg-[#00000068]"
+                >
                   <Icon icon="grommet-icons:shop" color="white" width="20" />
                 </button>
               </div>

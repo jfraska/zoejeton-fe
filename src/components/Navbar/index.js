@@ -1,12 +1,13 @@
 "use client";
 import "./style.css";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Hamburger from "../Hamburger";
 import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
 import Cart from "./Cart";
 import Menu from "./Menu";
+import CartContext from "@/providers/CartProvider";
 
 const runalto = localFont({
   src: "../../assets/fonts/runalto/runalto.ttf",
@@ -17,6 +18,7 @@ export default function Navbar() {
   const { scroll } = useLocomotiveScroll();
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     if (scroll) {
@@ -37,7 +39,7 @@ export default function Navbar() {
   return (
     <nav>
       <div
-        className={`top-0 inset-x-0 z-50 py-2 px-[3%] flex justify-between items-center mx-auto ${
+        className={`top-0 inset-x-0 z-50 py-4 px-[3%] flex justify-between items-center mx-auto ${
           scrolled
             ? "fixed bg-primary text-black"
             : "absolute bg-transparent text-white"
@@ -51,7 +53,7 @@ export default function Navbar() {
         <h1
           className={`${runalto.className} font-bold ${
             menuState ? "text-black" : null
-          } hidden md:block transition-all ease-linear text-lg font-bold`}
+          } hidden md:block transition-all ease-linear text-lg font-bold leading-none`}
         >
           ZoeJeton
         </h1>
@@ -61,18 +63,23 @@ export default function Navbar() {
             setMenuState(false);
             setCartState(true);
           }}
-          className={`flex items-center gap-2 text-base font-medium cursor-pointer ${
+          className={`flex gap-1 mr-2 text-base cursor-pointer ${
             menuState ? "text-black" : null
           } transition-all ease-linear`}
         >
-          <Icon icon="grommet-icons:shop" width="20" />
-          <p className="md:block hidden text-base font-normal">cart</p>
+          <Icon icon="grommet-icons:shop" width="19" />
+          <div className="relative text-end">
+            <p className="leading-tight">Cart</p>
+            <span className="absolute top-0 -right-2 text-xs leading-tight w-3 rounded-full overflow-hidden">
+              {cart?.cartItems?.length || 0}
+            </span>
+          </div>
         </button>
 
         <button
           className={`${
             menuState ? "block" : "hidden"
-          } text-black text-lg absolute top-2 md:left-20 left-10 transition-all ease-in-out delay-100`}
+          } text-black text-lg absolute md:top-2 top-1 md:left-20 left-12 transition-all ease-in-out delay-100`}
           onClick={() => setMenuState(false)}
         >
           Close

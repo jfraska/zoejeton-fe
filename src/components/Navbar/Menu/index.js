@@ -130,7 +130,7 @@ export default function Menu({ state, setState, scroll }) {
 
       <div
         className={`${
-          state ? "z-10 bg-opacity-20" : "-z-10 bg-opacity-0"
+          state ? "z-10 bg-opacity-30" : "-z-10 bg-opacity-0"
         } fixed inset-0 bg-black transition-all ease-linear delay-200`}
         onClick={() => setState(false)}
       />

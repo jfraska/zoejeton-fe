@@ -1,3 +1,4 @@
+import GlobalProvider from "./GlobalProvider";
 import "./globals.css";
 import localFont from "next/font/local";
 
@@ -49,7 +50,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${MonumentExtended.variable} ${NeueMontreal.variable} font-sans`}
       >
-        {children}
+        <GlobalProvider>{children}</GlobalProvider>
       </body>
     </html>
   );
