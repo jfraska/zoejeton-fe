@@ -48,24 +48,32 @@ export default function Cart({ state, setState }) {
         ref={(el) => (sidebarMenu = el)}
         className={`fixed h-screen top-0 right-0 p-5 z-[60] md:w-1/4 w-full bg-white text-black shadow-md overflow-y-auto`}
       >
-        <div className="flex mb-6 justify-between items-end w-full">
-          <h1 className="text-3xl uppercase">Shopping Cart</h1>
+        <div className="flex mb-6 justify-between items-center w-full">
+          <h1 className="text-3xl uppercase leading-none font-medium">
+            Shopping Cart
+          </h1>
 
           <button
             onClick={() => setState(false)}
-            className="hover-underline-animation"
+            className="flex justify-center items-center"
           >
-            <h1 className="text-base">Close</h1>
+            <Icon
+              className="mt-1"
+              icon="grommet-icons:close"
+              color="black"
+              width="25"
+              height="24"
+            />
           </button>
         </div>
 
-        {cart?.cartItems?.length > 0 ? (
+        {cart?.cartItems?.length > 0 && (
           <>
             <div className="flex flex-col gap-1">
               {cart?.cartItems?.map((cartItem) => (
                 <div
                   key={cartItem.id}
-                  className="border-b-2 border-[#757575] w-full flex justify-between items-stretch py-2 gap-2"
+                  className="border-b-2 border-black w-full flex justify-between items-stretch py-2 gap-2"
                 >
                   <div className="w-2/5 flex flex-col items-start justify-between">
                     <h1 className="text-lg">{cartItem.name}</h1>
@@ -81,7 +89,7 @@ export default function Cart({ state, setState }) {
                   <div className="w-2/5 flex flex-col items-end justify-between">
                     <button
                       onClick={() => deleteItemFromCart(cartItem?.product)}
-                      className="text-sm"
+                      className="text-sm hover-underline"
                     >
                       Remove
                     </button>
@@ -112,12 +120,12 @@ export default function Cart({ state, setState }) {
               </div>
             </div>
 
-            <div className="absolute bottom-5 inset-x-0 flex justify-center px-5">
+            <div className="mt-16 flex justify-center">
               <button
                 onClick={() => confirmHandle(amountWithoutTax)}
                 className="flex justify-between items-center px-2 leading-none text-2xl w-full bg-black rounded-2xl"
               >
-                <h1 className="uppercase text-white">Confirm</h1>
+                <h1 className="uppercase text-white">checkout</h1>
                 <Icon
                   icon="carbon:arrow-up"
                   rotate={1}
@@ -127,10 +135,6 @@ export default function Cart({ state, setState }) {
               </button>
             </div>
           </>
-        ) : (
-          <h1 className="mt-[70%] w-full text-center text-xl text-black-100">
-            cart kosong
-          </h1>
         )}
       </div>
 

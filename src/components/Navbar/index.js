@@ -8,6 +8,8 @@ import { Icon } from "@iconify/react";
 import Cart from "./Cart";
 import Menu from "./Menu";
 import CartContext from "@/providers/CartProvider";
+import { AnimatePresence } from "framer-motion";
+import Notif from "./Notif";
 
 const runalto = localFont({
   src: "../../assets/fonts/runalto/runalto.ttf",
@@ -18,6 +20,7 @@ export default function Navbar() {
   const { scroll } = useLocomotiveScroll();
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
+  const [notifState, setNotifState] = useState(false);
   const { cart } = useContext(CartContext);
 
   useEffect(() => {
@@ -35,6 +38,14 @@ export default function Navbar() {
       scroll && scroll.destroy();
     };
   }, [scroll]);
+
+  useEffect(() => {
+    if (notifState) {
+      setTimeout(() => {
+        setNotifState(false);
+      }, 2000);
+    }
+  }, [notifState]);
 
   return (
     <nav>
@@ -60,8 +71,12 @@ export default function Navbar() {
 
         <button
           onClick={() => {
-            setMenuState(false);
-            setCartState(true);
+            if (cart?.cartItems?.length > 0) {
+              setMenuState(false);
+              setCartState(true);
+            } else {
+              setNotifState(true);
+            }
           }}
           className={`flex gap-1 mr-2 text-base cursor-pointer ${
             menuState ? "text-black" : null
@@ -79,12 +94,14 @@ export default function Navbar() {
         <button
           className={`${
             menuState ? "block" : "hidden"
-          } text-black text-lg absolute md:top-2 top-1 md:left-20 left-12 transition-all ease-in-out delay-100`}
+          } text-black text-lg absolute md:top-3 top-3 md:left-20 left-12 transition-all ease-in-out delay-100`}
           onClick={() => setMenuState(false)}
         >
           Close
         </button>
       </div>
+
+      <AnimatePresence mode="wait">{notifState && <Notif />}</AnimatePresence>
 
       <Cart state={cartState} setState={setCartState} />
 
