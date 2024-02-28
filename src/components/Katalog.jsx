@@ -1,13 +1,12 @@
 "use client";
 import { useContext } from "react";
-import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
 import CurrencyFormat from "react-currency-format";
 import CartContext from "@/providers/CartProvider";
+import Link from "next/link";
 
 export default function Katalog() {
-  const router = useRouter();
   const { addItemToCart } = useContext(CartContext);
 
   const numberOfColumns = 4;
@@ -72,12 +71,12 @@ export default function Katalog() {
                     "url('https://source.unsplash.com/collection/2091539/500x400')",
                 }}
               >
-                <button
+                <Link
                   className="absolute top-4 right-4 group-hover:scale-100 scale-0 transition-transform ease-in-out bg-black p-3 rounded-full hover:bg-[#00000068]"
-                  // onClick={() => router.push("/minimalis")}
+                  href={e.href}
                 >
                   <Icon icon="ph:eye" width="20" color="white" />
-                </button>
+                </Link>
 
                 <div className="absolute bottom-4 left-4">
                   <h1 className="text-lg font-medium bg-black text-white w-fit leading-tight rounded">
@@ -104,7 +103,11 @@ export default function Katalog() {
           </div>
         ))}
       </div>
-      <div className="my-20 mx-auto flex hover-underline-animation w-11/12 md:w-1/4 py-2 pr-1 items-end justify-between">
+      <Link
+        href={"/katalog"}
+        prefetch={false}
+        className="my-20 mx-auto flex hover-underline-animation w-11/12 md:w-1/4 py-2 pr-1 items-end justify-between"
+      >
         <h1 className="text-base text-black">See all our template</h1>
         <Icon
           icon="carbon:arrow-up"
@@ -112,7 +115,7 @@ export default function Katalog() {
           width="20"
           rotate={1}
         />
-      </div>
+      </Link>
     </section>
   );
 }

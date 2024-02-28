@@ -34,7 +34,7 @@ export default function Cart({ state, setState }) {
   }, [state]);
 
   const amountWithoutTax = cart?.cartItems?.reduce(
-    (acc, item) => acc + item.quantity * item.price,
+    (acc, item) => acc + item.price,
     0
   );
 
@@ -46,10 +46,10 @@ export default function Cart({ state, setState }) {
     <>
       <div
         ref={(el) => (sidebarMenu = el)}
-        className={`fixed h-screen top-0 right-0 p-5 z-[60] md:w-1/4 w-full bg-white text-black shadow-md overflow-y-auto`}
+        className={`fixed h-screen top-0 right-0 px-5 z-[60] md:w-1/4 w-full bg-white text-black shadow-md overflow-y-auto`}
       >
-        <div className="flex mb-6 justify-between items-center w-full">
-          <h1 className="text-3xl uppercase leading-none font-medium">
+        <div className="sticky top-0 inset-x-0 z-10 bg-white flex py-5 justify-between items-center w-full">
+          <h1 className="text-3xl uppercase leading-none font-medium text-[#282828]">
             Shopping Cart
           </h1>
 
@@ -77,7 +77,7 @@ export default function Cart({ state, setState }) {
                 >
                   <div className="w-2/5 flex flex-col items-start justify-between">
                     <h1 className="text-lg">{cartItem.name}</h1>
-                    <h1 className="text-lg">{cartItem.desc}</h1>
+                    <h1 className="text-xs">{cartItem.product}</h1>
                   </div>
                   <div
                     className="aspect-square w-20 rounded-lg border border-black bg-white bg-cover bg-center"
@@ -106,8 +106,8 @@ export default function Cart({ state, setState }) {
                 </div>
               ))}
 
-              <div className="mt-5 flex justify-between text-base font-medium">
-                <h1 className="w-3/5 text-end uppercase">Total</h1>
+              <div className="pt-5 pb-16 flex justify-between text-base font-medium">
+                <h1 className="w-3/5 text-end">Total Price</h1>
                 <h1 className="w-2/5 text-end">
                   <CurrencyFormat
                     value={amountWithoutTax}
@@ -120,10 +120,10 @@ export default function Cart({ state, setState }) {
               </div>
             </div>
 
-            <div className="mt-16 flex justify-center">
+            <div className="sticky bottom-10 flex justify-center">
               <button
                 onClick={() => confirmHandle(amountWithoutTax)}
-                className="flex justify-between items-center px-2 leading-none text-2xl w-full bg-black rounded-2xl"
+                className="flex justify-between items-center px-2 leading-none text-2xl w-full bg-black bg-opacity-90 rounded-2xl"
               >
                 <h1 className="uppercase text-white">checkout</h1>
                 <Icon

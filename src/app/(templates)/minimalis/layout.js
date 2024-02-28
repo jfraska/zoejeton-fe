@@ -12,10 +12,8 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <div
-      className={`${montserrat.className} relative w-full md:w-[430px] mx-auto p-0 h-screen`}
-    >
-      <main className="bg-[#272926]">{children}</main>
+    <div className={`${montserrat.className} `}>
+      <div className="bg-[#272926]">{children}</div>
       <FloatingBar />
       <BottomNavbar />
     </div>

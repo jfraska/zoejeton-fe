@@ -21,6 +21,7 @@ export default function Navbar() {
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
   const [notifState, setNotifState] = useState(false);
+  const [shake, setShake] = useState(false);
   const { cart } = useContext(CartContext);
 
   useEffect(() => {
@@ -46,6 +47,15 @@ export default function Navbar() {
       }, 2000);
     }
   }, [notifState]);
+
+  useEffect(() => {
+    if (cart?.cartItems?.length > 0) {
+      setShake(true);
+      setTimeout(() => {
+        setShake(false);
+      }, 100);
+    }
+  }, [cart]);
 
   return (
     <nav>
@@ -78,15 +88,15 @@ export default function Navbar() {
               setNotifState(true);
             }
           }}
-          className={`flex gap-1 mr-2 text-base cursor-pointer ${
+          className={`flex gap-1 text-base cursor-pointer ${
             menuState ? "text-black" : null
           } transition-all ease-linear`}
         >
-          <Icon icon="grommet-icons:shop" width="19" />
-          <div className="relative text-end">
-            <p className="leading-tight">Cart</p>
-            <span className="absolute top-0 -right-2 text-xs leading-tight w-3 rounded-full overflow-hidden">
-              {cart?.cartItems?.length || 0}
+          <p className="leading-tight mt-px">Cart</p>
+          <div className={`${shake ? "shake" : null} relative text-end`}>
+            <Icon icon="grommet-icons:shop" width="20" />
+            <span className="absolute top-0.5 -right-0.5 text-[10px] leading-none flex justify-center items-center w-3  bg-red-500 text-white border-none rounded-full overflow-hidden">
+              {cart?.cartItems?.length || ""}
             </span>
           </div>
         </button>

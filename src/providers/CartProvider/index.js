@@ -22,19 +22,12 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const addItemToCart = async ({
-    product,
-    name,
-    price,
-    image,
-    quantity = 1,
-  }) => {
+  const addItemToCart = async ({ product, name, price, image }) => {
     const item = {
       product,
       name,
       price,
       image,
-      quantity,
     };
 
     const isItemExist = cart?.cartItems?.find(

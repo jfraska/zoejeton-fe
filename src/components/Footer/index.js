@@ -69,7 +69,7 @@ export default function Footer() {
               <div className="flex flex-col md:w-2/6 w-full">
                 <h1 className="text-black-100 tracking-wide">Support</h1>
                 <h2 className="mt-5">Sarasvati</h2>
-                <h2 className="">Xendit</h2>
+                <h2 className="">Midtrans</h2>
               </div>
             </div>
             <Contact />
