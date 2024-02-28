@@ -72,7 +72,7 @@ export default function Cart({ state, setState }) {
             <div className="flex flex-col gap-1">
               {cart?.cartItems?.map((cartItem) => (
                 <div
-                  key={cartItem.id}
+                  key={cartItem.product}
                   className="border-b-2 border-black w-full flex justify-between items-stretch py-2 gap-2"
                 >
                   <div className="w-2/5 flex flex-col items-start justify-between">

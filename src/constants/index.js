@@ -52,7 +52,7 @@ export const templates = [
     href: "/minimalis",
   },
   {
-    id: "M01",
+    id: "M02",
     name: "Work",
     image: "elegant",
     price: 200000,

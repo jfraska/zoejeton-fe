@@ -42,7 +42,7 @@ export default function Menu({ state, setState, scroll }) {
       >
         <div className="hidden md:flex gap-5 items-end w-[70%]">
           <Image
-            className="img-gray"
+            className="img-gray w-16 h-fit"
             src="/assets/icons/atm-bersama.svg"
             width={65}
             height={65}
@@ -50,7 +50,7 @@ export default function Menu({ state, setState, scroll }) {
           />
 
           <Image
-            className="img-gray"
+            className="img-gray w-16 h-fit"
             src="/assets/icons/gopay.svg"
             width={70}
             height={70}
@@ -58,7 +58,7 @@ export default function Menu({ state, setState, scroll }) {
           />
 
           <Image
-            className="img-gray"
+            className="img-gray w-16 h-fit"
             src="/assets/icons/dana.svg"
             width={70}
             height={70}

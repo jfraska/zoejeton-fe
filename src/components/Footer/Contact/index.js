@@ -42,7 +42,7 @@ export default function Contact() {
                 : "placeholder:text-black-100 border-[#bfbfbf]"
             } appearance-none input w-full bg-transparent py-2 border-b text-black-100 hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white`}
           />
-          <span class="underline"></span>
+          <span className="underline"></span>
         </div>
         <div className="relative w-full h-fit">
           <textarea
@@ -55,7 +55,7 @@ export default function Contact() {
                 : "placeholder:text-black-100 border-[#bfbfbf]"
             } appearance-none input w-full bg-transparent py-2 border-b text-black-100 hover:placeholder:text-white hover:text-whit focus:outline-none focus:placeholder:text-white focus:text-white`}
           />
-          <span class="underline mb-1.5"></span>
+          <span className="underline mb-1.5"></span>
         </div>
         <button
           type="submit"

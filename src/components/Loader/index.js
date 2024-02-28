@@ -9,6 +9,7 @@ export default function Loader() {
         src={"/assets/icons/zoejeton.svg"}
         width={30}
         height={30}
+        alt="zoejeton"
       />
     </div>
   );

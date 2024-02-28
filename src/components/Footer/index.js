@@ -79,14 +79,14 @@ export default function Footer() {
         <div className="py-10 h-fit flex md:flex-row flex-col md:justify-around gap-5 justify-center md:items-end items-center">
           <div className="flex gap-5 items-end md:w-full">
             <Image
-              className="img-gray"
+              className="img-gray w-16 h-fit"
               src="/assets/icons/atm-bersama.svg"
               width={65}
               height={65}
               alt="atm bersama"
             />
             <Image
-              className="img-gray"
+              className="img-gray w-16 h-fit"
               src="/assets/icons/dana.svg"
               width={70}
               height={70}

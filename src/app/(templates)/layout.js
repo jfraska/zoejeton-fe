@@ -1,16 +1,15 @@
 "use client";
 
 import { Icon } from "@iconify/react";
-import Link from "next/link";
 // import { useRouter } from "next/navigation";
 
-export default function Template({ children }) {
+export default function TemplateLayout({ children }) {
   // const router = useRouter();
 
   return (
     <>
-      <Link
-        href={"/"}
+      <a
+        href="/"
         className="fixed top-2 left-2 flex justify-center items-center z-[99] aspect-square w-10 bg-black rounded-full hover:bg-[#252525]"
       >
         <Icon
@@ -19,10 +18,10 @@ export default function Template({ children }) {
           width="20"
           rotate={-1}
         />
-      </Link>
-      <main className="relative w-full md:w-[430px] mx-auto h-screen">
+      </a>
+      <div className="relative w-full md:w-[430px] mx-auto h-screen">
         {children}
-      </main>
+      </div>
     </>
   );
 }

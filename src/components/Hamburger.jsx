@@ -19,7 +19,6 @@ const StyledBurger = styled.button`
   span {
     width: 100%;
     height: 2.5px;
-    background: ${({ state, scroll }) => (state || scroll ? "#000" : "#fff")};
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
@@ -40,13 +39,9 @@ export default function Hamburger({ state, scroll, setState }) {
   }, [state]);
 
   return (
-    <StyledBurger
-      state={state}
-      scroll={scroll}
-      onClick={() => setState(!state)}
-    >
-      <span />
-      <span />
+    <StyledBurger onClick={() => setState(!state)}>
+      <span className={state || scroll ? "bg-black" : "bg-white"} />
+      <span className={state || scroll ? "bg-black" : "bg-white"} />
     </StyledBurger>
   );
 }

@@ -1,5 +1,5 @@
-import GlobalProvider from "./GlobalProvider";
 import "./globals.css";
+import GlobalProvider from "./GlobalProvider";
 import localFont from "next/font/local";
 
 const MonumentExtended = localFont({
