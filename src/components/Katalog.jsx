@@ -59,7 +59,7 @@ export default function Katalog() {
             {...getStyleByIndex(index)}
             key={index}
             className={`${
-              index != 0 ? "hidden md:flex" : "flex"
+              index === 0 ? "flex" : "hidden md:flex"
             } flex-col md:max-w-[340px] w-11/12 md:w-[24%] gap-5`}
           >
             {column.map((e) => (
