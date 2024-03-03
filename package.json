@@ -13,7 +13,6 @@
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "@vercel/analytics": "^1.2.2",
-    "@vercel/speed-insights": "^1.0.10",
     "autoprefixer": "10.4.15",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
