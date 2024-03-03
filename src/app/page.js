@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
 import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
-import { Analytics } from "@vercel/analytics/react";
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -54,7 +53,6 @@ export default function Home() {
     >
       <Navbar />
       <main data-scroll-container id="smooth-scroll" ref={scrollWrapper}>
-        <Analytics />
         <AnimatePresence mode="wait">
           {isLoading && <Preloader />}
         </AnimatePresence>
