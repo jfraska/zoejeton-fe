@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@motionone/utils": "^10.16.3",
+    "@prisma/client": "^5.12.1",
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "@vercel/analytics": "^1.2.2",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@iconify/react": "^4.1.1",
     "prettier": "^2.8.8",
+    "prisma": "^5.12.1",
     "webpack-glsl-loader": "^1.0.1"
   }
 }

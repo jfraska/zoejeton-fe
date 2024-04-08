@@ -7,16 +7,25 @@ import Couple from "./_components/Couple";
 import Story from "./_components/Story";
 import Date from "./_components/Date";
 import LockScreen from "./_components/LockScreen";
+import prisma from "@/lib/prisma";
 
-export default function Minimalis() {
+async function getInvitation() {
+  const invitation = await prisma.invitation.findUnique({
+    where: { title: "default" },
+  });
+  return invitation;
+}
+
+export default async function Minimalis() {
   const [isOpen, setOpen] = useState(false);
+  const invitation = await getInvitation();
 
   return (
     <>
       <LockScreen state={isOpen} setState={setOpen} />
       {isOpen && (
         <>
-          <Beranda />
+          {/* <Beranda data={invitation} /> */}
           <Quotes />
           <Couple />
           <Story />
