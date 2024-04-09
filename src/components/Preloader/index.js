@@ -2,12 +2,8 @@
 import styles from "./style.module.scss";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import localFont from "next/font/local";
+import { Runalto } from "@/styles/fonts";
 import { opacity, slideUp } from "./anim";
-
-const runalto = localFont({
-  src: "../../assets/fonts/runalto/runalto.ttf",
-});
 
 const words = ["ZoeJeton", "Premium", "Luxury", "Elegant", "Exclusive"];
 
@@ -59,7 +55,7 @@ export default function Preloader() {
       {dimension.width > 0 && (
         <>
           <motion.p
-            className={`${runalto.className} font-medium`}
+            className={`${Runalto.className} font-medium`}
             variants={opacity}
             initial="initial"
             animate="enter"

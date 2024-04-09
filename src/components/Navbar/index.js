@@ -3,17 +3,13 @@ import "./style.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Hamburger from "../Hamburger";
-import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
 import Cart from "./Cart";
 import Menu from "./Menu";
 import CartContext from "@/providers/CartProvider";
 import { AnimatePresence } from "framer-motion";
 import Notif from "./Notif";
-
-const runalto = localFont({
-  src: "../../assets/fonts/runalto/runalto.ttf",
-});
+import { Runalto } from "@/styles/fonts";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -72,7 +68,7 @@ export default function Navbar() {
           scroll={scrolled}
         />
         <h1
-          className={`${runalto.className} font-bold ${
+          className={`${Runalto.className} font-bold ${
             menuState ? "text-black" : null
           } hidden md:block transition-all ease-linear text-lg font-bold leading-none`}
         >

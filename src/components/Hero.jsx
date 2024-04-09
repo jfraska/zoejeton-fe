@@ -5,21 +5,13 @@ import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Icon } from "@iconify/react";
-import localFont from "next/font/local";
+import { Gunterz, Radwave } from "@/styles/fonts";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Parallax, Pagination, Controller, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-
-const radwave = localFont({
-  src: "../assets/fonts/radwave/radwavefont-demo.woff",
-});
-
-const gunterz = localFont({
-  src: "../assets/fonts/gunterz/gunterz-mediumitalic.woff",
-});
 
 const params = {
   style: {
@@ -184,7 +176,7 @@ export default function Hero() {
               data-scroll-target="#beranda"
               data-scroll-speed="2.5"
               // data-scroll-position="top"
-              className="flex flex-col font-serif uppercase text-3xl md:text-6xl cursor-default"
+              className="flex flex-col font-title uppercase text-3xl md:text-6xl cursor-default"
             >
               <h1
                 data-swiper-parallax="-300"
@@ -263,7 +255,7 @@ export default function Hero() {
                 data-scroll
                 data-scroll-target="#beranda"
                 data-scroll-speed="3"
-                className={`absolute inset-0 flex md:mb-0 mb-1 justify-center items-center xl:text-[150px] md:text-8xl text-5xl text-white leading-tight ${radwave.className}`}
+                className={`absolute inset-0 flex md:mb-0 mb-1 justify-center items-center xl:text-[150px] md:text-8xl text-5xl text-white leading-tight ${Radwave.className}`}
               >
                 Catalogue
               </h1>

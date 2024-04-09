@@ -1,43 +1,7 @@
-import "./globals.css";
-import GlobalProvider from "./GlobalProvider";
-import localFont from "next/font/local";
-
-const MonumentExtended = localFont({
-  src: [
-    {
-      path: "../assets/fonts/monument-extended/MonumentExtended-Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-MonumentExtended",
-});
-
-const NeueMontreal = localFont({
-  src: [
-    {
-      path: "../assets/fonts/neue-montreal/NeueMontreal-Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../assets/fonts/neue-montreal/NeueMontreal-Medium.woff",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../assets/fonts/neue-montreal/NeueMontreal-Bold.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../assets/fonts/neue-montreal/NeueMontreal-Light.woff",
-      weight: "300",
-      style: "normal",
-    },
-  ],
-  variable: "--font-NeueMontreal",
-});
+import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
+import { MonumentExtended, NeueMontreal } from "@/styles/fonts";
+import { cn } from "@/utils";
 
 export const metadata = {
   title: "ZoeJeton",
@@ -46,11 +10,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${MonumentExtended.variable} ${NeueMontreal.variable} font-sans`}
-      >
-        <GlobalProvider>{children}</GlobalProvider>
+    <html lang="id">
+      <body className={cn(MonumentExtended.variable, NeueMontreal.variable)}>
+        <main>{children}</main>
+        <Analytics />
       </body>
     </html>
   );

@@ -2,13 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import SwipeableButton from "@/components/SwipeButton";
 import { Icon } from "@iconify/react";
-import localFont from "next/font/local";
 import Image from "next/image";
+import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
-
-const runalto = localFont({
-  src: "../../../../assets/fonts/runalto/runalto.ttf",
-});
 
 export default function LockScreen({ data }) {
   let lockRef = useRef(null);
@@ -58,7 +54,7 @@ export default function LockScreen({ data }) {
       </div>
 
       <h1
-        className={`${runalto.className} flex flex-col text-center text-6xl font-bold`}
+        className={`${Runalto.className} flex flex-col text-center text-6xl font-bold`}
       >
         <span>{data.content.couple.groom}</span> <span>&</span>
         <span>{data.content.couple.bride}</span>

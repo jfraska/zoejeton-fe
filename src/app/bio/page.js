@@ -1,12 +1,9 @@
 "use client";
-import localFont from "next/font/local";
+
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
-
-const runalto = localFont({
-  src: "../../assets/fonts/runalto/runalto.ttf",
-});
+import { Runalto } from "@/styles/fonts";
 
 export default function Bio() {
   return (
@@ -44,7 +41,7 @@ export default function Bio() {
       </main>
       <footer className="relative w-full text-white bg-black px-[3%] pt-[4%] pb-[1%]">
         <div className="w-full mb-10 px-[1%] flex flex-col items-center gap-4">
-          <h1 className={`${runalto.className} font-bold text-xl`}>ZoeJeton</h1>
+          <h1 className={`${Runalto.className} font-bold text-xl`}>ZoeJeton</h1>
           <div className=" flex gap-2">
             <Link href="#" className="bg-white p-2">
               <Image

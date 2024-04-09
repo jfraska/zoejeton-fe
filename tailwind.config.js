@@ -1,3 +1,5 @@
+import { fontFamily } from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
@@ -5,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-NeueMontreal)"],
-        serif: ["var(--font-MonumentExtended)"],
+        default: ["var(--font-NeueMontreal)", ...fontFamily.sans],
+        title: ["var(--font-MonumentExtended)", ...fontFamily.sans],
       },
       colors: {
         primary: "#ffffff",

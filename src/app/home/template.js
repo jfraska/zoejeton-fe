@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
 import { AnimatePresence } from "framer-motion";
+import { CartProvider } from "@/providers/CartProvider";
 import Preloader from "@/components/Preloader";
 import { animatePageIn } from "@/utils/animations";
 
@@ -17,7 +17,7 @@ export default function Template({ children }) {
   }, []);
 
   return (
-    <div>
+    <CartProvider>
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
@@ -28,7 +28,6 @@ export default function Template({ children }) {
         } min-h-screen bg-white inset-0 w-full z-[99]`}
       />
       {children}
-      <Analytics />
-    </div>
+    </CartProvider>
   );
 }

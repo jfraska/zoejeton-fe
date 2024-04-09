@@ -1,11 +1,7 @@
 "use client";
 import { useEffect } from "react";
-import localFont from "next/font/local";
+import { Runalto } from "@/styles/fonts";
 import { Icon } from "@iconify/react";
-
-const runalto = localFont({
-  src: "../../../../assets/fonts/runalto/runalto.ttf",
-});
 
 export default function Couple() {
   useEffect(() => {
@@ -29,7 +25,7 @@ export default function Couple() {
         </div>
       </div>
       <div className="mt-7 flex flex-col gap-2 px-8">
-        <h1 className={` ${runalto.className} text-lg font-bold`}>
+        <h1 className={` ${Runalto.className} text-lg font-bold`}>
           Jeton Hizaya
         </h1>
         <p className="text-sm">
@@ -37,7 +33,7 @@ export default function Couple() {
         </p>
       </div>
       <div
-        className={` ${runalto.className} w-full text-center text-4xl mt-14 mb-4`}
+        className={` ${Runalto.className} w-full text-center text-4xl mt-14 mb-4`}
       >
         The Bride
       </div>
@@ -49,7 +45,7 @@ export default function Couple() {
         </div>
       </div>
       <div className="mt-7 flex flex-col items-center gap-2 px-10 text-center">
-        <h1 className={`${runalto.className} text-lg font-bold`}>Zoe Himaya</h1>
+        <h1 className={`${Runalto.className} text-lg font-bold`}>Zoe Himaya</h1>
         <p className="text-sm">Putri dari Bpk M Syarik & Ibu Isharni</p>
       </div>
       <div className="flex gap-2 items-center justify-center mt-10">
