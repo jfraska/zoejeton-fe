@@ -5,6 +5,7 @@ import { templates } from "@/constants";
 import CurrencyFormat from "react-currency-format";
 import CartContext from "@/providers/CartProvider";
 import Link from "next/link";
+import TransitionLink from "./TransitionLink";
 
 export default function Katalog() {
   const { addItemToCart } = useContext(CartContext);
@@ -71,12 +72,12 @@ export default function Katalog() {
                     "url('https://source.unsplash.com/collection/2091539/500x400')",
                 }}
               >
-                <Link
+                <TransitionLink
                   className="absolute top-4 right-4 group-hover:scale-100 scale-0 transition-transform ease-in-out bg-black p-3 rounded-full hover:bg-[#00000068]"
                   href={e.href}
                 >
                   <Icon icon="ph:eye" width="20" color="white" />
-                </Link>
+                </TransitionLink>
 
                 <div className="absolute bottom-4 left-4">
                   <h1 className="text-lg font-medium bg-black text-white w-fit leading-tight rounded">

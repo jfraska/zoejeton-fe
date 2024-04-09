@@ -41,7 +41,7 @@ const NeueMontreal = localFont({
 
 export const metadata = {
   title: "ZoeJeton",
-  description: "by jipies",
+  description: "by zoejeton",
 };
 
 export default function RootLayout({ children }) {

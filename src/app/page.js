@@ -2,9 +2,8 @@
 import "./style.css";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useRouter } from "next/navigation";
-import { AnimatePresence } from "framer-motion";
 import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
 
 import Navbar from "@/components/Navbar";
@@ -16,7 +15,6 @@ import ScrollVelocity from "@/components/ScrollVelocity";
 import Katalog from "@/components/Katalog";
 import Footer from "@/components/Footer";
 import Message from "@/components/Message";
-import Preloader from "@/components/Preloader";
 
 const settings = {
   options: {
@@ -36,13 +34,6 @@ const settings = {
 export default function Home() {
   const scrollWrapper = useRef(null);
   const { asPath } = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-  }, []);
 
   return (
     <GlobalScroll
@@ -53,11 +44,8 @@ export default function Home() {
     >
       <Navbar />
       <main data-scroll-container id="smooth-scroll" ref={scrollWrapper}>
-        <AnimatePresence mode="wait">
-          {isLoading && <Preloader />}
-        </AnimatePresence>
         <Hero />
-        <About />
+        {/* <About /> */}
         <Feature />
         <ScrollVelocity />
         <Katalog />
