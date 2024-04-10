@@ -57,6 +57,6 @@ export default async function middleware(req) {
     );
   }
 
-  // rewrite everything else to `/[domain]/[slug] dynamic route
-  return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
+  // // rewrite everything else to `/[domain]/[slug] dynamic route
+  // return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
 }

@@ -11,7 +11,7 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <div
-      className={`${montserrat.className} relative w-full md:w-[430px] mx-auto h-screen overflow-hidden`}
+      className={`${montserrat.className} relative w-full md:max-w-[430px] mx-auto h-screen overflow-hidden`}
     >
       {children}
     </div>

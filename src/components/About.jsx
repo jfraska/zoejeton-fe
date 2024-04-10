@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import Statue from "./Statue";
 import CursorProvider from "@/providers/CursorProvider";
 import Link from "next/link";
+import TransitionLink from "./TransitionLink";
 
 export default function About() {
   const containerRef = useRef();
@@ -44,9 +45,8 @@ export default function About() {
 
       <div className="md:ml-auto md:mr-0 mx-auto flex md:flex-row flex-col-reverse items-end gap-4 md:w-[60%] w-11/12">
         <div className="w-full">
-          <Link
+          <TransitionLink
             href="/about"
-            prefetch={false}
             className="flex hover-underline-animation w-full  py-2 pr-1  items-end justify-between"
           >
             <h1 className="md:text-base text-sm text-black">More About Us</h1>
@@ -56,7 +56,7 @@ export default function About() {
               width="20"
               rotate={1}
             />
-          </Link>
+          </TransitionLink>
         </div>
         <div className="w-full">
           <p className="text-sm mb-5 md:text-left text-justify">
@@ -68,7 +68,6 @@ export default function About() {
             href={
               "https://www.instagram.com/zoejeton?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             }
-            prefetch={false}
             target="_blank"
             className="flex hover-underline-animation w-full py-2 pr-1 items-end justify-between"
           >

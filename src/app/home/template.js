@@ -1,13 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { CartProvider } from "@/providers/CartProvider";
+import { useEffect, useRef, useState } from "react";
 import Preloader from "@/components/Preloader";
+import { AnimatePresence } from "framer-motion";
+import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
+import { useRouter } from "next/navigation";
 import { animatePageIn } from "@/utils/animations";
 
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
+  const scrollWrapper = useRef(null);
+  const { asPath } = useRouter();
+
+  const settings = {
+    options: {
+      smooth: true,
+      multiplier: 0.8,
+      smartphone: {
+        smooth: true,
+      },
+      tablet: {
+        smooth: true,
+      },
+    },
+    location: { asPath },
+    containerRef: { scrollWrapper },
+    onLocationChange: (scroll) =>
+      scroll.scrollTo(0, { duration: 0, disableLerp: true }),
+  };
 
   useEffect(() => {
     animatePageIn();
@@ -17,7 +37,7 @@ export default function Template({ children }) {
   }, []);
 
   return (
-    <CartProvider>
+    <GlobalScroll {...settings}>
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
@@ -27,7 +47,9 @@ export default function Template({ children }) {
           isLoading ? "hidden" : "fixed"
         } min-h-screen bg-white inset-0 w-full z-[99]`}
       />
-      {children}
-    </CartProvider>
+      <div data-scroll-container ref={scrollWrapper}>
+        {children}
+      </div>
+    </GlobalScroll>
   );
 }

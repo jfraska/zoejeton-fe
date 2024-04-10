@@ -3,71 +3,50 @@
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
-import { Runalto } from "@/styles/fonts";
 
 export default function Bio() {
   return (
-    <div className="relative max-w-[500px] mx-auto ">
-      <main className="relative w-full h-screen">
-        <div
-          className="absolute inset-0 -z-10 w-full h-full bg-cover"
-          style={{
-            backgroundImage:
-              "url('https://source.unsplash.com/collection/2091539/1000x900')",
-          }}
-        />
-        <div className="flex flex-col pt-[20%] w-full items-center">
-          <h1 className="text-green-400 text-center font-serif uppercase text-5xl leading-[0.8]">
-            Website Invitation
-          </h1>
+    <div className="relative md:my-10 max-w-[430px] mx-auto md:rounded-xl overflow-hidden bg-white pb-4">
+      <div
+        className="relative w-full h-[30vh] bg-cover"
+        style={{
+          backgroundImage: "url('/assets/images/palm.jpg')",
+        }}
+      >
+        <Image
+          src={"/assets/icons/logo.svg"}
+          width={50}
+          height={50}
+          alt=""
+          className="absolute -bottom-10 inset-x-0 mx-auto w-20 rounded-full border-[3px] border-white aspect-square bg-white"
+        ></Image>
+      </div>
+      <div className="mt-14 w-full flex flex-col justify-center items-center gap-4 px-4">
+        <div className="flex flex-col items-center">
+          <h1 className="font-medium text-xl leading-tight">ZoeJeton</h1>
+          <h2 className="text-sm">@zoejeton</h2>
         </div>
-        <div className="absolute inset-x-0 flex flex-col items-center gap-2 bottom-[10%]">
-          <Link
-            href="/"
-            className="flex justify-between w-[70%] py-3 px-8 items-center gap-1 bg-black border border-transparent rounded-full text-white backdrop-filter backdrop-blur-md bg-opacity-50"
-          >
-            <h1 className="uppercase text-lg font-medium">Website</h1>
-            <Icon icon="carbon:arrow-up" rotate={1} color="white" width="25" />
-          </Link>
-          {/* <button className="flex justify-between w-[70%] py-3 px-8 items-center gap-1 bg-black border border-transparent rounded-full text-white backdrop-filter backdrop-blur-md bg-opacity-50">
-            <h1 className="uppercase text-lg font-medium">Katalog</h1>
-            <Icon icon="carbon:arrow-up" rotate={1} color="white" width="25" />
-          </button> */}
-          <button className="flex justify-between w-[70%] py-3 px-8 items-center gap-1 bg-black border border-transparent rounded-full text-white backdrop-filter backdrop-blur-md bg-opacity-50">
-            <h1 className="uppercase text-lg font-medium">Whatsapp</h1>
-            <Icon icon="carbon:arrow-up" rotate={1} color="white" width="25" />
-          </button>
-        </div>
-      </main>
-      <footer className="relative w-full text-white bg-black px-[3%] pt-[4%] pb-[1%]">
-        <div className="w-full mb-10 px-[1%] flex flex-col items-center gap-4">
-          <h1 className={`${Runalto.className} font-bold text-xl`}>ZoeJeton</h1>
-          <div className=" flex gap-2">
-            <Link href="#" className="bg-white p-2">
-              <Image
-                src="/assets/icons/instagram.png"
-                width={20}
-                height={20}
-                alt="instagram"
-              />
-            </Link>
-            <Link href="#" className="bg-white p-2">
-              <Image
-                src="/assets/icons/tiktok.png"
-                width={20}
-                height={20}
-                alt="tiktok"
-              />
-            </Link>
+
+        <div className="mt-4 w-full flex items-center gap-2 bg-neutral-800 text-white rounded-xl p-3">
+          <div className="flex justify-center items-center bg-white h-full p-3 rounded-xl">
+            <Icon icon="solar:link-bold" color="black" width={20} />
           </div>
-          <p className="font-normal w-4/6 text-xs text-center">
-            We specialize in delivering digital elegance right to your
-            fingertips.
-          </p>
+          <div>
+            <h1 className="leading-tight">Website</h1>
+            <h2 className="text-sm text-neutral-400">Lorem omasfj</h2>
+          </div>
         </div>
-        <div className="w-full border-b border-white" />
-        <h1 className="w-fit mx-auto my-5 text-xs">copyright ©2023</h1>
-      </footer>
+
+        <div className="mt-4 flex justify-between items-center w-full">
+          <h1>Galery</h1>
+          <div className="flex items-center gap-1 text-sm text-neutral-600">
+            <h1>More</h1>
+            <Icon icon="carbon:arrow-up" width={20} rotate={1} />
+          </div>
+        </div>
+
+        <div className="bg-black w-full h-60 rounded-xl"></div>
+      </div>
     </div>
   );
 }

@@ -104,9 +104,8 @@ export default function Katalog() {
           </div>
         ))}
       </div>
-      <Link
+      <TransitionLink
         href={"/katalog"}
-        prefetch={false}
         className="my-20 mx-auto flex hover-underline-animation w-11/12 md:w-1/4 py-2 pr-1 items-end justify-between"
       >
         <h1 className="text-base text-black">See all our template</h1>
@@ -116,7 +115,7 @@ export default function Katalog() {
           width="20"
           rotate={1}
         />
-      </Link>
+      </TransitionLink>
     </section>
   );
 }

@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body className={cn(MonumentExtended.variable, NeueMontreal.variable)}>
-        <main>{children}</main>
+        <main className="font-default">{children}</main>
         <Analytics />
       </body>
     </html>
