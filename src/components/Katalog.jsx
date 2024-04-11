@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
+import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
 import CartContext from "@/providers/CartProvider";
 import Link from "next/link";
@@ -97,7 +98,13 @@ export default function Katalog() {
                   onClick={() => addToCartHandler(e)}
                   className="absolute bottom-4 right-4 bg-black w-fit p-2 rounded-md hover:bg-[#00000068]"
                 >
-                  <Icon icon="grommet-icons:shop" color="white" width="20" />
+                  <Image
+                    src={"/assets/icons/cart.svg"}
+                    width="20"
+                    height="20"
+                    alt="cart"
+                    className="w-5 aspect-square"
+                  />
                 </button>
               </div>
             ))}

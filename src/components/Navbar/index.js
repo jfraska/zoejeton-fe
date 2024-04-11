@@ -1,9 +1,9 @@
 "use client";
 import "./style.css";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Hamburger from "../Hamburger";
-import { Icon } from "@iconify/react";
+import Image from "next/image";
 import Cart from "./Cart";
 import Menu from "./Menu";
 import CartContext from "@/providers/CartProvider";
@@ -84,16 +84,33 @@ export default function Navbar() {
               setNotifState(true);
             }
           }}
-          className={`flex gap-1 text-base cursor-pointer ${
+          className={`flex items-center gap-1 text-base cursor-pointer ${
             menuState ? "text-black" : null
           } transition-all ease-linear`}
         >
-          <p className="leading-tight mt-px">Cart</p>
+          <h1 className="leading-none">Cart</h1>
           <div className={`${shake ? "shake" : null} relative text-end`}>
-            <Icon icon="grommet-icons:shop" width="20" />
-            <span className="absolute top-0.5 -right-0.5 text-[10px] leading-none flex justify-center items-center w-3  bg-red-500 text-white border-none rounded-full overflow-hidden">
-              {cart?.cartItems?.length || ""}
-            </span>
+            {menuState || scrolled ? (
+              <Image
+                src={"/assets/icons/cart-black.svg"}
+                width="20"
+                height="20"
+                alt="cart"
+                className="w-5 aspect-square"
+              />
+            ) : (
+              <Image
+                src={"/assets/icons/cart.svg"}
+                width="20"
+                height="20"
+                alt="cart"
+                className="w-5 aspect-square"
+              />
+            )}
+
+            {cart?.cartItems?.length != 0 && (
+              <span className="absolute -bottom-0.5 -right-0.5 w-3 aspect-square bg-red-500 text-white border-2 border-white rounded-full" />
+            )}
           </div>
         </button>
 

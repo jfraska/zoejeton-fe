@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 import Preloader from "@/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
 import { useRouter } from "next/navigation";
 import { animatePageIn } from "@/utils/animations";
+import Navbar from "@/components/Navbar";
 
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,8 +25,8 @@ export default function Template({ children }) {
         smooth: true,
       },
     },
-    location: { asPath },
-    containerRef: { scrollWrapper },
+    location: asPath,
+    containerRef: scrollWrapper,
     onLocationChange: (scroll) =>
       scroll.scrollTo(0, { duration: 0, disableLerp: true }),
   };
@@ -41,12 +43,16 @@ export default function Template({ children }) {
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
+
       <div
         id="banner"
         className={`${
           isLoading ? "hidden" : "fixed"
         } min-h-screen bg-white inset-0 w-full z-[99]`}
       />
+
+      <Navbar />
+
       <div data-scroll-container ref={scrollWrapper}>
         {children}
       </div>

@@ -1,7 +1,6 @@
 import "./style.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Icon } from "@iconify/react";
 import Link from "next/link";
 import gsap from "gsap";
 import { navLinks } from "@/constants";
@@ -67,6 +66,7 @@ export default function Menu({ state, setState, scroll }) {
 
           <Image
             src="/assets/icons/qris.svg"
+            className="w-16  h-fit"
             width={60}
             height={60}
             alt="qris"
@@ -74,7 +74,7 @@ export default function Menu({ state, setState, scroll }) {
         </div>
 
         <div className="flex flex-col h-full justify-between items-start">
-          <diV className="flex flex-col gap-1 items-start text-xl ">
+          <div className="flex flex-col gap-1 items-start text-xl">
             {navLinks.map((nav, index) => (
               <button
                 key={index}
@@ -86,7 +86,7 @@ export default function Menu({ state, setState, scroll }) {
                 {nav.title}
               </button>
             ))}
-          </diV>
+          </div>
 
           <div className="flex gap-2">
             <Link href="#">
@@ -117,14 +117,14 @@ export default function Menu({ state, setState, scroll }) {
           <h3 className="hidden md:block w-[70%] text-[210px] h-[230px]">
             Invitation
           </h3>
-          <diV className="flex flex-col text-[#5d5d5d]">
+          <div className="flex flex-col text-[#5d5d5d]">
             <div>
               <Link href="#">Tentang Kami</Link>
             </div>
             <div>
               <Link href="#">Layanan</Link>
             </div>
-          </diV>
+          </div>
         </div>
       </div>
 
