@@ -118,7 +118,7 @@ export default function Bio() {
         </div>
       </div>
 
-      <div className="sticky mt-8 bottom-0 inset-x-0 bg-black w-full h-20 rounded-t-xl flex justify-between items-center p-4">
+      <div className="sticky z-50 mt-8 bottom-0 inset-x-0 bg-black w-full h-20 rounded-t-xl flex justify-between items-center p-4">
         <Icon icon="material-symbols:close" width={30} color="white" />
         <h1 className="text-white">Let’s talk</h1>
         <button className="bg-white h-full px-4 rounded-xl">Contact</button>
