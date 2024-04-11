@@ -1,13 +1,14 @@
 "use client";
+
 import { useContext } from "react";
 import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
 import CartContext from "@/providers/CartProvider";
-import TransitionLink from "./TransitionLink";
+import TransitionLink from "@/components/TransitionLink";
 
-export default function Katalog() {
+export default function TemplateList() {
   const { addItemToCart } = useContext(CartContext);
 
   const numberOfColumns = 4;
@@ -20,22 +21,6 @@ export default function Katalog() {
     );
   }
 
-  function getStyleByIndex(index) {
-    let style = {};
-
-    if (index === 0) {
-      style = {};
-    } else if (index === 1) {
-      style = { "data-scroll": true, "data-scroll-speed": 3 };
-    } else if (index === 2) {
-      style = { "data-scroll": true, "data-scroll-speed": 1 };
-    } else if (index === 3) {
-      style = { "data-scroll": true, "data-scroll-speed": 2 };
-    }
-
-    return style;
-  }
-
   const addToCartHandler = (product) => {
     addItemToCart({
       product: product.id,
@@ -46,25 +31,10 @@ export default function Katalog() {
   };
 
   return (
-    <section data-scroll-section id="katalog" className="px-[3%] pb-10">
-      <div className="w-full mt-1.5 border-b border-black" />
-      <div className="flex justify-between items-center text-base mt-2 gap-10">
-        <h1 className="text-3xl">Katalog</h1>
-        <h1 className="md:block hidden">Showing 8/12</h1>
-        <div className="flex justify-between items-center h-full">
-          <button
-            type="submit"
-            className="flex px-1 md:text-base text-sm uppercase justify-center items-center border border-black rounded-full text-black"
-          >
-            latest tamplate
-          </button>
-        </div>
-      </div>
-
+    <section className="w-full h-screen pl-[3%] pt-[3%]">
       <div className="flex flex-col md:flex-row mt-6 w-full justify-between items-center">
         {columns.map((column, index) => (
           <div
-            {...getStyleByIndex(index)}
             key={index}
             className={`${
               index === 0 ? "flex" : "hidden md:flex"
@@ -117,18 +87,6 @@ export default function Katalog() {
           </div>
         ))}
       </div>
-      <TransitionLink
-        href={"/katalog"}
-        className="my-20 mx-auto flex hover-underline-animation w-11/12 md:w-1/4 py-2 pr-1 items-end justify-between"
-      >
-        <h1 className="text-base text-black">See all our template</h1>
-        <Icon
-          icon="carbon:arrow-up"
-          className="text-black"
-          width="20"
-          rotate={1}
-        />
-      </TransitionLink>
     </section>
   );
 }

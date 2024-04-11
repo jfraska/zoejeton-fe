@@ -15,7 +15,7 @@ export default function About() {
       className="relative w-full px-[3%] pb-16 shadow-lg"
       id="about"
     >
-      <div className="w-full mt-2 border-b border-black" />
+      <div className="hidden md:block w-full mt-2 border-b border-black" />
       <p className="mt-8 md:w-3/4 w-10/12 md:text-xl text-base">
         HERE ARE SOME BEAUTIFUL PROJECTS SHOWCASING OUR WEDDING INVITATIONS YOU
         CAN EXPLORE OUR INSPIRATION SECTION, AND PLEASE DON'T HESITATE TO SHARE

@@ -107,7 +107,7 @@ export default function Hero() {
   return (
     <section
       data-scroll-section
-      className="relative w-full h-screen"
+      className="relative w-full h-screen hidden md:block"
       id="beranda"
     >
       <div
