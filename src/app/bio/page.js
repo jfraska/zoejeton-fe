@@ -54,7 +54,14 @@ export default function Bio() {
           <h2 className="text-sm">@zoejeton</h2>
         </div>
 
-        <button className="mt-4 w-full flex items-center gap-4 bg-black text-white rounded-xl p-3">
+        <Link
+          href={
+            process.env.NEXT_PUBLIC_VERCEL_ENV
+              ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+              : `http://localhost:3000`
+          }
+          className="mt-4 w-full flex items-center gap-4 bg-black text-white rounded-xl p-3"
+        >
           <div className="flex justify-center items-center bg-white h-full p-3 rounded-xl">
             <Icon icon="solar:link-bold" color="black" width={20} />
           </div>
@@ -62,7 +69,7 @@ export default function Bio() {
             <h1 className="leading-tight">Website</h1>
             <h2 className="text-sm text-neutral-400">Lorem omasfj</h2>
           </div>
-        </button>
+        </Link>
 
         <div className="mt-4 flex justify-between items-center w-full">
           <h1>Galery</h1>
