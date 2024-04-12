@@ -81,7 +81,11 @@ export default function Katalog() {
               >
                 <TransitionLink
                   className="absolute top-4 right-4 group-hover:scale-100 scale-0 transition-transform ease-in-out bg-black p-3 rounded-full hover:bg-[#00000068]"
-                  href={e.href}
+                  href={
+                    process.env.NEXT_PUBLIC_VERCEL_ENV
+                      ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${e.href}`
+                      : `http://template.localhost:3000/${e.href}`
+                  }
                 >
                   <Icon icon="ph:eye" width="20" color="white" />
                 </TransitionLink>

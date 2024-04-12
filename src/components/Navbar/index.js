@@ -56,7 +56,7 @@ export default function Navbar() {
   return (
     <nav>
       <div
-        className={`top-0 inset-x-0 z-50 py-4 px-[3%] flex justify-between items-center mx-auto ${
+        className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center mx-auto ${
           scrolled
             ? "fixed bg-primary text-black"
             : "absolute bg-transparent text-white"

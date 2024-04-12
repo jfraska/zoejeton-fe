@@ -14,11 +14,13 @@ const CursorProvider = ({ children, containerRef }) => {
   useEffect(() => {
     if (containerRef && containerRef.current) {
       containerRef.current.addEventListener("mousemove", onMouseMove);
+      containerRef.current.addEventListener("touchmove", onMouseMove);
     }
 
     return () => {
       if (containerRef && containerRef.current) {
         containerRef.current.removeEventListener("mousemove", onMouseMove);
+        containerRef.current.removeEventListener("touchmove", onMouseMove);
       }
     };
   }, [containerRef]);
