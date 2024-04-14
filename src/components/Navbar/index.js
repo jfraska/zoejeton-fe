@@ -10,8 +10,10 @@ import CartContext from "@/providers/CartProvider";
 import { AnimatePresence } from "framer-motion";
 import Notif from "./Notif";
 import { Runalto } from "@/styles/fonts";
+import { usePathname, useRouter } from "next/navigation";
+import { Icon } from "@iconify/react";
 
-export default function Navbar() {
+export default function Navbar({ header = false }) {
   const [scrolled, setScrolled] = useState(false);
   const { scroll } = useLocomotiveScroll();
   const [menuState, setMenuState] = useState(false);
@@ -19,14 +21,21 @@ export default function Navbar() {
   const [notifState, setNotifState] = useState(false);
   const [shake, setShake] = useState(false);
   const { cart } = useContext(CartContext);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     if (scroll) {
-      scroll.on("scroll", ({ scroll }) => {
-        if (scroll.y > 600) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
+      scroll.on("call", (value, way, obj) => {
+        if (way === "enter") {
+          switch (value) {
+            case "about":
+              setScrolled(true);
+              break;
+            case "beranda":
+              setScrolled(false);
+              break;
+          }
         }
       });
     }
@@ -56,21 +65,29 @@ export default function Navbar() {
   return (
     <nav>
       <div
-        className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center mx-auto ${
-          scrolled
+        className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center mx-auto 
+        ${
+          !header
             ? "fixed bg-primary text-black"
             : "absolute bg-transparent text-white"
-        } transition-all ease-linear`}
+        } 
+        transition-all ease-linear`}
       >
-        <Hamburger
-          state={menuState}
-          setState={setMenuState}
-          scroll={scrolled}
-        />
+        {pathname === "/" ? (
+          <Hamburger
+            state={menuState}
+            setState={setMenuState}
+            scroll={!header}
+          />
+        ) : (
+          <button onClick={() => router.back()}>
+            <Icon icon="carbon:arrow-up" rotate={-1} color="white" width="30" />
+          </button>
+        )}
         <h1
           className={`${Runalto.className} font-bold ${
             menuState ? "text-black" : null
-          } hidden md:block transition-all ease-linear text-lg font-bold leading-none`}
+          } hidden md:block transition-all ease-linear text-lg leading-none`}
         >
           ZoeJeton
         </h1>
@@ -90,7 +107,7 @@ export default function Navbar() {
         >
           <h1 className="leading-none">Cart</h1>
           <div className={`${shake ? "shake" : null} relative text-end`}>
-            {menuState || scrolled ? (
+            {menuState || !header ? (
               <Image
                 src={"/assets/icons/cart-black.svg"}
                 width="20"

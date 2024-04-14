@@ -1,10 +1,24 @@
 "use client";
 
-import { Icon } from "@iconify/react";
-import { price } from "@/constants";
+import { useContext } from "react";
+import { addOns } from "@/constants";
 import Image from "next/image";
+import LoadingButton from "./LoadingButton";
+import CartContext from "@/providers/CartProvider";
 
 export default function AddOn() {
+  const { addItemToCart } = useContext(CartContext);
+
+  const addToCartHandler = (e) => {
+    addItemToCart({
+      product: e.id,
+      name: e.name,
+      price: e.price,
+      type: e.type,
+      // image: e.image, // Uncomment jika ingin menyertakan gambar
+    });
+  };
+
   return (
     <section data-scroll-section className="w-full pb-20 px-[3%]" id="add-on">
       <div className="w-full mt-2 border-b border-black" />
@@ -32,37 +46,29 @@ export default function AddOn() {
           />
         </div>
         <div className="md:w-3/5 w-full flex flex-col -mt-4">
-          <div className="w-full flex justify-between items-center pr-2 py-4 border-b border-black">
-            <div className="flex flex-col gap-2">
-              <h1 className="leading-none text-lg">Guestbook</h1>
-              <h1 className="leading-none text-sm">Lorem asjfnas</h1>
+          {addOns.map((addOn, index) => (
+            <div
+              key={index}
+              className="w-full flex justify-between items-center pr-2 py-4 hover-underline-animation"
+            >
+              <div className="flex flex-col gap-2">
+                <h1 className="leading-none text-lg ">{addOn.name}</h1>
+                <h1 className="leading-none text-sm">Lorem asjfnas</h1>
+              </div>
+              <LoadingButton
+                onClick={() => addToCartHandler(addOn)}
+                className="flex justify-center items-center"
+              >
+                <Image
+                  src={"/assets/icons/cart-black.svg"}
+                  width={20}
+                  height={20}
+                  className="aspect-square"
+                  alt="cart"
+                />
+              </LoadingButton>
             </div>
-            <button className="flex justify-center items-center">
-              <Image
-                src={"/assets/icons/cart-black.svg"}
-                width={20}
-                height={20}
-                className="aspect-square"
-                alt="cart"
-              />
-            </button>
-          </div>
-
-          <div className="w-full flex justify-between items-center pr-2 py-4 border-b border-black">
-            <div className="flex flex-col gap-2">
-              <h1 className="leading-none text-lg">Guestbook</h1>
-              <h1 className="leading-none text-sm">Lorem asjfnas</h1>
-            </div>
-            <button className="flex justify-center items-center">
-              <Image
-                src={"/assets/icons/cart-black.svg"}
-                width={20}
-                height={20}
-                className="aspect-square"
-                alt="cart"
-              />
-            </button>
-          </div>
+          ))}
         </div>
       </div>
     </section>

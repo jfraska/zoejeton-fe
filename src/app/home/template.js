@@ -5,31 +5,14 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Preloader from "@/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { animatePageIn } from "@/utils/animations";
 import Navbar from "@/components/Navbar";
 
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const scrollWrapper = useRef(null);
-  const { asPath } = useRouter();
-
-  const settings = {
-    options: {
-      smooth: true,
-      multiplier: 0.8,
-      smartphone: {
-        smooth: true,
-      },
-      tablet: {
-        smooth: true,
-      },
-    },
-    location: asPath,
-    containerRef: scrollWrapper,
-    onLocationChange: (scroll) =>
-      scroll.scrollTo(0, { duration: 0, disableLerp: true }),
-  };
+  const pathname = usePathname();
 
   useEffect(() => {
     animatePageIn();
@@ -39,7 +22,23 @@ export default function Template({ children }) {
   }, []);
 
   return (
-    <GlobalScroll {...settings}>
+    <GlobalScroll
+      options={{
+        smooth: true,
+        multiplier: 0.8,
+        smartphone: {
+          smooth: true,
+        },
+        tablet: {
+          smooth: true,
+        },
+      }}
+      location={pathname}
+      containerRef={scrollWrapper}
+      onLocationChange={(scroll) =>
+        scroll.scrollTo(0, { duration: 0, disableLerp: true })
+      }
+    >
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
@@ -51,7 +50,7 @@ export default function Template({ children }) {
         } min-h-screen bg-white inset-0 w-full z-[99]`}
       />
 
-      <Navbar />
+      <Navbar header />
 
       <div data-scroll-container ref={scrollWrapper}>
         {children}

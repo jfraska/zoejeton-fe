@@ -12,6 +12,7 @@ import { Parallax, Pagination, Controller, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import Navbar from "./Navbar";
 
 const params = {
   style: {
@@ -107,9 +108,13 @@ export default function Hero() {
   return (
     <section
       data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      data-scroll-call="beranda"
       className="relative w-full h-screen hidden md:block"
       id="beranda"
     >
+      {/* <Navbar header /> */}
       <div
         ref={trigerRef}
         className="carousel_sticky-area"

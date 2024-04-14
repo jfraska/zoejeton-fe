@@ -12,6 +12,9 @@ export default function About() {
   return (
     <section
       data-scroll-section
+      data-scroll
+      data-scroll-repeat
+      data-scroll-call="about"
       className="relative w-full px-[3%] pb-16 shadow-lg"
       id="about"
     >

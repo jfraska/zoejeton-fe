@@ -49,6 +49,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/minimalis",
   },
   {
@@ -56,15 +57,15 @@ export const templates = [
     name: "Work",
     image: "elegant",
     price: 200000,
-    href: "/",
+    type: "template",
     href: "/",
   },
   {
     id: "3",
     name: "Contact",
-
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -72,6 +73,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -79,6 +81,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -86,6 +89,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -93,6 +97,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -100,6 +105,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -107,6 +113,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -114,6 +121,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -121,6 +129,7 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
     href: "/",
   },
   {
@@ -128,6 +137,26 @@ export const templates = [
     name: "Minimalis",
     image: "elegant",
     price: 200000,
+    type: "template",
+    href: "/",
+  },
+];
+
+export const addOns = [
+  {
+    id: "a-1",
+    name: "Guestbook",
+    image: "elegant",
+    price: 200000,
+    type: "addon",
+    href: "/",
+  },
+  {
+    id: "a-2",
+    name: "Guestbook",
+    image: "elegant",
+    price: 200000,
+    type: "addon",
     href: "/",
   },
 ];

@@ -22,10 +22,11 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const addItemToCart = async ({ product, name, price, image }) => {
+  const addItemToCart = async ({ product, name, type, price, image }) => {
     const item = {
       product,
       name,
+      type,
       price,
       image,
     };

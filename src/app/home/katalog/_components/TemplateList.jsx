@@ -31,7 +31,7 @@ export default function TemplateList() {
   };
 
   return (
-    <section className="w-full h-screen pl-[3%] pt-[3%]">
+    <section>
       <div className="flex flex-col md:flex-row mt-6 w-full justify-between items-center">
         {columns.map((column, index) => (
           <div

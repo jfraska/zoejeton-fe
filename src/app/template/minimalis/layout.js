@@ -4,7 +4,7 @@ import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Minimalis",
+  title: "Minimalis | ZoeJeton",
   description: "by zoe",
 };
 

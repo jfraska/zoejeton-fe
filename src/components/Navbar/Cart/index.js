@@ -46,7 +46,7 @@ export default function Cart({ state, setState }) {
     <>
       <div
         ref={(el) => (sidebarMenu = el)}
-        className={`fixed h-screen top-0 right-0 z-[60] md:w-1/4 w-full bg-white text-black`}
+        className={`fixed h-screen top-0 right-0 z-[60] md:w-1/4 w-11/12 bg-white text-black`}
       >
         <div className="w-full h-4/5 pb-20 overflow-y-auto px-5">
           <div className="flex py-5 justify-between items-center w-full">
@@ -68,41 +68,92 @@ export default function Cart({ state, setState }) {
           </div>
 
           <div className="mt-2 flex flex-col gap-2">
-            {cart?.cartItems?.map((cartItem) => (
-              <div
-                key={cartItem.product}
-                className="w-full flex justify-between items-stretch gap-4 p-4 bg-white shadow-md rounded"
-              >
-                <div
-                  className="aspect-square w-20 rounded bg-white bg-cover bg-center"
-                  style={{
-                    backgroundImage:
-                      "url('https://source.unsplash.com/collection/2091539/500x400')",
-                  }}
-                />
-                <div className="w-2/5 flex flex-col items-start gap-2">
-                  <h1 className="font-medium leading-none">{cartItem.name}</h1>
-                  <h1 className="text-xs">{cartItem.product}</h1>
-                </div>
-                <div className="w-2/5 flex flex-col items-end justify-between">
-                  <h1 className="font-medium text-sm leading-none">
-                    <CurrencyFormat
-                      value={cartItem.price}
-                      displayType={"text"}
-                      thousandSeparator={true}
-                      prefix={"IDR "}
-                      suffix={".-"}
-                    />
-                  </h1>
-                  <button
-                    className="flex justify-center items-center"
-                    onClick={() => deleteItemFromCart(cartItem?.product)}
+            {cart?.cartItems?.map(
+              (cartItem) =>
+                cartItem.type === "template" && (
+                  <div
+                    key={cartItem.product}
+                    className="w-full flex justify-between items-stretch gap-4 p-4 bg-white rounded shadow-[0_2px_20px_-10px_rgba(0,0,0,0.2)]"
                   >
-                    <Icon icon="lucide:trash" color="black" width="15" />
-                  </button>
-                </div>
-              </div>
-            ))}
+                    <div
+                      className="aspect-square w-20 rounded bg-white bg-cover bg-center"
+                      style={{
+                        backgroundImage:
+                          "url('https://source.unsplash.com/collection/2091539/500x400')",
+                      }}
+                    />
+                    <div className="w-2/5 flex flex-col items-start gap-2">
+                      <h1 className="font-medium leading-none">
+                        {cartItem.name}
+                      </h1>
+                      <h1 className="text-xs">{cartItem.product}</h1>
+                    </div>
+                    <div className="w-2/5 flex flex-col items-end justify-between">
+                      <h1 className="font-medium text-sm leading-none">
+                        <CurrencyFormat
+                          value={cartItem.price}
+                          displayType={"text"}
+                          thousandSeparator={true}
+                          prefix={"IDR "}
+                          suffix={".-"}
+                        />
+                      </h1>
+                      <button
+                        className="flex justify-center items-center"
+                        onClick={() => deleteItemFromCart(cartItem?.product)}
+                      >
+                        <Icon icon="lucide:trash" color="black" width="15" />
+                      </button>
+                    </div>
+                  </div>
+                )
+            )}
+
+            {cart?.cartItems?.some((cartItem) => cartItem.type === "addon") && (
+              <h1 className="mt-4 ext-xl font-medium leading-none text-neutral-950">
+                Add-On
+              </h1>
+            )}
+            {cart?.cartItems?.map(
+              (cartItem) =>
+                cartItem.type === "addon" && (
+                  <div
+                    key={cartItem.product}
+                    className="w-full flex justify-between items-stretch gap-4 p-4 bg-white rounded shadow-[0_2px_20px_-10px_rgba(0,0,0,0.2)]"
+                  >
+                    <div
+                      className="aspect-square w-20 rounded bg-white bg-cover bg-center"
+                      style={{
+                        backgroundImage:
+                          "url('https://source.unsplash.com/collection/2091539/500x400')",
+                      }}
+                    />
+                    <div className="w-2/5 flex flex-col items-start gap-2">
+                      <h1 className="font-medium leading-none">
+                        {cartItem.name}
+                      </h1>
+                      <h1 className="text-xs">{cartItem.product}</h1>
+                    </div>
+                    <div className="w-2/5 flex flex-col items-end justify-between">
+                      <h1 className="font-medium text-sm leading-none">
+                        <CurrencyFormat
+                          value={cartItem.price}
+                          displayType={"text"}
+                          thousandSeparator={true}
+                          prefix={"IDR "}
+                          suffix={".-"}
+                        />
+                      </h1>
+                      <button
+                        className="flex justify-center items-center"
+                        onClick={() => deleteItemFromCart(cartItem?.product)}
+                      >
+                        <Icon icon="lucide:trash" color="black" width="15" />
+                      </button>
+                    </div>
+                  </div>
+                )
+            )}
           </div>
         </div>
 

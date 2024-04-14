@@ -1,11 +1,13 @@
 "use client";
-import { useContext } from "react";
+
+import { useContext, useState } from "react";
 import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
 import CartContext from "@/providers/CartProvider";
 import TransitionLink from "./TransitionLink";
+import LoadingButton from "./LoadingButton";
 
 export default function Katalog() {
   const { addItemToCart } = useContext(CartContext);
@@ -41,6 +43,7 @@ export default function Katalog() {
       product: product.id,
       name: product.name,
       price: product.price,
+      type: product.type,
       // image: product.images[0].url,
     });
   };
@@ -73,7 +76,7 @@ export default function Katalog() {
             {column.map((e) => (
               <div
                 key={e.id}
-                className="group relative w-full h-[370px] lg:h-[400px] border border-black rounded-lg hover:bg-[#00000068] transition-all ease-in-out bg-cover bg-blend-overlay"
+                className="group relative w-full h-[370px] lg:h-[400px] border border-black rounded-lg hover:bg-[#0000008e] transition-all ease-in-out bg-cover bg-blend-overlay"
                 style={{
                   backgroundImage:
                     "url('https://source.unsplash.com/collection/2091539/500x400')",
@@ -104,9 +107,9 @@ export default function Katalog() {
                     />
                   </h1>
                 </div>
-                <button
+                <LoadingButton
                   onClick={() => addToCartHandler(e)}
-                  className="absolute bottom-4 right-4 bg-black w-fit p-2 rounded-md hover:bg-[#00000068]"
+                  className="absolute bottom-4 right-4 bg-black flex justify-center items-center p-2 rounded-md hover:bg-[#00000068]"
                 >
                   <Image
                     src={"/assets/icons/cart.svg"}
@@ -115,7 +118,7 @@ export default function Katalog() {
                     alt="cart"
                     className="w-5 aspect-square"
                   />
-                </button>
+                </LoadingButton>
               </div>
             ))}
           </div>
