@@ -114,7 +114,7 @@ export default function Hero() {
       className="relative w-full h-screen hidden md:block"
       id="beranda"
     >
-      {/* <Navbar header /> */}
+      <Navbar header />
       <div
         ref={trigerRef}
         className="carousel_sticky-area"

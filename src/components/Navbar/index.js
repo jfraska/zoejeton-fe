@@ -1,8 +1,7 @@
 "use client";
 import "./style.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
-import Hamburger from "../Hamburger";
 import Image from "next/image";
 import Cart from "./Cart";
 import Menu from "./Menu";
@@ -12,9 +11,11 @@ import Notif from "./Notif";
 import { Runalto } from "@/styles/fonts";
 import { usePathname, useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
+import gsap from "gsap";
+import Hamburger from "../Hamburger";
 
 export default function Navbar({ header = false }) {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(true);
   const { scroll } = useLocomotiveScroll();
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
@@ -23,17 +24,22 @@ export default function Navbar({ header = false }) {
   const { cart } = useContext(CartContext);
   const pathname = usePathname();
   const router = useRouter();
+  let navbar = useRef(null);
+  const navTimeline = useRef();
 
   useEffect(() => {
     if (scroll) {
       scroll.on("call", (value, way, obj) => {
         if (way === "enter") {
           switch (value) {
-            case "about":
-              setScrolled(true);
-              break;
             case "beranda":
               setScrolled(false);
+              break;
+          }
+        } else if (way === "exit") {
+          switch (value) {
+            case "beranda":
+              setScrolled(true);
               break;
           }
         }
@@ -62,16 +68,44 @@ export default function Navbar({ header = false }) {
     }
   }, [cart]);
 
+  useEffect(() => {
+    if (!header) {
+      navTimeline.current = gsap.timeline({ paused: true });
+      navTimeline.current.fromTo(
+        [navbar],
+        {
+          duration: 0,
+          y: "-100%",
+        },
+        {
+          duration: 0.5,
+          y: "0%",
+          ease: "power3.inOut",
+          stagger: {
+            amount: 0.5,
+          },
+        }
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!header) {
+      scrolled ? navTimeline.current.play() : navTimeline.current.reverse();
+    }
+  }, [scrolled]);
+
   return (
     <nav>
       <div
+        ref={(el) => (navbar = el)}
         className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center mx-auto 
         ${
           !header
             ? "fixed bg-primary text-black"
             : "absolute bg-transparent text-white"
         } 
-        transition-all ease-linear`}
+        transition-all ease-in-out`}
       >
         {pathname === "/" ? (
           <Hamburger
@@ -87,7 +121,7 @@ export default function Navbar({ header = false }) {
         <h1
           className={`${Runalto.className} font-bold ${
             menuState ? "text-black" : null
-          } hidden md:block transition-all ease-linear text-lg leading-none`}
+          } hidden md:block transition-all ease-in-out text-lg leading-none`}
         >
           ZoeJeton
         </h1>
@@ -134,7 +168,7 @@ export default function Navbar({ header = false }) {
         <button
           className={`${
             menuState ? "block" : "hidden"
-          } text-black text-lg absolute md:top-3 top-3 md:left-20 left-12 transition-all ease-in-out delay-100`}
+          } text-black text-lg absolute top-2 md:left-20 left-12 transition-all ease-in-out delay-100`}
           onClick={() => setMenuState(false)}
         >
           Close

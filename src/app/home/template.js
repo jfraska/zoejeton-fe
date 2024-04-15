@@ -50,7 +50,7 @@ export default function Template({ children }) {
         } min-h-screen bg-white inset-0 w-full z-[99]`}
       />
 
-      <Navbar header />
+      <Navbar />
 
       <div data-scroll-container ref={scrollWrapper}>
         {children}

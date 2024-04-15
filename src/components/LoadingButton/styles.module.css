@@ -7,7 +7,7 @@
   }
 }
 
-.loader {
+.loading {
   border: 2px solid rgba(255, 255, 255, 0.6);
   border-left: 2px solid;
   animation: load 1s infinite linear;

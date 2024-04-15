@@ -1,6 +1,6 @@
 "use client";
 
-import "./style.css";
+import styles from "./styles.module.css";
 import React from "react";
 import { useSpring, animated } from "react-spring";
 
@@ -62,7 +62,7 @@ export default function LoadingButton({ onClick, children, ...props }) {
     >
       {showLoader ? (
         <animated.div style={fadeOutProps}>
-          <div className="loader" />
+          <div className={styles.loading} />
         </animated.div>
       ) : (
         <animated.div style={fadeInProps}>{children}</animated.div>
