@@ -115,7 +115,7 @@ export default function Navbar({ header = false }) {
           />
         ) : (
           <button onClick={() => router.back()}>
-            <Icon icon="carbon:arrow-up" rotate={-1} color="black" width="30" />
+            <Icon icon="fe:arrow-up" rotate={-1} color="black" width="25" />
           </button>
         )}
         <h1
