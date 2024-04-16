@@ -109,12 +109,10 @@ export default function Hero() {
     <section
       data-scroll-section
       data-scroll
-      data-scroll-repeat
-      data-scroll-call="beranda"
+      data-scroll-id="beranda"
       className="relative w-full h-screen hidden md:block"
       id="beranda"
     >
-      <Navbar header />
       <div
         ref={trigerRef}
         className="carousel_sticky-area"

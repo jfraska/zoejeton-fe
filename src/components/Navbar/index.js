@@ -14,8 +14,8 @@ import { Icon } from "@iconify/react";
 import gsap from "gsap";
 import Hamburger from "../Hamburger";
 
-export default function Navbar({ header = false }) {
-  const [scrolled, setScrolled] = useState(true);
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState({ state: true, header: false });
   const { scroll } = useLocomotiveScroll();
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
@@ -24,24 +24,22 @@ export default function Navbar({ header = false }) {
   const { cart } = useContext(CartContext);
   const pathname = usePathname();
   const router = useRouter();
-  let navbar = useRef(null);
+  let navbarRef = useRef(null);
   const navTimeline = useRef();
 
   useEffect(() => {
     if (scroll) {
-      scroll.on("call", (value, way, obj) => {
-        if (way === "enter") {
-          switch (value) {
-            case "beranda":
-              setScrolled(false);
-              break;
+      scroll.on("scroll", (args) => {
+        if (typeof args.currentElements["beranda"] === "object") {
+          if (args.currentElements["beranda"].progress < 0.6) {
+            setScrolled({ state: true, header: true });
+          } else if (args.currentElements["beranda"].progress < 0.8) {
+            setScrolled({ state: false, header: true });
+          } else {
+            setScrolled({ state: false, header: false });
           }
-        } else if (way === "exit") {
-          switch (value) {
-            case "beranda":
-              setScrolled(true);
-              break;
-          }
+        } else {
+          setScrolled({ state: true, header: false });
         }
       });
     }
@@ -69,41 +67,37 @@ export default function Navbar({ header = false }) {
   }, [cart]);
 
   useEffect(() => {
-    if (!header) {
-      navTimeline.current = gsap.timeline({ paused: true });
-      navTimeline.current.fromTo(
-        [navbar],
-        {
-          duration: 0,
-          y: "-100%",
+    navTimeline.current = gsap.timeline({ paused: true });
+    navTimeline.current.fromTo(
+      [navbarRef],
+      {
+        duration: 0,
+        y: "-100%",
+      },
+      {
+        duration: 0.4,
+        y: "0%",
+        ease: "power3.inOut",
+        stagger: {
+          amount: 0.4,
         },
-        {
-          duration: 0.5,
-          y: "0%",
-          ease: "power3.inOut",
-          stagger: {
-            amount: 0.5,
-          },
-        }
-      );
-    }
+      }
+    );
   }, []);
 
   useEffect(() => {
-    if (!header) {
-      scrolled ? navTimeline.current.play() : navTimeline.current.reverse();
-    }
+    scrolled.state ? navTimeline.current.play() : navTimeline.current.reverse();
   }, [scrolled]);
 
   return (
-    <nav>
-      <div
-        ref={(el) => (navbar = el)}
-        className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center mx-auto 
+    <>
+      <nav
+        ref={(el) => (navbarRef = el)}
+        className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center fixed 
         ${
-          !header
-            ? "fixed bg-primary text-black"
-            : "absolute bg-transparent text-white"
+          scrolled.header
+            ? "bg-transparent text-white"
+            : "bg-primary text-black"
         } 
         transition-all ease-in-out`}
       >
@@ -111,16 +105,21 @@ export default function Navbar({ header = false }) {
           <Hamburger
             state={menuState}
             setState={setMenuState}
-            scroll={!header}
+            scroll={scrolled.header}
           />
         ) : (
           <button onClick={() => router.back()}>
-            <Icon icon="fe:arrow-up" rotate={-1} color="black" width="25" />
+            <Icon
+              icon="ri:arrow-up-s-line"
+              rotate={-1}
+              color="black"
+              width="25"
+            />
           </button>
         )}
         <h1
           className={`${Runalto.className} font-bold ${
-            menuState ? "text-black" : null
+            menuState && "text-black"
           } hidden md:block transition-all ease-in-out text-lg leading-none`}
         >
           ZoeJeton
@@ -136,12 +135,12 @@ export default function Navbar({ header = false }) {
             }
           }}
           className={`flex items-center gap-1 text-base cursor-pointer ${
-            menuState ? "text-black" : null
+            menuState && "text-black"
           } transition-all ease-linear`}
         >
           <h1 className="leading-none">Cart</h1>
-          <div className={`${shake ? "shake" : null} relative text-end`}>
-            {menuState || !header ? (
+          <div className={`${shake && "shake"} relative text-end`}>
+            {menuState || !scrolled.header ? (
               <Image
                 src={"/assets/icons/cart-black.svg"}
                 width="20"
@@ -173,13 +172,13 @@ export default function Navbar({ header = false }) {
         >
           Close
         </button>
-      </div>
+      </nav>
 
       <AnimatePresence mode="wait">{notifState && <Notif />}</AnimatePresence>
 
       <Cart state={cartState} setState={setCartState} />
 
       <Menu state={menuState} setState={setMenuState} scroll={scroll} />
-    </nav>
+    </>
   );
 }
