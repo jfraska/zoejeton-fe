@@ -10,9 +10,10 @@ import { AnimatePresence } from "framer-motion";
 import Notif from "./Notif";
 import { Runalto } from "@/styles/fonts";
 import { usePathname, useRouter } from "next/navigation";
-import { Icon } from "@iconify/react";
+import { ArrowBackIosNewSharp } from "@mui/icons-material";
 import gsap from "gsap";
 import Hamburger from "../Hamburger";
+import TransitionLink from "../TransitionLink";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState({ state: true, header: false });
@@ -90,8 +91,8 @@ export default function Navbar() {
   }, [scrolled]);
 
   return (
-    <>
-      <nav
+    <nav>
+      <div
         ref={(el) => (navbarRef = el)}
         className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center fixed 
         ${
@@ -105,17 +106,12 @@ export default function Navbar() {
           <Hamburger
             state={menuState}
             setState={setMenuState}
-            scroll={scrolled.header}
+            scroll={!scrolled.header}
           />
         ) : (
-          <button onClick={() => router.back()}>
-            <Icon
-              icon="ri:arrow-up-s-line"
-              rotate={-1}
-              color="black"
-              width="25"
-            />
-          </button>
+          <TransitionLink href={"/"}>
+            <ArrowBackIosNewSharp />
+          </TransitionLink>
         )}
         <h1
           className={`${Runalto.className} font-bold ${
@@ -172,13 +168,13 @@ export default function Navbar() {
         >
           Close
         </button>
-      </nav>
+      </div>
 
       <AnimatePresence mode="wait">{notifState && <Notif />}</AnimatePresence>
 
       <Cart state={cartState} setState={setCartState} />
 
       <Menu state={menuState} setState={setMenuState} scroll={scroll} />
-    </>
+    </nav>
   );
 }

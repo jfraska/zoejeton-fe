@@ -22,8 +22,8 @@ export default function Hamburger({ state, scroll, setState }) {
       ref={buttonRef}
       onClick={() => setState(!state)}
     >
-      <span className={state || scroll ? "bg-white" : "bg-black"} />
-      <span className={state || scroll ? "bg-white" : "bg-black"} />
+      <span className={state || scroll ? "bg-black" : "bg-white"} />
+      <span className={state || scroll ? "bg-black" : "bg-white"} />
     </button>
   );
 }

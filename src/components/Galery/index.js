@@ -1,6 +1,4 @@
-"use client";
-
-import { Icon } from "@iconify/react";
+import styles from "./styles.module.scss";
 import { price } from "@/constants";
 import Image from "next/image";
 

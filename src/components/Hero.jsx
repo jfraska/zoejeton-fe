@@ -4,7 +4,6 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { Icon } from "@iconify/react";
 import { Gunterz, Radwave } from "@/styles/fonts";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +11,6 @@ import { Parallax, Pagination, Controller, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import Navbar from "./Navbar";
 
 const params = {
   style: {
@@ -283,12 +281,9 @@ export default function Hero() {
         <button className="text-sm" onClick={() => scroll.scrollTo("#about")}>
           Scroll
         </button>
-        <Icon
-          className="block md:hidden"
-          icon="uim:triangle"
-          color="white"
-          width="12"
-          vFlip={true}
+        <span
+          className="block md:hidden w-3 aspect-square icon-[uim--triangle]"
+          style={{ color: "white", transform: "rotate(180deg)" }}
         />
       </div>
     </section>

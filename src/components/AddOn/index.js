@@ -1,12 +1,13 @@
 "use client";
 
 import { useContext } from "react";
+import styles from "./styles.module.scss";
 import { addOns } from "@/constants";
 import Image from "next/image";
-import LoadingButton from "./LoadingButton";
+import LoadingButton from "../LoadingButton";
 import CartContext from "@/providers/CartProvider";
 
-export default function AddOn() {
+export default function index() {
   const { addItemToCart } = useContext(CartContext);
 
   const addToCartHandler = (e) => {

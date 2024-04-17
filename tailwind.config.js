@@ -1,4 +1,5 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
+const { addDynamicIconSelectors } = require("@iconify/tailwind");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -23,5 +24,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors({ scale: 0 })],
 };

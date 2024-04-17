@@ -3,7 +3,6 @@ import { useLayoutEffect, useRef } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { Icon } from "@iconify/react";
 import { feature } from "@/constants";
 
 gsap.registerPlugin(ScrollTrigger);

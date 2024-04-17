@@ -1,6 +1,3 @@
-"use client";
-import { Icon } from "@iconify/react";
-
 export default function Message() {
   return (
     <section
@@ -18,23 +15,17 @@ export default function Message() {
             INFORMATION)
           </h1>
           <div className="flex gap-1">
-            <Icon
-              icon="carbon:arrow-up"
-              vFlip={true}
-              color="black"
-              width="120"
+            <span
+              className="w-32 aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(180deg)" }}
             />
-            <Icon
-              icon="carbon:arrow-up"
-              vFlip={true}
-              color="black"
-              width="120"
+            <span
+              className="w-32 aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(180deg)" }}
             />
-            <Icon
-              icon="carbon:arrow-up"
-              vFlip={true}
-              color="black"
-              width="120"
+            <span
+              className="w-[120px] aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(180deg)" }}
             />
           </div>
         </div>
@@ -51,23 +42,17 @@ export default function Message() {
             INFORMATION)
           </h1>
           <div className="flex gap-1">
-            <Icon
-              icon="carbon:arrow-up"
-              vFlip={true}
-              color="black"
-              width="120"
+            <span
+              className="w-32 aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(180deg)" }}
             />
-            <Icon
-              icon="carbon:arrow-up"
-              vFlip={true}
-              color="black"
-              width="120"
+            <span
+              className="w-32 aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(180deg)" }}
             />
-            <Icon
-              icon="carbon:arrow-up"
-              vFlip={true}
-              color="black"
-              width="120"
+            <span
+              className="w-[120px] aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(180deg)" }}
             />
           </div>
         </div>

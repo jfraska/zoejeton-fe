@@ -1,6 +1,5 @@
 import "./style.css";
 import { useForm } from "react-hook-form";
-import { Icon } from "@iconify/react";
 
 export default function Contact() {
   const {
@@ -62,7 +61,10 @@ export default function Contact() {
           className="flex px-1 mt-5 justify-between items-center bg-white rounded-full w-full text-black"
         >
           <h1 className="uppercase text-xl leading-tight">send whatsapp</h1>
-          <Icon icon="carbon:arrow-up" rotate={1} color="black" width="20" />
+          <span
+            className="w-5 aspect-square icon-[carbon--arrow-up]"
+            style={{ color: "black", transform: "rotate(90deg)" }}
+          />
         </button>
       </form>
     </div>

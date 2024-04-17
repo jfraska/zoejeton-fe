@@ -5,7 +5,7 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import Preloader from "@/components/Preloader";
 import { AnimatePresence } from "framer-motion";
 import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { animatePageIn } from "@/utils/animations";
 import Navbar from "@/components/Navbar";
 
@@ -13,7 +13,6 @@ export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const scrollWrapper = useRef(null);
   const pathname = usePathname();
-  const route = useRouter();
 
   useEffect(() => {
     animatePageIn();
@@ -29,7 +28,7 @@ export default function Template({ children }) {
       </AnimatePresence>
 
       <div
-        id="banner"
+        id="transition"
         className={`${
           isLoading ? "hidden" : "fixed"
         } min-h-screen bg-white inset-0 w-full z-[99]`}
@@ -46,18 +45,17 @@ export default function Template({ children }) {
             smooth: true,
           },
         }}
-        watch={[route, pathname]}
+        watch={[scrollWrapper]}
         location={pathname}
         containerRef={scrollWrapper}
         onLocationChange={(scroll) =>
           scroll.scrollTo(0, { duration: 0, disableLerp: true })
         }
-        onUpdate={() => route.refresh()}
       >
         <Navbar />
-        <div data-scroll-container ref={scrollWrapper}>
+        <main data-scroll-container ref={scrollWrapper}>
           {children}
-        </div>
+        </main>
       </GlobalScroll>
     </>
   );

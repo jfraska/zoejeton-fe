@@ -1,5 +1,4 @@
 import "./style.css";
-import { Icon } from "@iconify/react";
 
 const FAQ = ({ faq, index, toggle, selected }) => {
   return (
@@ -14,9 +13,15 @@ const FAQ = ({ faq, index, toggle, selected }) => {
       >
         <h1 className="md:text-base text-sm leading-tight">{faq.question}</h1>
         {selected === index ? (
-          <Icon icon="ic:outline-minus" width="20" />
+          <span
+            className="w-5 aspect-square icon-[ic--outline-minus]"
+            style={{ color: "white" }}
+          />
         ) : (
-          <Icon icon="ic:outline-plus" width="20" />
+          <span
+            className="w-5 aspect-square icon-[ic--outline-plus]"
+            style={{ color: "white" }}
+          />
         )}
       </div>
       <div className={selected === index ? "accordion show" : "accordion"}>

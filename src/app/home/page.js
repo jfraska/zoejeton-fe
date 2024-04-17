@@ -11,15 +11,15 @@ import Galery from "@/components/Galery";
 export default function Home() {
   return (
     <>
-      <Hero />
-      <About />
+      {/* <Hero /> */}
+      {/* <About /> */}
       {/* <Feature /> */}
-      <ScrollVelocity />
-      <Katalog />
-      <AddOn />
+      {/* <ScrollVelocity /> */}
+      {/* <Katalog /> */}
+      {/* <AddOn /> */}
       <Galery />
       <Message />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

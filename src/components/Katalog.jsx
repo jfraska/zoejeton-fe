@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
@@ -83,14 +82,17 @@ export default function Katalog() {
                 }}
               >
                 <TransitionLink
-                  className="absolute top-4 right-4 group-hover:scale-100 scale-0 transition-transform ease-in-out bg-black p-3 rounded-full hover:bg-[#00000068]"
+                  className="absolute aspect-square top-4 right-4 group-hover:scale-100 scale-0 transition-transform ease-in-out bg-black flex justify-center items-center px-3 rounded-full hover:bg-[#00000068]"
                   href={
                     process.env.NEXT_PUBLIC_VERCEL_ENV
                       ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${e.href}`
                       : `http://template.localhost:3000/${e.href}`
                   }
                 >
-                  <Icon icon="ph:eye" width="20" color="white" />
+                  <span
+                    className="w-5 aspect-square icon-[ph--eye]"
+                    style={{ color: "white" }}
+                  />
                 </TransitionLink>
 
                 <div className="absolute bottom-4 left-4">
@@ -129,11 +131,9 @@ export default function Katalog() {
         className="my-20 mx-auto flex hover-underline-animation w-11/12 md:w-1/4 py-2 pr-1 items-end justify-between"
       >
         <h1 className="text-base text-black">See all our template</h1>
-        <Icon
-          icon="carbon:arrow-up"
-          className="text-black"
-          width="20"
-          rotate={1}
+        <span
+          className="w-5 aspect-square icon-[carbon--arrow-up]"
+          style={{ color: "black", transform: "rotate(90deg)" }}
         />
       </TransitionLink>
     </section>

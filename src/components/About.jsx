@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { Icon } from "@iconify/react";
+import { ArrowForwardSharp } from "@mui/icons-material";
 import Statue from "./Statue";
 import CursorProvider from "@/providers/CursorProvider";
 import Link from "next/link";
@@ -50,12 +50,10 @@ export default function About() {
             className="flex hover-underline-animation w-full  py-2 pr-1  items-end justify-between"
           >
             <h1 className="md:text-base text-sm text-black">More About Us</h1>
-            <Icon
-              icon="carbon:arrow-up"
-              className="text-black"
-              width="20"
-              rotate={1}
-            />
+            {/* <span
+              className="w-5 aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(90deg)" }}
+            /> */}
           </TransitionLink>
         </div>
         <div className="w-full">
@@ -72,12 +70,10 @@ export default function About() {
             className="flex hover-underline-animation w-full py-2 pr-1 items-end justify-between"
           >
             <h1 className="md:text-base text-sm text-black">Instagram</h1>
-            <Icon
-              icon="carbon:arrow-up"
-              className="text-black"
-              width="20"
-              rotate={1}
-            />
+            {/* <span
+              className="w-5 aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(90deg)" }}
+            /> */}
           </Link>
         </div>
       </div>

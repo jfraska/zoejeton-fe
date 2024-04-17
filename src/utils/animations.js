@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 export const animatePageIn = () => {
-  const banner = document.getElementById("banner");
+  const banner = document.getElementById("transition");
 
   if (banner) {
     const tl = gsap.timeline();
@@ -16,7 +16,7 @@ export const animatePageIn = () => {
 };
 
 export const animatePageOut = (href, router) => {
-  const banner = document.getElementById("banner");
+  const banner = document.getElementById("transition");
   if (banner) {
     const tl = gsap.timeline();
 
