@@ -111,11 +111,12 @@ export default class SwipeableButton extends Component {
             onMouseDown={this.startDrag}
             onTouchStart={this.startDrag}
           >
-            <span className="rsbcSliderArrow">{this.props.caret}</span>
             <span
-              className="rsbcSliderCircle"
+              className="rsbcSliderCircle flex justify-center items-center"
               style={{ background: this.props.color }}
-            ></span>
+            >
+              {this.props.caret}
+            </span>
           </div>
           <div className="rsbcText">{this.props.mainText}</div>
         </div>

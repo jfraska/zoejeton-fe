@@ -12,7 +12,7 @@ export default function Back() {
     >
       <span
         className="w-5 aspect-square icon-[carbon--arrow-up]"
-        style={{ color: "white", transform: "rotate(180deg)" }}
+        style={{ color: "white", transform: "rotate(-90deg)" }}
       />
     </button>
   );

@@ -35,10 +35,7 @@
   cursor: default;
   pointer-events: none;
 }
-.rsbContainerUnlocked .rsbcSliderArrow {
-  transition: 0.5s;
-  margin-right: -60px;
-}
+
 .rsbContainerUnlocked .rsbcSliderCircle {
   transition: 0.5s;
   margin-right: -60px;
@@ -58,18 +55,9 @@
   cursor: pointer;
 }
 
-.rsbcSliderArrow {
-  float: left;
-  position: absolute;
-  top: 50%;
-  right: 18px;
-  margin-top: -8px;
-  z-index: 10;
-}
 .rsbcSliderCircle {
   position: absolute;
   right: 5px;
-  background: #444;
   top: 5px;
   height: 40px;
   width: 40px;
