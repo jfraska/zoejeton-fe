@@ -15,10 +15,10 @@ export default function BottomNavbar() {
           to={e.link}
           name={e.link}
         >
-          <span
+          {/* <span
             className={`w-4 aspect-square icon-[${e.icon}]`}
             style={{ color: "white" }}
-          />
+          /> */}
           <span className="text-[10px] text-white">{e.title}</span>
         </Link>
       ))}

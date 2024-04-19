@@ -66,17 +66,3 @@ export const navLinks = [
     link: " ",
   },
 ];
-
-export const beranda = {
-  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-  background: "/assets/images/bg1.jpg",
-};
-
-export const countdown = {
-  date: "maret, 10, 2024",
-};
-
-export const couple = {
-  groom: "Jeton",
-  bride: "Zoe",
-};
