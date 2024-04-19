@@ -50,10 +50,10 @@ export default function About() {
             className="flex hover-underline-animation w-full  py-2 pr-1  items-end justify-between"
           >
             <h1 className="md:text-base text-sm text-black">More About Us</h1>
-            {/* <span
+            <span
               className="w-5 aspect-square icon-[carbon--arrow-up]"
               style={{ color: "black", transform: "rotate(90deg)" }}
-            /> */}
+            />
           </TransitionLink>
         </div>
         <div className="w-full">

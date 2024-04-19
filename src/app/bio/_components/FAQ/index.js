@@ -1,21 +1,20 @@
 import "./style.css";
-import { Icon } from "@iconify/react";
 
 const FAQ = ({ faq, index, toggle, selected }) => {
   return (
-    <div className="w-full cursor-pointer py-2 pr-2 border-b border-black text-black">
-      <div className={`flex items-start gap-2`} onClick={() => toggle(index)}>
-        <Icon
-          icon="ic:outline-plus"
-          width="20"
-          className={`${
-            selected === index ? "rotate-1" : "rotate-1"
-          } transition-all ease-linear delay-100`}
+    <div className="w-full cursor-pointer py-1 pr-2 border-b border-black text-black leading-none">
+      <div
+        className={`flex justify-between items-start`}
+        onClick={() => toggle(index)}
+      >
+        <h1 className="text-sm">{faq.question}</h1>
+        <span
+          className="w-5 aspect-square icon-[ri--arrow-up-s-line]"
+          style={{ color: "black", transform: "rotate(180deg)" }}
         />
-        <h1 className="text-sm leading-tight">{faq.question}</h1>
       </div>
       <div className={selected === index ? "accordion show" : "accordion"}>
-        <p className="pl-7 text-xs leading-tight">{faq.answer}</p>
+        <p className="text-xs">{faq.answer}</p>
       </div>
     </div>
   );

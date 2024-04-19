@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext } from "react";
-import { Icon } from "@iconify/react";
 import { templates } from "@/constants";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
@@ -53,7 +52,7 @@ export default function TemplateList() {
                   className="absolute top-4 right-4 group-hover:scale-100 scale-0 transition-transform ease-in-out bg-black p-3 rounded-full hover:bg-[#00000068]"
                   href={e.href}
                 >
-                  <Icon icon="ph:eye" width="20" color="white" />
+                  {/* <Icon icon="ph:eye" width="20" color="white" /> */}
                 </TransitionLink>
 
                 <div className="absolute bottom-4 left-4">

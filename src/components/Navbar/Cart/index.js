@@ -1,6 +1,6 @@
 import "./style.css";
 import { useContext, useEffect, useRef, useState } from "react";
-import { Icon } from "@iconify/react";
+// import { Icon } from "@iconify/react";
 import gsap from "gsap";
 import CartContext from "@/providers/CartProvider";
 import CurrencyFormat from "react-currency-format";
@@ -58,12 +58,12 @@ export default function Cart({ state, setState }) {
               onClick={() => setState(false)}
               className="flex justify-center items-center"
             >
-              <Icon
+              {/* <Icon
                 className="mt-1"
                 icon="grommet-icons:close"
                 color="black"
                 width="15"
-              />
+              /> */}
             </button>
           </div>
 
@@ -102,7 +102,7 @@ export default function Cart({ state, setState }) {
                         className="flex justify-center items-center"
                         onClick={() => deleteItemFromCart(cartItem?.product)}
                       >
-                        <Icon icon="lucide:trash" color="black" width="15" />
+                        {/* <Icon icon="lucide:trash" color="black" width="15" /> */}
                       </button>
                     </div>
                   </div>
@@ -148,7 +148,7 @@ export default function Cart({ state, setState }) {
                         className="flex justify-center items-center"
                         onClick={() => deleteItemFromCart(cartItem?.product)}
                       >
-                        <Icon icon="lucide:trash" color="black" width="15" />
+                        {/* <Icon icon="lucide:trash" color="black" width="15" /> */}
                       </button>
                     </div>
                   </div>
@@ -194,7 +194,7 @@ export default function Cart({ state, setState }) {
             className="flex justify-between items-center px-2 py-px text-xl w-full bg-black rounded-full"
           >
             <h1 className="uppercase text-white">checkout</h1>
-            <Icon icon="carbon:arrow-up" rotate={1} color="white" width="30" />
+            {/* <Icon icon="carbon:arrow-up" rotate={1} color="white" width="30" /> */}
           </button>
         </div>
       </div>
