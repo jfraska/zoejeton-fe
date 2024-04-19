@@ -1,5 +1,4 @@
 "use client";
-import { Icon } from "@iconify/react";
 import { navLinks } from "../_constants";
 import { Link } from "react-scroll";
 
@@ -16,7 +15,10 @@ export default function BottomNavbar() {
           to={e.link}
           name={e.link}
         >
-          <Icon icon={e.icon} color="white" width="15" />
+          <span
+            className={`w-4 aspect-square icon-[${e.icon}]`}
+            style={{ color: "white" }}
+          />
           <span className="text-[10px] text-white">{e.title}</span>
         </Link>
       ))}

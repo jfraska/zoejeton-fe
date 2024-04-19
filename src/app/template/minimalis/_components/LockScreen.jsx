@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import SwipeableButton from "@/components/SwipeButton";
-import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
@@ -69,10 +68,9 @@ export default function LockScreen({ data }) {
           mainText="Buka undangan"
           onSuccess={() => setState(true)}
           caret={
-            <Icon
-              icon="heroicons:envelope-open-20-solid"
-              color="white"
-              width="15"
+            <span
+              className="w-4 aspect-square icon-[heroicons--envelope-open-20-solid]"
+              style={{ color: "white" }}
             />
           }
         />

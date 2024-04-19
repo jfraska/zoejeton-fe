@@ -1,6 +1,5 @@
 "use client";
 
-import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
 
 export default function Back() {
@@ -11,11 +10,9 @@ export default function Back() {
       onClick={() => router.back()}
       className="fixed top-2 left-2 flex justify-center items-center z-[60] aspect-square w-10 bg-black rounded-full hover:bg-[#252525]"
     >
-      <Icon
-        icon="carbon:arrow-up"
-        className="text-white"
-        width="20"
-        rotate={-1}
+      <span
+        className="w-5 aspect-square icon-[carbon--arrow-up]"
+        style={{ color: "white", transform: "rotate(180deg)" }}
       />
     </button>
   );

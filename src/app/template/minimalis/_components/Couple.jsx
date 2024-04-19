@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
 import { Runalto } from "@/styles/fonts";
-import { Icon } from "@iconify/react";
 
 export default function Couple() {
   useEffect(() => {
@@ -49,7 +48,10 @@ export default function Couple() {
         <p className="text-sm">Putri dari Bpk M Syarik & Ibu Isharni</p>
       </div>
       <div className="flex gap-2 items-center justify-center mt-10">
-        <Icon icon="ic:baseline-arrow-circle-right" color="white" width="20" />
+        <span
+          className="w-5 aspect-square icon-[ic--baseline-arrow-circle-right]"
+          style={{ color: "white" }}
+        />
         <h1>Instagram</h1>
       </div>
     </section>
