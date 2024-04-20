@@ -19,7 +19,7 @@ export default function Bio() {
   };
 
   return (
-    <div className="relative md:my-10 max-w-[430px] px-5 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-20">
+    <div className="relative md:my-10 max-w-[430px] px-5 pt-24 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-20">
       <Image
         className="h-full -z-10"
         alt="background image"
@@ -37,7 +37,7 @@ export default function Bio() {
         />
       </button>
 
-      <Brand className="mt-24" />
+      <Brand />
 
       <section className="mt-10 flex flex-col gap-2">
         <Button
