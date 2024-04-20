@@ -64,9 +64,13 @@ export default function Bio() {
           />
           <h1 className="text-[14px] text-white">Customer Care</h1>
         </div>
-        <button className="text-[14px] bg-white h-full px-4 py-2 rounded-lg">
+        <a
+          href="https://wa.me/+6285161710045"
+          target="_blank"
+          className="text-[14px] bg-white h-full px-4 py-2 rounded-lg"
+        >
           Contact
-        </button>
+        </a>
       </section>
 
       <section className="mt-8 flex flex-col w-full shadow-lg">
