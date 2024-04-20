@@ -58,12 +58,10 @@ export default function Cart({ state, setState }) {
               onClick={() => setState(false)}
               className="flex justify-center items-center"
             >
-              {/* <Icon
-                className="mt-1"
-                icon="grommet-icons:close"
-                color="black"
-                width="15"
-              /> */}
+              <span
+                className="mt-1 w-4 aspect-square icon-[grommet-icons--close]"
+                style={{ color: "black" }}
+              />
             </button>
           </div>
 
@@ -102,7 +100,10 @@ export default function Cart({ state, setState }) {
                         className="flex justify-center items-center"
                         onClick={() => deleteItemFromCart(cartItem?.product)}
                       >
-                        {/* <Icon icon="lucide:trash" color="black" width="15" /> */}
+                        <span
+                          className="mt-1 w-4 aspect-square icon-[lucide--trash]"
+                          style={{ color: "black" }}
+                        />
                       </button>
                     </div>
                   </div>
@@ -148,7 +149,10 @@ export default function Cart({ state, setState }) {
                         className="flex justify-center items-center"
                         onClick={() => deleteItemFromCart(cartItem?.product)}
                       >
-                        {/* <Icon icon="lucide:trash" color="black" width="15" /> */}
+                        <span
+                          className="mt-1 w-4 aspect-square icon-[lucide--trash]"
+                          style={{ color: "black" }}
+                        />
                       </button>
                     </div>
                   </div>
@@ -194,7 +198,10 @@ export default function Cart({ state, setState }) {
             className="flex justify-between items-center px-2 py-px text-xl w-full bg-black rounded-full"
           >
             <h1 className="uppercase text-white">checkout</h1>
-            {/* <Icon icon="carbon:arrow-up" rotate={1} color="white" width="30" /> */}
+            <span
+              className="mt-1 w-8 aspect-square icon-[carbon--arrow-up]"
+              style={{ color: "black", transform: "rotate(90deg)" }}
+            />
           </button>
         </div>
       </div>

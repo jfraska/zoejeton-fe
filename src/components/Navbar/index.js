@@ -31,6 +31,7 @@ export default function Navbar() {
   useEffect(() => {
     if (scroll) {
       scroll.on("scroll", (args) => {
+        console.log(args.currentElements["beranda"]);
         if (typeof args.currentElements["beranda"] === "object") {
           if (args.currentElements["beranda"].progress < 0.6) {
             setScrolled({ state: true, header: true });

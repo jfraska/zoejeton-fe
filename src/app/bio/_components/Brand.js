@@ -16,9 +16,6 @@ export default function Brand({ ...props }) {
           ZoeJeton
         </h1>
         <h2 className="text-[12px]">Digital Invitation | Undangan Web</h2>
-        <h2 className="text-[12px] px-10">
-          We specialize in delivering digital elegance right to your fingertips
-        </h2>
       </div>
     </section>
   );
