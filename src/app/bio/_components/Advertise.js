@@ -17,6 +17,7 @@ export default function Advertise({ ...props }) {
         }}
         loop={true}
         spaceBetween={0}
+        effect="slide"
         autoplay={{
           delay: 2000,
         }}
