@@ -26,9 +26,9 @@ export default function Button({
     <Link
       {...props}
       href={url()}
-      className={`${className} w-full flex items-center gap-4 rounded-lg p-2 shadow-lg hover:shadow-none`}
+      className={`${className} w-full flex items-center gap-4 rounded-lg p-2 shadow-lg group transition-all ease-linear duration-100 hover:bg-opacity-90`}
     >
-      <div className="flex justify-center items-center bg-white h-full p-3 rounded-lg">
+      <div className="flex justify-center items-center bg-white h-full p-3 rounded-lg group-hover:scale-105">
         <span
           className="w-5 aspect-square icon-[solar--link-bold]"
           style={{ color: "black" }}

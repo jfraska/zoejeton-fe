@@ -27,7 +27,7 @@ export default function Bio() {
         objectFit="cover"
         layout="fill"
       />
-      <button className="absolute top-4 right-4 w-10 aspect-square rounded-lg flex justify-center items-center shadow-lg bg-white">
+      <button className="absolute top-4 right-4 w-10 aspect-square rounded-lg flex justify-center items-center bg-white backdrop-filter backdrop-blur-md bg-opacity-80 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90">
         <Image
           src={"/assets/icons/qrcode.svg"}
           width={30}
@@ -67,7 +67,7 @@ export default function Bio() {
         <a
           href="https://wa.me/+6285161710045"
           target="_blank"
-          className="text-[14px] bg-white h-full px-4 py-2 rounded-lg"
+          className="text-[14px] bg-white h-full px-4 py-2 rounded-lg transition-all ease-linear duration-100 hover:scale-105"
         >
           Contact
         </a>
