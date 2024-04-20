@@ -35,8 +35,8 @@ export default function Button({
         />
       </div>
       <div className="flex flex-col gap-1 justify-center items-start leading-none">
-        <h1 className="font-medium">{title}</h1>
-        <h2 className="text-xs">{desc}</h2>
+        <h1 className="text-[14px] font-medium">{title}</h1>
+        <h2 className="text-[12px]">{desc}</h2>
       </div>
     </Link>
   );
