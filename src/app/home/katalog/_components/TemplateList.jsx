@@ -32,8 +32,8 @@ export default function TemplateList() {
   };
 
   return (
-    <section data-scroll-section className="w-full">
-      <div className="flex justify-between items-center px-[3%] text-base mt-6 gap-10">
+    <section data-scroll-section className="w-full py-[2%]">
+      <div className="flex justify-between items-center px-[3%] text-base gap-10">
         <h1 className="text-3xl">Katalog</h1>
         <h1 className="md:block hidden">Showing 8/12</h1>
         <div className="flex justify-between items-center h-full">

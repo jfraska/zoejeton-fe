@@ -200,7 +200,7 @@ export default function Cart({ state, setState }) {
             <h1 className="uppercase text-white">checkout</h1>
             <span
               className="mt-1 w-8 aspect-square icon-[carbon--arrow-up]"
-              style={{ color: "black", transform: "rotate(90deg)" }}
+              style={{ color: "white", transform: "rotate(90deg)" }}
             />
           </button>
         </div>

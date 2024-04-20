@@ -111,13 +111,13 @@ export default function Navbar() {
           />
         ) : (
           <TransitionLink href={"/"}>
-            <ArrowBackIosNewSharp />
+            <ArrowBackIosNewSharp fontSize="small" />
           </TransitionLink>
         )}
         <h1
           className={`${Runalto.className} font-bold ${
             menuState && "text-black"
-          } hidden md:block transition-all ease-in-out text-lg leading-none`}
+          } hidden md:block transition-all ease-in-out text-lg leading-tight mt-1`}
         >
           ZoeJeton
         </h1>

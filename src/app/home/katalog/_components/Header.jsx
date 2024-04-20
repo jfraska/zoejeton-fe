@@ -16,9 +16,9 @@ export default function Header() {
       </p>
       <a
         href=""
-        className="flex mt-7 justify-between items-center bg-white rounded-full py-2 px-4 text-black"
+        className="flex mt-7 justify-center gap-10 items-center bg-white rounded-full py-1 px-4 text-black"
       >
-        <h1 className="uppercase text-base md:text-xl leading-none">
+        <h1 className="uppercase text-base md:text-lg leading-none">
           Konsultasi Undangan
         </h1>
         <span
