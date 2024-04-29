@@ -1,89 +1,43 @@
 "use client";
+
 import { useLayoutEffect, useRef } from "react";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { feature } from "@/constants";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Feature() {
-  const { scroll } = useLocomotiveScroll();
   const sectionRef = useRef(null);
   const trigerRef = useRef(null);
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     let ctx;
-
-    if (scroll) {
-      const element = scroll?.el;
-      scroll.on("scroll", ScrollTrigger.update);
-
-      ScrollTrigger.scrollerProxy(element, {
-        scrollTop(value) {
-          return arguments.length
-            ? scroll.scrollTo(value, { duration: 0, disableLerp: true })
-            : scroll.scroll.instance.scroll.y;
+    ctx = gsap.context(() => {
+      gsap.to(sectionRef.current, {
+        x: "-100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=100%",
+          scrub: 0.5,
+          pin: true,
         },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: trigerRef.current.style.transform ? "transform" : "fixed",
       });
-
-      ScrollTrigger.addEventListener("refresh", () => scroll?.update());
-      ScrollTrigger.defaults({
-        scroller: scroll?.el,
-      });
-
-      ctx = gsap.context(() => {
-        gsap.to(sectionRef.current, {
-          x: "-150%",
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=150%",
-            scrub: 0.5,
-            pin: true,
-          },
-        });
-
-        ScrollTrigger.refresh();
-      }, sectionRef);
-    }
+    }, sectionRef);
 
     return () => {
-      if (scroll) {
-        ctx && ctx.revert();
-        ScrollTrigger.removeEventListener("refresh", () => scroll?.update());
-        scroll.destroy();
-        console.log("Kill", scroll);
-      }
+      ctx && ctx.revert();
     };
-  }, [scroll]);
+  }, []);
 
   return (
     <section
-      data-scroll-section
-      className="relative overflow-hidden h-[150vh]"
+      className="relative overflow-hidden h-full"
       ref={trigerRef}
       id="feature"
     >
-      <div
-        data-scroll
-        data-scroll-sticky
-        data-scroll-repeat
-        // data-scroll-speed="-4"
-        data-scroll-target="#feature"
-        ref={sectionRef}
-        className="w-[400vw] h-screen flex flex-nowrap"
-      >
+      <div ref={sectionRef} className="w-fit h-screen flex flex-nowrap">
         <div className="relative w-screen h-full flex justify-center items-center">
           <h1 className="text-[#c7c7c7] text-center font-serif md:text-9xl text-5xl leading-none mix-blend-difference">
             Feature

@@ -5,7 +5,7 @@ import AddOn from "@/components/AddOn";
 import ScrollVelocity from "@/components/ScrollVelocity";
 import Katalog from "@/components/Katalog";
 import Footer from "@/components/Footer";
-import Message from "@/components/Message";
+import BreakMain from "@/components/BreakMain";
 import Galery from "@/components/Galery";
 
 export default function Home() {
@@ -13,12 +13,12 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      {/* <Feature /> */}
+      <Feature />
       <ScrollVelocity />
       <Katalog />
       <AddOn />
       <Galery />
-      <Message />
+      <BreakMain />
       <Footer />
     </>
   );

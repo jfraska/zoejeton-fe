@@ -1,10 +1,9 @@
 "use client";
-import { useEffect, useRef, useContext } from "react";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
+
+import { useRef } from "react";
 import {
   motion,
   useScroll,
-  useSpring,
   useTransform,
   useMotionValue,
   useVelocity,
@@ -14,25 +13,9 @@ import { wrap } from "@motionone/utils";
 
 function ParallaxText({ children, baseVelocity = 100, className }) {
   const baseX = useMotionValue(0);
-  const { scroll } = useLocomotiveScroll();
-  const y = useSpring(0, {
-    damping: 100,
-    stiffness: 400,
-  });
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    if (scroll) {
-      scroll.on("scroll", ({ scroll }) => {
-        y.set(scroll.y);
-      });
-    }
-
-    return () => {
-      scroll && scroll.destroy();
-    };
-  }, [scroll]);
-
-  const scrollVelocity = useVelocity(y);
+  const scrollVelocity = useVelocity(scrollY);
   const velocityFactor = useTransform(scrollVelocity, [0, 1000], [0, 5], {
     clamp: false,
   });
@@ -84,7 +67,7 @@ function ParallaxText({ children, baseVelocity = 100, className }) {
 
 export default function ScrollVelocity() {
   return (
-    <section data-scroll-section className="w-full h-fit">
+    <section className="w-full h-fit bg-white">
       <div className="w-full border-b border-black" />
       <ParallaxText baseVelocity={-0.5}>zoejeton premium *</ParallaxText>
       <div className="w-full border-b border-black" />

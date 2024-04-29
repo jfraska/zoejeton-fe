@@ -1,7 +1,6 @@
 "use client";
 import "./style.css";
 import { useContext, useEffect, useRef, useState } from "react";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Image from "next/image";
 import Cart from "./Cart";
 import Menu from "./Menu";
@@ -17,39 +16,14 @@ import TransitionLink from "../TransitionLink";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState({ state: true, header: false });
-  const { scroll } = useLocomotiveScroll();
   const [menuState, setMenuState] = useState(false);
   const [cartState, setCartState] = useState(false);
   const [notifState, setNotifState] = useState(false);
   const [shake, setShake] = useState(false);
   const { cart } = useContext(CartContext);
   const pathname = usePathname();
-  const router = useRouter();
   let navbarRef = useRef(null);
   const navTimeline = useRef();
-
-  useEffect(() => {
-    if (scroll) {
-      scroll.on("scroll", (args) => {
-        console.log(args.currentElements["beranda"]);
-        if (typeof args.currentElements["beranda"] === "object") {
-          if (args.currentElements["beranda"].progress < 0.6) {
-            setScrolled({ state: true, header: true });
-          } else if (args.currentElements["beranda"].progress < 0.8) {
-            setScrolled({ state: false, header: true });
-          } else {
-            setScrolled({ state: false, header: false });
-          }
-        } else {
-          setScrolled({ state: true, header: false });
-        }
-      });
-    }
-
-    return () => {
-      scroll && scroll.destroy();
-    };
-  }, [scroll]);
 
   useEffect(() => {
     if (notifState) {
@@ -95,7 +69,7 @@ export default function Navbar() {
     <nav>
       <div
         ref={(el) => (navbarRef = el)}
-        className={`top-0 inset-x-0 z-50 py-3 px-[3%] flex justify-between items-center fixed 
+        className={`top-0 inset-x-0 z-50 py-2 px-[3%] flex justify-between items-center fixed 
         ${
           scrolled.header
             ? "bg-transparent text-white"
@@ -175,7 +149,7 @@ export default function Navbar() {
 
       <Cart state={cartState} setState={setCartState} />
 
-      <Menu state={menuState} setState={setMenuState} scroll={scroll} />
+      <Menu state={menuState} setState={setMenuState} />
     </nav>
   );
 }

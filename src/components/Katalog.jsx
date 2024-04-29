@@ -7,6 +7,7 @@ import CurrencyFormat from "react-currency-format";
 import CartContext from "@/providers/CartProvider";
 import TransitionLink from "./TransitionLink";
 import LoadingButton from "./LoadingButton";
+import { Parallax } from "./Parallax";
 
 export default function Katalog() {
   const { addItemToCart } = useContext(CartContext);
@@ -25,13 +26,13 @@ export default function Katalog() {
     let style = {};
 
     if (index === 0) {
-      style = {};
+      style = { speed: 0 };
     } else if (index === 1) {
-      style = { "data-scroll": true, "data-scroll-speed": 3 };
+      style = { speed: -3, style: { marginTop: "10%" } };
     } else if (index === 2) {
-      style = { "data-scroll": true, "data-scroll-speed": 1 };
+      style = { speed: -1, style: { marginTop: "5%" } };
     } else if (index === 3) {
-      style = { "data-scroll": true, "data-scroll-speed": 2 };
+      style = { speed: -2, style: { marginTop: "8%" } };
     }
 
     return style;
@@ -48,7 +49,11 @@ export default function Katalog() {
   };
 
   return (
-    <section data-scroll-section id="katalog" className="px-[3%] pb-10">
+    <section
+      data-scroll-section
+      id="katalog"
+      className="px-[3%] pb-10 bg-white"
+    >
       <div className="w-full mt-1.5 border-b border-black" />
       <div className="flex justify-between items-center text-base mt-2 gap-10">
         <h1 className="text-3xl">Katalog</h1>
@@ -65,7 +70,7 @@ export default function Katalog() {
 
       <div className="flex flex-col md:flex-row mt-6 w-full justify-between items-center">
         {columns.map((column, index) => (
-          <div
+          <Parallax
             {...getStyleByIndex(index)}
             key={index}
             className={`${
@@ -75,7 +80,7 @@ export default function Katalog() {
             {column.map((e) => (
               <div
                 key={e.id}
-                className="group relative w-full h-[370px] lg:h-[400px] border border-black rounded-lg hover:bg-[#0000008e] transition-all ease-in-out bg-cover bg-blend-overlay"
+                className="group relative w-[320px] h-[400px] border border-black rounded-lg hover:bg-[#0000008e] transition-all ease-in-out bg-cover bg-blend-overlay"
                 style={{
                   backgroundImage:
                     "url('https://source.unsplash.com/collection/2091539/500x400')",
@@ -123,7 +128,7 @@ export default function Katalog() {
                 </LoadingButton>
               </div>
             ))}
-          </div>
+          </Parallax>
         ))}
       </div>
       <TransitionLink

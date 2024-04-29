@@ -1,20 +1,11 @@
 "use client";
 import { useRef } from "react";
-import { ArrowForwardSharp } from "@mui/icons-material";
-import Statue from "./Statue";
-import CursorProvider from "@/providers/CursorProvider";
 import Link from "next/link";
 import TransitionLink from "./TransitionLink";
 
 export default function About() {
-  const containerRef = useRef();
-
   return (
-    <section
-      data-scroll-section
-      className="relative w-full px-[3%] pb-16 shadow-lg"
-      id="about"
-    >
+    <section className="relative w-full px-[3%] pb-16" id="about">
       <div className="hidden md:block w-full mt-2 border-b border-black" />
       <p className="mt-8 md:w-3/4 w-10/12 md:text-xl text-base">
         HERE ARE SOME BEAUTIFUL PROJECTS SHOWCASING OUR WEDDING INVITATIONS YOU
@@ -26,14 +17,7 @@ export default function About() {
         id="paralax-statue"
         className="relative mx-auto mb-14 mt-10 flex md:w-2/3 w-11/12"
       >
-        <div
-          className="w-full h-[400px] bg-[#000000] rounded-lg overflow-hidden"
-          ref={containerRef}
-        >
-          <CursorProvider containerRef={containerRef}>
-            <Statue />
-          </CursorProvider>
-        </div>
+        <div className="w-full h-[400px] bg-[#000000] rounded-lg overflow-hidden"></div>
         <div className="relative md:block hidden w-16">
           <div className="top-right top-0 right-0">
             <h1 className="text-6xl text-white md:text-black font-serif uppercase vertical whitespace-nowrap">

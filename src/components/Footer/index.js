@@ -1,10 +1,11 @@
 "use client";
-import "./style.css";
+
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { faq } from "@/constants";
 import FAQ from "@/components/Footer/FAQ";
 import Contact from "./Contact";
+import { Parallax } from "../Parallax";
 
 export default function Footer() {
   const [selected, setSelected] = useState(null);
@@ -18,17 +19,10 @@ export default function Footer() {
 
   return (
     <footer
-      data-scroll-section
       id="footer"
       className="relative w-full bg-black text-white px-[3%] md:pt-[5%] pt-[20%]"
     >
-      <div className="absolute w-full top-0 left-0 h-3 footer-shadow" />
-      <div
-        data-scroll
-        data-scroll-speed="-2"
-        data-scroll-target="#footer"
-        className="z-0"
-      >
+      <Parallax speed={2} style={{ marginTop: "-10%" }} className="z-0">
         <section
           className="h-auto md:min-h-[40vh] min-h-[50vh] mb-10 pl-5 md:pr-20 pr-5"
           id="faq"
@@ -98,7 +92,7 @@ export default function Footer() {
             <h1 className="text-xs">Website by Jipies</h1>
           </div>
         </div>
-      </div>
+      </Parallax>
     </footer>
   );
 }

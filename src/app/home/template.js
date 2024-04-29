@@ -1,24 +1,36 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+
+import { ReactLenis } from "@studio-freight/react-lenis";
 import Preloader from "@/components/Preloader";
 import { AnimatePresence } from "framer-motion";
-import { LocomotiveScrollProvider as GlobalScroll } from "react-locomotive-scroll";
-import { usePathname } from "next/navigation";
 import { animatePageIn } from "@/utils/animations";
 import Navbar from "@/components/Navbar";
+import gsap from "gsap";
 
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
-  const scrollWrapper = useRef(null);
-  const pathname = usePathname();
+  const lenisRef = useRef();
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000);
+    }
+
+    gsap.ticker.add(update);
+
+    return () => {
+      gsap.ticker.remove(update);
+    };
+  });
 
   useEffect(() => {
     animatePageIn();
     setTimeout(() => {
       setIsLoading(false);
     }, 2500);
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -34,29 +46,15 @@ export default function Template({ children }) {
         } min-h-screen bg-white inset-0 w-full z-[99]`}
       />
 
-      <GlobalScroll
-        options={{
-          smooth: true,
-          multiplier: 0.8,
-          smartphone: {
-            smooth: true,
-          },
-          tablet: {
-            smooth: true,
-          },
-        }}
-        watch={[scrollWrapper]}
-        location={pathname}
-        containerRef={scrollWrapper}
-        onLocationChange={(scroll) =>
-          scroll.scrollTo(0, { duration: 0, disableLerp: true })
-        }
+      <Navbar />
+      <ReactLenis
+        root
+        ref={lenisRef}
+        autoRaf={false}
+        options={{ lerp: 0.1, duration: 1.5, smoothTouch: true }}
       >
-        <Navbar />
-        <main data-scroll-container ref={scrollWrapper}>
-          {children}
-        </main>
-      </GlobalScroll>
+        <main>{children}</main>
+      </ReactLenis>
     </>
   );
 }
