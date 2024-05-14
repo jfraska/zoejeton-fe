@@ -11,9 +11,17 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <div
-      className={`${montserrat.className} relative w-full md:max-w-[430px] mx-auto h-screen overflow-hidden`}
+      className={`${montserrat.className} flex w-full h-screen overflow-hidden`}
     >
-      {children}
+      <div
+        className="hidden md:block w-full h-full bg-cover"
+        style={{
+          backgroundImage: "url('/assets/templates/minimalis/5.heic')",
+        }}
+      ></div>
+      <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-color">
+        {children}
+      </div>
     </div>
   );
 }

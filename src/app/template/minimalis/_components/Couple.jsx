@@ -3,25 +3,15 @@ import { useEffect } from "react";
 import { Runalto } from "@/styles/fonts";
 
 export default function Couple() {
-  useEffect(() => {
-    const text = document.querySelector(".text p");
-    text.innerHTML = text.innerText
-      .split("")
-      .map(
-        (char, i) =>
-          `<span style="transform:rotate(${i * 18}deg);">${char}</span>`
-      )
-      .join("");
-  }, []);
-
   return (
     <section className="relative w-full h-fit py-10 text-white" name="couple">
-      <div className="relative w-2/3 h-64 bg-[#9A9A92]">
-        <div className="absolute -top-[75px] -right-[75px] w-[150px] h-[150px] flex justify-center items-center">
-          <div className="text">
-            <p className="text-sm">The Groom Jeton </p>
-          </div>
-        </div>
+      <div
+        className="relative w-2/3 h-64 bg-[#9A9A92] bg-cov"
+        style={{
+          backgroundImage: "url('/assets/templates/minimalis/5.heic')",
+        }}
+      >
+        <div className="absolute -top-[75px] -right-[75px] w-[150px] h-[150px] flex justify-center items-center" />
       </div>
       <div className="mt-7 flex flex-col gap-2 px-8">
         <h1 className={` ${Runalto.className} text-lg font-bold`}>
