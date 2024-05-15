@@ -1,42 +1,39 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 
 export default function FloatingBar() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-  }, []);
-
-  const handlePlayPause = () => {
     if (isPlaying) {
-      audioRef.current.pause();
-    } else {
       audioRef.current.play();
+    } else {
+      audioRef.current.pause();
     }
-    setIsPlaying(!isPlaying);
-  };
+  }, [isPlaying, audioRef]);
 
   return (
-    <div className="fixed bottom-5 left-5 z-40 w-12 aspect-square border-none rounded-full bg-white shadow-md">
-      <audio ref={audioRef} src="/assets/templates/minimalis/1.mp3" />
+    <div className="fixed bottom-5 left-5 z-40 w-12 aspect-square border-none rounded-full bg-white backdrop-filter backdrop-blur-md bg-opacity-70 shadow-md">
+      <audio ref={audioRef} loop>
+        <source src="/assets/templates/minimalis/1.mp3" type="audio/mpeg" />
+      </audio>
       <button
-        onClick={() => handlePlayPause()}
-        className="absolute inset-0 w-8/12 m-auto aspect-square flex justify-center items-center bg-black rounded-full"
+        onClick={() => setIsPlaying((prev) => !prev)}
+        className="absolute inset-0 w-8/12 m-auto aspect-square flex justify-center items-center bg-black rounded-full "
       >
-        {/* <Image
-        src={"/vercel.svg"}
-        alt="music"
-        width={20}
-        height={20}
-        className="w-auto h-auto"
-      /> */}
+        {isPlaying ? (
+          <span
+            className="w-4 aspect-square icon-[ion--pause-outline]"
+            style={{ color: "white" }}
+          />
+        ) : (
+          <span
+            className="w-4 aspect-square icon-[ph--play]"
+            style={{ color: "white" }}
+          />
+        )}
       </button>
     </div>
   );

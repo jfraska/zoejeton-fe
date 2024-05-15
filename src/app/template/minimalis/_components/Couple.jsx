@@ -1,5 +1,3 @@
-"use client";
-import { useEffect } from "react";
 import { Runalto } from "@/styles/fonts";
 
 export default function Couple() {

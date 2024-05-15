@@ -2,13 +2,14 @@ import Beranda from "./_components/Beranda";
 import Quotes from "./_components/Quotes";
 import Couple from "./_components/Couple";
 import Story from "./_components/Story";
-import Date from "./_components/Date";
+import Event from "./_components/Event";
 import LockScreen from "./_components/LockScreen";
 import FloatingBar from "./_components/FloatingBar";
 import prisma from "@/libs/prisma";
 import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
+import Cover from "./_components/Cover";
 
 async function getInvitation() {
   const invitation = await prisma.Invitation.findFirst({
@@ -22,16 +23,19 @@ export default async function Page() {
 
   return (
     <>
-      {/* <LockScreen data={result} /> */}
-      <Beranda data={result} />
-      <Quotes />
-      <Couple />
-      <Story />
-      <Date />
-      <LiveStream />
-      <Galery />
-      <Thanks />
-      <FloatingBar />
+      <Cover data={result} />
+      <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-color">
+        <LockScreen data={result} />
+        <Beranda data={result} />
+        <Quotes />
+        <Couple />
+        <Story />
+        <Event />
+        <LiveStream />
+        <Galery />
+        <Thanks />
+        <FloatingBar />
+      </div>
     </>
   );
 }
