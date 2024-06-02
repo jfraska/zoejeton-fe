@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { MonumentExtended, NeueMontreal } from "@/styles/fonts";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/UI/sonner";
 import { cn } from "@/libs/utils";
 
 export default function RootLayout({ children }) {
