@@ -4,10 +4,10 @@ import { useContext } from "react";
 import styles from "./styles.module.scss";
 import { addOns } from "@/constants";
 import Image from "next/image";
-import LoadingButton from "../LoadingButton";
-import CartContext from "@/providers/CartProvider";
+import LoadingButton from "../../UI/loading-button";
+import CartContext from "@/context/cart";
 
-export default function index() {
+export default function Addon() {
   const { addItemToCart } = useContext(CartContext);
 
   const addToCartHandler = (e) => {

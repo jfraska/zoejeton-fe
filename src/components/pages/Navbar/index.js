@@ -1,18 +1,16 @@
 "use client";
+
 import "./style.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Cart from "./Cart";
-import Menu from "./Menu";
-import CartContext from "@/providers/CartProvider";
+import Cart from "./cart";
+import Menu from "./menu";
+import CartContext from "@/context/cart";
 import { AnimatePresence } from "framer-motion";
 import Notif from "./Notif";
 import { Runalto } from "@/styles/fonts";
-import { usePathname, useRouter } from "next/navigation";
-import { ArrowBackIosNewSharp } from "@mui/icons-material";
 import gsap from "gsap";
-import Hamburger from "../Hamburger";
-import TransitionLink from "../TransitionLink";
+import Hamburger from "@/components/icons/hamburger";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState({ state: true, header: false });
@@ -21,7 +19,6 @@ export default function Navbar() {
   const [notifState, setNotifState] = useState(false);
   const [shake, setShake] = useState(false);
   const { cart } = useContext(CartContext);
-  const pathname = usePathname();
   let navbarRef = useRef(null);
   const navTimeline = useRef();
 
@@ -71,27 +68,19 @@ export default function Navbar() {
         ref={(el) => (navbarRef = el)}
         className={`top-0 inset-x-0 z-50 py-2 px-[3%] flex justify-between items-center fixed 
         ${
-          scrolled.header
-            ? "bg-transparent text-white"
-            : "bg-primary text-black"
+          scrolled.header ? "bg-transparent text-white" : "bg-white text-black"
         } 
         transition-all ease-in-out`}
       >
-        {pathname === "/" ? (
-          <Hamburger
-            state={menuState}
-            setState={setMenuState}
-            scroll={!scrolled.header}
-          />
-        ) : (
-          <TransitionLink href={"/"}>
-            <ArrowBackIosNewSharp fontSize="small" />
-          </TransitionLink>
-        )}
+        <Hamburger
+          state={menuState}
+          setState={setMenuState}
+          scroll={!scrolled.header}
+        />
         <h1
           className={`${Runalto.className} font-bold ${
             menuState && "text-black"
-          } hidden md:block transition-all ease-in-out text-lg leading-tight mt-1`}
+          } transition-all ease-in-out text-lg leading-tight mt-1`}
         >
           ZoeJeton
         </h1>
@@ -109,7 +98,7 @@ export default function Navbar() {
             menuState && "text-black"
           } transition-all ease-linear`}
         >
-          <h1 className="leading-none">Cart</h1>
+          <h1 className="leading-none hidden md:block">Cart</h1>
           <div className={`${shake && "shake"} relative text-end`}>
             {menuState || !scrolled.header ? (
               <Image

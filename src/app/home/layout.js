@@ -1,6 +1,6 @@
 import "./style.css";
 
-import { CartProvider } from "@/providers/CartProvider";
+import { CartProvider } from "@/context/cart";
 
 export const metadata = {
   title: "Home | ZoeJeton",

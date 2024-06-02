@@ -2,7 +2,7 @@ import "./style.css";
 import { useContext, useEffect, useRef, useState } from "react";
 // import { Icon } from "@iconify/react";
 import gsap from "gsap";
-import CartContext from "@/providers/CartProvider";
+import CartContext from "@/context/cart";
 import CurrencyFormat from "react-currency-format";
 
 export default function Cart({ state, setState }) {

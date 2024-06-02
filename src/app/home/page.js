@@ -1,14 +1,14 @@
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Feature from "@/components/Feature";
-import AddOn from "@/components/AddOn";
-import ScrollVelocity from "@/components/ScrollVelocity";
-import Katalog from "@/components/Katalog";
-import Footer from "@/components/Footer";
-import BreakMain from "@/components/BreakMain";
-import Galery from "@/components/Galery";
+import Hero from "@/components/pages/Hero";
+import About from "@/components/pages/About";
+import Feature from "@/components/pages/Feature";
+import AddOn from "@/components/pages/addon";
+import ScrollVelocity from "@/components/pages/ScrollVelocity";
+import Katalog from "@/components/pages/Katalog";
+import Footer from "@/components/pages/Footer";
+import BreakMain from "@/components/pages/BreakMain";
+import Galery from "@/components/pages/galery";
 
-export default function Home() {
+export default function Page() {
   return (
     <>
       <Hero />

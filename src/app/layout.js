@@ -1,7 +1,8 @@
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { MonumentExtended, NeueMontreal } from "@/styles/fonts";
-import { cn } from "@/utils";
+import { Toaster } from "@/components/ui/sonner";
+import { cn } from "@/libs/utils";
 
 export default function RootLayout({ children }) {
   return (
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
         )} font-default`}
       >
         {children}
+        <Toaster />
       </body>
       <Analytics />
     </html>

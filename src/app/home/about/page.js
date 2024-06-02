@@ -6,7 +6,7 @@ export const metadata = {
   description: "by fraska",
 };
 
-export default function About() {
+export default function Page() {
   return (
     <>
       <Hero />

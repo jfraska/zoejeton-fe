@@ -3,9 +3,9 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { faq } from "@/constants";
-import FAQ from "@/components/Footer/FAQ";
-import Contact from "./Contact";
-import { Parallax } from "../Parallax";
+import FAQ from "./faq";
+import Contact from "./contact";
+import { Parallax } from "@/libs/parallax";
 
 export default function Footer() {
   const [selected, setSelected] = useState(null);

@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 import { ReactLenis } from "@studio-freight/react-lenis";
-import Preloader from "@/components/Preloader";
+import Preloader from "@/components/layouts/preloader";
 import { AnimatePresence } from "framer-motion";
-import { animatePageIn } from "@/utils/animations";
-import Navbar from "@/components/Navbar";
+import { animatePageIn } from "@/libs/animations";
+import Navbar from "@/components/pages/Navbar";
 import gsap from "gsap";
 
 export default function Template({ children }) {

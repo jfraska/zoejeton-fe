@@ -7,7 +7,7 @@ export const metadata = {
   description: "by fraska",
 };
 
-export default function page() {
+export default function Page() {
   return (
     <>
       <Header />

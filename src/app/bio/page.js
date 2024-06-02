@@ -8,7 +8,7 @@ import Brand from "./_components/Brand";
 import Advertise from "./_components/Advertise";
 import Button from "./_components/Button";
 
-export default function Bio() {
+export default function Page() {
   const [selected, setSelected] = useState(null);
 
   const toggle = (index) => {
@@ -19,15 +19,15 @@ export default function Bio() {
   };
 
   return (
-    <div className="relative md:my-10 max-w-[430px] px-5 pt-24 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-20">
+    <div className="relative md:my-10 max-w-[430px] min-h-full px-5 pt-24 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-10">
       <Image
         className="h-full -z-10"
         alt="background image"
-        src="/assets/images/palm.jpg"
+        src="/assets/images/bio.jpg"
         objectFit="cover"
         layout="fill"
       />
-      <button className="absolute top-4 right-4 w-10 aspect-square rounded-lg flex justify-center items-center bg-white backdrop-filter backdrop-blur-md bg-opacity-80 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90">
+      <button className="absolute top-4 right-4 w-10 aspect-square rounded-lg flex justify-center items-center bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90">
         <Image
           src={"/assets/icons/qrcode.svg"}
           width={30}
@@ -41,22 +41,20 @@ export default function Bio() {
 
       <section className="mt-10 flex flex-col gap-2">
         <Button
-          className="text-white bg-neutral-800 backdrop-filter backdrop-blur-md bg-opacity-80"
-          title={"Website Undangan"}
-          desc={"beranda zoejeton"}
-          href={"/"}
-        />
-        <Button
-          className="text-black bg-white backdrop-filter backdrop-blur-sm bg-opacity-80"
+          className="text-black bg-white backdrop-filter backdrop-blur-sm bg-opacity-60"
           title={"Katalog & Price List"}
           desc={"lihat desain undangan "}
           href={"/katalog"}
         />
+        <Button
+          className="text-black bg-white backdrop-filter backdrop-blur-md bg-opacity-60"
+          title={"Website Undangan"}
+          desc={"beranda zoejeton"}
+          href={"/"}
+        />
       </section>
 
-      <Advertise className="mt-8" />
-
-      <section className="mt-10 w-full rounded-lg flex justify-between items-center p-3 bg-neutral-800 backdrop-filter backdrop-blur-md bg-opacity-80 shadow-lg">
+      <section className="mt-10 w-full rounded-lg flex justify-between items-center p-3 bg-neutral-800 backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg">
         <div className="flex gap-2">
           <span
             className="w-5 aspect-square icon-[fluent--chat-20-regular]"
@@ -71,24 +69,6 @@ export default function Bio() {
         >
           Contact
         </a>
-      </section>
-
-      <section className="mt-8 flex flex-col w-full shadow-lg">
-        <div className="w-full p-4 text-white bg-neutral-800 backdrop-filter backdrop-blur-md bg-opacity-80 rounded-t-lg">
-          <h1 className="text-[14px]">FAQ</h1>
-        </div>
-
-        <div className="w-full px-4 pt-4 pb-6 bg-white backdrop-filter backdrop-blur-md bg-opacity-80 rounded-b-lg">
-          {faq.map((faq, index) => (
-            <FAQ
-              faq={faq}
-              index={index}
-              key={index}
-              toggle={toggle}
-              selected={selected}
-            />
-          ))}
-        </div>
       </section>
 
       <footer className="mt-20 text-white text-center p-3 text-[12px]">

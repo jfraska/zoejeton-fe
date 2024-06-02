@@ -135,3 +135,7 @@ html.lenis body {
 .vertical {
   transform: scaleX(-1);
 }
+
+.clip-polygon {
+  clip-path: polygon(0 1%, 100% 0%, 75% 100%, 0% 100%);
+}

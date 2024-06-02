@@ -8,7 +8,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 import { PointLight, PointLightHelper, Vector3 } from "three";
-import Loader from "../Loader";
+import Loader from "@/components/UI/loader";
 
 const mesh = {
   position: null,

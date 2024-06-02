@@ -2,25 +2,20 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header
-      data-scroll-section
-      className="relative w-full h-[70vh] bg-blend-multiply bg-black text-white  bg-opacity-30 bg-cover flex flex-col items-center justify-center "
-      style={{
-        backgroundImage: "url('/assets/images/palm.jpg')",
-      }}
-    >
-      <h1 className="text-xl md:text-4xl">Wujudkan desain impianmu!</h1>
-      <p className="w-2/4 text-xs md:text-lg text-center">
+    <header className="relative w-full md:pt-[20vh] pt-[15vh] pb-[10vh] text-black  bg-opacity-30 flex flex-col md:items-center items-start px-[3%] justify-center">
+      <h1 className="text-2xl md:text-center text-left uppercase w-2/3">
         Tentukan tema, warna, ornament, dan impian lain yang kamu inginkan
         bersama tim desain yang sudah ahli dibidangnya.
-      </p>
+      </h1>
+      {/* <p className="w-2/4 text-xs md:text-lg">
+        Tentukan tema, warna, ornament, dan impian lain yang kamu inginkan
+        bersama tim desain yang sudah ahli dibidangnya.
+      </p> */}
       <a
         href=""
-        className="flex mt-7 justify-center gap-10 items-center bg-white rounded-full py-1 px-4 text-black"
+        className="mt-7 py-1 flex gap-2 uppercase px-2 border border-black rounded-full text-black"
       >
-        <h1 className="uppercase text-base md:text-lg leading-none">
-          Konsultasi Undangan
-        </h1>
+        <h1>Konsultasi Sekarang</h1>
         <span
           className="w-5 aspect-square icon-[carbon--arrow-up]"
           style={{ color: "black", transform: "rotate(90deg)" }}

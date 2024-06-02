@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import Link from "next/link";
-import TransitionLink from "./TransitionLink";
+import TransitionLink from "../UI/TransitionLink";
 
 export default function About() {
   return (
