@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
-import Statue from "@/components/Statue";
-import CursorProvider from "@/providers/CursorProvider";
+import Statue from "@/components/container/statue";
+import CursorProvider from "@/context/cursor";
 
 export default function Hero() {
   const containerRef = useRef();
