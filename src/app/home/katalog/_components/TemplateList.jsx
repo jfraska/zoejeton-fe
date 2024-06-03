@@ -12,15 +12,15 @@ export default function TemplateList() {
         <h1>Page 2 of 5</h1>
       </div>
 
-      <div className="flex flex-wrap gap-4 md:justify-normal justify-between my-5 w-full">
+      <div className="flex flex-wrap gap-4 justify-between my-5 w-full">
         {templates.map((e) => (
           <TransitionLink
             key={e.id}
             href={`/katalog/${e.slug}`}
-            className="group w-[185px] flex flex-col gap-2 transition-all ease-in-out"
+            className="w-[47%] md:w-[250px] flex flex-col gap-2 hover:scale-105 transition-all ease-in-out"
           >
             <div
-              className="bg-cover w-full h-[250px] relative border border-black rounded-md overflow-hidden"
+              className="bg-cover w-full h-[250px] md:h-[300px] relative border border-black rounded-md overflow-hidden"
               style={{
                 backgroundImage:
                   "url('https://source.unsplash.com/collection/2091539/500x400')",

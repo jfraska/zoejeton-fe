@@ -13,12 +13,8 @@ export default function Button({
       return process.env.NEXT_PUBLIC_VERCEL_ENV
         ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}${href}`
         : `http://dashboard.localhost:3000${href}`;
-    } else if (type === "external") {
-      return href;
     } else {
-      return process.env.NEXT_PUBLIC_VERCEL_ENV
-        ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}${href}`
-        : `http://localhost:3000${href}`;
+      return href;
     }
   };
 

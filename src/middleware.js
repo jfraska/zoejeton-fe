@@ -52,6 +52,12 @@ export default async function middleware(req) {
     hostname === "localhost:3000" ||
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
   ) {
+    if (url.pathname === "/bio") {
+      return NextResponse.rewrite(
+        new URL(`/bio${path === "/bio" ? "" : path}`, req.url)
+      );
+    }
+
     return NextResponse.rewrite(
       new URL(`/home${path === "/" ? "" : path}`, req.url)
     );
@@ -64,12 +70,12 @@ export default async function middleware(req) {
     );
   }
 
-  // rewrites for bio pages
-  if (hostname == `bio.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    return NextResponse.rewrite(
-      new URL(`/bio${path === "/" ? "" : path}`, req.url)
-    );
-  }
+  // // rewrites for bio pages
+  // if (hostname == `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/bio`) {
+  //   return NextResponse.rewrite(
+  //     new URL(`/bio${path === "/" ? "" : path}`, req.url)
+  //   );
+  // }
 
   // // rewrite everything else to `/[domain]/[slug] dynamic route
   // return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
