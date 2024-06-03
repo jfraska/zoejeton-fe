@@ -1,4 +1,5 @@
 "use client";
+
 import styles from "./style.module.scss";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -62,13 +63,13 @@ export default function Preloader() {
           >
             {words[index]}
           </motion.p>
-          <svg className="md:block hidden">
+          {/* <svg>
             <motion.path
               variants={curve}
               initial="initial"
               exit="exit"
             ></motion.path>
-          </svg>
+          </svg> */}
         </>
       )}
     </motion.div>

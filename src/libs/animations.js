@@ -11,6 +11,7 @@ export const animatePageIn = () => {
     }).to(banner, {
       yPercent: -100,
       stagger: 0.2,
+      duration: 0.1,
     });
   }
 };
@@ -25,6 +26,7 @@ export const animatePageOut = (href, router) => {
     }).to(banner, {
       yPercent: 0,
       stagger: 0.2,
+      duration: 0.5,
       onComplete: () => {
         router.push(href);
       },

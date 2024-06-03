@@ -4,7 +4,6 @@ import Feature from "@/components/pages/Feature";
 import AddOn from "@/components/pages/addon";
 import ScrollVelocity from "@/components/pages/ScrollVelocity";
 import Katalog from "@/components/pages/Katalog";
-import Footer from "@/components/pages/Footer";
 import BreakMain from "@/components/pages/BreakMain";
 import Galery from "@/components/pages/galery";
 
@@ -19,7 +18,6 @@ export default function Page() {
       <AddOn />
       <Galery />
       <BreakMain />
-      <Footer />
     </>
   );
 }

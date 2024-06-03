@@ -20,6 +20,9 @@ module.exports = {
         default: ["var(--font-NeueMontreal)", ...fontFamily.sans],
         title: ["var(--font-MonumentExtended)", ...fontFamily.sans],
       },
+      aspectRatio: {
+        "9/16": "9 / 16",
+      },
       // colors: {
       //   border: "hsl(var(--border))",
       //   input: "hsl(var(--input))",

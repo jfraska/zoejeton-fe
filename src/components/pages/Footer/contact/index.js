@@ -60,9 +60,9 @@ export default function Contact() {
           type="submit"
           className="flex px-1 mt-5 justify-between items-center bg-white rounded-full w-full text-black"
         >
-          <h1 className="uppercase text-xl leading-tight">send whatsapp</h1>
+          <h1 className="uppercase text-xl">send whatsapp</h1>
           <span
-            className="w-5 aspect-square icon-[carbon--arrow-up]"
+            className="w-8 aspect-square icon-[carbon--arrow-up]"
             style={{ color: "black", transform: "rotate(90deg)" }}
           />
         </button>

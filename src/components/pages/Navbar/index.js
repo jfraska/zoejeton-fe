@@ -3,19 +3,16 @@
 import "./style.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Cart from "./cart";
 import Menu from "./menu";
 import CartContext from "@/context/cart";
-import { AnimatePresence } from "framer-motion";
-import Notif from "./Notif";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
 import Hamburger from "@/components/icons/hamburger";
+import TransitionLink from "@/components/UI/TransitionLink";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState({ state: true, header: false });
   const [menuState, setMenuState] = useState(false);
-  const [cartState, setCartState] = useState(false);
   const [notifState, setNotifState] = useState(false);
   const [shake, setShake] = useState(false);
   const { cart } = useContext(CartContext);
@@ -77,23 +74,22 @@ export default function Navbar() {
           setState={setMenuState}
           scroll={!scrolled.header}
         />
-        <h1
+        <TransitionLink
+          href="/"
           className={`${Runalto.className} font-bold ${
             menuState && "text-black"
           } transition-all ease-in-out text-lg leading-tight mt-1`}
         >
           ZoeJeton
-        </h1>
+        </TransitionLink>
 
-        <button
-          onClick={() => {
-            if (cart?.cartItems?.length > 0) {
-              setMenuState(false);
-              setCartState(true);
-            } else {
-              setNotifState(true);
-            }
-          }}
+        <TransitionLink
+          // onClick={() => {
+          //   if (cart?.cartItems?.length > 0) {
+          //     setCartState(true);
+          //   }
+          // }}
+          href="/cart"
           className={`flex items-center gap-1 text-base cursor-pointer ${
             menuState && "text-black"
           } transition-all ease-linear`}
@@ -122,7 +118,7 @@ export default function Navbar() {
               <span className="absolute -bottom-0.5 -right-0.5 w-3 aspect-square bg-red-500 text-white border-2 border-white rounded-full" />
             )}
           </div>
-        </button>
+        </TransitionLink>
 
         <button
           className={`${
@@ -133,10 +129,6 @@ export default function Navbar() {
           Close
         </button>
       </div>
-
-      <AnimatePresence mode="wait">{notifState && <Notif />}</AnimatePresence>
-
-      <Cart state={cartState} setState={setCartState} />
 
       <Menu state={menuState} setState={setMenuState} />
     </nav>

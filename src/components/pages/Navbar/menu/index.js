@@ -1,14 +1,16 @@
 import "./style.css";
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { navLinks } from "@/constants";
 
-export default function Menu({ state, setState, scroll }) {
+export default function Menu({ state, setState }) {
   let sidebarMenu = useRef(null);
   let menuLayer = useRef(null);
   const menuTimeline = useRef();
+  const pathname = usePathname();
 
   useEffect(() => {
     menuTimeline.current = gsap.timeline({ paused: true });
@@ -80,7 +82,9 @@ export default function Menu({ state, setState, scroll }) {
                 key={index}
                 onClick={() => {
                   setState(false);
-                  scroll.scrollTo(nav.href);
+                  if (pathname === "/") {
+                    scroll.scrollTo(nav.href);
+                  }
                 }}
               >
                 {nav.title}
@@ -118,12 +122,9 @@ export default function Menu({ state, setState, scroll }) {
             Invitation
           </h3>
           <div className="flex flex-col text-[#5d5d5d]">
-            <div>
-              <Link href="#">Tentang Kami</Link>
-            </div>
-            <div>
-              <Link href="#">Layanan</Link>
-            </div>
+            <Link href="#">FAQ</Link>
+            <Link href="#">Terms of Service</Link>
+            <Link href="#">Policy</Link>
           </div>
         </div>
       </div>

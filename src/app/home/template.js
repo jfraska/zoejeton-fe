@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { animatePageIn } from "@/libs/animations";
 import Navbar from "@/components/pages/Navbar";
 import gsap from "gsap";
+import Footer from "@/components/pages/Footer";
 
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,12 +42,11 @@ export default function Template({ children }) {
 
       <div
         id="transition"
-        className={`${
-          isLoading ? "hidden" : "fixed"
-        } min-h-screen bg-white inset-0 w-full z-[99]`}
+        className="fixed min-h-screen bg-white inset-0 w-full z-[90]"
       />
 
       <Navbar />
+
       <ReactLenis
         root
         ref={lenisRef}
@@ -55,6 +55,8 @@ export default function Template({ children }) {
       >
         <main>{children}</main>
       </ReactLenis>
+
+      <Footer />
     </>
   );
 }
