@@ -53,9 +53,7 @@ export default async function middleware(req) {
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
   ) {
     if (url.pathname === "/bio") {
-      return NextResponse.rewrite(
-        new URL(`/bio${path === "/bio" ? "" : path}`, req.url)
-      );
+      return NextResponse.rewrite(new URL(`/bio`, req.url));
     }
 
     return NextResponse.rewrite(
