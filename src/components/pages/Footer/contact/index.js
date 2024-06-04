@@ -58,12 +58,12 @@ export default function Contact() {
         </div>
         <button
           type="submit"
-          className="flex px-1 mt-5 justify-between items-center bg-white rounded-full w-full text-black"
+          className="flex px-2 mt-5 justify-between items-center bg-white rounded-full w-full text-black border border-black hover:border-white hover:bg-black hover:text-white group transition-all ease-in-out duration-200"
         >
           <h1 className="uppercase text-xl">send whatsapp</h1>
           <span
-            className="w-8 aspect-square icon-[carbon--arrow-up]"
-            style={{ color: "black", transform: "rotate(90deg)" }}
+            className="group-hover:text-white text-black transition-all duration-200 ease-in-out w-8 aspect-square icon-[carbon--arrow-up]"
+            style={{ transform: "rotate(90deg)" }}
           />
         </button>
       </form>

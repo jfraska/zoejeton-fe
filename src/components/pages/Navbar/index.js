@@ -76,7 +76,7 @@ export default function Navbar() {
         />
         <TransitionLink
           href="/"
-          className={`${Runalto.className} font-bold ${
+          className={`${Runalto.className} font-semibold ${
             menuState && "text-black"
           } transition-all ease-in-out text-lg leading-tight mt-1`}
         >
