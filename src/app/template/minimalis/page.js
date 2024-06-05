@@ -12,10 +12,10 @@ import LiveStream from "./_components/LiveStream";
 import Cover from "./_components/Cover";
 
 async function getInvitation() {
-  const invitation = await prisma.Invitation.findFirst({
-    where: { title: "default" },
-  });
-  return invitation;
+  // const invitation = await prisma.Invitation.findFirst({
+  //   where: { title: "default" },
+  // });
+  // return invitation;
 }
 
 export default async function Page() {
@@ -23,10 +23,10 @@ export default async function Page() {
 
   return (
     <>
-      <Cover data={result} />
+      <Cover />
       <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-color">
-        <LockScreen data={result} />
-        <Beranda data={result} />
+        <LockScreen />
+        <Beranda />
         <Quotes />
         <Couple />
         <Story />
