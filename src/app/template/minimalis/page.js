@@ -23,10 +23,10 @@ export default async function Page() {
 
   return (
     <>
-      {/* <Cover /> */}
+      <Cover />
       <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-color">
-        {/* <LockScreen /> */}
-        {/* <Beranda /> */}
+        <LockScreen />
+        <Beranda />
         <Quotes />
         <Couple />
         <Story />

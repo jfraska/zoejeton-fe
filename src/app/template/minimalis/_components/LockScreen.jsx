@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
 
-export default function LockScreen({ data }) {
+export default function LockScreen() {
   let lockRef = useRef(null);
   const timeline = useRef();
   const [state, setState] = useState(false);
@@ -54,8 +54,8 @@ export default function LockScreen({ data }) {
       <h1
         className={`${Runalto.className} flex flex-col text-center text-6xl font-bold`}
       >
-        <span>{data.content.couple.groom}</span> <span>&</span>
-        <span>{data.content.couple.bride}</span>
+        <span>Jeton</span> <span>&</span>
+        <span>Zoe</span>
       </h1>
 
       <div className="w-64">

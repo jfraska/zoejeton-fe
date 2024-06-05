@@ -1,20 +1,3 @@
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --accent-color: #e74c3c;
-  --background-color: #263234;
-  --text-color: #ffffff;
-}
-
 body {
   @apply overflow-clip;
-}
-
-.bg-color {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-.bottom-active {
-  background-color: #1e1e1e;
 }
