@@ -1,22 +1,69 @@
 "use client";
 
-import CurrencyFormat from "react-currency-format";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import CurrencyFormat from "react-currency-format";
 import Link from "next/link";
 
-export default function TemplateList({ data }) {
+export default function TemplateList() {
+  const [data, setData] = useState([]);
+  const [meta, setMeta] = useState({});
+  const [category, setCategory] = useState("All");
+  const [pagination, setPagination] = useState({ limit: 1, offset: 0 });
+
+  const handleCategory = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const handleNextPage = () => {
+    setPagination((prevPagination) => ({
+      ...prevPagination,
+      offset: prevPagination.offset + 1,
+    }));
+  };
+
+  const handlePrevPage = () => {
+    setPagination((prevPagination) => ({
+      ...prevPagination,
+      offset: prevPagination.offset - 1,
+    }));
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams({
+      category,
+      limit: pagination.limit,
+      offset: pagination.offset,
+    });
+
+    const fetchData = async () => {
+      const response = await fetch(`/api/templates?${params.toString()}`);
+      const result = await response.json();
+      setData(result.data);
+      setMeta(result.meta);
+    };
+
+    fetchData();
+  }, [category, pagination]);
+
   return (
-    <section data-scroll-section className="w-full p-[3%]">
+    <section className="w-full p-[3%] mb-10">
       <div className="flex justify-between items-center text-base border-b border-black">
         <div className="relative hover-underline-animation py-2">
-          <select className="appearance-none focus:outline-none pr-10 text-xl">
-            <option value="1">All Template</option>
-            <option value="2">Premium Template</option>
-            <option value="3">Basic Template</option>
+          <select
+            className="appearance-none focus:outline-none pr-10 text-xl bg-transparent"
+            value={category}
+            onChange={handleCategory}
+          >
+            <option value="All">All Template</option>
+            <option value="Premium">Premium Template</option>
+            <option value="Basic">Basic Template</option>
           </select>
           <span className="absolute right-0 bottom-4 w-3 text-black aspect-square icon-[foundation--play] rotate-90" />
         </div>
-        <h1>Page 1 of 1</h1>
+        <h1>
+          Page {pagination.offset + 1} of {meta.totalPage}
+        </h1>
       </div>
 
       <div className="flex flex-wrap gap-4 justify-between my-5 w-full">
@@ -66,7 +113,7 @@ export default function TemplateList({ data }) {
               </div>
 
               <Link
-                href={`/katalog/${e.slug}`}
+                href={`/katalog/${e.id}`}
                 className="bg-black flex justify-center items-center p-2 rounded-md hover:bg-[#00000068] hover:scale-110 transition-all ease-in-out"
               >
                 <Image
@@ -82,21 +129,32 @@ export default function TemplateList({ data }) {
         ))}
       </div>
 
-      <div className="w-full flex justify-between items-center">
-        <button className="flex justify-center items-center gap-1 border border-black py-1 px-2 rounded-full hover:bg-black hover:scale-110 hover:text-white group transition-all duration-200 ease-in-out">
-          <span
-            className="w-5 group-hover:text-white text-black aspect-square icon-[carbon--arrow-up]"
-            style={{ transform: "rotate(270deg)" }}
-          />
-          <h1>Prev</h1>
-        </button>
-        <button className="flex justify-center items-center gap-1 border border-black py-1 px-2 rounded-full hover:bg-black hover:scale-110 hover:text-white group transition-all duration-200 ease-in-out">
-          <h1>Next</h1>
-          <span
-            className="w-5 group-hover:text-white text-black aspect-square icon-[carbon--arrow-up]"
-            style={{ transform: "rotate(90deg)" }}
-          />
-        </button>
+      <div className="relative w-full h-fit">
+        {pagination.offset > 0 && (
+          <button
+            onClick={handlePrevPage}
+            className="absolute top-0 left-0 flex justify-center items-center gap-1 border border-black py-1 px-2 rounded-full hover:bg-black hover:scale-110 hover:text-white group transition-all duration-200 ease-in-out"
+          >
+            <span
+              className="w-5 group-hover:text-white text-black aspect-square icon-[carbon--arrow-up]"
+              style={{ transform: "rotate(270deg)" }}
+            />
+            <h1>Prev</h1>
+          </button>
+        )}
+
+        {pagination.offset + 1 < meta.totalPage && (
+          <button
+            onClick={handleNextPage}
+            className="absolute top-0 right-0 flex justify-center items-center gap-1 border border-black py-1 px-2 rounded-full hover:bg-black hover:scale-110 hover:text-white group transition-all duration-200 ease-in-out"
+          >
+            <h1>Next</h1>
+            <span
+              className="w-5 group-hover:text-white text-black aspect-square icon-[carbon--arrow-up]"
+              style={{ transform: "rotate(90deg)" }}
+            />
+          </button>
+        )}
       </div>
     </section>
   );

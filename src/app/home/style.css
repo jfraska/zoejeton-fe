@@ -139,3 +139,7 @@ html.lenis body {
 .clip-polygon {
   clip-path: polygon(0 1%, 100% 0%, 75% 100%, 0% 100%);
 }
+
+select option {
+  font-size: smaller;
+}

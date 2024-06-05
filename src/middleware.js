@@ -1,23 +1,10 @@
 import { NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
-export const config = {
-  matcher: [
-    /*
-     * Match all paths except for:
-     * 1. /api routes
-     * 2. /_next (Next.js internals)
-     * 3. /_static (inside /public)
-     * 4. all root files inside /public (e.g. /favicon.ico)
-     */
-    "/((?!api/|_next/|_static/|_vercel|_next/image|[\\w-]+\\.\\w+).*)",
-  ],
-};
-
 // RegExp for public files
 const PUBLIC_FILE = /\.(.*)$/; // Files
 
-export default async function middleware(req) {
+export async function middleware(req) {
   const url = req.nextUrl;
 
   // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
@@ -26,7 +13,7 @@ export default async function middleware(req) {
     .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
 
   // Skip public files
-  if (PUBLIC_FILE.test(url.pathname) || url.pathname.includes("_next")) return;
+  if (PUBLIC_FILE.test(url.pathname)) return;
 
   const searchParams = req.nextUrl.searchParams.toString();
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
@@ -78,3 +65,16 @@ export default async function middleware(req) {
   // // rewrite everything else to `/[domain]/[slug] dynamic route
   // return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
 }
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
+};

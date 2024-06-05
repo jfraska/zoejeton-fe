@@ -7,13 +7,11 @@ export const metadata = {
   description: "by fraska",
 };
 
-export default async function Page() {
-  const data = await prisma.Template.findMany();
-
+export default function Page() {
   return (
     <>
       <Header />
-      <TemplateList data={data} />
+      <TemplateList />
     </>
   );
 }
