@@ -12,14 +12,14 @@ import LiveStream from "./_components/LiveStream";
 import Cover from "./_components/Cover";
 
 async function getInvitation() {
-  // const invitation = await prisma.Invitation.findFirst({
-  //   where: { title: "default" },
-  // });
-  // return invitation;
+  const invitation = await prisma.Invitation.findFirst({
+    where: { title: "default" },
+  });
+  return invitation;
 }
 
 export default async function Page() {
-  const result = await getInvitation();
+  // const result = await getInvitation();
 
   return (
     <>
