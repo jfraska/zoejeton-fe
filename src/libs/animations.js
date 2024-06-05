@@ -11,7 +11,7 @@ export const animatePageIn = () => {
     }).to(banner, {
       yPercent: -100,
       stagger: 0.2,
-      duration: 0.1,
+      duration: 0.2,
     });
   }
 };

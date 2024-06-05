@@ -1,13 +1,8 @@
 "use client";
 
-import "./style.scss";
 import CurrencyFormat from "react-currency-format";
 
-export default function page() {
-  const confirmHandle = (data) => {
-    console.log(data);
-  };
-
+export default function detail({ data }) {
   return (
     <div className="p-[3%] my-10 flex flex-col md:flex-row gap-10 justify-center">
       <div
@@ -18,22 +13,30 @@ export default function page() {
         }}
       >
         <div className="absolute top-0 left-0 clip-polygon pr-8 pl-2  py-1 bg-black text-white shadow">
-          Premium
+          {data.category}
         </div>
 
-        <button className="flex items-center justify-center w-fit gap-1 border bg-white border-black px-2 rounded-full transition-transform ease-in-out">
+        <a
+          href={
+            process.env.NEXT_PUBLIC_VERCEL_ENV
+              ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${data.slug}`
+              : `http://template.localhost:3000/${data.slug}`
+          }
+          target="_blank"
+          className="flex items-center justify-center w-fit gap-1 border bg-white border-black px-2 rounded-full transition-transform ease-in-out"
+        >
           <span
             className="w-5 aspect-square icon-[ph--eye]"
             style={{ color: "black" }}
           />
           <h1>Demo Invitation</h1>
-        </button>
+        </a>
       </div>
 
       <div className="flex flex-col gap-5 items-center md:items-start w-full md:w-2/4">
         <div className="text-center md:text-left">
-          <h1 className="text-3xl font-medium">Minimal Luxury</h1>
-          <h2>Rp. 100.000 - Rp. 200.000 </h2>
+          <h1 className="text-3xl font-medium">{data.title}</h1>
+          <h2>{data.price}</h2>
         </div>
 
         <div className="w-full">
@@ -57,7 +60,7 @@ export default function page() {
                 <h1 className="leading-none text-sm">+ Rp. 10.000</h1>
               </div>
 
-              <label class="checkbox bounce">
+              <label className="checkbox bounce">
                 <input type="checkbox" />
                 <svg viewBox="0 0 21 21">
                   <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
@@ -88,7 +91,7 @@ export default function page() {
                 <h1 className="leading-none ">Guestbook</h1>
                 <h1 className="leading-none text-sm">+ Rp. 10.000</h1>
               </div>
-              <label class="checkbox bounce">
+              <label className="checkbox bounce">
                 <input type="checkbox" />
                 <svg viewBox="0 0 21 21">
                   <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
@@ -101,7 +104,7 @@ export default function page() {
 
         <div className="w-full mt-6 flex flex-col items-end gap-5">
           <div className="w-full">
-            <div className="flex justify-between items-center w-full font-medium">
+            <div className="flex justify-between items-center w-full">
               <h1>Discount</h1>
               <h1 className="text-sm">
                 <CurrencyFormat
