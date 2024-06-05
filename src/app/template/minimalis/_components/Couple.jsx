@@ -2,9 +2,9 @@ import { Runalto } from "@/styles/fonts";
 
 export default function Couple() {
   return (
-    <section className="relative w-full h-fit py-10 text-white" name="couple">
+    <section className="relative w-full h-fit py-10" name="couple">
       <div
-        className="relative w-2/3 h-64 bg-[#9A9A92] bg-cov"
+        className="relative w-2/3 h-64 bg-secondary bg-cover"
         style={{
           backgroundImage: "url('/assets/templates/minimalis/5.heic')",
         }}
@@ -25,10 +25,10 @@ export default function Couple() {
         The Bride
       </div>
       <div className="flex justify-around w-full h-64 px-10">
-        <div className="w-full h-full bg-[#9A9A92]"></div>
+        <div className="w-full h-full bg-secondary"></div>
         <div className="w-full h-full flex flex-col justify-around">
-          <div className="w-full h-full bg-[#9A9A92]"></div>
-          <div className="w-full h-full bg-[#9A9A92]"></div>
+          <div className="w-full h-full bg-secondary"></div>
+          <div className="w-full h-full bg-secondary"></div>
         </div>
       </div>
       <div className="mt-7 flex flex-col items-center gap-2 px-10 text-center">
@@ -36,10 +36,7 @@ export default function Couple() {
         <p className="text-sm">Putri dari Bpk M Syarik & Ibu Isharni</p>
       </div>
       <div className="flex gap-2 items-center justify-center mt-10">
-        <span
-          className="w-5 aspect-square icon-[ic--baseline-arrow-circle-right]"
-          style={{ color: "white" }}
-        />
+        <span className="w-5 text-foreground aspect-square icon-[ic--baseline-arrow-circle-right]" />
         <h1>Instagram</h1>
       </div>
     </section>

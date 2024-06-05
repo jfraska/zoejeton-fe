@@ -10,7 +10,7 @@ export default function Event() {
         Wedding Event
       </h1>
 
-      <div className="mb-4 w-full aspect-video bg-[#9D9E9A]"></div>
+      <div className="mb-4 w-full aspect-video bg-secondary"></div>
 
       <div>
         <h1 className={`${Runalto.className} font-medium text-xl uppercase`}>

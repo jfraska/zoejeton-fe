@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
@@ -35,7 +36,7 @@ export default function LockScreen() {
   return (
     <div
       ref={(el) => (lockRef = el)}
-      className="fixed inset-0 flex flex-col justify-around items-center bg-[#9D9E9A] w-full h-full z-50 bg-cover text-white bg-center bg-opacity-20 bg-blend-multiply"
+      className="fixed inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       style={{
         backgroundImage: "url('/assets/templates/minimalis/7.heic')",
       }}

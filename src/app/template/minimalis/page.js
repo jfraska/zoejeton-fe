@@ -24,8 +24,8 @@ export default async function Page() {
   return (
     <>
       <Cover />
-      <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-color">
-        <LockScreen />
+      <LockScreen />
+      <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-primary">
         <Beranda />
         <Quotes />
         <Couple />
@@ -34,8 +34,8 @@ export default async function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-        <FloatingBar />
       </div>
+      <FloatingBar />
     </>
   );
 }

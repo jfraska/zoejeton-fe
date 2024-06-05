@@ -3,7 +3,7 @@ import { Runalto } from "@/styles/fonts";
 export default function Cover() {
   return (
     <div
-      className="relative hidden md:flex w-full h-full bg-cover text-white flex-col justify-end gap-5 items-start p-32"
+      className="relative hidden md:flex w-full h-full bg-cover flex-col justify-end gap-5 items-start p-32"
       style={{
         backgroundImage: "url('/assets/templates/minimalis/5.heic')",
       }}

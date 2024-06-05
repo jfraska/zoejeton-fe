@@ -6,7 +6,7 @@ import CountDown from "./CountDown";
 export default function Beranda() {
   return (
     <section
-      className="relative w-full h-screen bg-[#9D9E9A] bg-cover bg-center text-white bg-opacity-20 bg-blend-multiply"
+      className="relative w-full h-screen bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       name="beranda"
       style={{
         backgroundImage: "url('/assets/templates/minimalis/5.heic')",

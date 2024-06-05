@@ -3,7 +3,7 @@ import { Runalto } from "@/styles/fonts";
 export default function LiveStream() {
   return (
     <section
-      className="relative w-full h-screen bg-[#9D9E9A] p-10 flex flex-col justify-between bg-cover bg-center text-white bg-opacity-20 bg-blend-multiply"
+      className="relative w-full h-screen bg-secondary p-10 flex flex-col justify-between bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       style={{
         backgroundImage: "url('/assets/templates/minimalis/4.heic')",
       }}
@@ -18,7 +18,7 @@ export default function LiveStream() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
           vulputate libero et velit interdum, ac aliquet odio mattis.
         </p>
-        <button className="border border-white py-2 px-10 mt-10">
+        <button className="border border-foreground py-2 px-10 mt-10">
           Join Now
         </button>
       </div>
