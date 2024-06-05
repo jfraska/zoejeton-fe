@@ -1,11 +1,74 @@
 "use client";
 
 import "./style.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
+import CartContext from "@/context/cart";
+import { addOns, extraFitur } from "@/constants";
 import CurrencyFormat from "react-currency-format";
 
 export default function page({ params }) {
+  const [selectAll, setSelectAll] = useState(false);
+  const { addItemToCart } = useContext(CartContext);
+  const [checkboxes, setCheckboxes] = useState([...extraFitur, ...addOns]);
+
   const [data, setData] = useState({});
+
+  const handleSelectAll = (isChecked) => {
+    setSelectAll(isChecked);
+    setCheckboxes(
+      checkboxes.map((checkbox) => ({
+        ...checkbox,
+        checked: isChecked,
+      }))
+    );
+  };
+
+  const handleCheckbox = (id) => {
+    const updatedCheckboxes = checkboxes.map((checkbox) => {
+      if (checkbox.id === id) {
+        return { ...checkbox, checked: !checkbox.checked };
+      }
+      return checkbox;
+    });
+    setCheckboxes(updatedCheckboxes);
+    setSelectAll(updatedCheckboxes.every((checkbox) => checkbox.checked));
+  };
+
+  const totalPrice = useMemo(
+    () =>
+      checkboxes
+        .filter((checkbox) => checkbox.checked)
+        .reduce((sum, checkbox) => sum + checkbox.price, data.price),
+    [checkboxes, data]
+  );
+
+  const addToCartHandler = () => {
+    const total = checkboxes
+      .filter((checkbox) => checkbox.checked && checkbox.type !== "addOn")
+      .reduce((sum, checkbox) => sum + checkbox.price, data.price);
+
+    addItemToCart({
+      id: data.id,
+      title: data.name,
+      category: data.category,
+      price: total,
+      category: data.category,
+      type: "template",
+      image: data.thumbnail,
+    });
+
+    checkboxes
+      .filter((checkbox) => checkbox.checked && checkbox.type === "addOn")
+      .forEach((extraFitur) => {
+        addItemToCart({
+          id: e.id,
+          title: e.title,
+          category: e.category,
+          price: e.price,
+          type: "addOn",
+        });
+      });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +113,15 @@ export default function page({ params }) {
       <div className="flex flex-col gap-5 items-center md:items-start w-full md:w-2/4">
         <div className="text-center md:text-left">
           <h1 className="text-3xl font-medium">{data.title}</h1>
-          <h2>{data.price}</h2>
+          <h2>
+            <CurrencyFormat
+              value={data.price}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"Rp. "}
+              // suffix={".-"}
+            />
+          </h2>
         </div>
 
         <div className="w-full">
@@ -58,61 +129,92 @@ export default function page({ params }) {
             <h1 className="text-lg font-medium leading-none">Extra Fitur</h1>
             <button
               type="submit"
+              onClick={() => handleSelectAll(!selectAll)}
               className="flex px-1 text-xs uppercase justify-center items-center border border-black rounded-full text-black hover:bg-black hover:text-white"
             >
-              Select all
+              {selectAll ? "UnSelect All" : "Select all"}
             </button>
           </div>
           <div className="w-full flex flex-col mt-2">
-            {/* {addOns.map((addOn, index) => ( */}
-            <div
-              //   key={index}
-              className="w-full flex justify-between items-center pr-2 py-2 hover-underline-animation"
-            >
-              <div className="flex flex-col gap-2">
-                <h1 className="leading-none">RSVP</h1>
-                <h1 className="leading-none text-sm">+ Rp. 10.000</h1>
-              </div>
+            {checkboxes.map(
+              (e) =>
+                e.type === "fitur" && (
+                  <div
+                    key={e.id}
+                    className="w-full flex justify-between items-center pr-2 py-2 hover-underline-animation"
+                  >
+                    <div className="flex flex-col gap-2">
+                      <h1 className="leading-none">{e.title}</h1>
+                      <h1 className="leading-none text-sm">
+                        <CurrencyFormat
+                          value={e.price}
+                          displayType={"text"}
+                          thousandSeparator={true}
+                          prefix={"+Rp. "}
+                          suffix={".-"}
+                        />
+                      </h1>
+                    </div>
 
-              <label className="checkbox bounce">
-                <input type="checkbox" />
-                <svg viewBox="0 0 21 21">
-                  <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-                </svg>
-              </label>
-            </div>
-            {/* ))} */}
+                    <label className="checkbox bounce">
+                      <input
+                        type="checkbox"
+                        checked={e.checked}
+                        onChange={() => handleCheckbox(e.id)}
+                      />
+                      <svg viewBox="0 0 21 21">
+                        <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                      </svg>
+                    </label>
+                  </div>
+                )
+            )}
           </div>
         </div>
 
         <div className="w-full">
           <div className="flex justify-between items-end text-base">
             <h1 className="text-lg font-medium leading-none">Addon</h1>
-            <button
+            {/* <button
               type="submit"
               className="flex px-1 text-xs uppercase justify-center items-center border border-black rounded-full text-black hover:bg-black hover:text-white"
             >
               Select all
-            </button>
+            </button> */}
           </div>
           <div className="w-full flex flex-col mt-2">
-            {/* {addOns.map((addOn, index) => ( */}
-            <div
-              //   key={index}
-              className="w-full flex justify-between items-center pr-2 py-2 hover-underline-animation"
-            >
-              <div className="flex flex-col gap-2">
-                <h1 className="leading-none ">Guestbook</h1>
-                <h1 className="leading-none text-sm">+ Rp. 10.000</h1>
-              </div>
-              <label className="checkbox bounce">
-                <input type="checkbox" />
-                <svg viewBox="0 0 21 21">
-                  <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
-                </svg>
-              </label>
-            </div>
-            {/* ))} */}
+            {checkboxes.map(
+              (e) =>
+                e.type === "addon" && (
+                  <div
+                    key={e.id}
+                    className="w-full flex justify-between items-center pr-2 py-2 hover-underline-animation"
+                  >
+                    <div className="flex flex-col gap-2">
+                      <h1 className="leading-none ">{e.title}</h1>
+                      <h1 className="leading-none text-sm">
+                        <CurrencyFormat
+                          value={e.price}
+                          displayType={"text"}
+                          thousandSeparator={true}
+                          prefix={"+Rp. "}
+                          suffix={".-"}
+                        />
+                      </h1>
+                    </div>
+                    <label className="checkbox bounce">
+                      <input
+                        type="checkbox"
+                        checked={e.checked}
+                        onChange={() => handleCheckbox(e.id)}
+                      />
+                      <svg viewBox="0 0 21 21">
+                        <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
+                      </svg>
+                    </label>
+                  </div>
+                )
+            )}
           </div>
         </div>
 
@@ -126,7 +228,7 @@ export default function page({ params }) {
                   displayType={"text"}
                   thousandSeparator={true}
                   prefix={"Rp. "}
-                  suffix={",00"}
+                  suffix={".-"}
                 />
               </h1>
             </div>
@@ -134,11 +236,11 @@ export default function page({ params }) {
               <h1 className="text-lg">Subtotal</h1>
               <h1 className="text-sm">
                 <CurrencyFormat
-                  value={0}
+                  value={totalPrice}
                   displayType={"text"}
                   thousandSeparator={true}
                   prefix={"Rp. "}
-                  suffix={",00"}
+                  suffix={".-"}
                 />
               </h1>
             </div>
@@ -148,7 +250,7 @@ export default function page({ params }) {
           </p>
           <div className="flex gap-2">
             <button
-              //   onClick={() => confirmHandle(amountWithoutTax)}
+              onClick={addToCartHandler}
               className="flex justify-between items-center px-2 py-1 text-lg border border-black bg-white hover:bg-black hover:text-white rounded-full"
             >
               <h1 className="uppercase">add to cart</h1>

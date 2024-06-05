@@ -142,22 +142,49 @@ export const templates = [
   },
 ];
 
-export const addOns = [
+export const extraFitur = [
   {
-    id: "a-1",
-    name: "Guestbook",
-    image: "elegant",
+    id: "ex-01",
+    title: "RSVP",
+    image: "elegant.jpg",
     price: 200000,
-    type: "addon",
+    discount: 50000,
     href: "/",
+    type: "fitur",
+    checked: false,
   },
   {
-    id: "a-2",
-    name: "Guestbook",
-    image: "elegant",
+    id: "ex-02",
+    title: "Add 3 Image",
+    image: "elegant.jpg",
     price: 200000,
-    type: "addon",
+    discount: 0,
     href: "/",
+    type: "fitur",
+    checked: false,
+  },
+];
+
+export const addOns = [
+  {
+    id: "ad-01",
+    title: "Guestbook",
+    image: "elegant.jpg",
+    price: 200000,
+    discount: 50000,
+    href: "/",
+    type: "addon",
+    checked: false,
+  },
+  {
+    id: "ad-02",
+    title: "Whatsapp Blast",
+    image: "elegant.jpg",
+    price: 200000,
+    discount: 0,
+    href: "/",
+    type: "addon",
+    checked: false,
   },
 ];
 

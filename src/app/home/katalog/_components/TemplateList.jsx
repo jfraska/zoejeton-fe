@@ -51,7 +51,7 @@ export default function TemplateList() {
       <div className="flex justify-between items-center text-base border-b border-black">
         <div className="relative hover-underline-animation py-2">
           <select
-            className="appearance-none focus:outline-none pr-10 text-xl bg-transparent"
+            className="appearance-none focus:outline-none pr-0 md:pr-10 text-xl bg-transparent"
             value={category}
             onChange={handleCategory}
           >

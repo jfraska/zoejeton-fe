@@ -5,7 +5,7 @@ import CartContext from "@/context/cart";
 import CurrencyFormat from "react-currency-format";
 
 export default function Page() {
-  const { cart } = useContext(CartContext);
+  const { cart, deleteItemFromCart } = useContext(CartContext);
 
   const amountWithoutTax = cart?.cartItems?.reduce(
     (acc, item) => acc + item.price,
@@ -25,7 +25,7 @@ export default function Page() {
       <div className="mt-5 flex flex-col gap-2">
         {cart?.cartItems?.map((cartItem) => (
           <div
-            key={cartItem.product}
+            key={cartItem.id}
             className="w-full flex justify-between items-stretch gap-4 pb-5 border-b border-black"
           >
             <div
@@ -36,17 +36,17 @@ export default function Page() {
               }}
             >
               <div className="absolute text-sm top-0 left-0 clip-polygon pr-8 pl-2  py-1 bg-black text-white shadow">
-                Premium
+                {cartItem.category}
               </div>
             </div>
             <div className="w-2/5 flex flex-col items-start gap-2">
-              <h1 className="font-medium leading-none">{cartItem.name}</h1>
-              <h1 className="text-xs">{cartItem.product}</h1>
+              <h1 className="font-medium leading-none">{cartItem.title}</h1>
+              <h1 className="text-xs">{cartItem.fitur}</h1>
             </div>
             <div className="w-2/5 flex flex-col items-end justify-between">
               <button
                 className="flex justify-center items-center"
-                onClick={() => deleteItemFromCart(cartItem?.product)}
+                onClick={() => deleteItemFromCart(cartItem?.id)}
               >
                 <span
                   className="mt-1 w-4 aspect-square icon-[lucide--trash]"
@@ -59,7 +59,7 @@ export default function Page() {
                   displayType={"text"}
                   thousandSeparator={true}
                   prefix={"Rp. "}
-                  suffix={",00"}
+                  suffix={".-"}
                 />
               </h1>
             </div>
@@ -76,7 +76,7 @@ export default function Page() {
               displayType={"text"}
               thousandSeparator={true}
               prefix={"Rp. "}
-              suffix={",00"}
+              suffix={".-"}
             />
           </h1>
         </div>

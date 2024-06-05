@@ -1,14 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { createContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-
-  const router = useRouter;
 
   useEffect(() => {
     setCartToState();
@@ -22,13 +19,23 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const addItemToCart = async ({ product, name, type, price, image }) => {
+  const addItemToCart = async ({
+    id,
+    title,
+    category,
+    image,
+    fitur,
+    price,
+    type,
+  }) => {
     const item = {
-      product,
-      name,
-      type,
-      price,
+      id,
+      title,
+      category,
       image,
+      fitur,
+      price,
+      type,
     };
 
     const isItemExist = cart?.cartItems?.find(
