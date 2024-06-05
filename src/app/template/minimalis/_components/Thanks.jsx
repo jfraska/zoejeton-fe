@@ -5,7 +5,7 @@ export default function Thanks() {
     <section
       className="relative w-full h-screen bg-cover flex flex-col justify-center items-center bg-black bg-opacity-20 bg-blend-multiply pb-10"
       style={{
-        backgroundImage: "url('/assets/templates/minimalis/8.heic')",
+        backgroundImage: "url('/templates/minimalis/8.heic')",
       }}
     >
       <h1 className={`${Runalto.className} text-5xl font-medium w-2/4`}>

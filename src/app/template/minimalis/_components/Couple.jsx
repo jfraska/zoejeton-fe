@@ -6,7 +6,7 @@ export default function Couple() {
       <div
         className="relative w-2/3 h-64 bg-secondary bg-cover"
         style={{
-          backgroundImage: "url('/assets/templates/minimalis/5.heic')",
+          backgroundImage: "url('/templates/minimalis/5.heic')",
         }}
       >
         <div className="absolute -top-[75px] -right-[75px] w-[150px] h-[150px] flex justify-center items-center" />

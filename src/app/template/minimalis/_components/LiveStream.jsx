@@ -5,7 +5,7 @@ export default function LiveStream() {
     <section
       className="relative w-full h-screen bg-secondary p-10 flex flex-col justify-between bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       style={{
-        backgroundImage: "url('/assets/templates/minimalis/4.heic')",
+        backgroundImage: "url('/templates/minimalis/4.heic')",
       }}
     >
       <div>

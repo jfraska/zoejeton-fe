@@ -9,7 +9,7 @@ export default function Beranda() {
       className="relative w-full h-screen bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       name="beranda"
       style={{
-        backgroundImage: "url('/assets/templates/minimalis/5.heic')",
+        backgroundImage: "url('/templates/minimalis/5.heic')",
       }}
     >
       <div className="mx-auto flex flex-col gap-6 justify-start items-center px-10 text-center">

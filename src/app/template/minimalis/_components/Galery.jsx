@@ -4,7 +4,7 @@ export default function Galery() {
       <div
         className="w-full aspect-video bg-cover bg-center"
         style={{
-          backgroundImage: "url('/assets/templates/minimalis/1.jpg')",
+          backgroundImage: "url('/templates/minimalis/1.jpg')",
         }}
       />
 
@@ -12,13 +12,13 @@ export default function Galery() {
         <div
           className="w-1/2 aspect-square bg-cover bg-center"
           style={{
-            backgroundImage: "url('/assets/templates/minimalis/2.heic')",
+            backgroundImage: "url('/templates/minimalis/2.heic')",
           }}
         />
         <div
           className="w-1/2 aspect-square bg-cover bg-center"
           style={{
-            backgroundImage: "url('/assets/templates/minimalis/8.heic')",
+            backgroundImage: "url('/templates/minimalis/8.heic')",
           }}
         />
       </div>
@@ -26,14 +26,14 @@ export default function Galery() {
       <div
         className="w-full aspect-video bg-cover"
         style={{
-          backgroundImage: "url('/assets/templates/minimalis/3.jpg')",
+          backgroundImage: "url('/templates/minimalis/3.jpg')",
         }}
       />
 
       <div
         className="w-full aspect-video bg-cover"
         style={{
-          backgroundImage: "url('/assets/templates/minimalis/5.heic')",
+          backgroundImage: "url('/templates/minimalis/5.heic')",
         }}
       />
     </section>
