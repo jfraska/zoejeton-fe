@@ -102,7 +102,6 @@ export default function page({ params }) {
     };
 
     WaCheckout(data);
-    router.push("/katalog");
   };
 
   useEffect(() => {
