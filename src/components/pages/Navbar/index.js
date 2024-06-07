@@ -3,29 +3,26 @@
 import "./style.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Menu from "./menu";
 import CartContext from "@/context/cart";
+import { usePathname, useRouter } from "next/navigation";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
 import Hamburger from "@/components/icons/hamburger";
 import TransitionLink from "@/components/UI/TransitionLink";
+import Cart from "@/components/container/cart";
+import Menu from "@/components/container/menu";
+import { ArrowBack, ArrowBackIosNew } from "@mui/icons-material";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState({ state: true, header: false });
   const [menuState, setMenuState] = useState(false);
-  const [notifState, setNotifState] = useState(false);
+  const [cartState, setCartState] = useState(false);
   const [shake, setShake] = useState(false);
   const { cart } = useContext(CartContext);
+  const pathname = usePathname();
+  const router = useRouter();
   let navbarRef = useRef(null);
   const navTimeline = useRef();
-
-  useEffect(() => {
-    if (notifState) {
-      setTimeout(() => {
-        setNotifState(false);
-      }, 2000);
-    }
-  }, [notifState]);
 
   useEffect(() => {
     if (cart?.cartItems?.length > 0) {
@@ -69,11 +66,18 @@ export default function Navbar() {
         } 
         transition-all ease-in-out`}
       >
-        <Hamburger
-          state={menuState}
-          setState={setMenuState}
-          scroll={!scrolled.header}
-        />
+        {pathname === "/katalog" || pathname === "/katalog" ? (
+          <Hamburger
+            state={menuState}
+            setState={setMenuState}
+            scroll={!scrolled.header}
+          />
+        ) : (
+          <button onClick={() => router.back()}>
+            <ArrowBack />
+          </button>
+        )}
+
         <TransitionLink
           href="/"
           className={`${Runalto.className} font-semibold ${
@@ -83,13 +87,12 @@ export default function Navbar() {
           ZoeJeton
         </TransitionLink>
 
-        <TransitionLink
-          // onClick={() => {
-          //   if (cart?.cartItems?.length > 0) {
-          //     setCartState(true);
-          //   }
-          // }}
-          href="/cart"
+        <button
+          onClick={() => {
+            if (cart?.cartItems?.length > 0) {
+              setCartState(true);
+            }
+          }}
           className={`flex items-center gap-1 text-base cursor-pointer ${
             menuState && "text-black"
           } transition-all ease-linear`}
@@ -118,7 +121,7 @@ export default function Navbar() {
               <span className="absolute -bottom-0.5 -right-0.5 w-3 aspect-square bg-red-500 text-white border-2 border-white rounded-full" />
             )}
           </div>
-        </TransitionLink>
+        </button>
 
         <button
           className={`${
@@ -129,6 +132,8 @@ export default function Navbar() {
           Close
         </button>
       </div>
+
+      <Cart state={cartState} setState={setCartState} />
 
       <Menu state={menuState} setState={setMenuState} />
     </nav>

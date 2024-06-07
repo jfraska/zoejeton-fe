@@ -19,7 +19,26 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const addItemToCart = async ({
+  const addItemsToCart = (items) => {
+    let newCartItems = [...(cart?.cartItems || [])];
+
+    items.forEach((item) => {
+      const isItemExist = newCartItems.find((i) => i.id === item.id);
+
+      if (isItemExist) {
+        newCartItems = newCartItems.map((i) =>
+          i.id === isItemExist.id ? item : i
+        );
+      } else {
+        newCartItems.push(item);
+      }
+    });
+
+    localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
+    setCartToState();
+  };
+
+  const addItemToCart = ({
     id,
     title,
     category,
@@ -38,15 +57,13 @@ export const CartProvider = ({ children }) => {
       type,
     };
 
-    const isItemExist = cart?.cartItems?.find(
-      (i) => i.product === item.product
-    );
+    const isItemExist = cart?.cartItems?.find((i) => i.id === item.id);
 
     let newCartItems;
 
     if (isItemExist) {
       newCartItems = cart?.cartItems?.map((i) =>
-        i.product === isItemExist.product ? item : i
+        i.id === isItemExist.id ? item : i
       );
     } else {
       newCartItems = [...(cart?.cartItems || []), item];
@@ -57,7 +74,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const deleteItemFromCart = (id) => {
-    const newCartItems = cart?.cartItems?.filter((i) => i.product !== id);
+    const newCartItems = cart?.cartItems?.filter((i) => i.id !== id);
 
     localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
     setCartToState();
@@ -68,6 +85,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cart,
         addItemToCart,
+        addItemsToCart,
         deleteItemFromCart,
       }}
     >
