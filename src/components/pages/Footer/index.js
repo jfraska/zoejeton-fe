@@ -70,7 +70,12 @@ export default function Footer() {
               <h2 className="">Policy</h2>
             </div>
             <div className="flex flex-col md:w-2/6 w-full">
-              <h2 className="">Instagram</h2>
+              <a
+                href="https://www.instagram.com/zoejeton?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                className=""
+              >
+                Instagram
+              </a>
               <h2 className="">Tiktok</h2>
             </div>
           </div>

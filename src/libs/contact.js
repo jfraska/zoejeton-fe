@@ -3,7 +3,7 @@ export function WaCheckout(data, number = "+6285161710045") {
     let text = "";
 
     for (const key in data) {
-      if (data.hasOwnProperty(key) && Array.isArray(data[key])) {
+      if (Array.isArray(data[key]) && data[key].length > 0) {
         if (key === "template") {
           text += "%0ATemplate+%3A%0A";
         } else if (key === "fitur") {
@@ -31,6 +31,20 @@ export function WaCheckout(data, number = "+6285161710045") {
     data.diskon
   )}%0AEstimasi+Harga+%3A+${encodeURI(data.subtotal)}%0A%0ATerima+Kasih%21`;
 
-  console.log(url);
+  window.open(url);
+}
+
+export function WaContact(
+  data = { name: "<masukan nama>", pesan: "<masukan pesan>" },
+  number = "+6285161710045"
+) {
+  const url = `https://wa.me/${encodeURI(
+    number
+  )}?text=Halo+Zoe%0A%0ANama+%3A+${encodeURI(
+    data.name
+  )}%0APesan+%3A+${encodeURI(
+    data.pesan
+  )}%0A%0Asaya+tertarik+dengan+undangan+digital`;
+
   window.open(url);
 }

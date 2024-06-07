@@ -49,7 +49,6 @@ export default function LoadingButton({ onClick, children, ...props }) {
   return (
     <button
       onClick={handleClick}
-      {...props}
       ref={ref}
       style={
         showLoader
@@ -61,11 +60,13 @@ export default function LoadingButton({ onClick, children, ...props }) {
       }
     >
       {showLoader ? (
-        <animated.div style={fadeOutProps}>
+        <animated.div style={fadeOutProps} {...props}>
           <div className={styles.loading} />
         </animated.div>
       ) : (
-        <animated.div style={fadeInProps}>{children}</animated.div>
+        <animated.div style={fadeInProps} {...props}>
+          {children}
+        </animated.div>
       )}
     </button>
   );

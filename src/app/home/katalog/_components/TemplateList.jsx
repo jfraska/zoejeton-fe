@@ -3,14 +3,16 @@
 import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
-import Link from "next/link";
 import Loading from "@/components/UI/loading";
+import LoadingButton from "@/components/UI/loading-button";
+import { useRouter } from "next/navigation";
 
 export default function TemplateList() {
   const [data, setData] = useState([]);
   const [meta, setMeta] = useState({});
   const [category, setCategory] = useState("All");
   const [pagination, setPagination] = useState({ limit: 1, offset: 0 });
+  const router = useRouter();
 
   const handleCategory = (event) => {
     setCategory(event.target.value);
@@ -114,8 +116,8 @@ export default function TemplateList() {
                   </h1>
                 </div>
 
-                <Link
-                  href={`/katalog/${e.id}`}
+                <LoadingButton
+                  onClick={() => router.push(`/katalog/${e.id}`)}
                   className="bg-black flex justify-center items-center p-2 rounded-md hover:bg-[#00000068] hover:scale-110 transition-all ease-in-out"
                 >
                   <Image
@@ -125,7 +127,7 @@ export default function TemplateList() {
                     alt="cart"
                     className="w-5 aspect-square"
                   />
-                </Link>
+                </LoadingButton>
               </div>
             </div>
           ))}

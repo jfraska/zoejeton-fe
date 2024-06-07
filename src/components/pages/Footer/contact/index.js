@@ -1,4 +1,5 @@
 import "./style.css";
+import { WaContact } from "@/libs/contact";
 import { useForm } from "react-hook-form";
 
 export default function Contact() {
@@ -9,17 +10,7 @@ export default function Contact() {
   } = useForm();
 
   const onSubmit = (data) => {
-    const number = "+6285161710045";
-    let url =
-      "https://wa.me/" +
-      number +
-      "?text=Halo+Zoe%0A%0ANama+%3A+" +
-      encodeURI(data.name) +
-      "%0APesan+%3A+" +
-      encodeURI(data.pesan) +
-      "%0A%0Asaya+tertarik+dengan+undangan+digital";
-
-    window.open(url);
+    WaContact(data);
   };
 
   return (

@@ -11,7 +11,8 @@ import Hamburger from "@/components/icons/hamburger";
 import TransitionLink from "@/components/UI/TransitionLink";
 import Cart from "@/components/container/cart";
 import Menu from "@/components/container/menu";
-import { ArrowBack, ArrowBackIosNew } from "@mui/icons-material";
+import { ArrowBackIosNew } from "@mui/icons-material";
+import { toast } from "sonner";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState({ state: true, header: false });
@@ -66,7 +67,7 @@ export default function Navbar() {
         } 
         transition-all ease-in-out`}
       >
-        {pathname === "/katalog" || pathname === "/katalog" ? (
+        {pathname === "/" || pathname === "/katalog" ? (
           <Hamburger
             state={menuState}
             setState={setMenuState}
@@ -74,7 +75,7 @@ export default function Navbar() {
           />
         ) : (
           <button onClick={() => router.back()}>
-            <ArrowBack />
+            <ArrowBackIosNew />
           </button>
         )}
 
@@ -91,6 +92,8 @@ export default function Navbar() {
           onClick={() => {
             if (cart?.cartItems?.length > 0) {
               setCartState(true);
+            } else {
+              toast.error("Empty cart");
             }
           }}
           className={`flex items-center gap-1 text-base cursor-pointer ${

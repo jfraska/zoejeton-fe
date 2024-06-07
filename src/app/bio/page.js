@@ -2,22 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { faq } from "@/constants";
-import FAQ from "./_components/FAQ";
 import Brand from "./_components/Brand";
-import Advertise from "./_components/Advertise";
 import Button from "./_components/Button";
+import { Share } from "@/components/container/Share";
 
 export default function Page() {
-  const [selected, setSelected] = useState(null);
-
-  const toggle = (index) => {
-    if (selected === index) {
-      return setSelected(null);
-    }
-    setSelected(index);
-  };
-
   return (
     <div className="relative md:my-10 max-w-[430px] min-h-full px-5 pt-24 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-10">
       <Image
@@ -27,16 +16,8 @@ export default function Page() {
         objectFit="cover"
         layout="fill"
       />
-      <button className="absolute top-4 right-4 w-10 aspect-square rounded-lg flex justify-center items-center bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90">
-        <Image
-          src={"/assets/icons/qrcode.svg"}
-          width={30}
-          height={30}
-          alt=""
-          className="w-8 aspect-square"
-        />
-      </button>
 
+      <Share />
       <Brand />
 
       <section className="mt-10 flex flex-col gap-2">
@@ -73,7 +54,7 @@ export default function Page() {
 
       <footer className="mt-20 text-white text-center p-3 text-[12px]">
         <p>Business Hours :</p>
-        <p>Monday - Friday | 09.00 - 18.00 WIB</p>
+        <p>Monday - Friday | 09.00 - 20.00 WIB</p>
         <p>Saturday | 10.00 - 16.00 WIB (Slow response)</p>
         <p>Sunday | Off</p>
         <p className="mt-10 text-[10px]">© All right reserved by ZoeJeton</p>

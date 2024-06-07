@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import CartContext from "@/context/cart";
 import CurrencyFormat from "react-currency-format";
+import { WaCheckout } from "@/libs/contact";
 
 export default function Cart({ state, setState }) {
   let sidebarMenu = useRef(null);
@@ -31,20 +32,37 @@ export default function Cart({ state, setState }) {
     state ? menuTimeline.current.play() : menuTimeline.current.reverse();
   }, [state]);
 
-  const amountWithoutTax = cart?.cartItems?.reduce(
+  const totalPrice = cart?.cartItems?.reduce(
     (acc, item) => acc + item.price,
     0
   );
 
-  const confirmHandle = (data) => {
-    console.log(data);
+  const checkoutHandle = () => {
+    const formatter = Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    });
+
+    const temp = {
+      name: "Davin",
+      order_id: "123",
+      diskon: formatter.format(0),
+      subtotal: formatter.format(totalPrice),
+      template: cart?.cartItems?.filter(
+        (cartItem) => cartItem.type === "template"
+      ),
+      fitur: cart?.cartItems?.filter((cartItem) => cartItem.type === "fitur"),
+      addon: cart?.cartItems?.filter((cartItem) => cartItem.type === "addon"),
+    };
+
+    WaCheckout(temp);
   };
 
   return (
     <>
       <div
         ref={(el) => (sidebarMenu = el)}
-        className={`fixed h-full top-0 right-0 z-[60] md:w-1/4 w-11/12 bg-white text-black`}
+        className={`fixed h-full top-0 right-0 z-[60] lg:w-1/4 w-11/12 bg-white text-black`}
       >
         <div className="w-full h-4/5 pb-20 overflow-y-auto px-5">
           <div className="flex py-5 justify-between items-center w-full">
@@ -87,10 +105,21 @@ export default function Cart({ state, setState }) {
                       }}
                     />
                     <div className="w-2/5 flex flex-col items-start gap-2">
-                      <h1 className="font-medium leading-none">
+                      <h1 className="font-medium text-lg leading-none">
                         {cartItem.title}
                       </h1>
-                      <h1 className="text-xs">{cartItem.fitur}</h1>
+
+                      <ul className="flex flex-col">
+                        {cartItem.fitur && (
+                          <li className="text-xs font-medium">Extra fitur</li>
+                        )}
+                        {cartItem.fitur?.map((e) => (
+                          <li className="flex items-center" key={e.id}>
+                            <span className="inline-block w-1 aspect-square mr-2 bg-black rounded-full" />
+                            <h1 className="text-xs">{e.title}</h1>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div className="w-2/5 flex flex-col items-end justify-between">
                       <button
@@ -128,7 +157,7 @@ export default function Cart({ state, setState }) {
                     className="w-full min-h-[100px] flex justify-between items-stretch gap-4 p-4 bg-white rounded shadow-[0_2px_20px_-10px_rgba(0,0,0,0.2)]"
                   >
                     <div className="w-3/5 flex flex-col items-start gap-2">
-                      <h1 className="font-medium leading-none">
+                      <h1 className="font-medium text-lg leading-none">
                         {cartItem.title}
                       </h1>
                       <h1 className="text-xs">{cartItem.id}</h1>
@@ -163,7 +192,7 @@ export default function Cart({ state, setState }) {
             <h1 className="text-lg">Estimasi Total</h1>
             <h1 className="text-sm">
               <CurrencyFormat
-                value={amountWithoutTax}
+                value={totalPrice}
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"IDR "}
@@ -174,16 +203,29 @@ export default function Cart({ state, setState }) {
           <p className="text-xs leading-none">
             *Taxes are calculated at checkout.
           </p>
-          <button
-            onClick={() => confirmHandle(amountWithoutTax)}
-            className="flex justify-between items-center px-2 py-px text-xl w-full bg-black rounded-full"
-          >
-            <h1 className="uppercase text-white">checkout</h1>
-            <span
-              className="mt-1 w-8 aspect-square icon-[carbon--arrow-up]"
-              style={{ color: "white", transform: "rotate(90deg)" }}
-            />
-          </button>
+          {cart?.cartItems?.length > 0 ? (
+            <button
+              onClick={() => checkoutHandle()}
+              className="flex justify-between items-center px-2 py-px text-xl w-full bg-black rounded-full"
+            >
+              <h1 className="uppercase text-white">checkout</h1>
+              <span
+                className="mt-1 w-8 aspect-square icon-[carbon--arrow-up]"
+                style={{ color: "white", transform: "rotate(90deg)" }}
+              />
+            </button>
+          ) : (
+            <button
+              onClick={() => setState(false)}
+              className="flex justify-between items-center px-2 py-px text-xl w-full bg-black rounded-full"
+            >
+              <h1 className="uppercase text-white">continue browsing</h1>
+              <span
+                className="mt-1 w-8 aspect-square icon-[carbon--arrow-up]"
+                style={{ color: "white", transform: "rotate(90deg)" }}
+              />
+            </button>
+          )}
         </div>
       </div>
 

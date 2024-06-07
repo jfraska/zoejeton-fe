@@ -1,17 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
 import { ReactLenis } from "@studio-freight/react-lenis";
-import Preloader from "@/components/layouts/preloader";
-import { AnimatePresence } from "framer-motion";
 import { animatePageIn } from "@/libs/animations";
-import Navbar from "@/components/pages/Navbar";
+import Navbar from "@/components/pages/navbar";
 import gsap from "gsap";
-import Footer from "@/components/pages/Footer";
+import Footer from "@/components/pages/footer";
 
 export default function Template({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
   const lenisRef = useRef();
 
   useEffect(() => {
@@ -28,18 +24,11 @@ export default function Template({ children }) {
 
   useEffect(() => {
     animatePageIn();
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader />}
-      </AnimatePresence>
-
       <div
         id="transition"
         className="fixed min-h-screen bg-white inset-0 w-full z-[90]"
