@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { animatePageIn } from "@/libs/animations";
-import Navbar from "@/components/pages/navbar";
+import Navbar from "@/components/pages/Navbar";
 import gsap from "gsap";
-import Footer from "@/components/pages/footer";
+import Footer from "@/components/pages/Footer";
 
 export default function Template({ children }) {
   const lenisRef = useRef();
