@@ -28,6 +28,7 @@ import { useRouter } from "next/navigation";
 import { Label } from "@/components/UI/label";
 import { Input } from "@/components/UI/input";
 import { Copy } from "lucide-react";
+import { toast } from "sonner";
 
 export default function DrawerShare({ data }) {
   const [open, setOpen] = React.useState(false);
@@ -41,6 +42,18 @@ export default function DrawerShare({ data }) {
   const urlCheckout = process.env.NEXT_PUBLIC_VERCEL_ENV
     ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
     : `http://localhost:3000`;
+
+  const handleCopy = () => {
+    const link = document.getElementById("link").value;
+    navigator.clipboard.writeText(link).then(
+      () => {
+        toast.success("Link copied to clipboard");
+      },
+      (err) => {
+        toast.error("Failed to copy");
+      }
+    );
+  };
 
   if (isDesktop) {
     return (
@@ -69,13 +82,18 @@ export default function DrawerShare({ data }) {
                 Link
               </Label>
               <Input
-                className="bg-white ring-offset-white border-[#e5e5e5] placeholder:text-[#737373] focus-visible:ring-[#0a0a0a]"
+                className="bg-white ring-offset-white border-[#c3b8b8] placeholder:text-[#737373] focus-visible:ring-[#0a0a0a]"
                 id="link"
                 defaultValue={urlShare + data.slug}
                 readOnly
               />
             </div>
-            <Button type="submit" size="sm" className="px-3 bg-black">
+            <Button
+              type="submit"
+              size="sm"
+              className="px-3 bg-black"
+              onClick={handleCopy}
+            >
               <span className="sr-only">Copy</span>
               <Copy className="h-4 w-4" />
             </Button>
@@ -134,7 +152,12 @@ export default function DrawerShare({ data }) {
               readOnly
             />
           </div>
-          <Button type="submit" size="sm" className="px-3 bg-black">
+          <Button
+            type="submit"
+            size="sm"
+            className="px-3 bg-black"
+            onClick={handleCopy}
+          >
             <span className="sr-only">Copy</span>
             <Copy className="h-4 w-4" />
           </Button>

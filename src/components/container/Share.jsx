@@ -14,8 +14,21 @@ import {
 import { Input } from "@/components/UI/input";
 import { Label } from "@/components/UI/label";
 import Image from "next/image";
+import { toast } from "sonner";
 
 export default function Share() {
+  const handleCopy = () => {
+    const link = document.getElementById("link").value;
+    navigator.clipboard.writeText(link).then(
+      () => {
+        toast.success("Link copied to clipboard");
+      },
+      (err) => {
+        toast.error("Failed to copy");
+      }
+    );
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -43,7 +56,7 @@ export default function Share() {
             </Label>
             <Input id="link" defaultValue="https://zoejeton.com/bio" readOnly />
           </div>
-          <Button type="submit" size="sm" className="px-3">
+          <Button type="submit" size="sm" className="px-3" onClick={handleCopy}>
             <span className="sr-only">Copy</span>
             <Copy className="h-4 w-4" />
           </Button>

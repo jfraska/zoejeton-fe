@@ -25,7 +25,7 @@ export default function Loading() {
         setIsLoading(false);
       }, 2500);
     }
-  }, [pathname]);
+  }, []);
 
   return (
     <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
