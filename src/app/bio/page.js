@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Brand from "./_components/Brand";
 import Button from "./_components/Button";
-import { Share } from "@/components/container/Share";
+import Share from "@/components/container/Share";
 
 export default function Page() {
   return (

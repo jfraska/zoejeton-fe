@@ -15,7 +15,7 @@ import { Input } from "@/components/UI/input";
 import { Label } from "@/components/UI/label";
 import Image from "next/image";
 
-export function Share() {
+export default function Share() {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -31,7 +31,7 @@ export function Share() {
       </DialogTrigger>
       <DialogContent className="max-w-sm">
         <DialogHeader>
-          <DialogTitle>Share link</DialogTitle>
+          <DialogTitle className="font-medium">Share link</DialogTitle>
           <DialogDescription>
             Anyone who has this link will be able to view this.
           </DialogDescription>

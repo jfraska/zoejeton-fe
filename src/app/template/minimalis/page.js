@@ -12,6 +12,7 @@ import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
 
 import { GlobalStyles } from "@mui/material";
+import DrawerShare from "@/components/container/DrawerShare";
 
 async function getTemplate() {
   return await prisma.Template.findFirst({
@@ -20,13 +21,14 @@ async function getTemplate() {
 }
 
 export default async function Page() {
-  const result = await getTemplate();
-  console.log(result);
+  const data = await getTemplate();
+  console.log(data);
 
   return (
     <>
       <Cover />
       <LockScreen />
+      <DrawerShare data={data} />
       <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-primary">
         <Beranda />
         <Quotes />

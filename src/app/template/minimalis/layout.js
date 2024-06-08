@@ -1,5 +1,6 @@
 import "./style.css";
 import { Montserrat } from "next/font/google";
+import RecomendPlatform from "@/components/container/RecomendPlatform";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -10,8 +11,11 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <div className={`${montserrat.className} flex w-full h-screen`}>
-      {children}
-    </div>
+    <>
+      {/* <RecomendPlatform /> */}
+      <main className={`${montserrat.className} flex w-full h-screen`}>
+        {children}
+      </main>
+    </>
   );
 }
