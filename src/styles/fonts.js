@@ -51,3 +51,20 @@ export const Gunterz = localFont({
   src: "./assets/fonts/gunterz/gunterz-mediumitalic.woff",
   variable: "--font-Gunterz",
 });
+
+export const GenteRomantica = localFont({
+  src: "./assets/fonts/gente-romantica/GenteRomantica.ttf",
+  variable: "--font-GenteRomantica",
+});
+
+export const Catamaran = localFont({
+  src: [
+    {
+      path: "./assets/fonts/catamaran/Catamaran-Thin.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-Catamaran",
+});
+
