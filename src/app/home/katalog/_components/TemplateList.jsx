@@ -1,9 +1,8 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
-import Loading from "@/components/UI/loading";
 import LoadingButton from "@/components/UI/loading-button";
 import { useRouter } from "next/navigation";
 
@@ -70,67 +69,65 @@ export default function TemplateList() {
       </div>
 
       <div className="flex flex-wrap gap-4 justify-between my-5 w-full">
-        <Suspense fallback={<Loading />}>
-          {data.map((e) => (
-            <div
-              key={e.id}
-              className="group flex justify-center items-center bg-cover w-[47%] md:w-[23%] aspect-9/16 relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
-              style={{
-                backgroundImage: `url(${e.thumbnail})`,
-              }}
-            >
-              <div className="absolute top-0 left-0 md:text-base text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white shadow">
-                {e.category}
-              </div>
-
-              <a
-                href={
-                  process.env.NEXT_PUBLIC_VERCEL_ENV
-                    ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${e.slug}`
-                    : `http://template.localhost:3000/${e.slug}`
-                }
-                target="_blank"
-                className="flex items-center justify-center w-fit gap-1 border bg-white border-black px-2 rounded-full transition-transform ease-in-out group-hover:scale-100 scale-0"
-              >
-                <span
-                  className="w-5 aspect-square icon-[ph--eye]"
-                  style={{ color: "black" }}
-                />
-                <h1 className="md:text-base text-sm">Demo Invitation</h1>
-              </a>
-
-              <div className="absolute bottom-0 inset-x-0 p-4 flex justify-between items-center w-full">
-                <div className="flex flex-col justify-start items-start">
-                  <h1 className="font-medium md:text-base text-sm bg-black text-white w-fit leading-tight rounded">
-                    {e.title}
-                  </h1>
-                  <h1 className="md:text-sm text-xs font-normal bg-black text-white w-fit leading-tight rounded">
-                    <CurrencyFormat
-                      value={e.price}
-                      displayType={"text"}
-                      thousandSeparator={true}
-                      prefix={"Rp. "}
-                      // suffix={",00"}
-                    />
-                  </h1>
-                </div>
-
-                <LoadingButton
-                  onClick={() => router.push(`/katalog/${e.id}`)}
-                  className="bg-black flex justify-center items-center p-2 rounded-md hover:bg-[#00000068] hover:scale-110 transition-all ease-in-out"
-                >
-                  <Image
-                    src={"/assets/icons/cart.svg"}
-                    width="20"
-                    height="20"
-                    alt="cart"
-                    className="w-5 aspect-square"
-                  />
-                </LoadingButton>
-              </div>
+        {data.map((e) => (
+          <div
+            key={e.id}
+            className="group flex justify-center items-center bg-cover w-[47%] md:w-[23%] aspect-9/16 relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
+            style={{
+              backgroundImage: `url(${e.thumbnail})`,
+            }}
+          >
+            <div className="absolute top-0 left-0 md:text-base text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-blend-multiply bg-opacity-80">
+              {e.category}
             </div>
-          ))}
-        </Suspense>
+
+            <a
+              href={
+                process.env.NEXT_PUBLIC_VERCEL_ENV
+                  ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${e.slug}`
+                  : `http://template.localhost:3000/${e.slug}`
+              }
+              target="_blank"
+              className="flex items-center justify-center w-fit gap-1 border bg-white border-black px-2 rounded-full transition-transform ease-in-out group-hover:scale-100 scale-0"
+            >
+              <span
+                className="w-5 aspect-square icon-[ph--eye]"
+                style={{ color: "black" }}
+              />
+              <h1 className="md:text-base text-sm">Demo Invitation</h1>
+            </a>
+
+            <div className="absolute bottom-0 inset-x-0 px-2 md:py-1 py-2 bg-black text-white flex justify-between items-center w-full bg-blend-multiply bg-opacity-80">
+              <div className="flex flex-col justify-start items-start">
+                <h1 className="font-medium md:text-base text-sm w-fit leading-tight rounded">
+                  {e.title}
+                </h1>
+                <h1 className="md:text-sm text-xs font-normal w-fit leading-tight rounded">
+                  <CurrencyFormat
+                    value={e.price}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"Rp. "}
+                    // suffix={",00"}
+                  />
+                </h1>
+              </div>
+
+              <LoadingButton
+                onClick={() => router.push(`/katalog/${e.id}`)}
+                className="flex justify-center items-center p-2 rounded-md hover:scale-110 transition-all ease-in-out"
+              >
+                <Image
+                  src={"/assets/icons/cart.svg"}
+                  width="20"
+                  height="20"
+                  alt="cart"
+                  className="w-5 aspect-square"
+                />
+              </LoadingButton>
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="relative w-full h-fit">

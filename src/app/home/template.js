@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { animatePageIn } from "@/libs/animations";
 import Navbar from "@/components/pages/Navbar";
@@ -23,16 +23,16 @@ export default function Template({ children }) {
   });
 
   useEffect(() => {
-    // animatePageIn();
+    animatePageIn();
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      {/* <div
+      <div
         id="transition"
         className="fixed min-h-screen bg-white inset-0 w-full z-[90]"
-      /> */}
+      />
 
       <Navbar />
 

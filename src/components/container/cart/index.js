@@ -100,8 +100,7 @@ export default function Cart({ state, setState }) {
                     <div
                       className="w-32 aspect-square rounded bg-white bg-cover bg-center"
                       style={{
-                        backgroundImage:
-                          "url('https://source.unsplash.com/collection/2091539/500x400')",
+                        backgroundImage: `url(${cartItem.image})`,
                       }}
                     />
                     <div className="w-2/5 flex flex-col items-start gap-2">
@@ -110,7 +109,7 @@ export default function Cart({ state, setState }) {
                       </h1>
 
                       <ul className="flex flex-col">
-                        {cartItem.fitur && (
+                        {cartItem.fitur.length > 0 && (
                           <li className="text-xs font-medium">Extra fitur</li>
                         )}
                         {cartItem.fitur?.map((e) => (

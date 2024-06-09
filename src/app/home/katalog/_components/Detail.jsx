@@ -77,8 +77,6 @@ export default function Detail({ params }) {
       });
 
     addItemsToCart(temp);
-
-    router.push("/katalog");
   };
 
   const checkoutHandler = () => {

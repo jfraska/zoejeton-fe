@@ -59,7 +59,7 @@ export default function DrawerShare({ data }) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <button className="fixed left-4 top-4 w-10 aspect-square z-10 flex justify-center items-center rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90">
+          <button className="fixed left-4 top-4 w-10 aspect-square z-10 flex justify-center items-center rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90 focus:outline-none">
             <Image
               src={"/assets/icons/qrcode.svg"}
               width={30}
@@ -121,7 +121,7 @@ export default function DrawerShare({ data }) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <button className="fixed top-4 right-4 w-10 aspect-square z-10 flex justify-center items-center rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90">
+        <button className="fixed top-4 right-4 w-10 aspect-square z-10 flex justify-center items-center rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90 focus:outline-none">
           <Image
             src={"/assets/icons/qrcode.svg"}
             width={30}
