@@ -11,7 +11,7 @@ export default function TemplateList() {
   const [data, setData] = useState([]);
   const [meta, setMeta] = useState({});
   const [category, setCategory] = useState("All");
-  const [pagination, setPagination] = useState({ limit: 1, offset: 0 });
+  const [pagination, setPagination] = useState({ limit: 4, offset: 0 });
   const router = useRouter();
 
   const handleCategory = (event) => {
@@ -74,10 +74,9 @@ export default function TemplateList() {
           {data.map((e) => (
             <div
               key={e.id}
-              className="group flex justify-center items-center bg-cover w-[47%] md:w-[250px] h-[250px] md:h-[300px] relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
+              className="group flex justify-center items-center bg-cover w-[47%] md:w-[23%] aspect-9/16 relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
               style={{
-                backgroundImage:
-                  "url('https://source.unsplash.com/collection/2091539/500x400')",
+                backgroundImage: `url(${e.thumbnail})`,
               }}
             >
               <div className="absolute top-0 left-0 md:text-base text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white shadow">

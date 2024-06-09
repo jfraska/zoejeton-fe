@@ -119,8 +119,7 @@ export default function Detail({ params }) {
       <div
         className="bg-cover mx-auto md:mx-0 md:w-1/5 w-2/3 aspect-9/16 relative border border-black rounded-md overflow-hidden bg-[#00000051] transition-all ease-in-out bg-blend-overlay flex justify-center items-center"
         style={{
-          backgroundImage:
-            "url('https://source.unsplash.com/collection/2091539/500x400')",
+          backgroundImage: `url('${data.thumbnail}')`,
         }}
       >
         <div className="absolute top-0 left-0 clip-polygon pr-8 pl-2  py-1 bg-black text-white shadow">

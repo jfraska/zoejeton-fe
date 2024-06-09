@@ -1,3 +1,4 @@
+import Loading from "./loading";
 import "./style.css";
 
 import { CartProvider } from "@/context/cart";
@@ -8,5 +9,10 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return <CartProvider>{children}</CartProvider>;
+  return (
+    <CartProvider>
+      {children}
+      <Loading />
+    </CartProvider>
+  );
 }
