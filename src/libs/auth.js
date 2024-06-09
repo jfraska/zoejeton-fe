@@ -1,9 +1,10 @@
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
-import GitHub from "next-auth/providers/github";
+import Credentials from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/libs/prisma";
+import { saltAndHashPassword } from "@/libs/utils";
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
 
@@ -34,12 +35,40 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         };
       },
     }),
+    Credentials({
+      credentials: {
+        email: { label: "Email" },
+        // password: { label: "Password", type: "password" },
+      },
+      authorize: async (credentials) => {
+        let user = null;
+
+        // logic to salt and hash password
+        // const pwHash = await saltAndHashPassword(credentials.password);
+
+        user = await prisma.User.findFirst({
+          where: {
+            email: credentials.email,
+            // password: pwHash,
+          },
+        });
+
+        if (!user) {
+          // No user found, so this is their first attempt to login
+          // meaning this is also the place you could do registration
+          throw new Error("User not found.");
+        }
+
+        // return user object with the their profile data
+        return user;
+      },
+    }),
   ],
-  pages: {
-    signIn: `/login`,
-    verifyRequest: `/login`,
-    error: "/login", // Error code passed in query string as ?error=
-  },
+  // pages: {
+  //   signIn: `/login`,
+  //   verifyRequest: `/login`,
+  //   error: "/login", // Error code passed in query string as ?error=
+  // },
   session: { strategy: "jwt", maxAge: 1 * 24 * 60 * 60 },
   cookies: {
     sessionToken: {

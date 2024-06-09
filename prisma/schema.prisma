@@ -19,6 +19,7 @@ model User {
   name                    String?
   email                   String?   @unique
   emailVerified           DateTime?
+  password                String?
   image                   String?
   accounts                Account[]
   sessions                Session[]
@@ -100,9 +101,27 @@ model Invitation {
   published     Boolean     @default(false)
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
+  visitor       Visitor[]
 
   // Define the relation to Template
   template      Template    @relation(fields: [templateId], references: [id], onDelete: Cascade)
 
   @@index([templateId])
+}
+
+model Visitor {
+  id                      String    @id @default(cuid())
+  invitationId            String
+  name                    String
+  message                 String? 
+  whatsapp                String?
+  instagram               String?
+  attended                Json?
+  image                   String?
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
+
+  invitation      Invitation    @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+
+  @@index([invitationId])
 }
