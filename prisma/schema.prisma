@@ -23,13 +23,14 @@ model User {
   image                   String?
   accounts                Account[]
   sessions                Session[]
+  
+  invitations             Invitation[]
 
   createdAt               DateTime  @default(now())
   updatedAt               DateTime  @updatedAt
 }
 
 model Account {
-  id                       String  @id @default(cuid())
   userId                   String
   type                     String
   provider                 String
@@ -48,12 +49,10 @@ model Account {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
-  @@index([userId])
+   @@id([provider, providerAccountId])
 }
 
 model Session {
-  id            String      @id @default(cuid())
   sessionToken  String      @unique
   userId        String
   expires       DateTime
@@ -62,16 +61,14 @@ model Session {
   updatedAt DateTime @updatedAt
 
   user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@index([userId])
 }
 
 model VerificationToken {
   identifier    String
-  token         String      @unique
+  token         String
   expires       DateTime
 
-  @@unique([identifier, token])
+  @@id([identifier, token])
 }
 
 model Template {
@@ -81,38 +78,55 @@ model Template {
   thumbnail     String
   price         Int
   discount      Int
-  category      String      @default("")
-  content       Json
-  color         Json
-  music         String
-  createdAt     DateTime    @default(now()) @map(name: "created_at")
-  updatedAt     DateTime    @updatedAt @map(name: "updated_at")
-
-  // Define the relation to Invitation
-  invitations Invitation[]
-}
-
-model Invitation {
-  id            String      @default(cuid()) @id 
-  templateId    String
-  content       Json
-  color         Json
+  category      String      @default("basic")
+  content       Json[]
+  color         Json[]
   music         String
   published     Boolean     @default(false)
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
-  visitor       Visitor[]
 
-  // Define the relation to Template
-  template      Template    @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  invitation    Invitation?
+}
 
-  @@index([templateId])
+model Invitation {
+  id            String      @default(cuid()) @id 
+  userId        String
+  templateId    String?      @unique
+  fitur         Json[]
+  addon         Json[]
+  createdAt     DateTime    @default(now()) @map(name: "created_at")
+  updatedAt     DateTime    @updatedAt @map(name: "updated_at")
+
+  visitors      Visitor[]
+  payment       Payment?
+
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  template      Template?    @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([templateId,userId])
+}
+
+model Payment {
+  id            String      @default(cuid()) @id 
+  invitationId  String      @unique
+  items         Json[]
+  discount      Int         @default(0)
+  subTotal      Int
+  status        String      @default("pending")
+  createdAt     DateTime    @default(now()) @map(name: "created_at")
+  updatedAt     DateTime    @updatedAt @map(name: "updated_at")
+
+  invitation    Invitation    @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+
+  @@index([invitationId])
 }
 
 model Visitor {
   id                      String    @id @default(cuid())
   invitationId            String
   name                    String
+  address                 String?
   message                 String? 
   whatsapp                String?
   instagram               String?

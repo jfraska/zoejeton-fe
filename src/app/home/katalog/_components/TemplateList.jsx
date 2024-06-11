@@ -39,7 +39,7 @@ export default function TemplateList() {
     });
 
     const fetchData = async () => {
-      const response = await fetch(`/api/templates?${params.toString()}`);
+      const response = await fetch(`/api/template?${params.toString()}`);
       const result = await response.json();
       setData(result.data);
       setMeta(result.meta);

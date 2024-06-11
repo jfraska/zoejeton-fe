@@ -104,7 +104,7 @@ export default function Detail({ params }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/api/templates/${params.slug}`);
+      const response = await fetch(`/api/template/${params.slug}`);
       const result = await response.json();
       setData(result.data);
     };
