@@ -1,11 +1,11 @@
-import Hero from "@/components/pages/hero";
-import About from "@/components/pages/about";
-import Feature from "@/components/pages/feature";
-import AddOn from "@/components/pages/addon";
+import Hero from "@/components/pages/Hero";
+import About from "@/components/pages/About";
+import Feature from "@/components/pages/Feature";
+import AddOn from "@/components/pages/Addon";
 import ScrollVelocity from "@/components/pages/ScrollVelocity";
-import Katalog from "@/components/pages/katalog";
+import Katalog from "@/components/pages/Katalog";
 import BreakMain from "@/components/pages/BreakMain";
-import Galery from "@/components/pages/galery";
+import Galery from "@/components/pages/Galery";
 
 export default function Page() {
   return (
