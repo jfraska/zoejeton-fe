@@ -1,10 +1,9 @@
 "use client";
 
 import { useContext } from "react";
-import styles from "./styles.module.scss";
 import { addOns } from "@/constants";
 import Image from "next/image";
-import LoadingButton from "../../UI/loading-button";
+import LoadingButton from "@/components/UI/loading-button";
 import CartContext from "@/context/cart";
 
 export default function Addon() {

@@ -1,0 +1,34 @@
+.shake {
+  position: relative;
+  animation: shake 60ms alternate;
+
+  @keyframes shake {
+    0% {
+      top: -2px;
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+    80% {
+      transform: rotate(-2deg);
+    }
+    100% {
+      top: 3px;
+    }
+  }
+}
+
+.gallery {
+  height: 120vh;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  .imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

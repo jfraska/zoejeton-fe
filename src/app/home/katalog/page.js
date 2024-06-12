@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import Header from "./_components/Header";
-import TemplateList from "./_components/TemplateList";
+import Header from "./_components/header";
+import TemplateList from "./_components/template-list";
 import Loading from "@/components/UI/loading";
 
 export const metadata = {

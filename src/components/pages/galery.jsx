@@ -1,10 +1,9 @@
-import styles from "./styles.module.scss";
 import { price } from "@/constants";
 import Image from "next/image";
 
 export default function Galery() {
   return (
-    <section data-scroll-section className="w-full px-[3%]" id="galery">
+    <section className="w-full px-[3%]" id="galery">
       <div className="w-full mt-2 border-b border-black" />
       <div className="flex justify-between items-center text-base mt-2 gap-10">
         <h1 className="w-2/5 text-3xl">Galery</h1>

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { faq } from "@/constants";
-import FAQ from "./faq";
-import Contact from "./contact";
+import FAQ from "@/components/container/faq";
+import Contact from "@/components/container/contact";
 import { Parallax } from "@/libs/parallax";
 
 export default function Footer() {

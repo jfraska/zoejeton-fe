@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/libs/auth";
 
-// RegExp for public files
-const PUBLIC_FILE = /\.(.*)$/; // Files
-
 export async function middleware(req) {
   const url = req.nextUrl;
 
@@ -11,9 +8,6 @@ export async function middleware(req) {
   let hostname = req.headers
     .get("host")
     .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
-
-  // Skip public files
-  if (PUBLIC_FILE.test(url.pathname)) return;
 
   const searchParams = req.nextUrl.searchParams.toString();
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
@@ -54,18 +48,8 @@ export async function middleware(req) {
       new URL(`/template${path === "/" ? "" : path}`, req.url)
     );
   }
-
-  // // rewrites for bio pages
-  // if (hostname == `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/bio`) {
-  //   return NextResponse.rewrite(
-  //     new URL(`/bio${path === "/" ? "" : path}`, req.url)
-  //   );
-  // }
-
-  // // rewrite everything else to `/[domain]/[slug] dynamic route
-  // return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!.*\\.|api|_next/static|_next/image|favicon.ico).*)"],
 };

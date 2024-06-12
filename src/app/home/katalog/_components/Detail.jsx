@@ -1,8 +1,7 @@
 "use client";
 
-import "../style.scss";
+import styles from "./styles.module.scss";
 import { useState, useEffect, useMemo, useContext } from "react";
-import { useRouter } from "next/navigation";
 import CartContext from "@/context/cart";
 import { addOns, extraFitur } from "@/constants";
 import CurrencyFormat from "react-currency-format";
@@ -13,7 +12,6 @@ export default function Detail({ params }) {
   const [selectAll, setSelectAll] = useState(false);
   const { addItemsToCart } = useContext(CartContext);
   const [checkboxes, setCheckboxes] = useState([...extraFitur, ...addOns]);
-  const router = useRouter();
 
   const [data, setData] = useState({});
 
@@ -117,7 +115,7 @@ export default function Detail({ params }) {
       <div
         className="bg-cover mx-auto md:mx-0 md:w-1/5 w-2/3 aspect-9/16 relative border border-black rounded-md overflow-hidden bg-[#00000051] transition-all ease-in-out bg-blend-overlay flex justify-center items-center"
         style={{
-          backgroundImage: `url('${data.thumbnail}')`,
+          backgroundImage: `url(/templates/${data.slug}/${data.thumbnail})`,
         }}
       >
         <div className="absolute top-0 left-0 clip-polygon pr-8 pl-2  py-1 bg-black text-white shadow">
@@ -225,7 +223,7 @@ export default function Detail({ params }) {
                         />
                       </h1>
                     </div>
-                    <label className="checkbox bounce">
+                    <label className={styles.checkbox}>
                       <input
                         type="checkbox"
                         checked={e.checked}

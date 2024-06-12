@@ -1,6 +1,6 @@
 "use client";
 
-import "./style.css";
+import styles from "./styles.module.scss";
 import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import CartContext from "@/context/cart";
@@ -101,7 +101,7 @@ export default function Navbar() {
           } transition-all ease-linear`}
         >
           <h1 className="leading-none hidden md:block">Cart</h1>
-          <div className={`${shake && "shake"} relative text-end`}>
+          <div className={`${shake && styles.shake} relative text-end`}>
             {menuState || !scrolled.header ? (
               <Image
                 src={"/assets/icons/cart-black.svg"}

@@ -74,7 +74,7 @@ export default function TemplateList() {
             key={e.id}
             className="group flex justify-center items-center bg-cover w-[47%] md:w-[23%] aspect-9/16 relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
             style={{
-              backgroundImage: `url(${e.thumbnail})`,
+              backgroundImage: `url(/templates/${e.slug}/${e.thumbnail})`,
             }}
           >
             <div className="absolute top-0 left-0 md:text-base text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-blend-multiply bg-opacity-80">
