@@ -34,7 +34,7 @@ export default function Template({ children }) {
         className="fixed min-h-screen bg-white inset-0 w-full z-[90]"
       />
 
-      <Navbar />
+      {/* <Navbar /> */}
 
       <ReactLenis
         root
@@ -45,7 +45,7 @@ export default function Template({ children }) {
         <main>{children}</main>
       </ReactLenis>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
