@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./styles.module.scss";
+import "./styles.scss";
 import { useState, useEffect, useMemo, useContext } from "react";
 import CartContext from "@/context/cart";
 import { addOns, extraFitur } from "@/constants";
@@ -60,7 +60,7 @@ export default function Detail({ params }) {
         (checkbox) => checkbox.checked && checkbox.type === "fitur"
       ),
       type: "template",
-      image: data.thumbnail,
+      image: `/template/${data.slug}/${data.thumbnail}`,
     });
 
     checkboxes
@@ -223,7 +223,7 @@ export default function Detail({ params }) {
                         />
                       </h1>
                     </div>
-                    <label className={styles.checkbox}>
+                    <label className="checkbox bounce">
                       <input
                         type="checkbox"
                         checked={e.checked}
