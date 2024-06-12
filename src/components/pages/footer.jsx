@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { faq } from "@/constants";
 import FAQ from "@/components/container/faq";
 import Contact from "@/components/container/contact";
-import { Parallax } from "@/libs/parallax";
 
 export default function Footer() {
   const [selected, setSelected] = useState(null);
@@ -23,11 +22,6 @@ export default function Footer() {
       id="footer"
       className="relative w-full text-white bg-black p-[5%] min-h-fit -z-0"
     >
-      {/* <Parallax
-        speed={1}
-        // style={{ marginTop: "-10%" }}
-        className="relative bg-black p-[5%] min-h-fit -z-0"
-      > */}
       {pathname === "/" && (
         <section className="h-auto min-h-fit md:pr-20" id="faq">
           <div className="w-full flex md:flex-row flex-col md:gap-0 gap-4 justify-around">
@@ -86,7 +80,6 @@ export default function Footer() {
       <h1 className="absolute bottom-5 md:inset-x-0 left-[5%] text-xs md:text-center text-left">
         Copyright ©2024 ZoeJeton. Alright Reserved
       </h1>
-      {/* </Parallax> */}
     </footer>
   );
 }

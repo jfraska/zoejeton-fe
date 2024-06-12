@@ -109,7 +109,7 @@ export default function Cart({ state, setState }) {
                       </h1>
 
                       <ul className="flex flex-col">
-                        {cartItem.fitur.length > 0 && (
+                        {cartItem.fitur?.length > 0 && (
                           <li className="text-xs font-medium">Extra fitur</li>
                         )}
                         {cartItem.fitur?.map((e) => (
