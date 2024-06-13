@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
 
-export default function LockScreen() {
+export default function LockScreen({ dataGuest }) {
   let lockRef = useRef(null);
   const timeline = useRef();
   const [state, setState] = useState(false);
@@ -61,6 +61,9 @@ export default function LockScreen() {
 
       <div className="w-64">
         <h1 className="text-center text-sm uppercase">spesial invitation</h1>
+        <h1 className="text-center capitalize mt-2">
+          {dataGuest?.name || "guest"}
+        </h1>
         <button
           onClick={() => setState(true)}
           className="relative rounded-full p-2 w-full bg-white text-black flex justify-between items-center backdrop-filter backdrop-blur-md bg-opacity-50 mt-5"

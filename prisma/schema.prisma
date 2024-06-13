@@ -98,7 +98,7 @@ model Invitation {
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
 
-  visitors      Visitor[]
+  guests        Guest[]
   payment       Payment?
 
   user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -122,16 +122,14 @@ model Payment {
   @@index([invitationId])
 }
 
-model Visitor {
+model Guest {
   id                      String    @id @default(cuid())
   invitationId            String
+  number                  String
   name                    String
-  address                 String?
-  message                 String? 
-  whatsapp                String?
-  instagram               String?
+  additional              Json?
+  sosmed                  Json?
   attended                Json?
-  image                   String?
   createdAt               DateTime  @default(now())
   updatedAt               DateTime  @updatedAt
 

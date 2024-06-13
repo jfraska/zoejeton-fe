@@ -3,10 +3,10 @@ import prisma from "@/libs/prisma";
 
 export async function GET(req, { params }) {
   try {
-    const { id } = params;
+    const { slug } = params;
     const data = await prisma.Template.findUnique({
       where: {
-        id,
+        slug,
       },
     });
 

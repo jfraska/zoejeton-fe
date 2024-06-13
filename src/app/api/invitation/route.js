@@ -3,12 +3,6 @@ import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
 import { z } from "zod";
 
-const invitationSchema = z.object({
-  templateId: z.string().optional(),
-  fitur: z.array().optional(),
-  addon: z.array().optional(),
-});
-
 export const GET = auth(async function GET(req) {
   if (req.auth) {
     try {
@@ -19,6 +13,9 @@ export const GET = auth(async function GET(req) {
       const data = await prisma.Invitation.findMany({
         where: {
           userId: req.auth.user.id,
+        },
+        include: {
+          template: true,
         },
         skip: offset,
         take: limit,
@@ -43,6 +40,12 @@ export const GET = auth(async function GET(req) {
 export const POST = auth(async function POST(req) {
   if (req.auth) {
     try {
+      const invitationSchema = z.object({
+        templateId: z.string().optional(),
+        fitur: z.array().optional(),
+        addon: z.array().optional(),
+      });
+
       const body = await req.json();
 
       const validator = invitationSchema.safeParse(body);

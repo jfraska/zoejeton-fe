@@ -5,6 +5,8 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/libs/prisma";
 import { saltAndHashPassword } from "@/libs/utils";
 
+const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GitHub({
@@ -46,13 +48,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
-  // pages: {
-  //   signIn: `/login`,
-  //   verifyRequest: `/login`,
-  //   error: "/login", // Error code passed in query string as ?error=
-  // },
+  pages: {
+    signIn: `/login`,
+    verifyRequest: `/login`,
+    error: "/login", // Error code passed in query string as ?error=
+  },
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt", maxAge: 1 * 24 * 60 * 60 },
+  cookies: {
+    sessionToken: {
+      name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
+        domain: VERCEL_DEPLOYMENT
+          ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+          : undefined,
+        secure: VERCEL_DEPLOYMENT,
+      },
+    },
+  },
   callbacks: {
     jwt({ token, user }) {
       if (user) {
