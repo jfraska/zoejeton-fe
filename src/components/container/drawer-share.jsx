@@ -104,7 +104,7 @@ export default function DrawerShare() {
           <button
             className="mt-6 flex justify-between uppercase py-2 px-2 items-center w-full bg-black text-white rounded-lg hover:bg-[#00000068] transition-all ease-in-out"
             onClick={() =>
-              router.push(`${urlCheckout}/katalog/${dataContent.id}`)
+              router.push(`${urlCheckout}/katalog/${dataContent.slug}`)
             }
           >
             <h1>Checkout</h1>
