@@ -5,8 +5,10 @@ import { createContext, useState, useEffect } from "react";
 const CustomizeContext = createContext();
 
 export const CustomizeProvider = ({ children }) => {
+  const [data, setData] = useState({});
   const [dataContent, setDataContent] = useState([]);
   const [dataColor, setDataColor] = useState({});
+  const [isEdit, setIsEdit] = useState(true);
 
   //   useEffect(() => {
   //     setDataContent(
@@ -25,13 +27,24 @@ export const CustomizeProvider = ({ children }) => {
     setDataContent([]);
   };
 
+  const initData = (data) => {
+    setData(data);
+    setDataContent(data.content);
+    setDataColor(data.color[0]);
+  };
+
   return (
     <CustomizeContext.Provider
       value={{
+        initData,
+        data,
+        setData,
         dataContent,
         setDataContent,
         dataColor,
         setDataColor,
+        isEdit,
+        setIsEdit,
         saveDraftContent,
         deleteDraftContent,
       }}

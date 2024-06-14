@@ -1,3 +1,7 @@
+import "./style.css";
+import { Montserrat } from "next/font/google";
+import { ScrollArea } from "@/components/UI/scroll-area";
+
 import LockScreen from "./_components/LockScreen";
 import Cover from "./_components/Cover";
 import Beranda from "./_components/Beranda";
@@ -6,28 +10,23 @@ import LoveStory from "./_components/LoveStory";
 import Event from "./_components/Event";
 import Rsvp from "./_components/Rsvp";
 import FloatingBar from "./_components/FloatingBar";
-import prisma from "@/libs/prisma";
 import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
 
-import { GlobalStyles } from "@mui/material";
+const montserrat = Montserrat({ subsets: ["latin"] });
 
-async function getTemplate() {
-  return await prisma.Template.findFirst({
-    where: { slug: "nostalgia" },
-  });
-}
+export const metadata = {
+  title: "Nostalgia | ZoeJeton",
+  description: "by koko",
+};
 
-export default async function Page() {
-  const result = await getTemplate();
-  console.log(result);
-
+export default function Page() {
   return (
-    <>
+    <section className={`${montserrat.className} flex w-full h-screen`}>
       <Cover />
       <LockScreen />
-      <div className="relative w-full md:max-w-[430px] overflow-y-auto bg-primary">
+      <ScrollArea className="w-full md:max-w-[430px] h-screen bg-primary">
         <Beranda />
         <Couple />
         <LoveStory />
@@ -36,37 +35,8 @@ export default async function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-      </div>
+      </ScrollArea>
       <FloatingBar />
-
-      <GlobalStyles
-        styles={{
-          ":root": {
-            "--background": "#000",
-            "--foreground": "#fff",
-
-            // primary
-            "--primary": "#263234",
-            "--primary-foreground": "#fff",
-
-            // secondary
-            "--secondary": "#9D9E9A",
-            "--secondary-foreground": "#fff",
-
-            // accent
-            "--accent": "#ff4081",
-            "--accent-foreground": "#fff",
-
-            // card
-            "--card": "#fff",
-            "--card-foreground": "#000",
-          },
-          body: {
-            backgroundColor: "var(--background)",
-            color: "var(--foreground)",
-          },
-        }}
-      />
-    </>
+    </section>
   );
 }

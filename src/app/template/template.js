@@ -5,23 +5,26 @@ import { usePathname, useSearchParams } from "next/navigation";
 import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
 
-import Customize from "@/components/container/customize";
-import DrawerShare from "@/components/container/drawer-share";
-
+import Customize from "@/components/layouts/customize";
+import ButtonShare from "@/components/container/button-share";
+import ButtonAction from "@/components/container/button-action";
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isOpenShare, setIsOpenShare] = useState(false);
   const pathname = usePathname();
   // const searchParams = useSearchParams();
-  const { setDataContent, dataColor, setDataColor } =
-    useContext(CustomizeContext);
+  const { initData, dataColor } = useContext(CustomizeContext);
+
+  const urlShare = process.env.NEXT_PUBLIC_VERCEL_ENV
+    ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
+    : `http://template.localhost:3000/${pathname}`;
 
   useEffect(() => {
     (async () => {
       try {
         let response = await fetch(`/api/template/${pathname}`);
         let result = await response.json();
-        setDataContent(result.data);
-        setDataColor(result.data.color[0]);
+        initData(result.data);
         // if (searchParams) {
         //   response = await fetch(
         //     `/api/guest/${searchParams?.get("guest")}?slug=${pathname}`
@@ -35,9 +38,9 @@ export default function Template({ children }) {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [pathname]);
 
-  console.log(dataColor);
+  // console.log(dataContent, dataColor);
   return (
     <>
       {isLoading ? (
@@ -46,8 +49,13 @@ export default function Template({ children }) {
         <>
           <main>{children}</main>
 
-          <DrawerShare />
-          <Customize />
+          <ButtonAction handleOpenShare={setIsOpenShare} />
+          <ButtonShare
+            open={isOpenShare}
+            setOpen={setIsOpenShare}
+            link={urlShare}
+          />
+          {/* <Customize /> */}
           <GlobalStyles
             styles={{
               ":root": {

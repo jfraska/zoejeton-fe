@@ -1,23 +1,37 @@
-"use client";
+import "./style.css";
+import { Montserrat } from "next/font/google";
+import Image from "next/legacy/image";
 
-import { useState } from "react";
-import Image from "next/image";
 import Brand from "./_components/Brand";
 import Button from "./_components/Button";
-import Share from "@/components/container/Share";
+import ButtonShare from "@/components/container/button-share";
+
+const montserrat = Montserrat({ subsets: ["latin"] });
+
+export const metadata = {
+  title: "Bio | ZoeJeton",
+  description: "by fraska",
+};
 
 export default function Page() {
+  const urlShare = process.env.NEXT_PUBLIC_VERCEL_ENV
+    ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/bio`
+    : `http://localhost:3000/bio`;
+
   return (
-    <div className="relative md:my-10 max-w-[430px] min-h-full px-5 pt-24 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-10">
+    <main
+      className={`${montserrat.className} h-screen relative md:my-10 max-w-[430px] min-h-full px-5 pt-24 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-10`}
+    >
       <Image
         className="h-full -z-10"
         alt="background image"
         src="/assets/images/bio.jpg"
         objectFit="cover"
         layout="fill"
+        priority
       />
 
-      <Share />
+      <ButtonShare link={urlShare} />
       <Brand />
 
       <section className="mt-10 flex flex-col gap-2">
@@ -59,6 +73,6 @@ export default function Page() {
         <p>Sunday | Off</p>
         <p className="mt-10 text-[10px]">© All right reserved by ZoeJeton</p>
       </footer>
-    </div>
+    </main>
   );
 }
