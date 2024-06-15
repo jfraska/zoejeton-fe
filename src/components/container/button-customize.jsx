@@ -3,7 +3,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from "@/components/UI/collapsible";
 import { Switch } from "@/components/UI/switch";
 import { Cross2Icon, RowSpacingIcon, TokensIcon } from "@radix-ui/react-icons";
 
