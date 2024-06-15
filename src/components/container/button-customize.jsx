@@ -5,7 +5,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/UI/collapsible";
 import { Switch } from "@/components/UI/switch";
-import { Cross2Icon, RowSpacingIcon, TokensIcon } from "@radix-ui/react-icons";
+import { TokensIcon } from "@radix-ui/react-icons";
 
 export default function ButtonCustomize({ data }) {
   const [open, setOpen] = useState(false);
