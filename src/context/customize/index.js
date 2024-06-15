@@ -8,7 +8,7 @@ export const CustomizeProvider = ({ children }) => {
   const [data, setData] = useState({});
   const [dataContent, setDataContent] = useState([]);
   const [dataColor, setDataColor] = useState({});
-  const [isEdit, setIsEdit] = useState(true);
+  const [isEdit, setIsEdit] = useState(false);
 
   //   useEffect(() => {
   //     setDataContent(

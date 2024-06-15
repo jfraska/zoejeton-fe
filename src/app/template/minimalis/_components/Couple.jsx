@@ -1,16 +1,28 @@
+"use client";
+
+import { useContext } from "react";
+import Editable from "@/components/container/editable";
+import CustomizeContext from "@/context/customize";
 import { Runalto } from "@/styles/fonts";
+import { getDataContent } from "@/libs/utils";
 
 export default function Couple() {
+  const { dataContent } = useContext(CustomizeContext);
+
   return (
     <section className="relative w-full h-fit py-10" name="couple">
-      <div
-        className="relative w-2/3 h-64 bg-secondary bg-cover"
-        style={{
-          backgroundImage: "url('/templates/minimalis/5.heic')",
-        }}
-      >
-        <div className="absolute -top-[75px] -right-[75px] w-[150px] h-[150px] flex justify-center items-center" />
-      </div>
+      <Editable type="image" field="bride_img" section="couple">
+        <div
+          className="relative w-72 aspect-square bg-secondary bg-cover"
+          style={{
+            backgroundImage: `url(${getDataContent(
+              dataContent,
+              "couple",
+              "bride_img"
+            )})`,
+          }}
+        />
+      </Editable>
       <div className="mt-7 flex flex-col gap-2 px-8">
         <h1 className={` ${Runalto.className} text-lg font-bold`}>
           Jeton Hizaya

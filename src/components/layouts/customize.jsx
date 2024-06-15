@@ -11,14 +11,11 @@ import {
 } from "@/components/UI/sheet";
 import ButtonCustomize from "@/components/container/button-customize";
 
-export default function Customize() {
+export default function Customize({ open, setOpen }) {
   const { dataContent } = useContext(CustomizeContext);
 
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <button className="fixed top-4 right-4 w-10 aspect-square z-10 flex justify-center items-center rounded-lg bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90 focus:outline-none"></button>
-      </SheetTrigger>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>Customize Section</SheetTitle>

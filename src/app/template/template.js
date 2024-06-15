@@ -8,9 +8,11 @@ import { GlobalStyles } from "@mui/material";
 import Customize from "@/components/layouts/customize";
 import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
+import { ModeCustomize } from "@/components/container/mode-customize";
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isOpenShare, setIsOpenShare] = useState(false);
+  const [isOpenTool, setIsOpenTool] = useState(false);
   const pathname = usePathname();
   // const searchParams = useSearchParams();
   const { initData, dataColor } = useContext(CustomizeContext);
@@ -50,12 +52,13 @@ export default function Template({ children }) {
           <main>{children}</main>
 
           <ButtonAction handleOpenShare={setIsOpenShare} />
+          <ModeCustomize handleOpenTool={setIsOpenTool} />
           <ButtonShare
             open={isOpenShare}
             setOpen={setIsOpenShare}
             link={urlShare}
           />
-          {/* <Customize /> */}
+          <Customize open={isOpenTool} setOpen={setIsOpenTool} />
           <GlobalStyles
             styles={{
               ":root": {
