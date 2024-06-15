@@ -1,6 +1,6 @@
 import "./style.css";
 import { Montserrat } from "next/font/google";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import Brand from "./_components/Brand";
 import Button from "./_components/Button";

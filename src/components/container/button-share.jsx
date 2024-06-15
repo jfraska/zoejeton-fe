@@ -1,3 +1,5 @@
+"use client";
+
 import { Copy } from "lucide-react";
 
 import { Button } from "@/components/UI/button";
@@ -16,7 +18,7 @@ import { Label } from "@/components/UI/label";
 import Image from "next/image";
 import { toast } from "sonner";
 
-export default function ButtonShare({ link, open = null, setOpen }) {
+export default function ButtonShare({ link, open = null, setOpen = () => {} }) {
   const handleCopy = () => {
     const link = document.getElementById("link").value;
     navigator.clipboard.writeText(link).then(

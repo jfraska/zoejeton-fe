@@ -49,12 +49,12 @@ export default function Template({ children }) {
         <>
           <main>{children}</main>
 
-          {/* <ButtonAction handleOpenShare={setIsOpenShare} />
+          <ButtonAction handleOpenShare={setIsOpenShare} />
           <ButtonShare
             open={isOpenShare}
             setOpen={setIsOpenShare}
             link={urlShare}
-          /> */}
+          />
           {/* <Customize /> */}
           <GlobalStyles
             styles={{
