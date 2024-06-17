@@ -27,14 +27,14 @@ registerPlugin(
   FilePondPluginImageTransform
 );
 
-export default function EditableImage({ children, setImage = () => {} }) {
-  const handleFileUpload = (fileItems) => {
-    const base64Files = fileItems.map((fileItem) =>
-      fileItem.getFileEncodeDataURL()
-    );
-
-    if (base64Files[0]) {
-      setImage(base64Files[0]);
+export default function EditableImage({
+  children,
+  image,
+  setImage = () => {},
+}) {
+  const handleFileUpload = (items) => {
+    if (items[0] && items.length > 0) {
+      setImage(items[0]);
     }
   };
 
@@ -43,6 +43,7 @@ export default function EditableImage({ children, setImage = () => {} }) {
       <PopoverTrigger asChild>{children}</PopoverTrigger>
       <PopoverContent>
         <FilePond
+          files={[image]}
           onupdatefiles={handleFileUpload}
           acceptedFileTypes={["image/*"]}
           labelFileTypeNotAllowed={"File of invalid type"}

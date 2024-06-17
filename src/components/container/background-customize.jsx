@@ -24,12 +24,18 @@ registerPlugin(
 );
 
 export default function BackgroundCustomize({ image, setImage }) {
+  const handleFileUpload = (items) => {
+    if (items && items.length > 0) {
+      setImage(items);
+    }
+  };
+
   return (
     <div>
       <FilePond
         files={image}
         allowMultiple
-        onupdatefiles={setImage}
+        onupdatefiles={handleFileUpload}
         acceptedFileTypes={["image/*"]}
         labelFileTypeNotAllowed={"File of invalid type"}
       />

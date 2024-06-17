@@ -27,7 +27,7 @@ export default function ButtonCustomize({ data }) {
   useEffect(() => {
     const element = document.getElementById(data.key);
     const image = data.value.background;
-    if (image && image.length > 0 && typeof image[0] !== "string") {
+    if (image && typeof image[0] !== "string") {
       element.style.backgroundImage = `url(${image[0].getFileEncodeDataURL()})`;
     }
   }, [data]);

@@ -51,6 +51,12 @@ export default function Editable({
     setDataContent(updatedData);
   };
 
+  const imageContent = getDataContent(dataContent, section, field);
+  const imageSrc =
+    imageContent && imageContent.getFileEncodeDataURL
+      ? imageContent.getFileEncodeDataURL()
+      : imageContent;
+
   return (
     <>
       {type === "text" && (
@@ -103,7 +109,7 @@ export default function Editable({
           >
             {children &&
               cloneElement(children, {
-                src: getDataContent(dataContent, section, field),
+                src: imageSrc,
               })}
           </button>
         </EditableImage>
