@@ -3,7 +3,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/UI/popover";
-import { Calendar } from "@/components/UI/calendar";
+import Calendar from "@/components/UI/calendar";
 
 export default function EditableDate({ children, date, setDate }) {
   return (

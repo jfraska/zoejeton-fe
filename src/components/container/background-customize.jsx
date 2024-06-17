@@ -1,8 +1,3 @@
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/UI/popover";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 
@@ -16,6 +11,7 @@ import FilePondPluginImageEdit from "filepond-plugin-image-edit";
 import FilePondPluginImageTransform from "filepond-plugin-image-transform";
 // import "filepond-plugin-file-poster/dist/filepond-plugin-file-poster.min.css";
 import "filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css";
+import { useEffect } from "react";
 
 registerPlugin(
   // FilePondPluginFilePoster,
@@ -27,27 +23,16 @@ registerPlugin(
   FilePondPluginImageTransform
 );
 
-export default function EditableImage({ children, setImage = () => {} }) {
-  const handleFileUpload = (fileItems) => {
-    const base64Files = fileItems.map((fileItem) =>
-      fileItem.getFileEncodeDataURL()
-    );
-
-    if (base64Files[0]) {
-      setImage(base64Files[0]);
-    }
-  };
-
+export default function BackgroundCustomize({ image, setImage }) {
   return (
-    <Popover>
-      <PopoverTrigger asChild>{children}</PopoverTrigger>
-      <PopoverContent>
-        <FilePond
-          onupdatefiles={handleFileUpload}
-          acceptedFileTypes={["image/*"]}
-          labelFileTypeNotAllowed={"File of invalid type"}
-        />
-      </PopoverContent>
-    </Popover>
+    <div>
+      <FilePond
+        files={image}
+        allowMultiple
+        onupdatefiles={setImage}
+        acceptedFileTypes={["image/*"]}
+        labelFileTypeNotAllowed={"File of invalid type"}
+      />
+    </div>
   );
 }

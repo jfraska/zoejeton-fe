@@ -1,26 +1,22 @@
-"use client";
-
-import { useContext } from "react";
 import Editable from "@/components/container/editable";
-import CustomizeContext from "@/context/customize";
 import { Runalto } from "@/styles/fonts";
-import { getDataContent } from "@/libs/utils";
+import Image from "next/image";
 
 export default function Couple() {
-  const { dataContent } = useContext(CustomizeContext);
-
   return (
-    <section className="relative w-full h-fit py-10" name="couple">
-      <Editable type="image" field="bride_img" section="couple">
-        <div
-          className="relative w-72 aspect-square bg-secondary bg-cover"
-          style={{
-            backgroundImage: `url(${getDataContent(
-              dataContent,
-              "couple",
-              "bride_img"
-            )})`,
-          }}
+    <section className="relative w-full h-fit py-10" id="couple">
+      <Editable
+        className="relative w-72 aspect-square bg-secondary"
+        type="image"
+        field="bride_img"
+        section="couple"
+        path="/templates/minimalis/"
+      >
+        <Image
+          fill
+          alt="image"
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </Editable>
       <div className="mt-7 flex flex-col gap-2 px-8">

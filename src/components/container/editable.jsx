@@ -1,13 +1,22 @@
-import { useContext, useState } from "react";
+"use client";
+
+import { cloneElement, useContext, useEffect } from "react";
 import CustomizeContext from "@/context/customize";
 import ContentEditable from "react-contenteditable";
 import EditableDate from "@/components/container/editable-date";
 import EditableImage from "@/components/container/editable-image";
-import { getDataContent } from "@/libs/utils";
+import { cn, getDataContent, isImageUrl } from "@/libs/utils";
 
-export default function Editable({ children, section, field, type }) {
+export default function Editable({
+  children,
+  className,
+  section,
+  field,
+  type,
+  path,
+  propChild = "deadline",
+}) {
   const { dataContent, setDataContent, isEdit } = useContext(CustomizeContext);
-  const [image, setImage] = useState([]);
 
   const handleChangeText = (e) => {
     const updatedData = dataContent?.map((item) => {
@@ -20,10 +29,21 @@ export default function Editable({ children, section, field, type }) {
     setDataContent(updatedData);
   };
 
+  const handleChangeDate = (e) => {
+    const updatedData = dataContent?.map((item) => {
+      if (item.key === section) {
+        return { ...item, value: { ...item.value, [field]: e } };
+      }
+      return item;
+    });
+
+    setDataContent(updatedData);
+  };
+
   const handleChangeImage = (e) => {
     const updatedData = dataContent?.map((item) => {
       if (item.key === section) {
-        return { ...item, value: { ...item.value, [field]: e.target.value } };
+        return { ...item, value: { ...item.value, [field]: e } };
       }
       return item;
     });
@@ -49,7 +69,7 @@ export default function Editable({ children, section, field, type }) {
       {type === "date" && (
         <EditableDate
           date={getDataContent(dataContent, section, field)}
-          setDate={handleChangeText}
+          setDate={handleChangeDate}
         >
           <button
             className={` ${
@@ -59,7 +79,10 @@ export default function Editable({ children, section, field, type }) {
             } w-full`}
             disabled={!isEdit}
           >
-            {children}
+            {children &&
+              cloneElement(children, {
+                [propChild]: getDataContent(dataContent, section, field),
+              })}
           </button>
         </EditableDate>
       )}
@@ -68,18 +91,20 @@ export default function Editable({ children, section, field, type }) {
         <EditableImage
           image={getDataContent(dataContent, section, field)}
           setImage={handleChangeImage}
-          // image={image}
-          // setImage={setImage}
         >
           <button
-            className={` ${
+            className={cn(
               isEdit
                 ? "outline-blue-100 outline focus:outline-blue-300 p-2"
-                : null
-            }`}
+                : null,
+              className
+            )}
             disabled={!isEdit}
           >
-            {children}
+            {children &&
+              cloneElement(children, {
+                src: getDataContent(dataContent, section, field),
+              })}
           </button>
         </EditableImage>
       )}

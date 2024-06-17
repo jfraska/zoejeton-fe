@@ -1,6 +1,6 @@
 import "./style.css";
 import { Montserrat } from "next/font/google";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import Brand from "./_components/Brand";
 import Button from "./_components/Button";
@@ -26,8 +26,8 @@ export default function Page() {
         className="h-full -z-10"
         alt="background image"
         src="/assets/images/bio.jpg"
-        objectFit="cover"
-        layout="fill"
+        style={{ objectFit: "cover" }}
+        fill
         priority
       />
 

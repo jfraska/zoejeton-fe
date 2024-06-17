@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 
 const CountDown = ({ deadline }) => {
   const [days, setDays] = useState(0);
@@ -26,9 +28,9 @@ const CountDown = ({ deadline }) => {
   };
 
   useEffect(() => {
-    setInterval(() => getTimeUntil(deadline), 1000);
+    const interval = setInterval(() => getTimeUntil(deadline), 1000);
 
-    return () => getTimeUntil(deadline);
+    return () => clearInterval(interval);
   }, [deadline]);
 
   return (

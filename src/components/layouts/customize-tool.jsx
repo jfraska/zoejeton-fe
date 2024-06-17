@@ -11,34 +11,28 @@ import {
 } from "@/components/UI/sheet";
 import ButtonCustomize from "@/components/container/button-customize";
 
-export default function Customize({ open, setOpen }) {
+export default function CustomizeTool({ open, setOpen }) {
   const { dataContent } = useContext(CustomizeContext);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent side="left">
+      <SheetContent side="left" overlay="false">
         <SheetHeader>
-          <SheetTitle>Customize Section</SheetTitle>
-          <SheetDescription>
+          <SheetTitle>Customize Tool</SheetTitle>
+          {/* <SheetDescription>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
-          </SheetDescription>
+          </SheetDescription> */}
         </SheetHeader>
 
-        <div className="flex flex-col gap-2 mt-5">
+        <h1 className="text-black mt-5">Page</h1>
+        <div className="flex flex-col gap-2 mt-2">
           {dataContent?.map((item, index) => (
             <ButtonCustomize key={index} data={item} />
           ))}
         </div>
 
-        <SheetFooter>
-          <button
-            className="mt-6 flex justify-between uppercase py-2 px-2 items-center w-full bg-black text-white rounded-xl hover:bg-[#00000068] transition-all ease-in-out"
-            onClick={() => router.push(`${urlCheckout}/katalog/${data?.id}`)}
-          >
-            <h1>Save</h1>
-          </button>
-        </SheetFooter>
+        <SheetFooter></SheetFooter>
       </SheetContent>
     </Sheet>
   );

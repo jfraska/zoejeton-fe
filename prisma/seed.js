@@ -19,7 +19,7 @@ const templateData = [
         },
       },
       {
-        key: "date",
+        key: "event",
         value: {
           akad: "Maret 10, 2024",
         },

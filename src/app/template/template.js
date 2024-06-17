@@ -5,10 +5,11 @@ import { usePathname, useSearchParams } from "next/navigation";
 import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
 
-import Customize from "@/components/layouts/customize";
+import CustomizeTool from "@/components/layouts/customize-tool";
 import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
-import { ModeCustomize } from "@/components/container/mode-customize";
+import ModeCustomize from "@/components/container/mode-customize";
+
 export default function Template({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isOpenShare, setIsOpenShare] = useState(false);
@@ -40,9 +41,8 @@ export default function Template({ children }) {
         setIsLoading(false);
       }
     })();
-  }, [pathname]);
+  }, []);
 
-  // console.log(dataContent, dataColor);
   return (
     <>
       {isLoading ? (
@@ -58,7 +58,7 @@ export default function Template({ children }) {
             setOpen={setIsOpenShare}
             link={urlShare}
           />
-          <Customize open={isOpenTool} setOpen={setIsOpenTool} />
+          <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} />
           <GlobalStyles
             styles={{
               ":root": {

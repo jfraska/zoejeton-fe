@@ -14,7 +14,7 @@ import {
 } from "@/components/UI/navigation-menu";
 import CustomizeContext from "@/context/customize";
 
-export function ModeCustomize({ handleOpenTool = () => {} }) {
+export default function ModeCustomize({ handleOpenTool = () => {} }) {
   const { isEdit, setIsEdit } = React.useContext(CustomizeContext);
 
   const components = [

@@ -41,7 +41,7 @@ export default function ButtonAction({ handleOpenShare = () => {} }) {
           sx={{
             position: "fixed",
             top: 16,
-            right: 16,
+            right: 12,
             height: 320,
             zIndex: 50,
             transform: "translateZ(0px)",

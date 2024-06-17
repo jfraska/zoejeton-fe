@@ -19,3 +19,11 @@ export const getDataContent = (data, key, field) => {
   const item = data.find((item) => item.key === key);
   return item && item.value[field] ? item.value[field] : null;
 };
+
+export const isImageUrl = (url) => {
+  return /\.(jpeg|jpg|gif|png|heic)$/i.test(url);
+};
+
+const isBase64 = (str) => {
+  return /^data:image\/[a-zA-Z]+;base64,/.test(str);
+};
