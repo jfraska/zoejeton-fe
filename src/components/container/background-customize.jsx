@@ -32,6 +32,7 @@ export default function BackgroundCustomize({ image, setImage }) {
 
   return (
     <div>
+      <h1 className="my-2 text-black">Background</h1>
       <FilePond
         files={image}
         allowMultiple

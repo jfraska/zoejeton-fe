@@ -1,6 +1,6 @@
 "use client";
 
-import { cloneElement, useContext, useEffect } from "react";
+import { cloneElement, useContext, useEffect, useState } from "react";
 import CustomizeContext from "@/context/customize";
 import ContentEditable from "react-contenteditable";
 import EditableDate from "@/components/container/editable-date";
@@ -17,11 +17,20 @@ export default function Editable({
   propChild = "deadline",
 }) {
   const { dataContent, setDataContent, isEdit } = useContext(CustomizeContext);
+  const [state, setState] = useState(
+    getDataContent(dataContent, section, field)
+  );
 
-  const handleChangeText = (e) => {
+  const handleChange = (e) => {
     const updatedData = dataContent?.map((item) => {
       if (item.key === section) {
-        return { ...item, value: { ...item.value, [field]: e.target.value } };
+        return {
+          ...item,
+          value: {
+            ...item.value,
+            [field]: e.target?.value ? e.target.value : e,
+          },
+        };
       }
       return item;
     });
@@ -29,33 +38,16 @@ export default function Editable({
     setDataContent(updatedData);
   };
 
-  const handleChangeDate = (e) => {
-    const updatedData = dataContent?.map((item) => {
-      if (item.key === section) {
-        return { ...item, value: { ...item.value, [field]: e } };
-      }
-      return item;
-    });
-
-    setDataContent(updatedData);
-  };
-
-  const handleChangeImage = (e) => {
-    const updatedData = dataContent?.map((item) => {
-      if (item.key === section) {
-        return { ...item, value: { ...item.value, [field]: e } };
-      }
-      return item;
-    });
-
-    setDataContent(updatedData);
-  };
-
-  const imageContent = getDataContent(dataContent, section, field);
-  const imageSrc =
-    imageContent && imageContent.getFileEncodeDataURL
-      ? imageContent.getFileEncodeDataURL()
-      : imageContent;
+  useEffect(() => {
+    if (type === "image") {
+      const image = getDataContent(dataContent, section, field);
+      setState(
+        image?.getFileEncodeDataURL ? image.getFileEncodeDataURL() : image
+      );
+    } else {
+      setState(getDataContent(dataContent, section, field));
+    }
+  }, [dataContent]);
 
   return (
     <>
@@ -66,17 +58,14 @@ export default function Editable({
               ? "outline-blue-100 outline focus:outline-blue-300 p-2"
               : null
           }
-          html={getDataContent(dataContent, section, field)}
+          html={state}
           disabled={!isEdit}
-          onChange={handleChangeText}
+          onChange={handleChange}
         />
       )}
 
       {type === "date" && (
-        <EditableDate
-          date={getDataContent(dataContent, section, field)}
-          setDate={handleChangeDate}
-        >
+        <EditableDate date={state} setDate={handleChange}>
           <button
             className={` ${
               isEdit
@@ -87,17 +76,14 @@ export default function Editable({
           >
             {children &&
               cloneElement(children, {
-                [propChild]: getDataContent(dataContent, section, field),
+                [propChild]: state,
               })}
           </button>
         </EditableDate>
       )}
 
       {type === "image" && (
-        <EditableImage
-          image={getDataContent(dataContent, section, field)}
-          setImage={handleChangeImage}
-        >
+        <EditableImage image={state} setImage={handleChange}>
           <button
             className={cn(
               isEdit
@@ -109,7 +95,7 @@ export default function Editable({
           >
             {children &&
               cloneElement(children, {
-                src: imageSrc,
+                src: state,
               })}
           </button>
         </EditableImage>

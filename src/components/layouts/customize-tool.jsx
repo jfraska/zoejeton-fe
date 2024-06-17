@@ -24,6 +24,8 @@ export default function CustomizeTool({ open, setOpen }) {
             account and remove your data from our servers.
           </SheetDescription> */}
         </SheetHeader>
+        <h1 className="text-black mt-5">Color</h1>
+        <ButtonCustomize type="color" />
 
         <h1 className="text-black mt-5">Page</h1>
         <div className="flex flex-col gap-2 mt-2">
