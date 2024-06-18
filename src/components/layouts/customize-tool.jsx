@@ -16,15 +16,15 @@ export default function CustomizeTool({ open, setOpen }) {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent side="left" overlay="false">
+      <SheetContent
+        side="left"
+        overlay="false"
+        className="h-full overflow-y-auto scrollbar-default md:scrollbar-hide"
+      >
         <SheetHeader>
           <SheetTitle>Customize Tool</SheetTitle>
-          {/* <SheetDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </SheetDescription> */}
         </SheetHeader>
-        <h1 className="text-black mt-5">Color</h1>
+        <h1 className="text-black mt-5 mb-2">Fitur</h1>
         <ButtonCustomize type="color" />
 
         <h1 className="text-black mt-5">Page</h1>

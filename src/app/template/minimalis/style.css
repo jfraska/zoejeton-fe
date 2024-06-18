@@ -1,0 +1,3 @@
+html {
+  @apply scrollbar-default md:scrollbar-hide;
+}

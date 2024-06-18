@@ -1,11 +1,11 @@
 "use client";
 
-import { cloneElement, useContext, useEffect, useState } from "react";
+import { cloneElement, useContext, useState } from "react";
 import CustomizeContext from "@/context/customize";
 import ContentEditable from "react-contenteditable";
 import EditableDate from "@/components/container/editable-date";
 import EditableImage from "@/components/container/editable-image";
-import { cn, getDataContent, isImageUrl } from "@/libs/utils";
+import { cn, getDataContent } from "@/libs/utils";
 
 export default function Editable({
   children,
@@ -13,7 +13,6 @@ export default function Editable({
   section,
   field,
   type,
-  path,
   propChild = "deadline",
 }) {
   const { dataContent, setDataContent, isEdit } = useContext(CustomizeContext);
@@ -22,32 +21,23 @@ export default function Editable({
   );
 
   const handleChange = (e) => {
+    const data = e.target?.value ? e.target.value : e;
+    setState(data?.getFileEncodeDataURL() ? data.getFileEncodeDataURL() : data);
+
     const updatedData = dataContent?.map((item) => {
       if (item.key === section) {
         return {
           ...item,
           value: {
             ...item.value,
-            [field]: e.target?.value ? e.target.value : e,
+            [field]: data,
           },
         };
       }
       return item;
     });
-
     setDataContent(updatedData);
   };
-
-  useEffect(() => {
-    if (type === "image") {
-      const image = getDataContent(dataContent, section, field);
-      setState(
-        image?.getFileEncodeDataURL ? image.getFileEncodeDataURL() : image
-      );
-    } else {
-      setState(getDataContent(dataContent, section, field));
-    }
-  }, [dataContent]);
 
   return (
     <>
@@ -96,6 +86,7 @@ export default function Editable({
             {children &&
               cloneElement(children, {
                 src: state,
+                className: "image",
               })}
           </button>
         </EditableImage>
