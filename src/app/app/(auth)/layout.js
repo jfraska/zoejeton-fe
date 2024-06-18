@@ -1,7 +1,7 @@
 import "./style.css";
 
 export const metadata = {
-  title: "Login | Platforms Starter Kit",
+  title: "Login | ZoeJeton",
 };
 
 export default function AuthLayout({ children }) {

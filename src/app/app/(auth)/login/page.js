@@ -54,6 +54,13 @@ export default function Page() {
             <Button variant="outline" className="w-full">
               Login with Google
             </Button>
+            <Suspense
+              fallback={
+                <div className="my-2 h-10 w-full rounded-md border border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800" />
+              }
+            >
+              <LoginButton />
+            </Suspense>
           </div>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
