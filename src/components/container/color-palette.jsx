@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
 import ColorPicker from "@/components/container/color-picker";
 import { rgbToHex } from "@mui/material";
-// import { getPaletteFromURL } from "color-thief-node";
-import { useEffect, useState } from "react";
+import { getPaletteFromURL } from "color-thief-node";
 
 export default function ColorPalette({ colors, setColor }) {
   const [palette, setPalette] = useState([]);
