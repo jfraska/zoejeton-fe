@@ -6,9 +6,9 @@ import {
 } from "@/components/UI/collapsible";
 import { Switch } from "@/components/UI/switch";
 import { TokensIcon } from "@radix-ui/react-icons";
-import BackgroundCustomize from "./background-customize";
+import BackgroundCustomize from "@/components/container/background-customize";
 import CustomizeContext from "@/context/customize";
-import ColorPalette from "./color palette";
+import ColorPalette from "@/components/container/color-palette";
 
 export default function ButtonCustomize({ data, type = "page" }) {
   const [state, setState] = useState(true);

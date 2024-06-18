@@ -5,7 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
 
-// import CustomizeTool from "@/components/layouts/customize-tool";
+import CustomizeTool from "@/components/layouts/customize-tool";
 import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
 import ModeCustomize from "@/components/container/mode-customize";
@@ -58,7 +58,7 @@ export default function Template({ children }) {
             setOpen={setIsOpenShare}
             link={urlShare}
           />
-          {/* <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} /> */}
+          <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} />
           <GlobalStyles
             styles={{
               ":root": {
