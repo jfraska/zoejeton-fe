@@ -1,6 +1,6 @@
 import ColorPicker from "@/components/container/color-picker";
 import { rgbToHex } from "@mui/material";
-import { getPaletteFromURL } from "color-thief-node";
+// import { getPaletteFromURL } from "color-thief-node";
 import { useEffect, useState } from "react";
 
 export default function ColorPalette({ colors, setColor }) {
@@ -18,22 +18,22 @@ export default function ColorPalette({ colors, setColor }) {
     setColor(updatedData);
   };
 
-  useEffect(() => {
-    const imgElements = document.querySelectorAll(".image");
-    let colors = [];
+  // useEffect(() => {
+  //   const imgElements = document.querySelectorAll(".image");
+  //   let colors = [];
 
-    const fetchPalettes = async () => {
-      const promises = Array.from(imgElements).map(async (img) => {
-        const colorPalette = await getPaletteFromURL(img.getAttribute("src"));
-        return colorPalette.map((color) =>
-          rgbToHex(`rgb(${color[0]},${color[1]},${color[2]})`)
-        );
-      });
+  //   const fetchPalettes = async () => {
+  //     const promises = Array.from(imgElements).map(async (img) => {
+  //       const colorPalette = await getPaletteFromURL(img.getAttribute("src"));
+  //       return colorPalette.map((color) =>
+  //         rgbToHex(`rgb(${color[0]},${color[1]},${color[2]})`)
+  //       );
+  //     });
 
-      const results = await Promise.all(promises);
-      colors = results.flat();
-      setPalette(colors);
-    };
+  //     const results = await Promise.all(promises);
+  //     colors = results.flat();
+  //     setPalette(colors);
+  //   };
 
     fetchPalettes();
   }, []);

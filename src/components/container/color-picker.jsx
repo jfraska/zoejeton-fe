@@ -1,9 +1,9 @@
+import { useState } from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/UI/popover";
-import { useState } from "react";
 import { SketchPicker } from "react-color";
 
 export default function ColorPicker({
