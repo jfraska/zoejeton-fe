@@ -1,3 +1,5 @@
+import "./style.css";
+
 export const metadata = {
   title: "Login | Platforms Starter Kit",
 };

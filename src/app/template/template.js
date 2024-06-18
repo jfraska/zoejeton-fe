@@ -58,7 +58,7 @@ export default function Template({ children }) {
             setOpen={setIsOpenShare}
             link={urlShare}
           />
-          <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} />
+          {/* <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} /> */}
           <GlobalStyles
             styles={{
               ":root": {
