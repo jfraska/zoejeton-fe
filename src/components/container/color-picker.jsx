@@ -18,7 +18,7 @@ export default function ColorPicker({
     <Popover>
       <PopoverTrigger asChild>
         <button
-          className="w-5 aspect-square rounded"
+          className="w-5 aspect-square rounded border"
           style={{ backgroundColor: color }}
         />
       </PopoverTrigger>
