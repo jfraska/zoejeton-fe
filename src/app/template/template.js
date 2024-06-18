@@ -49,7 +49,7 @@ export default function Template({ children }) {
         <h1>loading...</h1>
       ) : (
         <>
-          <main>{children}</main>
+          {/* <main>{children}</main> */}
 
           <ButtonAction handleOpenShare={setIsOpenShare} />
           <ModeCustomize handleOpenTool={setIsOpenTool} />
@@ -58,7 +58,7 @@ export default function Template({ children }) {
             setOpen={setIsOpenShare}
             link={urlShare}
           />
-          {/* <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} /> */}
+          <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} />
           <GlobalStyles
             styles={{
               ":root": {
