@@ -35,8 +35,8 @@ export default function ColorPalette({ colors, setColor }) {
   //     setPalette(colors);
   //   };
 
-    fetchPalettes();
-  }, []);
+  //   fetchPalettes();
+  // }, []);
 
   return (
     <div className="bg-white p-2 flex flex-wrap gap-2 rounded">
