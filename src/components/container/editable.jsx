@@ -22,7 +22,14 @@ export default function Editable({
 
   const handleChange = (e) => {
     const data = e.target?.value ? e.target.value : e;
-    setState(data?.getFileEncodeDataURL() ? data.getFileEncodeDataURL() : data);
+
+    if (type == "image") {
+      setState(
+        data.getFileEncodeDataURL() ? data.getFileEncodeDataURL() : data
+      );
+    } else {
+      setState(data);
+    }
 
     const updatedData = dataContent?.map((item) => {
       if (item.key === section) {
