@@ -55,7 +55,7 @@ export default function Template({ children }) {
           <ModeCustomize handleOpenTool={setIsOpenTool} />
           <ButtonShare
             open={isOpenShare}
-            setOpen={setIsOpenShare}
+            onOpenChange={setIsOpenShare}
             link={urlShare}
           />
           <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} />

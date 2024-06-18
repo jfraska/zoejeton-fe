@@ -31,7 +31,17 @@ export default function Page() {
         priority
       />
 
-      <ButtonShare link={urlShare} />
+      <ButtonShare link={urlShare}>
+        <button className="absolute top-4 right-4 w-10 aspect-square rounded-lg flex justify-center items-center bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90 focus:outline-none">
+          <Image
+            src={"/assets/icons/qrcode.svg"}
+            width={30}
+            height={30}
+            alt="share-icon"
+            className="w-8 aspect-square"
+          />
+        </button>
+      </ButtonShare>
       <Brand />
 
       <section className="mt-10 flex flex-col gap-2">
@@ -39,13 +49,13 @@ export default function Page() {
           className="text-black bg-white backdrop-filter backdrop-blur-sm bg-opacity-60"
           title={"Katalog & Price List"}
           desc={"lihat desain undangan "}
-          href={"/katalog"}
+          href={"#"}
         />
         <Button
           className="text-black bg-white backdrop-filter backdrop-blur-md bg-opacity-60"
           title={"Website Undangan"}
           desc={"beranda zoejeton"}
-          href={"/"}
+          href={"#"}
         />
       </section>
 
