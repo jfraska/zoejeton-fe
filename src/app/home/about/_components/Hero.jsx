@@ -1,8 +1,10 @@
 "use client";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Gunterz } from "@/styles/fonts";
 import Statue from "@/components/container/statue";
 import CursorProvider from "@/context/cursor";
+import { zoomOut } from "@/libs/motion";
 
 export default function Hero() {
   const containerRef = useRef();
@@ -15,7 +17,9 @@ export default function Hero() {
           >
             luxury
           </h1>
-          <Statue />
+          <motion.div variants={zoomOut(3, 1)} className="w-full h-full">
+            <Statue />
+          </motion.div>
         </div>
       </main>
     </CursorProvider>

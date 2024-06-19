@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   useGLTF,
@@ -10,13 +10,11 @@ import {
 import { PointLight, PointLightHelper, Vector3 } from "three";
 import Loader from "@/components/UI/loader";
 
-const mesh = {
-  position: null,
-};
+let mesh = null;
 
 const Model = (props) => {
   const model = useRef();
-  mesh.position = model;
+  mesh = model;
   const { nodes, materials } = useGLTF(
     "/assets/models/three_graces/scene.gltf"
   );
@@ -77,6 +75,14 @@ const Camera = () => {
       camera.current.position.z -= parallaxY + camera.current.position.z;
     }
   });
+
+  // useFrame(() => {
+  //   if (mesh.current) {
+  //     mesh.current.position.z += 0.1;
+  //     mesh.current.position.z += 0.1;
+  //   }
+  // });
+
   return (
     <perspectiveCamera
       ref={camera}
@@ -127,7 +133,7 @@ function Scene() {
   );
 }
 
-export default function Statue({ props }) {
+export default function Statue({ ...props }) {
   return (
     <Suspense {...props} fallback={<Loader />}>
       <Canvas shadows dpr={[1, 2]} camera={{ fov: 30, position: [0, 0, 7] }}>

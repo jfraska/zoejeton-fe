@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -23,6 +25,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/sheet";
 import { Badge } from "@/components/UI/badge";
 import { Combobox } from "@/components/container/combobox";
+import { signOut } from "next-auth/react";
 
 export default function Nav() {
   return (
@@ -126,7 +129,9 @@ export default function Nav() {
           <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem>Support</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem>
+            <button onClick={() => signOut("github")}>Logout</button>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>
