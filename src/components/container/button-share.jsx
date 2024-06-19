@@ -18,7 +18,7 @@ import { Label } from "@/components/UI/label";
 import Image from "next/image";
 import { toast } from "sonner";
 
-export default function ButtonShare({ children, link, props }) {
+export default function ButtonShare({ children, link, ...props }) {
   const handleCopy = () => {
     const link = document.getElementById("link").value;
     navigator.clipboard.writeText(link).then(
