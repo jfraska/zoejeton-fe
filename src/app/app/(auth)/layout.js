@@ -1,5 +1,3 @@
-import "./style.css";
-
 export const metadata = {
   title: "Login | ZoeJeton",
 };

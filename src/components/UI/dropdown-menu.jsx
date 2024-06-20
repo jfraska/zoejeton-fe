@@ -154,6 +154,15 @@ const DropdownMenuSeparator = React.forwardRef(
 );
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 
+const DropdownMenuArrow = React.forwardRef(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Arrow
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    {...props}
+  />
+));
+DropdownMenuArrow.displayName = DropdownMenuPrimitive.Arrow.displayName;
+
 const DropdownMenuShortcut = ({ className, ...props }) => {
   return (
     <span
@@ -173,6 +182,7 @@ export {
   DropdownMenuRadioItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuArrow,
   DropdownMenuShortcut,
   DropdownMenuGroup,
   DropdownMenuPortal,

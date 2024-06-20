@@ -19,15 +19,17 @@ export default function CustomizeTool({ open, setOpen }) {
       <SheetContent
         side="left"
         overlay="false"
-        className="h-full overflow-y-auto scrollbar-default md:scrollbar-hide"
+        className="h-full bg-white text-neutral-950 overflow-y-auto scrollbar-default md:scrollbar-hide"
       >
         <SheetHeader>
-          <SheetTitle>Customize Tool</SheetTitle>
+          <SheetTitle className="text-neutral-950 font-medium">
+            Customize Tool
+          </SheetTitle>
         </SheetHeader>
-        <h1 className="text-black mt-5 mb-2">Fitur</h1>
+        <h1 className="mt-5 mb-2">Fitur</h1>
         <ButtonCustomize type="color" />
 
-        <h1 className="text-black mt-5">Page</h1>
+        <h1 className="mt-5">Page</h1>
         <div className="flex flex-col gap-2 mt-2">
           {dataContent?.map((item, index) => (
             <ButtonCustomize key={index} data={item} />

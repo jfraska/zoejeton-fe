@@ -48,7 +48,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
 
 export default function Page() {
   return (
-    <main className="grid items-start gap-4 p-4 sm:px-6 sm:py-4 md:gap-8 lg:grid-cols-1 xl:grid-cols-1">
+    <section className="grid items-start gap-4 md:gap-8 lg:grid-cols-1 xl:grid-cols-1">
       <div className="flex items-center">
         <h1 className="text-lg font-semibold md:text-2xl">Tamu</h1>
       </div>
@@ -487,6 +487,6 @@ export default function Page() {
           </CardFooter>
         </Card>
       </div> */}
-    </main>
+    </section>
   );
 }

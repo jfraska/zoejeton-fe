@@ -41,15 +41,15 @@ export default function LockScreen({ dataGuest }) {
         backgroundImage: "url('/templates/minimalis/7.heic')",
       }}
     >
-      <div className="w-64 text-center ">
+      <div className="max-w-xs text-center ">
         <Image
-          className="mx-auto mb-2 w-auto h-auto"
-          src={"/assets/icons/zoejeton.svg"}
+          className="w-8 aspect-square mx-auto mb-2"
+          src={"/assets/icons/zoejeton-outline.svg"}
           width={20}
           height={20}
           alt="logo"
         />
-        <h1 className="text-xl">We invite you to our wedding ceremony</h1>
+        <h1 className="mt-5 text-xl">We invite you to our wedding ceremony</h1>
       </div>
 
       <h1
@@ -61,7 +61,7 @@ export default function LockScreen({ dataGuest }) {
 
       <div className="w-64">
         <h1 className="text-center text-sm uppercase">spesial invitation</h1>
-        <h1 className="text-center capitalize mt-2">
+        <h1 className="text-center font-medium capitalize mt-2">
           {dataGuest?.name || "guest"}
         </h1>
         <button

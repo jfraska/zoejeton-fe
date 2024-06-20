@@ -91,6 +91,7 @@ model Template {
 
 model Invitation {
   id            String      @default(cuid()) @id 
+  title         String
   userId        String
   templateId    String?      @unique
   fitur         Json[]

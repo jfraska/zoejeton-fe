@@ -44,8 +44,8 @@ export default function LockScreen() {
     >
       <div className="w-64 text-center ">
         <Image
-          className="mx-auto mb-2 w-auto h-auto"
-          src={"/assets/icons/zoejeton.svg"}
+          className="w-8 aspect-square mx-auto mb-2"
+          src={"/assets/icons/zoejeton-outline.svg"}
           width={20}
           height={20}
           alt="logo"
@@ -58,7 +58,9 @@ export default function LockScreen() {
       >
         <span>Zoel and Cali</span>
       </h1>
-      <div className={`${Catamaran.className} absolute bottom-[30%] inset-x-10`}>
+      <div
+        className={`${Catamaran.className} absolute bottom-[30%] inset-x-10`}
+      >
         <CountDown deadline="maret, 10, 2024" />
       </div>
 

@@ -7,11 +7,13 @@ export const GET = auth(async function GET(req) {
   if (req.auth) {
     try {
       const url = new URL(req.url);
+      const search = url.searchParams.get("search") || "";
       const offset = parseInt(url.searchParams.get("offset")) || 0;
       const limit = parseInt(url.searchParams.get("limit")) || 2;
 
       const data = await prisma.Invitation.findMany({
         where: {
+          title: { contains: search },
           userId: req.auth.user.id,
         },
         include: {

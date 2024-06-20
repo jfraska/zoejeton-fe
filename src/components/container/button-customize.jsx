@@ -48,7 +48,7 @@ export default function ButtonCustomize({ data, type = "page" }) {
   }, [state]);
 
   return (
-    <Collapsible className="px-2 py-2 bg-neutral-300 rounded-xl">
+    <Collapsible className="px-2 py-2 bg-slate-800 rounded-xl">
       <div
         style={{
           display: "flex",
@@ -59,7 +59,7 @@ export default function ButtonCustomize({ data, type = "page" }) {
         <CollapsibleTrigger asChild>
           <a
             href={`#${data?.key ? data.key : type}`}
-            className="flex items-center gap-2 cursor-pointer text-black"
+            className="flex items-center gap-2 cursor-pointer text-white"
           >
             <TokensIcon />
             <h1 className="capitalize">{data?.key ? data.key : type}</h1>
@@ -68,6 +68,7 @@ export default function ButtonCustomize({ data, type = "page" }) {
 
         {type === "page" && (
           <Switch
+            className="data-[state=checked]:bg-neutral-400 data-[state=unchecked]:bg-neutral-50"
             defaultChecked={true}
             checked={state}
             onCheckedChange={() => setState(!state)}

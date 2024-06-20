@@ -43,6 +43,16 @@ export default function Template({ children }) {
     })();
   }, []);
 
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, []);
+
   return (
     <>
       {isLoading ? (
@@ -77,10 +87,6 @@ export default function Template({ children }) {
                 // accent
                 "--accent": dataColor?.value.accent,
                 "--accent-foreground": dataColor?.value["accent-foreground"],
-
-                // card
-                "--card": dataColor?.value.card,
-                "--card-foreground": dataColor?.value["card-foreground"],
               },
               body: {
                 backgroundColor: "var(--background)",

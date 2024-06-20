@@ -1,3 +1,28 @@
 @tailwind base;
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #0a0a0a;
+    --card: #ffffff;
+    --card-foreground: #0a0a0a;
+    --popover: #ffffff;
+    --popover-foreground: #0a0a0a;
+    --primary: #1e1e1e;
+    --primary-foreground: #fafafa;
+    --secondary: #f6f6f6;
+    --secondary-foreground: #0a0a0a;
+    --muted: #f6f6f6;
+    --muted-foreground: #737373;
+    --accent: #f6f6f6;
+    --accent-foreground: #0a0a0a;
+    --destructive: #ff605b;
+    --destructive-foreground: #fafafa;
+    --border: #e5e5e5;
+    --input: #e5e5e5;
+    --ring: #0a0a0a;
+    --radius: 0.5rem;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;

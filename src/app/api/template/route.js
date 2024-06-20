@@ -3,39 +3,6 @@ import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
 const { z } = require("zod");
 
-const contentSchema = z.object({
-  key: z.string(),
-  value: z.record(z.any()),
-});
-
-const colorSchema = z.object({
-  key: z.string(),
-  value: z.object({
-    background: z.string(),
-    foreground: z.string(),
-    primary: z.string(),
-    "primary-foreground": z.string(),
-    secondary: z.string(),
-    "secondary-foreground": z.string(),
-    accent: z.string(),
-    "accent-foreground": z.string(),
-    card: z.string(),
-    "card-foreground": z.string(),
-  }),
-});
-
-const templateSchema = z.object({
-  title: z.string(),
-  slug: z.string(),
-  thumbnail: z.string(),
-  discount: z.number(),
-  price: z.number(),
-  category: z.string(),
-  content: z.array(contentSchema),
-  color: z.array(colorSchema),
-  music: z.string(),
-});
-
 export async function GET(req, res) {
   try {
     const url = new URL(req.url);
@@ -68,6 +35,39 @@ export async function GET(req, res) {
 export const POST = auth(async function POST(req) {
   if (req.auth) {
     try {
+      const contentSchema = z.object({
+        key: z.string(),
+        value: z.record(z.any()),
+      });
+
+      const colorSchema = z.object({
+        key: z.string(),
+        value: z.object({
+          background: z.string(),
+          foreground: z.string(),
+          primary: z.string(),
+          "primary-foreground": z.string(),
+          secondary: z.string(),
+          "secondary-foreground": z.string(),
+          accent: z.string(),
+          "accent-foreground": z.string(),
+          card: z.string(),
+          "card-foreground": z.string(),
+        }),
+      });
+
+      const templateSchema = z.object({
+        title: z.string(),
+        slug: z.string(),
+        thumbnail: z.string(),
+        discount: z.number(),
+        price: z.number(),
+        category: z.string(),
+        content: z.array(contentSchema),
+        color: z.array(colorSchema),
+        music: z.string(),
+      });
+
       const body = await req.json();
 
       const validator = templateSchema.safeParse(body);

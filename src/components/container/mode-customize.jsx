@@ -10,7 +10,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/UI/navigation-menu";
 import CustomizeContext from "@/context/customize";
 
@@ -42,8 +41,10 @@ export default function ModeCustomize({ handleOpenTool = () => {} }) {
         <NavigationMenu className="fixed top-4 right-4 z-50">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>mode edit</NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuTrigger className="bg-white text-[#0a0a0a] hover:bg-[#f6f6f6] hover:text-[#0a0a0a] focus:bg-[#f6f6f6] focus:text-[#0a0a0a] data-[active]:bg-[#f6f6f6]/50 data-[state=open]:bg-[#f6f6f6]/50">
+                mode edit
+              </NavigationMenuTrigger>
+              <NavigationMenuContent className="bg-white">
                 <ul className="grid gap-2 p-2 w-[100px]">
                   {components.map((component) => (
                     <ListItem
@@ -70,7 +71,7 @@ const ListItem = React.forwardRef(
           <button
             ref={ref}
             className={cn(
-              "flex gap-2 w-full select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              "flex gap-2 w-full select-none space-y-1 rounded-md p-3 text-[#0a0a0a] leading-none no-underline outline-none transition-colors hover:bg-[#f6f6f6] hover:text-[#0a0a0a] focus:bg-[#f6f6f6] focus:text-[#0a0a0a]",
               className
             )}
             {...props}

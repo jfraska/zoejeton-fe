@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/UI/popover";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/UI/dropdown-menu";
 import { SketchPicker } from "react-color";
 
 export default function ColorPicker({
@@ -15,21 +15,21 @@ export default function ColorPicker({
   const [state, setState] = useState(color);
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
         <button
           className="w-5 aspect-square rounded border"
           style={{ backgroundColor: color }}
         />
-      </PopoverTrigger>
-      <PopoverContent className="p-0 w-fit">
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" sideOffset={2} className="p-0">
         <SketchPicker
           color={state}
           onChange={setState}
           presetColors={preset}
           onChangeComplete={(e) => setColor(e.hex, name)}
         />
-      </PopoverContent>
-    </Popover>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

@@ -48,7 +48,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
 
 export default function Page() {
   return (
-    <main className="grid items-start gap-4 p-4 sm:px-6 sm:py-4 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
+    <section className="grid items-start gap-4 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
         <div className="flex items-center">
           <h1 className="text-lg font-semibold md:text-2xl">Share</h1>
@@ -503,6 +503,6 @@ export default function Page() {
           </CardFooter>
         </Card>
       </div>
-    </main>
+    </section>
   );
 }

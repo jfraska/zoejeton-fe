@@ -7,12 +7,12 @@ export const GET = auth(async function GET(req, { params }) {
   try {
     const { id } = params;
     const url = new URL(req.url);
-    const slug = url.searchParams.get("slug");
+    const invitation = url.searchParams.get("invitation");
 
     const data = await prisma.Guest.findFirst({
       where: {
         id,
-        invitationId: slug,
+        invitationId: invitation,
       },
     });
 
