@@ -1,3 +1,4 @@
+import Editable from "@/components/container/editable";
 import { Runalto } from "@/styles/fonts";
 
 export default function Thanks() {
@@ -9,12 +10,10 @@ export default function Thanks() {
       }}
     >
       <h1 className={`${Runalto.className} text-5xl font-medium w-2/4`}>
-        Thank You
+        <Editable type="text" field="heading" section="thanks" />
       </h1>
       <p className="w-2/4">
-        Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila
-        Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada
-        kami.
+        <Editable type="text" field="subheading" section="cover" />
       </p>
 
       <div className="absolute bottom-5 inset-x-0 w-full text-center">

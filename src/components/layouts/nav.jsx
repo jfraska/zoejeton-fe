@@ -30,7 +30,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/sheet";
-import { Badge } from "@/components/UI/badge";
 import InvitationSwitcher from "@/components/container/invitation-switcher";
 
 export default function Nav() {
@@ -102,9 +101,6 @@ export default function Nav() {
               >
                 {icon}
                 <span className="text-sm font-medium">{name}</span>
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
               </Link>
             ))}
           </nav>

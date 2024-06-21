@@ -1,3 +1,4 @@
+import Editable from "@/components/container/editable";
 import { Runalto } from "@/styles/fonts";
 
 export default function LiveStream() {
@@ -7,6 +8,7 @@ export default function LiveStream() {
       style={{
         backgroundImage: "url('/templates/minimalis/4.heic')",
       }}
+      id="live streaming"
     >
       <div>
         <h1 className={`${Runalto.className} text-5xl`}>Live Streaming</h1>
@@ -18,9 +20,20 @@ export default function LiveStream() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
           vulputate libero et velit interdum, ac aliquet odio mattis.
         </p>
-        <button className="border border-foreground py-2 px-10 mt-10">
-          Join Now
-        </button>
+        <Editable
+          className="mt-10"
+          type="link"
+          field="link"
+          section="live streaming"
+        >
+          <a
+            href="/"
+            target="_blank"
+            className="border border-foreground py-2 px-10"
+          >
+            Join Now
+          </a>
+        </Editable>
       </div>
     </section>
   );

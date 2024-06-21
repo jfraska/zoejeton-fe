@@ -14,14 +14,14 @@ export default function Beranda() {
       <div className="mx-auto flex flex-col gap-6 justify-start items-center px-10 text-center">
         <h2 className="text-lg mt-16">THE WEDDING OF</h2>
         <h1 className={`${Runalto.className} text-5xl font-medium`}>
-          <Editable type="text" field="title" section="beranda" />
+          <Editable type="text" field="heading" section="beranda" />
         </h1>
         <h3 className="text-xs">
-          <Editable type="text" field="desc" section="beranda" />
+          <Editable type="text" field="subheading" section="beranda" />
         </h3>
       </div>
       <div className={`${Runalto.className} absolute bottom-[20%] inset-x-10`}>
-        <Editable type="date" field="akad" section="date">
+        <Editable type="date" field="akad" subfield="date" section="event">
           <CountDown />
         </Editable>
       </div>

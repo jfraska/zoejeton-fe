@@ -6,18 +6,20 @@ import ContentEditable from "react-contenteditable";
 import EditableDate from "@/components/container/editable-date";
 import EditableImage from "@/components/container/editable-image";
 import { cn, getDataContent } from "@/libs/utils";
+import EditableLink from "./editable-link";
 
 export default function Editable({
   children,
   className,
   section,
   field,
+  subfield,
   type,
   propChild = "deadline",
 }) {
   const { dataContent, setDataContent, isEdit } = useContext(CustomizeContext);
   const [state, setState] = useState(
-    getDataContent(dataContent, section, field)
+    getDataContent(dataContent, section, field, subfield)
   );
 
   const handleChange = (e) => {
@@ -37,7 +39,7 @@ export default function Editable({
           ...item,
           value: {
             ...item.value,
-            [field]: data,
+            [field]: subfield ? { ...item[field], [subfield]: data } : data,
           },
         };
       }
@@ -50,11 +52,12 @@ export default function Editable({
     <>
       {type === "text" && (
         <ContentEditable
-          className={
+          className={cn(
             isEdit
               ? "outline-blue-100 outline focus:outline-blue-300 p-2"
-              : null
-          }
+              : null,
+            className
+          )}
           html={state}
           disabled={!isEdit}
           onChange={handleChange}
@@ -77,6 +80,37 @@ export default function Editable({
               })}
           </button>
         </EditableDate>
+      )}
+
+      {type === "link" && (
+        <EditableLink
+          type="text"
+          name={`${field} ${section} ${subfield ? subfield : ""}`}
+          value={state}
+          onChange={handleChange}
+        >
+          <button
+            className={cn(
+              `relative ${
+                isEdit
+                  ? "outline-blue-100 outline focus:outline-blue-300 p-2"
+                  : null
+              }`,
+              className
+            )}
+            disabled={!isEdit}
+          >
+            <div
+              className={`
+                ${isEdit ? "block" : "hidden"} absolute inset-0 z-10 
+              `}
+            />
+            {children &&
+              cloneElement(children, {
+                href: state,
+              })}
+          </button>
+        </EditableLink>
       )}
 
       {type === "image" && (

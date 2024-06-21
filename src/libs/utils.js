@@ -15,7 +15,9 @@ export async function saltAndHashPassword(password) {
   return hashedPassword;
 }
 
-export const getDataContent = (data, key, field) => {
+export const getDataContent = (data, key, field, subfield) => {
   const item = data.find((item) => item.key === key);
-  return item && item.value[field] ? item.value[field] : null;
+  return item && item.value[field] && !subfield
+    ? item.value[field]
+    : item.value[field][subfield];
 };

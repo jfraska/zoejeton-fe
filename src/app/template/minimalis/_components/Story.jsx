@@ -2,7 +2,7 @@ export default function Story() {
   return (
     <section
       className="relative w-full h-fit pt-10 pb-20 px-10 bg-secondary flex flex-col justify-start items-center gap-4 text-center"
-      name="story"
+      id="love story"
     >
       <h1 className="mb-4 text-2xl">Love Story</h1>
 

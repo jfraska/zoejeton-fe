@@ -43,6 +43,7 @@ export const POST = auth(async function POST(req) {
   if (req.auth) {
     try {
       const invitationSchema = z.object({
+        title: z.string().min(2).max(50),
         templateId: z.string().optional(),
         fitur: z.array().optional(),
         addon: z.array().optional(),
@@ -61,29 +62,29 @@ export const POST = auth(async function POST(req) {
         );
       }
 
-      const { templateId, fitur, addon } = validator.data;
+      const { title, templateId, fitur, addon } = validator.data;
 
-      const template = await prisma.Template.findUnique({
-        where: { id: templateId },
-      });
+      // const template = await prisma.Template.findUnique({
+      //   where: { id: templateId },
+      // });
 
-      if (!template) {
-        return NextResponse.json(
-          { message: "Unprocessable Entity", errors: "Data Not Found" },
-          { status: 422 }
-        );
-      }
+      // if (!template) {
+      //   return NextResponse.json(
+      //     { message: "Unprocessable Entity", errors: "Data Not Found" },
+      //     { status: 422 }
+      //   );
+      // }
 
       const data = await prisma.Invitation.create({
         data: {
+          title,
           user: { connect: { id: req.auth.user.id } },
-          template: { connect: { id: template.id } },
+          template: templateId,
           fitur,
           addon,
         },
         include: {
           user: true,
-          template: true,
         },
       });
 

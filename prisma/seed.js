@@ -12,29 +12,92 @@ const templateData = [
     category: "Premium",
     content: [
       {
+        key: "cover",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
         key: "beranda",
         value: {
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: "bg1.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
         key: "event",
         value: {
-          akad: "Maret 10, 2024",
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
         },
       },
       {
         key: "couple",
         value: {
-          groom: "Jeton",
-          bride: "Zoe",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
           background: "#000",
           foreground: "#fff",
@@ -44,8 +107,6 @@ const templateData = [
           "secondary-foreground": "#fff",
           accent: "#ff4081",
           "accent-foreground": "#fff",
-          card: "#fff",
-          "card-foreground": "#000",
         },
       },
     ],

@@ -6,6 +6,10 @@ import { Input } from "@/components/UI/input";
 import { Label } from "@/components/UI/label";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Login | ZoeJeton",
+};
+
 export default function Page() {
   return (
     <div className="w-full h-screen lg:grid lg:grid-cols-2">

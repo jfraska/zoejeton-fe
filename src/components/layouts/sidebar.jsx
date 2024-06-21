@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bell, Users, Home, SendHorizontal, ChevronRight } from "lucide-react";
 import { Button } from "@/components/UI/button";
-import { Badge } from "@/components/UI/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -80,9 +79,6 @@ export default function Sidebar() {
               >
                 {icon}
                 <span className="text-sm font-medium">{name}</span>
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
               </Link>
             ))}
           </nav>

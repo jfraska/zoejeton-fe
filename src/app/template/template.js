@@ -11,7 +11,7 @@ import ButtonAction from "@/components/container/button-action";
 import ModeCustomize from "@/components/container/mode-customize";
 
 export default function Template({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [isOpenShare, setIsOpenShare] = useState(false);
   const [isOpenTool, setIsOpenTool] = useState(false);
   const pathname = usePathname();
@@ -38,7 +38,7 @@ export default function Template({ children }) {
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     })();
   }, []);
@@ -55,7 +55,7 @@ export default function Template({ children }) {
 
   return (
     <>
-      {isLoading ? (
+      {loading ? (
         <h1>loading...</h1>
       ) : (
         <>

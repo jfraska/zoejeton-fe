@@ -40,6 +40,7 @@ export default function LockScreen({ dataGuest }) {
       style={{
         backgroundImage: "url('/templates/minimalis/7.heic')",
       }}
+      id="cover"
     >
       <div className="max-w-xs text-center ">
         <Image
