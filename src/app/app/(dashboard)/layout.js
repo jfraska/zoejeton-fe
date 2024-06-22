@@ -1,3 +1,5 @@
+import CreateInvitation from "@/components/container/create-invitation";
+import Switcher from "@/components/container/switcher";
 import Nav from "@/components/layouts/nav";
 import Sidebar from "@/components/layouts/sidebar";
 
@@ -15,6 +17,8 @@ export default function DashboardLayout({ children }) {
           {children}
         </main>
       </div>
+      <Switcher />
+      <CreateInvitation />
     </div>
   );
 }

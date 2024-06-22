@@ -1,5 +1,7 @@
 "use client";
 
+import { useContext } from "react";
+import PortalContext from "@/context/portal";
 import {
   Dialog,
   DialogClose,
@@ -8,12 +10,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/UI/dialog";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -29,7 +29,31 @@ const formSchema = z.object({
   title: z.string().min(2).max(50),
 });
 
-export default function CreateInvitation({ onSubmit = () => {}, ...props }) {
+export default function CreateInvitation() {
+  const { stateCreateInvitation, setStateCreateInvitation, updateInvitation } =
+    useContext(PortalContext);
+
+  const onSubmit = async (e) => {
+    try {
+      const response = await fetch("/api/invitation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title: e.title }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const result = await response.json();
+      updateInvitation(result.data);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  };
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,10 +62,10 @@ export default function CreateInvitation({ onSubmit = () => {}, ...props }) {
   });
 
   return (
-    <Dialog {...props}>
-      <DialogTrigger asChild>
-        <Button className="mt-4">Add invitation</Button>
-      </DialogTrigger>
+    <Dialog
+      open={stateCreateInvitation}
+      onOpenChange={setStateCreateInvitation}
+    >
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Create Invitaion</DialogTitle>

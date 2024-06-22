@@ -1,41 +1,36 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { useSelectedLayoutSegments } from "next/navigation";
+import PortalContext from "@/context/portal";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   Users,
   Home,
-  LineChart,
-  Package,
   PanelLeft,
-  Search,
-  ShoppingCart,
-  CircleUser,
   Share,
-  PanelsTopLeft,
   SendHorizontal,
   ChevronRight,
 } from "lucide-react";
+import { CaretSortIcon } from "@radix-ui/react-icons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
 import { Button } from "@/components/UI/button";
-import { Input } from "@/components/UI/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/sheet";
-import InvitationSwitcher from "@/components/container/invitation-switcher";
 
 export default function Nav() {
   const { data: session } = useSession();
   const segments = useSelectedLayoutSegments();
   const [open, setOpen] = useState(false);
+  const { invitation, setStateSwitcher } = useContext(PortalContext);
 
   const tabs = useMemo(() => {
     return [
@@ -140,7 +135,23 @@ export default function Nav() {
         </SheetContent>
       </Sheet>
       <div className="w-full flex-1">
-        <InvitationSwitcher />
+        <Button
+          variant="outline"
+          onClick={() => setStateSwitcher(true)}
+          aria-label="Select a invitation"
+          className="w-32 md:w-[200px] text-sm md:text-base justify-between"
+        >
+          <Avatar className="mr-2 h-5 w-5 hidden md:block">
+            <AvatarImage
+              src={`https://avatar.vercel.sh/${invitation?.id}.png`}
+              alt={invitation?.title}
+              className="grayscale"
+            />
+            <AvatarFallback>JZ</AvatarFallback>
+          </Avatar>
+          {invitation?.title}
+          <CaretSortIcon className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+        </Button>
       </div>
       {/* <form>
         <div className="relative">
