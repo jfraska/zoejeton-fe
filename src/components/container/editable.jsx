@@ -23,13 +23,14 @@ export default function Editable({
   );
 
   const handleChange = (e) => {
-    const data = e.target?.value ? e.target.value : e;
+    let data = e.target?.value ? e.target.value : e;
 
     if (type == "image") {
       setState(
         data.getFileEncodeDataURL() ? data.getFileEncodeDataURL() : data
       );
     } else {
+      if (typeof data !== "string") data = "";
       setState(data);
     }
 
@@ -54,11 +55,11 @@ export default function Editable({
         <ContentEditable
           className={cn(
             isEdit
-              ? "outline-blue-100 outline focus:outline-blue-300 p-2"
+              ? "outline-blue-100 outline-1 outline-dashed focus:outline-blue-300 p-2"
               : null,
             className
           )}
-          html={state}
+          html={state ?? ""}
           disabled={!isEdit}
           onChange={handleChange}
         />
@@ -69,7 +70,7 @@ export default function Editable({
           <button
             className={` ${
               isEdit
-                ? "outline-blue-100 outline focus:outline-blue-300 p-2"
+                ? "outline-blue-100 outline-1 outline-dashed focus:outline-blue-300 p-2"
                 : null
             } w-full`}
             disabled={!isEdit}
@@ -85,15 +86,15 @@ export default function Editable({
       {type === "link" && (
         <EditableLink
           type="text"
-          name={`${field} ${section} ${subfield ? subfield : ""}`}
-          value={state}
+          name="Enter your link"
+          value={state ?? ""}
           onChange={handleChange}
         >
           <button
             className={cn(
               `relative ${
                 isEdit
-                  ? "outline-blue-100 outline focus:outline-blue-300 p-2"
+                  ? "outline-blue-100 outline-1 outline-dashed focus:outline-blue-300 py-4 px-2"
                   : null
               }`,
               className
@@ -118,7 +119,7 @@ export default function Editable({
           <button
             className={cn(
               isEdit
-                ? "outline-blue-100 outline focus:outline-blue-300 p-2"
+                ? "outline-blue-100 outline-1 outline-dashed focus:outline-blue-300 p-2"
                 : null,
               className
             )}

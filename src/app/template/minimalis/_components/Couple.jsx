@@ -6,7 +6,7 @@ export default function Couple() {
   return (
     <section className="relative h-fit py-10" id="couple">
       <Editable
-        className="relative w-72 aspect-square bg-secondary"
+        className="relative w-72 aspect-square bg-secondary animate"
         type="image"
         field="bride"
         subfield="image"

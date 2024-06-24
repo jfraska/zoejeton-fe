@@ -34,7 +34,7 @@ export default function ButtonShare({ children, classname, link, ...props }) {
   return (
     <Dialog {...props}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className={`max-w-sm bg-white text-black`}>
+      <DialogContent className="bg-white text-black max-w-sm">
         <DialogHeader>
           <DialogTitle className="font-medium">Share link</DialogTitle>
           <DialogDescription>

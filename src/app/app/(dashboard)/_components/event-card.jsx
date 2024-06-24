@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/UI/button";
-import Image from "next/image";
+import { useContext } from "react";
+import PortalContext from "@/context/portal";
 import {
   Card,
   CardContent,
@@ -12,31 +12,58 @@ import {
 } from "@/components/UI/card";
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
+import { getDataContent } from "@/libs/utils";
 
 export default function EventCard() {
+  const { invitation } = useContext(PortalContext);
+  const date = new Date(
+    getDataContent(invitation?.template.content, "event", "akad", "date")
+  );
+
+  const month = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
+
   return (
     <div className="col-span-4 flex flex-col gap-4">
-      <Card className="h-full">
+      <Card>
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Rangkaian Acara</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-4">
+        <CardContent className="grid gap-4 mb-10">
           <div className="flex items-start justify-start gap-4 space-x-2">
-            <div className="flex flex-col w-1/4 justify-start items-center">
-              <h1>29</h1>
-              <h1>June 2022</h1>
+            <div className="flex flex-col w-2/5 justify-start items-center font-medium">
+              <h1 className="text-xl">{date.getDate()}</h1>
+              <h1>{`${month[date.getMonth()]} ${date.getFullYear()}`}</h1>
             </div>
             <div className="h-full w-px bg-neutral-800" />
             <div className="flex flex-col justify-start items-start">
-              <h1>Akad Nikah</h1>
-              <h2>lokasi</h2>
-              <h1 className="mt-2">Resepsi</h1>
-              <h2>lokasi</h2>
+              {invitation?.template.content.map(
+                (item) =>
+                  item.key === "event" &&
+                  Object.keys(item.value).map((key) => (
+                    <div key={key}>
+                      <h1 className="text-lg font-medium capitalize">{key}</h1>
+                      <h2 className="mb-2">{item.value[key].date}</h2>
+                    </div>
+                  ))
+              )}
             </div>
           </div>
         </CardContent>
         <CardFooter className="mt-auto text-sm">
-          Ubah Rangkaian Acara
+          <button>Ubah Rangkaian Acara</button>
         </CardFooter>
       </Card>
       <Card>

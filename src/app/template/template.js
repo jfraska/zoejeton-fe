@@ -9,6 +9,7 @@ import CustomizeTool from "@/components/layouts/customize-tool";
 import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
 import ModeCustomize from "@/components/container/mode-customize";
+import Loading from "./loading";
 
 export default function Template({ children }) {
   const [loading, setLoading] = useState(true);
@@ -43,23 +44,13 @@ export default function Template({ children }) {
     })();
   }, []);
 
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      event.preventDefault();
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, []);
-
   return (
     <>
       {loading ? (
-        <h1>loading...</h1>
+        <Loading />
       ) : (
         <>
-          <main>{children}</main>
+          {children}
 
           <ButtonAction handleOpenShare={setIsOpenShare} />
           <ModeCustomize handleOpenTool={setIsOpenTool} />

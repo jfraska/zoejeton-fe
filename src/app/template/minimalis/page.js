@@ -8,25 +8,25 @@ import Quotes from "./_components/Quotes";
 import Couple from "./_components/Couple";
 import Story from "./_components/Story";
 import Event from "./_components/Event";
-import FloatingBar from "./_components/FloatingBar";
+import Music from "./_components/Music";
 import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
-import { ScrollArea } from "@/components/UI/scroll-area";
 
 export const metadata = {
   title: "Minimalis | ZoeJeton",
-  description: "by zoe",
+  description: "by jSfraska",
 };
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Page() {
   return (
-    <section className={`${montserrat.className} flex w-full h-screen`}>
+    <main
+      className={`${montserrat.className} w-full bg-primary md:max-w-md ml-auto`}
+    >
       <Cover />
-      <LockScreen />
-      <ScrollArea className="w-full md:max-w-[430px] h-screen bg-primary">
+      <LockScreen>
         <Beranda />
         <Quotes />
         <Couple />
@@ -35,8 +35,8 @@ export default function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-      </ScrollArea>
-      <FloatingBar />
-    </section>
+        <Music />
+      </LockScreen>
+    </main>
   );
 }

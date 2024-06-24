@@ -1,8 +1,24 @@
+"use client";
+
+import { useEffect } from "react";
+import { animate, stagger } from "motion";
 import { Runalto } from "@/styles/fonts";
 import CountDown from "./CountDown";
 import Editable from "@/components/container/editable";
 
 export default function Beranda() {
+  useEffect(() => {
+    animate(
+      ".animate",
+      { x: 0 },
+      {
+        delay: stagger(0.1),
+        duration: 0.5,
+        easing: [0.22, 0.03, 0.26, 1],
+      }
+    );
+  }, []);
+
   return (
     <section
       className="relative w-full h-screen bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"

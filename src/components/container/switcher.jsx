@@ -3,8 +3,10 @@
 import { useContext, useEffect, useState } from "react";
 import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import { cn } from "@/libs/utils";
+import { useMediaQuery } from "@mui/material";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
 import {
+  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -14,11 +16,10 @@ import {
   CommandSeparator,
 } from "@/components/UI/command";
 import PortalContext from "@/context/portal";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
 
 export default function Switcher() {
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [datainvitation, setDataInvitation] = useState([]);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const {
     invitation,
     updateInvitation,
@@ -26,6 +27,45 @@ export default function Switcher() {
     setStateSwitcher,
     setStateCreateInvitation,
   } = useContext(PortalContext);
+
+  if (isDesktop) {
+    return (
+      <CommandDialog open={stateSwitcher} onOpenChange={setStateSwitcher}>
+        <ListInvitation
+          invitation={invitation}
+          updateInvitation={updateInvitation}
+          setStateCreateInvitation={setStateCreateInvitation}
+          setStateSwitcher={setStateSwitcher}
+        />
+      </CommandDialog>
+    );
+  }
+
+  return (
+    <Drawer open={stateSwitcher} onOpenChange={setStateSwitcher}>
+      <DrawerContent>
+        <Command className="px-4 py-2">
+          <ListInvitation
+            invitation={invitation}
+            updateInvitation={updateInvitation}
+            setStateCreateInvitation={setStateCreateInvitation}
+            setStateSwitcher={setStateSwitcher}
+          />
+        </Command>
+      </DrawerContent>
+    </Drawer>
+  );
+}
+
+export function ListInvitation({
+  invitation,
+  updateInvitation,
+  setStateCreateInvitation,
+  setStateSwitcher,
+}) {
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [datainvitation, setDataInvitation] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -46,7 +86,7 @@ export default function Switcher() {
   }, [search]);
 
   return (
-    <CommandDialog open={stateSwitcher} onOpenChange={setStateSwitcher}>
+    <>
       <CommandList className="h-[50vh]">
         <CommandInput
           placeholder="Search invitation..."
@@ -99,6 +139,6 @@ export default function Switcher() {
           </CommandItem>
         </CommandGroup>
       </CommandList>
-    </CommandDialog>
+    </>
   );
 }

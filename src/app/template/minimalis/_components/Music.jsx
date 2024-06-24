@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function FloatingBar() {
+export default function Music() {
   const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
 

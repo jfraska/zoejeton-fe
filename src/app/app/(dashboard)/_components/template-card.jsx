@@ -1,5 +1,7 @@
 "use client";
 
+import { useContext } from "react";
+import PortalContext from "@/context/portal";
 import { Button } from "@/components/UI/button";
 import Image from "next/image";
 import {
@@ -12,35 +14,51 @@ import {
 } from "@/components/UI/card";
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
+import { Input } from "@/components/UI/input";
+import { Eye, Globe } from "lucide-react";
 
 export default function TemplateCard() {
+  const { invitation } = useContext(PortalContext);
+
   return (
-    <Card className="col-span-3">
+    <Card className="col-span-4 md:col-span-3">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Jeton & Zoe</CardTitle>
-        <CardDescription>
-          Enter your email below to create your account
-        </CardDescription>
+        <CardTitle className="text-2xl">{invitation?.template.title}</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="relative w-full aspect-video bg-secondary rounded-lg">
+        <div className="relative w-full aspect-video bg-secondary rounded-lg overflow-hidden bg-black bg-blend-multiply bg-opacity-80">
           <Image
             fill
-            src="/"
+            src={`/templates/${invitation?.template.slug}/${invitation?.template.thumbnail}`}
             alt="thumbnail"
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <div className="flex items-center justify-between space-x-2">
-          <Label htmlFor="functional" className="flex flex-col space-y-1">
-            <span>Functional Cookies</span>
-            <span className="font-normal leading-snug text-muted-foreground">
-              These cookies allow the website to provide personalized
-              functionality.
-            </span>
+          <Label
+            htmlFor="functional"
+            className="space-y-1 flex gap-1 items-center font-normal"
+          >
+            {/* <Eye className="h-4 w-4" /> */}
+            <span>Published</span>
           </Label>
           <Switch id="functional" />
+        </div>
+        <div className="flex items-center justify-between space-x-2">
+          <Label
+            htmlFor="link"
+            className="space-y-1 flex gap-1 items-center font-normal"
+          >
+            <Globe className="h-4 w-4" />
+            <span>Link</span>
+          </Label>
+          <Input
+            id="link"
+            className="w-3/5 h-6 text-sm"
+            defaultValue={"wait"}
+            readOnly
+          />
         </div>
       </CardContent>
       <CardFooter>

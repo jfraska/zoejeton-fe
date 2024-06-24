@@ -68,7 +68,7 @@ export default function ButtonCustomize({ data, type = "page" }) {
 
         {type === "page" && (
           <Switch
-            className="data-[state=checked]:bg-[#2462ea] data-[state=unchecked]:bg-[#e5e5e5]"
+            className="data-[state=unchecked]:bg-[#e5e5e5]"
             defaultChecked={true}
             checked={state}
             onCheckedChange={() => setState(!state)}

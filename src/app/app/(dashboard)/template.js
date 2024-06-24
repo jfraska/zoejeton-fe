@@ -5,12 +5,34 @@ import { usePathname } from "next/navigation";
 import PortalContext from "@/context/portal";
 
 export default function Template({ children }) {
-  const { invitation } = useContext(PortalContext);
+  const [loading, setLoading] = useState(true);
   const pathname = usePathname();
+  const { invitation, updateInvitation, setStateSwitcher } =
+    useContext(PortalContext);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(`/api/invitation/${invitation?.id}`);
+        const result = await response.json();
+        if (!result.data) {
+          setStateSwitcher(true);
+          return;
+        }
+        updateInvitation(result.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
 
   return (
     <>
-      {invitation ? (
+      {loading ? (
+        <h1>loading...</h1>
+      ) : invitation ? (
         children
       ) : (
         <section className="flex h-full flex-col gap-4 lg:gap-6">

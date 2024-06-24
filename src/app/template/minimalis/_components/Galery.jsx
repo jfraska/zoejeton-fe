@@ -39,12 +39,19 @@ export default function Galery() {
         />
       </div>
 
-      <div
-        className="w-full aspect-video bg-cover"
-        style={{
-          backgroundImage: "url('/templates/minimalis/3.jpg')",
-        }}
-      />
+      <Editable
+        className="relative w-full aspect-video bg-secondary"
+        type="image"
+        field="image1"
+        section="galery"
+      >
+        <Image
+          fill
+          alt="image"
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </Editable>
 
       <div
         className="w-full aspect-video bg-cover"

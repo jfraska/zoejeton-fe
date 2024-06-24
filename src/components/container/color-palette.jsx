@@ -20,10 +20,12 @@ export default function ColorPalette({ colors, setColor }) {
   };
 
   useEffect(() => {
-    const imgElements = document.querySelectorAll(".image");
+    let imgElements = document.querySelectorAll(".image");
     let colors = [];
 
     const fetchPalettes = async () => {
+      imgElements = Array.from(imgElements).slice(0, 2);
+
       const promises = Array.from(imgElements).map(async (img) => {
         const colorPalette = await colorThief.getPalette(
           img.getAttribute("src")
