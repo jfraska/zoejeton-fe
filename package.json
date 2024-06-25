@@ -40,6 +40,7 @@
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "@studio-freight/react-lenis": "^0.0.47",
+    "@tanstack/react-table": "^8.17.3",
     "@vercel/analytics": "^1.2.2",
     "autoprefixer": "10.4.15",
     "bcryptjs": "^2.4.3",

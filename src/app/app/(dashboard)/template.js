@@ -3,12 +3,13 @@
 import { useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import PortalContext from "@/context/portal";
+import Loading from "@/components/UI/loading";
 
 export default function Template({ children }) {
-  const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
   const { invitation, updateInvitation, setStateSwitcher } =
     useContext(PortalContext);
+  const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
     (async () => {
@@ -31,7 +32,9 @@ export default function Template({ children }) {
   return (
     <>
       {loading ? (
-        <h1>loading...</h1>
+        <div className="m-auto">
+          <Loading />
+        </div>
       ) : invitation ? (
         children
       ) : (

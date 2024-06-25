@@ -139,7 +139,7 @@ export default function Nav() {
           variant="outline"
           onClick={() => setStateSwitcher(true)}
           aria-label="Select a invitation"
-          className="w-32 md:w-[200px] text-sm md:text-base justify-between"
+          className="w-32 md:w-[200px] text-sm justify-between"
         >
           <Avatar className="mr-2 h-5 w-5 hidden md:block">
             <AvatarImage

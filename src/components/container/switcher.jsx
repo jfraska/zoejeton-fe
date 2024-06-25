@@ -13,6 +13,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandLoading,
   CommandSeparator,
 } from "@/components/UI/command";
 import PortalContext from "@/context/portal";
@@ -94,7 +95,7 @@ export function ListInvitation({
           onValueChange={setSearch}
         />
         <CommandEmpty>No invitation found.</CommandEmpty>
-        {loading && <Command.Loading>Fetching words…</Command.Loading>}
+        {loading && <CommandLoading>Fetching words…</CommandLoading>}
         {datainvitation?.map((item) => {
           return (
             <CommandItem

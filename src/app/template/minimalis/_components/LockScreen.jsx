@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { animate, stagger } from "motion";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
@@ -33,18 +32,6 @@ export default function LockScreen({ children }) {
   useEffect(() => {
     state ? timeline.current.play() : timeline.current.reverse();
   }, [state]);
-
-  useEffect(() => {
-    animate(
-      ".anim",
-      { x: 200 },
-      {
-        delay: stagger(0.1),
-        duration: 0.5,
-        easing: [0.22, 0.03, 0.26, 1],
-      }
-    );
-  }, []);
 
   return (
     <>

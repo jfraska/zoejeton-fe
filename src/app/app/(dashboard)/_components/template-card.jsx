@@ -15,7 +15,7 @@ import {
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
 import { Input } from "@/components/UI/input";
-import { Eye, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 
 export default function TemplateCard() {
   const { invitation } = useContext(PortalContext);
@@ -38,7 +38,7 @@ export default function TemplateCard() {
         <div className="flex items-center justify-between space-x-2">
           <Label
             htmlFor="functional"
-            className="space-y-1 flex gap-1 items-center font-normal"
+            className="space-y-1 flex gap-1 items-center"
           >
             {/* <Eye className="h-4 w-4" /> */}
             <span>Published</span>
@@ -46,12 +46,9 @@ export default function TemplateCard() {
           <Switch id="functional" />
         </div>
         <div className="flex items-center justify-between space-x-2">
-          <Label
-            htmlFor="link"
-            className="space-y-1 flex gap-1 items-center font-normal"
-          >
-            <Globe className="h-4 w-4" />
-            <span>Link</span>
+          <Label htmlFor="link" className="space-y-1 flex gap-1">
+            {/* <Globe className="w-3 aspect-square" /> */}
+            <h1 className="leading-tight">Link Preview</h1>
           </Label>
           <Input
             id="link"
