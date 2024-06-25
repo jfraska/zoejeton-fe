@@ -30,7 +30,7 @@ export default function Editable({
         data.getFileEncodeDataURL() ? data.getFileEncodeDataURL() : data
       );
     } else {
-      if (typeof data !== "string") data = "";
+      if (typeof data !== "string" && type !== "date") data = "";
       setState(data);
     }
 

@@ -58,7 +58,7 @@ export default function LockScreen({ children }) {
       >
         <div className="max-w-xs text-center ">
           <Image
-            className="w-8 aspect-square mx-auto mb-2 anim"
+            className="w-8 aspect-square mx-auto mb-2"
             src={"/assets/icons/zoejeton-outline.svg"}
             width={20}
             height={20}
