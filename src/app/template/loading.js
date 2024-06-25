@@ -12,9 +12,9 @@ export default function Loading() {
         width={300}
         height={300}
         priority
-        className="w-8 aspect-square"
+        className="w-9 aspect-square"
       />
-      <Progress value={0} className="w-48 h-2 mb-20" />
+      <Progress value={100} className="w-48 h-2 mb-20" />
       <p className="absolute inset-x-0 bottom-10 text-center px-20">
         For a better experience use Google Chrome or Safari
       </p>

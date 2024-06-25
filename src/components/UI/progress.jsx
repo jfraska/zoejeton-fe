@@ -12,7 +12,7 @@ const Progress = React.forwardRef(({ className, value, ...props }, ref) => {
   React.useEffect(() => {
     if (indicatorRef.current) {
       gsap.to(indicatorRef.current, {
-        x: `${value || 0}%`,
+        x: `-${100 - (value || 0)}%`,
         duration: 2,
         ease: "power3.out",
       });
