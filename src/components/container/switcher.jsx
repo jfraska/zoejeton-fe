@@ -16,7 +16,7 @@ import {
   CommandSeparator,
 } from "@/components/UI/command";
 import PortalContext from "@/context/portal";
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { Drawer, DrawerContent } from "@/components/UI/drawer";
 
 export default function Switcher() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
