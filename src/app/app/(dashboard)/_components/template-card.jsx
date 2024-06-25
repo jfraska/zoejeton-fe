@@ -15,7 +15,6 @@ import {
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
 import { Input } from "@/components/UI/input";
-import { Globe } from "lucide-react";
 
 export default function TemplateCard() {
   const { invitation } = useContext(PortalContext);

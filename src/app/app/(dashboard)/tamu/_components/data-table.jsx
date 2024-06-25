@@ -60,8 +60,8 @@ export default function DataTable({ columns, data }) {
 
   return (
     <Card className="w-full overflow-hidden">
-      <CardHeader className="px-7">
-        <CardTitle>Orders</CardTitle>
+      <CardHeader>
+        <CardTitle>Data Tamu</CardTitle>
         <CardDescription>Recent orders from your store.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">

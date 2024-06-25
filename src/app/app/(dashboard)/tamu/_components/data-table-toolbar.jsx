@@ -4,7 +4,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 
 import { Button } from "@/components/UI/button";
 import { Input } from "@/components/UI/input";
-// import { DataTableViewOptions } from "@/app/(app)/examples/tasks/components/data-table-view-options"
+import { DataTableViewOptions } from "./data-table-view-options";
 
 // import { priorities, statuses } from "../data/data";
 // import { DataTableFacetedFilter } from "./data-table-faceted-filter";
@@ -16,7 +16,7 @@ export function DataTableToolbar({ table }) {
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
         <Input
-          placeholder="Filter tasks..."
+          placeholder="Search Tamu"
           value={table.getColumn("title")?.getFilterValue() ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
@@ -48,7 +48,7 @@ export function DataTableToolbar({ table }) {
           </Button>
         )}
       </div>
-      {/* <DataTableViewOptions table={table} /> */}
+      <DataTableViewOptions table={table} />
     </div>
   );
 }
