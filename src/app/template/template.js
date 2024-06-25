@@ -39,7 +39,9 @@ export default function Template({ children }) {
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
       }
     })();
   }, []);

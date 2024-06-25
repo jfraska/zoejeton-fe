@@ -5,15 +5,15 @@ import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/layouts/preloader";
 
 export default function Loading() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false);
+      setLoading(false);
     }, 2500);
   }, []);
 
   return (
-    <AnimatePresence mode="wait">{isLoading && <Preloader />}</AnimatePresence>
+    <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
   );
 }
