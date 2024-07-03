@@ -53,7 +53,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
       }
 
       const response = await fetch(
-        `/api/template/${invitation.template.slug}`,
+        `/api/template/${invitation.template?.slug}`,
         {
           method: "PUT",
           headers: {

@@ -15,6 +15,7 @@ import {
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
 import { Input } from "@/components/UI/input";
+import Link from "next/link";
 
 export default function TemplateCard() {
   const { invitation } = useContext(PortalContext);
@@ -36,31 +37,49 @@ export default function TemplateCard() {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
-        <div className="flex items-center justify-between space-x-2">
+        <div className="flex items-center gap-5 space-x-2">
           <Label
             htmlFor="functional"
-            className="space-y-1 flex gap-1 items-center"
+            className="space-y-1 flex gap-1 items-center w-2/5"
           >
             {/* <Eye className="h-4 w-4" /> */}
             <span>Published</span>
           </Label>
           <Switch id="functional" />
         </div>
-        <div className="flex items-center justify-between space-x-2">
-          <Label htmlFor="link" className="space-y-1 flex gap-1">
+        <div className="flex items-center gap-5 space-x-2">
+          <Label htmlFor="link" className="space-y-1 flex gap-1 w-2/5">
             {/* <Globe className="w-3 aspect-square" /> */}
             <h1 className="leading-tight">Link Preview</h1>
           </Label>
-          <Input
+          <Link
+            href={
+              process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                ? `https://${invitation?.template?.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                : `http://${invitation?.template?.slug}.localhost:3000`
+            }
             id="link"
-            className="w-3/5 h-6 text-sm"
-            defaultValue={"wait"}
-            readOnly
-          />
+            className="h-6 text-sm bg-background border border-input px-3 rounded-md"
+          >
+            {process.env.NEXT_PUBLIC_ROOT_DOMAIN
+              ? `https://$
+            {invitation?.template?.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+              : `http://${invitation?.template?.slug}.localhost:3000`}
+          </Link>
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Customize</Button>
+        <Button className="w-full" asChild>
+          <Link
+            href={
+              process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${invitation?.template?.slug}`
+                : `http://template.localhost:3000/${invitation?.template?.slug}`
+            }
+          >
+            Customize
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   );
