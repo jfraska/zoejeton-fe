@@ -75,9 +75,14 @@ export function ListInvitation({
           search,
           limit: 5,
         });
-        const response = await fetch(`/api/invitation?${params.toString()}`);
-        const result = await response.json();
-        setDataInvitation(result.data);
+        const response = await fetch(
+          `/api/invitation?${params.toString()}`
+        ).then((res) => res.json());
+        if (response.data < 1) {
+          setStateSwitcher(false);
+          setStateCreateInvitation(true);
+        }
+        setDataInvitation(response.data);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {

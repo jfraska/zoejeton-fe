@@ -13,17 +13,32 @@ import {
 } from "@/components/UI/dialog";
 import { Button } from "@/components/UI/button";
 import CustomizeContext from "@/context/customize";
+import PortalContext from "@/context/portal";
 
 export default function ConfirmSave({ open, onOpenChange }) {
   const router = useRouter();
   const { data: session } = useSession();
   const { saveDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
+  const { invitation } = useContext(PortalContext);
+
+  const handleLogin = () => {
+    saveDraftContent();
+    router.push(
+      process.env.NEXT_PUBLIC_VERCEL_ENV
+        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+        : `http://app.localhost:3000`
+    );
+  };
 
   const handleSaveDatabase = async () => {
     try {
-      const response = await fetch("/api/template", {
-        method: "POST",
+      if (!invitation) {
+        handleLogin();
+      }
+
+      const response = await fetch(`/api/template/${invitation.templateId}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -67,14 +82,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
           {!session && (
             <Button
               className="bg-black hover:bg-white hover:text-black"
-              onClick={() => {
-                saveDraftContent();
-                router.push(
-                  process.env.NEXT_PUBLIC_VERCEL_ENV
-                    ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                    : `http://app.localhost:3000`
-                );
-              }}
+              onClick={handleLogin}
             >
               Sign in
             </Button>

@@ -36,7 +36,7 @@ const formSchema = z.object({
 });
 
 export default function CreateInvitation() {
-  const [template, setTempalte] = useState({});
+  const [template, setTemplate] = useState({});
   const searchParams = useSearchParams();
   const { stateCreateInvitation, setStateCreateInvitation, updateInvitation } =
     useContext(PortalContext);
@@ -49,14 +49,14 @@ export default function CreateInvitation() {
             `/api/template/${searchParams.get("template")}`
           ).then((res) => res.json());
 
-          setTempalte(response.data);
+          setTemplate(response.data);
           return;
         }
 
         const local = localStorage?.getItem("template")
           ? JSON.parse(localStorage.getItem("template"))
           : null;
-        setTempalte(local);
+        setTemplate(local);
         localStorage.removeItem("template");
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -148,6 +148,7 @@ export default function CreateInvitation() {
                       <FormControl>
                         <div className="flex w-full">
                           <Input
+                            placeholder="jeton-zoe"
                             {...field}
                             value={generateSlug(form.watch("title", ""))}
                             readOnly
