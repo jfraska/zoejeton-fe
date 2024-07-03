@@ -2,7 +2,6 @@ import { auth } from "@/libs/auth";
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
 import { z } from "zod";
-import { generateSlug } from "@/libs/utils";
 
 export const GET = auth(async function GET(req) {
   if (req.auth) {
@@ -65,22 +64,27 @@ export const POST = auth(async function POST(req) {
 
       const { title, template, fitur, addon } = validator.data;
 
-      const data = await prisma.Invitation.create({
+      let config = {
         data: {
           title,
           user: { connect: { id: req.auth.user.id } },
           fitur,
-          template: {
-            create: {
-              template,
-            },
-          },
           addon,
         },
         include: {
           user: true,
         },
-      });
+      };
+
+      if (template) {
+        config.data.template = {
+          create: {
+            template,
+          },
+        };
+      }
+
+      const data = await prisma.Invitation.create(config);
 
       return NextResponse.json({ message: "Created", data }, { status: 201 });
     } catch (err) {

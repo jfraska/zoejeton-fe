@@ -1,25 +1,28 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { getCookie, hasCookie, setCookie } from "cookies-next";
+import { createContext, useState } from "react";
 
 const PortalContext = createContext();
 
 export const PortalProvider = ({ children }) => {
   const [stateSwitcher, setStateSwitcher] = useState(false);
   const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
-  const [invitation, setInvitation] = useState(null);
-
-  const setInvitationToState = () => {
-    setInvitation(
-      localStorage.getItem("invitation")
-        ? JSON.parse(localStorage.getItem("invitation"))
-        : null
-    );
-  };
+  const [invitation, setInvitation] = useState(
+    hasCookie("invitation") ? getCookie("invitation") : null
+  );
+  const [template, setTemplate] = useState(
+    hasCookie("template") ? getCookie("template") : null
+  );
 
   const updateInvitation = (invitation) => {
-    localStorage.setItem("invitation", JSON.stringify(invitation));
-    setInvitationToState();
+    setCookie("invitation", invitation);
+    setInvitation(hasCookie("invitation") ? getCookie("invitation") : null);
+  };
+
+  const updateTemplate = (invitation) => {
+    setCookie("template", invitation);
+    setInvitation(hasCookie("template") ? getCookie("template") : null);
   };
 
   return (
@@ -31,6 +34,8 @@ export const PortalProvider = ({ children }) => {
         setStateCreateInvitation,
         invitation,
         updateInvitation,
+        template,
+        updateTemplate,
       }}
     >
       {children}

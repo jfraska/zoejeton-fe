@@ -10,6 +10,7 @@ import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
 import ModeCustomize from "@/components/container/mode-customize";
 import Loading from "./loading";
+import PortalContext from "@/context/portal";
 
 export default function Template({ children }) {
   const [loading, setLoading] = useState(true);
@@ -18,6 +19,7 @@ export default function Template({ children }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { initData, dataColor, setDataGuest } = useContext(CustomizeContext);
+  const { invitation } = useContext(PortalContext);
 
   const urlShare = process.env.NEXT_PUBLIC_VERCEL_ENV
     ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
@@ -26,18 +28,34 @@ export default function Template({ children }) {
   useEffect(() => {
     (async () => {
       try {
-        const local = localStorage?.getItem("template")
-          ? JSON.parse(localStorage.getItem("template"))
-          : null;
         let response = await fetch(`/api/template${pathname}`).then((res) =>
           res.json()
         );
-        if (local) {
-          response.data = {
-            ...response.data,
-            ...local,
-          };
+
+        if (invitation?.template) {
+          const local = await fetch(
+            `/api/template/${invitation?.template.slug}`
+          ).then((res) => res.json());
+
+          if (local.data > 0) {
+            response.data = {
+              ...response.data,
+              ...local.data,
+            };
+          }
+        } else {
+          const local = localStorage?.getItem("template")
+            ? JSON.parse(localStorage.getItem("template"))
+            : null;
+
+          if (local) {
+            response.data = {
+              ...response.data,
+              ...local,
+            };
+          }
         }
+
         initData(response.data);
         if (searchParams?.get("guest")) {
           response = await fetch(

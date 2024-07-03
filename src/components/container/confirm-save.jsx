@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
@@ -20,10 +20,14 @@ export default function ConfirmSave({ open, onOpenChange }) {
   const { data: session } = useSession();
   const { saveDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
-  const { invitation } = useContext(PortalContext);
+  const { invitation, updateTemplate } = useContext(PortalContext);
 
   const handleLogin = () => {
-    saveDraftContent();
+    updateTemplate({
+      ...data,
+      content: dataContent,
+      color: [dataColor, ...data.color],
+    });
     router.push(
       process.env.NEXT_PUBLIC_VERCEL_ENV
         ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
@@ -37,17 +41,20 @@ export default function ConfirmSave({ open, onOpenChange }) {
         handleLogin();
       }
 
-      const response = await fetch(`/api/template/${invitation.templateId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...data,
-          content: dataContent,
-          color: [dataColor, ...data.color],
-        }),
-      }).then((res) => res.json());
+      const response = await fetch(
+        `/api/template/${invitation.template.slug}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...data,
+            content: dataContent,
+            color: [dataColor, ...data.color],
+          }),
+        }
+      ).then((res) => res.json());
 
       if (!response.ok) {
         throw new Error("Network response was not ok");

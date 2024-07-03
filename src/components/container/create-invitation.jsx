@@ -36,10 +36,14 @@ const formSchema = z.object({
 });
 
 export default function CreateInvitation() {
-  const [template, setTemplate] = useState({});
   const searchParams = useSearchParams();
-  const { stateCreateInvitation, setStateCreateInvitation, updateInvitation } =
-    useContext(PortalContext);
+  const {
+    stateCreateInvitation,
+    setStateCreateInvitation,
+    updateInvitation,
+    template,
+    updateTemplate,
+  } = useContext(PortalContext);
 
   useEffect(() => {
     (async () => {
@@ -49,20 +53,16 @@ export default function CreateInvitation() {
             `/api/template/${searchParams.get("template")}`
           ).then((res) => res.json());
 
-          setTemplate(response.data);
+          updateTemplate(response.data);
           return;
         }
-
-        const local = localStorage?.getItem("template")
-          ? JSON.parse(localStorage.getItem("template"))
-          : null;
-        setTemplate(local);
-        localStorage.removeItem("template");
       } catch (error) {
         console.log("Error fetching data:", error);
       }
     })();
   }, []);
+
+  console.log(template);
 
   const onSubmit = async (e) => {
     try {
@@ -80,7 +80,7 @@ export default function CreateInvitation() {
         },
         body: JSON.stringify({
           title: e.title,
-          template: data,
+          // template: data,
           fitur: e.fitur,
           addon: e.addon,
         }),
