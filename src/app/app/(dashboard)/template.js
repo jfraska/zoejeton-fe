@@ -1,6 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
+import { getCookie, hasCookie } from "cookies-next";
 import { usePathname } from "next/navigation";
 import PortalContext from "@/context/portal";
 import Loading from "@/components/UI/loading";
@@ -19,15 +20,15 @@ export default function Template({ children }) {
   useEffect(() => {
     (async () => {
       try {
-        const local = localStorage?.getItem("invitation")
-          ? JSON.parse(localStorage.getItem("invitation"))
+        const invitation = hasCookie("invitation")
+          ? JSON.parse(getCookie("invitation"))
           : null;
 
-        if (!local) {
+        if (!invitation) {
           setStateSwitcher(true);
           return;
         }
-        const response = await fetch(`/api/invitation/${local?.id}`).then(
+        const response = await fetch(`/api/invitation/${invitation.id}`).then(
           (res) => res.json()
         );
 

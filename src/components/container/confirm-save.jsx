@@ -28,11 +28,11 @@ export default function ConfirmSave({ open, onOpenChange }) {
       content: dataContent,
       color: [dataColor, ...data.color],
     });
-    router.push(
-      process.env.NEXT_PUBLIC_VERCEL_ENV
-        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-        : `http://app.localhost:3000`
-    );
+    // router.push(
+    //   process.env.NEXT_PUBLIC_ROOT_DOMAIN
+    //     ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+    //     : `http://app.localhost:3000`
+    // );
   };
 
   const handleSaveDatabase = async () => {

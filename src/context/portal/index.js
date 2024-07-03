@@ -8,22 +8,35 @@ const PortalContext = createContext();
 export const PortalProvider = ({ children }) => {
   const [stateSwitcher, setStateSwitcher] = useState(false);
   const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
-  const [invitation, setInvitation] = useState(
-    hasCookie("invitation") ? getCookie("invitation") : null
-  );
-  const [template, setTemplate] = useState(
-    hasCookie("template") ? getCookie("template") : null
-  );
+  const [invitation, setInvitation] = useState(null);
+  const [template, setTemplate] = useState(null);
+
+  const options = {
+    path: "/",
+    domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+      ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+      : null,
+  };
 
   const updateInvitation = (invitation) => {
-    setCookie("invitation", invitation);
-    setInvitation(hasCookie("invitation") ? getCookie("invitation") : null);
+    setCookie("invitation", JSON.stringify(invitation), options);
+    setInvitation(
+      hasCookie("invitation", options)
+        ? JSON.parse(getCookie("invitation", options))
+        : null
+    );
   };
 
-  const updateTemplate = (invitation) => {
-    setCookie("template", invitation);
-    setInvitation(hasCookie("template") ? getCookie("template") : null);
+  const updateTemplate = (template) => {
+    setCookie("template", JSON.stringify(template), options);
+    setTemplate(
+      hasCookie("template", options)
+        ? JSON.parse(getCookie("template", options))
+        : null
+    );
   };
+
+  console.log(invitation, template);
 
   return (
     <PortalContext.Provider

@@ -14,7 +14,7 @@ export const metadata = {
 };
 
 export default function Page() {
-  const urlShare = process.env.NEXT_PUBLIC_VERCEL_ENV
+  const urlShare = process.env.NEXT_PUBLIC_ROOT_DOMAIN
     ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/bio`
     : `http://localhost:3000/bio`;
 

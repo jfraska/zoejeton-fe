@@ -2,6 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { getCookie, hasCookie } from "cookies-next";
 import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
 
@@ -10,7 +11,6 @@ import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
 import ModeCustomize from "@/components/container/mode-customize";
 import Loading from "./loading";
-import PortalContext from "@/context/portal";
 
 export default function Template({ children }) {
   const [loading, setLoading] = useState(true);
@@ -19,9 +19,8 @@ export default function Template({ children }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { initData, dataColor, setDataGuest } = useContext(CustomizeContext);
-  const { invitation } = useContext(PortalContext);
 
-  const urlShare = process.env.NEXT_PUBLIC_VERCEL_ENV
+  const urlShare = process.env.NEXT_PUBLIC_ROOT_DOMAIN
     ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
     : `http://template.localhost:3000/${pathname}`;
 
@@ -32,26 +31,30 @@ export default function Template({ children }) {
           res.json()
         );
 
+        const invitation = hasCookie("invitation")
+          ? JSON.parse(getCookie("invitation"))
+          : null;
+
         if (invitation?.template) {
-          const local = await fetch(
+          const template = await fetch(
             `/api/template/${invitation?.template.slug}`
           ).then((res) => res.json());
 
-          if (local.data > 0) {
+          if (template.data > 0) {
             response.data = {
               ...response.data,
-              ...local.data,
+              ...template.data,
             };
           }
         } else {
-          const local = localStorage?.getItem("template")
+          const template = localStorage?.getItem("template")
             ? JSON.parse(localStorage.getItem("template"))
             : null;
 
-          if (local) {
+          if (template) {
             response.data = {
               ...response.data,
-              ...local,
+              ...template,
             };
           }
         }

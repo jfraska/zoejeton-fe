@@ -15,8 +15,7 @@ import ConfirmSave from "@/components/container/confirm-save";
 
 export default function ModeCustomize({ handleOpenTool = () => {} }) {
   const [alertSave, setAlertSave] = React.useState(false);
-  const { isEdit, setIsEdit, saveDraftContent } =
-    React.useContext(CustomizeContext);
+  const { isEdit, setIsEdit } = React.useContext(CustomizeContext);
 
   const components = [
     {
