@@ -1,6 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -13,26 +14,36 @@ import {
 } from "@/components/UI/dialog";
 import { Button } from "@/components/UI/button";
 import CustomizeContext from "@/context/customize";
-import PortalContext from "@/context/portal";
 
 export default function ConfirmSave({ open, onOpenChange }) {
   const router = useRouter();
+  const [invitation, setInvitation] = useState(
+    hasCookie("invitation") ? JSON.parse(getCookie("invitation")) : null
+  );
   const { data: session } = useSession();
   const { saveDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
-  const { invitation, updateTemplate } = useContext(PortalContext);
 
   const handleLogin = () => {
-    updateTemplate({
-      ...data,
-      content: dataContent,
-      color: [dataColor, ...data.color],
-    });
-    // router.push(
-    //   process.env.NEXT_PUBLIC_ROOT_DOMAIN
-    //     ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-    //     : `http://app.localhost:3000`
-    // );
+    setCookie(
+      "template",
+      JSON.stringify({
+        ...data,
+        content: dataContent,
+        color: [dataColor, ...data.color],
+      }),
+      {
+        path: "/",
+        domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+          ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+          : null,
+      }
+    );
+    router.push(
+      process.env.NEXT_PUBLIC_ROOT_DOMAIN
+        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+        : `http://app.localhost:3000`
+    );
   };
 
   const handleSaveDatabase = async () => {
@@ -66,7 +77,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-sm bg-white text-black">
+      <DialogContent className="bg-white text-black">
         <DialogHeader>
           <DialogTitle>Save Customize</DialogTitle>
           <DialogDescription className="text-[#737373]">
@@ -81,7 +92,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
               session ? handleSaveDatabase() : saveDraftContent();
 
               onOpenChange(false);
-              toast.success("Save berhasil");
+              toast.success("Save draft");
             }}
           >
             Continue

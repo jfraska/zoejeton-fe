@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import CustomizeContext from "@/context/customize";
+import { usePathname, useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
@@ -35,16 +36,32 @@ const actions = [
 export default function ButtonAction({ handleOpenShare = () => {} }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
+  const pathname = usePathname();
+  const router = useRouter();
   const { isEdit, setIsEdit } = React.useContext(CustomizeContext);
 
   const handleAction = (actionName) => {
     switch (actionName) {
+      case "Dashboard":
+        router.push(
+          process.env.NEXT_PUBLIC_ROOT_DOMAIN
+            ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+            : `http://app.localhost:3000/`
+        );
+        break;
       case "Customize":
         toast.success("mode customize");
         setIsEdit(true);
         break;
       case "Share":
         handleOpenShare(true);
+        break;
+      case "Buy":
+        router.push(
+          process.env.NEXT_PUBLIC_ROOT_DOMAIN
+            ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/katalog${pathname}`
+            : `http://localhost:3000/katalog${pathname}`
+        );
         break;
     }
 

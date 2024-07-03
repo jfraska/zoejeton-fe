@@ -3,6 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import PortalContext from "@/context/portal";
+import { deleteCookie, getCookie, hasCookie } from "cookies-next";
 import {
   Dialog,
   DialogClose,
@@ -37,13 +38,11 @@ const formSchema = z.object({
 
 export default function CreateInvitation() {
   const searchParams = useSearchParams();
-  const {
-    stateCreateInvitation,
-    setStateCreateInvitation,
-    updateInvitation,
-    template,
-    updateTemplate,
-  } = useContext(PortalContext);
+  const [template, setTemplate] = useState(
+    hasCookie("template") ? JSON.parse(getCookie("template")) : null
+  );
+  const { stateCreateInvitation, setStateCreateInvitation, updateInvitation } =
+    useContext(PortalContext);
 
   useEffect(() => {
     (async () => {
@@ -53,7 +52,7 @@ export default function CreateInvitation() {
             `/api/template/${searchParams.get("template")}`
           ).then((res) => res.json());
 
-          updateTemplate(response.data);
+          setTemplate(response.data);
           return;
         }
       } catch (error) {
@@ -61,8 +60,6 @@ export default function CreateInvitation() {
       }
     })();
   }, []);
-
-  console.log(template);
 
   const onSubmit = async (e) => {
     try {
@@ -80,7 +77,7 @@ export default function CreateInvitation() {
         },
         body: JSON.stringify({
           title: e.title,
-          // template: data,
+          template: data,
           fitur: e.fitur,
           addon: e.addon,
         }),
@@ -91,6 +88,7 @@ export default function CreateInvitation() {
       }
 
       updateInvitation(response.data);
+      deleteCookie("template");
       setStateCreateInvitation(false);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);

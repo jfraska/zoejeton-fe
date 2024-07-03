@@ -9,7 +9,6 @@ export const PortalProvider = ({ children }) => {
   const [stateSwitcher, setStateSwitcher] = useState(false);
   const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
   const [invitation, setInvitation] = useState(null);
-  const [template, setTemplate] = useState(null);
 
   const options = {
     path: "/",
@@ -27,17 +26,6 @@ export const PortalProvider = ({ children }) => {
     );
   };
 
-  const updateTemplate = (template) => {
-    setCookie("template", JSON.stringify(template), options);
-    setTemplate(
-      hasCookie("template", options)
-        ? JSON.parse(getCookie("template", options))
-        : null
-    );
-  };
-
-  console.log(invitation, template);
-
   return (
     <PortalContext.Provider
       value={{
@@ -47,8 +35,6 @@ export const PortalProvider = ({ children }) => {
         setStateCreateInvitation,
         invitation,
         updateInvitation,
-        template,
-        updateTemplate,
       }}
     >
       {children}
