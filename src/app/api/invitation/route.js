@@ -2,6 +2,7 @@ import { auth } from "@/libs/auth";
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
 import { z } from "zod";
+import { generateSlug } from "@/libs/utils";
 
 export const GET = auth(async function GET(req) {
   if (req.auth) {
@@ -44,7 +45,7 @@ export const POST = auth(async function POST(req) {
     try {
       const invitationSchema = z.object({
         title: z.string().min(2).max(50),
-        templateId: z.string().optional(),
+        template: z.object().optional(),
         fitur: z.array().optional(),
         addon: z.array().optional(),
       });
@@ -62,25 +63,18 @@ export const POST = auth(async function POST(req) {
         );
       }
 
-      const { title, templateId, fitur, addon } = validator.data;
-
-      // const template = await prisma.Template.findUnique({
-      //   where: { id: templateId },
-      // });
-
-      // if (!template) {
-      //   return NextResponse.json(
-      //     { message: "Unprocessable Entity", errors: "Data Not Found" },
-      //     { status: 422 }
-      //   );
-      // }
+      const { title, template, fitur, addon } = validator.data;
 
       const data = await prisma.Invitation.create({
         data: {
           title,
           user: { connect: { id: req.auth.user.id } },
-          template: templateId,
           fitur,
+          template: {
+            create: {
+              template,
+            },
+          },
           addon,
         },
         include: {

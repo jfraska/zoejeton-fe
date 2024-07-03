@@ -1,43 +1,32 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
+import dynamic from "next/dynamic";
+import Loading from "@/app/template/loading";
 
-import CustomizeTool from "@/components/layouts/customize-tool";
-import ButtonShare from "@/components/container/button-share";
-import ButtonAction from "@/components/container/button-action";
-import ModeCustomize from "@/components/container/mode-customize";
-import Loading from "./loading";
-
-export default function Template({ children }) {
+export default function Publish({ params }) {
   const [loading, setLoading] = useState(true);
-  const [isOpenShare, setIsOpenShare] = useState(false);
-  const [isOpenTool, setIsOpenTool] = useState(false);
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { initData, dataColor, setDataGuest } = useContext(CustomizeContext);
+  const { initData, dataColor, setDataGuest, data } =
+    useContext(CustomizeContext);
+  const domain = decodeURIComponent(params.domain);
 
-  const urlShare = process.env.NEXT_PUBLIC_VERCEL_ENV
-    ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
-    : `http://template.localhost:3000/${pathname}`;
+  const subdomain = domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
+    ? domain.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
+    : null;
 
   useEffect(() => {
     (async () => {
       try {
-        const local = localStorage?.getItem("template")
-          ? JSON.parse(localStorage.getItem("template"))
-          : null;
-        let response = await fetch(`/api/template${pathname}`).then((res) =>
+        let response = await fetch(`/api/template/${subdomain}`).then((res) =>
           res.json()
         );
-        if (local) {
-          response.data = {
-            ...response.data,
-            ...local,
-          };
-        }
+        // if (!response.ok) {
+        //   notFound();
+        // }
         initData(response.data);
         if (searchParams?.get("guest")) {
           response = await fetch(
@@ -60,22 +49,22 @@ export default function Template({ children }) {
     })();
   }, []);
 
+  const Template = dynamic(() => {
+    const slug = data.parent ?? data.slug;
+
+    return import(`@/app/template/${slug}/page`).then((module) => ({
+      default: module.default,
+      ssr: false,
+    }));
+  });
+
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          {children}
-
-          <ButtonAction handleOpenShare={setIsOpenShare} />
-          <ModeCustomize handleOpenTool={setIsOpenTool} />
-          <ButtonShare
-            open={isOpenShare}
-            onOpenChange={setIsOpenShare}
-            link={urlShare}
-          />
-          <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} />
+          <Template />{" "}
           <GlobalStyles
             styles={{
               ":root": {

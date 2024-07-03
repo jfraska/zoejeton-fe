@@ -19,12 +19,12 @@ export async function middleware(req) {
   if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     const session = await auth();
     if (!session && path !== "/login") {
-      return NextResponse.redirect(new URL("/login", req.url));
+      return NextResponse.redirect(new URL("/login", req.nextUrl));
     } else if (session && path == "/login") {
-      return NextResponse.redirect(new URL("/", req.url));
+      return NextResponse.redirect(new URL("/", req.nextUrl));
     }
     return NextResponse.rewrite(
-      new URL(`/app${path === "/" ? "" : path}`, req.url)
+      new URL(`/app${path === "/" ? "" : path}`, req.nextUrl)
     );
   }
 
@@ -34,20 +34,26 @@ export async function middleware(req) {
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
   ) {
     if (url.pathname === "/bio") {
-      return NextResponse.rewrite(new URL(`/bio`, req.url));
+      return NextResponse.rewrite(new URL(`/bio`, req.nextUrl));
     }
 
     return NextResponse.rewrite(
-      new URL(`/home${path === "/" ? "" : path}`, req.url)
+      new URL(`/home${path === "/" ? "" : path}`, req.nextUrl)
     );
   }
 
   // rewrites for template pages
   if (hostname == `template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    return NextResponse.rewrite(
-      new URL(`/template${path === "/" ? "" : path}`, req.url)
+    const response = NextResponse.rewrite(
+      new URL(`/template${path === "/" ? "" : path}`, req.nextUrl)
     );
+    response.headers.set("pathname", url.pathname);
+
+    return response;
   }
+
+  // rewrite everything else to `/[domain] dynamic route
+  return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.nextUrl));
 }
 
 export const config = {

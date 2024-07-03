@@ -4,23 +4,34 @@ import { useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import PortalContext from "@/context/portal";
 import Loading from "@/components/UI/loading";
+import { Button } from "@/components/UI/button";
 
 export default function Template({ children }) {
-  const { invitation, updateInvitation, setStateSwitcher } =
-    useContext(PortalContext);
+  const {
+    invitation,
+    updateInvitation,
+    setStateSwitcher,
+    setStateCreateInvitation,
+  } = useContext(PortalContext);
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(`/api/invitation/${invitation?.id}`);
-        const result = await response.json();
-        if (!result.data) {
+        const local = localStorage?.getItem("invitation")
+          ? JSON.parse(localStorage.getItem("invitation"))
+          : null;
+
+        if (!local) {
           setStateSwitcher(true);
           return;
         }
-        updateInvitation(result.data);
+        const response = await fetch(`/api/invitation/${local?.id}`).then(
+          (res) => res.json()
+        );
+
+        updateInvitation(response.data);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
@@ -52,6 +63,12 @@ export default function Template({ children }) {
               <p className="text-sm text-muted-foreground">
                 You can start a new experience with an invitation from us.
               </p>
+              <Button
+                onClick={() => setStateCreateInvitation(true)}
+                className="mt-4"
+              >
+                Add invitation
+              </Button>
             </div>
           </div>
         </section>

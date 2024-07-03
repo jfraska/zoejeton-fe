@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -10,9 +12,35 @@ import {
   DialogTitle,
 } from "@/components/UI/dialog";
 import { Button } from "@/components/UI/button";
+import CustomizeContext from "@/context/customize";
 
-export default function ConfirmSave({ open, onOpenChange, handleSave }) {
+export default function ConfirmSave({ open, onOpenChange }) {
   const router = useRouter();
+  const { data: session } = useSession();
+  const { saveDraftContent, data, dataContent, dataColor } =
+    useContext(CustomizeContext);
+
+  const handleSaveDatabase = async () => {
+    try {
+      const response = await fetch("/api/template", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          content: dataContent,
+          color: [dataColor, ...data.color],
+        }),
+      }).then((res) => res.json());
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -28,25 +56,29 @@ export default function ConfirmSave({ open, onOpenChange, handleSave }) {
           <Button
             className="text-black bg-white border-black border hover:bg-black hover:text-white"
             onClick={() => {
-              handleSave();
+              session ? handleSaveDatabase() : saveDraftContent();
+
               onOpenChange(false);
-              toast.success("berhasil disave");
+              toast.success("Save berhasil");
             }}
           >
             Continue
           </Button>
-          <Button
-            className="bg-black hover:bg-white hover:text-black"
-            onClick={() =>
-              router.push(
-                process.env.NEXT_PUBLIC_VERCEL_ENV
-                  ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                  : `http://app.localhost:3000`
-              )
-            }
-          >
-            Sign in
-          </Button>
+          {!session && (
+            <Button
+              className="bg-black hover:bg-white hover:text-black"
+              onClick={() => {
+                saveDraftContent();
+                router.push(
+                  process.env.NEXT_PUBLIC_VERCEL_ENV
+                    ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `http://app.localhost:3000`
+                );
+              }}
+            >
+              Sign in
+            </Button>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

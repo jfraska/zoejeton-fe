@@ -16,11 +16,6 @@ import LiveStream from "./_components/LiveStream";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Nostalgia | ZoeJeton",
-  description: "by koko",
-};
-
 export default function Page() {
   return (
     <section className={`${montserrat.className} flex w-full h-screen`}>

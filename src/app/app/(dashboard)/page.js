@@ -25,7 +25,7 @@ export default function Dashboard() {
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-10">
             <TemplateCard />
-            <EventCard />
+            {/* <EventCard /> */}
             {/* <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle>Recent Sales</CardTitle>

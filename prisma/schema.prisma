@@ -75,6 +75,7 @@ model Template {
   id            String      @default(cuid()) @id
   title         String
   slug          String      @unique
+  parent        String?     
   thumbnail     String
   price         Int
   discount      Int

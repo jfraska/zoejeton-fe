@@ -21,3 +21,12 @@ export const getDataContent = (data, key, field, subfield) => {
     ? item.value[field]
     : item.value[field][subfield];
 };
+
+export const generateSlug = (string) => {
+  return string
+    .toLowerCase()
+    .replace(/[\s]/g, "-")
+    .replace(/[^\w\s]/g, "-")
+    .replace(/-+/g, "-")
+    .substring(0, 50);
+};

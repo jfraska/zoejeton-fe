@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { useSession } from "next-auth/react";
 import { cn } from "@/libs/utils";
 import {
   NavigationMenu,
@@ -18,7 +17,6 @@ export default function ModeCustomize({ handleOpenTool = () => {} }) {
   const [alertSave, setAlertSave] = React.useState(false);
   const { isEdit, setIsEdit, saveDraftContent } =
     React.useContext(CustomizeContext);
-  const { data: session } = useSession();
 
   const components = [
     {
@@ -35,11 +33,7 @@ export default function ModeCustomize({ handleOpenTool = () => {} }) {
     },
     {
       title: "Save",
-      click: () => {
-        if (!session) {
-          setAlertSave(true);
-        }
-      },
+      click: () => setAlertSave(true),
     },
   ];
 
@@ -68,11 +62,7 @@ export default function ModeCustomize({ handleOpenTool = () => {} }) {
         </NavigationMenu>
       )}
 
-      <ConfirmSave
-        open={alertSave}
-        onOpenChange={setAlertSave}
-        handleSave={saveDraftContent}
-      />
+      <ConfirmSave open={alertSave} onOpenChange={setAlertSave} />
     </>
   );
 }

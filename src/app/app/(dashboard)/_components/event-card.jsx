@@ -17,7 +17,7 @@ import { getDataContent } from "@/libs/utils";
 export default function EventCard() {
   const { invitation } = useContext(PortalContext);
   const date = new Date(
-    getDataContent(invitation?.template.content, "event", "akad", "date")
+    getDataContent(invitation?.template?.content, "event", "akad", "date")
   );
 
   const month = [

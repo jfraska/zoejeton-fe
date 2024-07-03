@@ -22,13 +22,15 @@ export default function TemplateCard() {
   return (
     <Card className="col-span-4 md:col-span-3">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">{invitation?.template.title}</CardTitle>
+        <CardTitle className="text-2xl">
+          {invitation?.template?.title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="relative w-full aspect-video bg-secondary rounded-lg overflow-hidden bg-black bg-blend-multiply bg-opacity-80">
           <Image
             fill
-            src={`/templates/${invitation?.template.slug}/${invitation?.template.thumbnail}`}
+            src={`/templates/${invitation?.template?.slug}/${invitation?.template?.thumbnail}`}
             alt="thumbnail"
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

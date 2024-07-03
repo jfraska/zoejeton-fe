@@ -6,13 +6,30 @@ import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import EditIcon from "@mui/icons-material/Edit";
-import ShareIcon from "@mui/icons-material/Share";
 import { toast } from "sonner";
+import { Edit2, LayoutDashboard, Share2, ShoppingBag } from "lucide-react";
 
 const actions = [
-  { icon: <EditIcon />, name: "Customize" },
-  { icon: <ShareIcon />, name: "Share" },
+  {
+    icon: <LayoutDashboard className="w-4 aspect-square" />,
+    name: "Dashboard",
+    visible: true,
+  },
+  {
+    icon: <Edit2 className="w-4 aspect-square" />,
+    name: "Customize",
+    visible: true,
+  },
+  {
+    icon: <Share2 className="w-4 aspect-square" />,
+    name: "Share",
+    visible: true,
+  },
+  {
+    icon: <ShoppingBag className="w-4 aspect-square" />,
+    name: "Buy",
+    visible: true,
+  },
 ];
 
 export default function ButtonAction({ handleOpenShare = () => {} }) {
@@ -42,16 +59,15 @@ export default function ButtonAction({ handleOpenShare = () => {} }) {
             position: "fixed",
             top: 16,
             right: 12,
-            height: 320,
             zIndex: 50,
             transform: "translateZ(0px)",
             flexGrow: 1,
           }}
         >
           <SpeedDial
-            ariaLabel="SpeedDial controlled open example"
+            ariaLabel="tools"
             sx={{
-              "& .MuiFab-primary": {
+              "& .MuiSpeedDial-fab": {
                 width: 40,
                 height: 40,
                 backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -71,6 +87,7 @@ export default function ButtonAction({ handleOpenShare = () => {} }) {
                 key={action.name}
                 icon={action.icon}
                 tooltipTitle={action.name}
+                tooltipOpen
                 onClick={() => handleAction(action.name)}
               />
             ))}

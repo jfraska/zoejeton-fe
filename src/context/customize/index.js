@@ -8,23 +8,22 @@ export const CustomizeProvider = ({ children }) => {
   const [data, setData] = useState({});
   const [dataContent, setDataContent] = useState([]);
   const [dataColor, setDataColor] = useState({});
+  const [dataGuest, setDataGuest] = useState({});
   const [isEdit, setIsEdit] = useState(false);
 
-  //   useEffect(() => {
-  //     setDataContent(
-  //       localStorage.getItem("customize")
-  //         ? JSON.parse(localStorage.getItem("customize"))
-  //         : []
-  //     );
-  //   }, []);
-
   const saveDraftContent = () => {
-    localStorage.setItem("customize", JSON.stringify({ content: dataContent }));
+    localStorage.setItem(
+      "template",
+      JSON.stringify({
+        ...data,
+        content: dataContent,
+        color: [dataColor, ...data.color],
+      })
+    );
   };
 
   const deleteDraftContent = () => {
-    localStorage.removeItem("customize");
-    setDataContent([]);
+    localStorage.removeItem("template");
   };
 
   const initData = (data) => {
@@ -43,6 +42,8 @@ export const CustomizeProvider = ({ children }) => {
         setDataContent,
         dataColor,
         setDataColor,
+        dataGuest,
+        setDataGuest,
         isEdit,
         setIsEdit,
         saveDraftContent,

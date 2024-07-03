@@ -1,6 +1,7 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import PortalContext from "@/context/portal";
 import {
   Dialog,
@@ -14,6 +15,7 @@ import {
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -24,31 +26,72 @@ import { Button } from "@/components/UI/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { generateSlug } from "@/libs/utils";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),
+  template: z.string().optional(),
+  fitur: z.array().optional(),
+  addon: z.array().optional(),
 });
 
 export default function CreateInvitation() {
+  const [template, setTempalte] = useState({});
+  const searchParams = useSearchParams();
   const { stateCreateInvitation, setStateCreateInvitation, updateInvitation } =
     useContext(PortalContext);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        if (searchParams.get("template")) {
+          const response = await fetch(
+            `/api/template/${searchParams.get("template")}`
+          ).then((res) => res.json());
+
+          setTempalte(response.data);
+          return;
+        }
+
+        const local = localStorage?.getItem("template")
+          ? JSON.parse(localStorage.getItem("template"))
+          : null;
+        setTempalte(local);
+        localStorage.removeItem("template");
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    })();
+  }, []);
+
   const onSubmit = async (e) => {
     try {
+      const data = template && {
+        ...template,
+        title: e.title,
+        slug: e.subdomain,
+        parent: template.slug,
+      };
+
       const response = await fetch("/api/invitation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title: e.title }),
-      });
+        body: JSON.stringify({
+          title: e.title,
+          template: data,
+          fitur: e.fitur,
+          addon: e.addon,
+        }),
+      }).then((res) => res.json());
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
-      const result = await response.json();
-      updateInvitation(result.data);
+      updateInvitation(response.data);
+      setStateCreateInvitation(false);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
@@ -58,6 +101,10 @@ export default function CreateInvitation() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
+      subdomain: "",
+      template: template?.title,
+      fitur: searchParams.get("fitur") ?? [],
+      addon: searchParams.get("addon") ?? [],
     },
   });
 
@@ -82,19 +129,63 @@ export default function CreateInvitation() {
                     <FormItem>
                       <FormLabel>Title</FormLabel>
                       <FormControl>
-                        <Input placeholder="jeton&zoe" {...field} />
+                        <Input
+                          placeholder="jeton & zoe"
+                          {...field}
+                          className="focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+                <FormField
+                  control={form.control}
+                  name="subdomain"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Subdomain</FormLabel>
+                      <FormControl>
+                        <div className="flex w-full">
+                          <Input
+                            {...field}
+                            value={generateSlug(form.watch("title", ""))}
+                            readOnly
+                            className="focus-visible:ring-0 focus-visible:ring-offset-0"
+                          />
+                          <div className="flex items-center rounded-r-lg border border-l-0 border-stone-200 bg-stone-100 px-3 text-sm dark:border-stone-600 dark:bg-stone-800 dark:text-stone-400">
+                            .
+                            {process.env.NEXT_PUBLIC_ROOT_DOMAIN ??
+                              "localhost:3000"}
+                          </div>
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {template && (
+                  <FormField
+                    control={form.control}
+                    name="template"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Template</FormLabel>
+                        <FormControl>
+                          <Input {...field} readOnly />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
               </div>
             </div>
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
-              <Button type="submit">Continue</Button>
+              <Button type="submit">Create</Button>
             </DialogFooter>
           </form>
         </Form>

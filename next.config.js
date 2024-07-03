@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: false,
+  reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -15,7 +15,7 @@ const nextConfig = {
       // { hostname: "res.cloudinary.com" },
       // { hostname: "abs.twimg.com" },
       // { hostname: "pbs.twimg.com" },
-      // { hostname: "avatar.vercel.sh" },
+      { hostname: "avatar.vercel.sh" },
       { hostname: "avatars.githubusercontent.com" },
       // { hostname: "www.google.com" },
       // { hostname: "flag.vercel.app" },

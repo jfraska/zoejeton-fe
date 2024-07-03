@@ -10,6 +10,7 @@ export default function Loading() {
         width={300}
         height={300}
         priority
+        alt="logo"
         className="w-8 aspect-square"
       />
       <h1 className={`${Runalto.className} font-semibold text-2xl mb-5 mt-2`}>

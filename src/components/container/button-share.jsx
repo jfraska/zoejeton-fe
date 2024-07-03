@@ -15,7 +15,6 @@ import {
 } from "@/components/UI/dialog";
 import { Input } from "@/components/UI/input";
 import { Label } from "@/components/UI/label";
-import Image from "next/image";
 import { toast } from "sonner";
 
 export default function ButtonShare({ children, classname, link, ...props }) {

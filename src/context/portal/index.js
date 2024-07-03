@@ -7,11 +7,7 @@ const PortalContext = createContext();
 export const PortalProvider = ({ children }) => {
   const [stateSwitcher, setStateSwitcher] = useState(false);
   const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
-  const [invitation, setInvitation] = useState(
-    localStorage.getItem("invitation")
-      ? JSON.parse(localStorage.getItem("invitation"))
-      : null
-  );
+  const [invitation, setInvitation] = useState(null);
 
   const setInvitationToState = () => {
     setInvitation(

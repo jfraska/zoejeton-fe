@@ -13,11 +13,6 @@ import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
 
-export const metadata = {
-  title: "Minimalis | ZoeJeton",
-  description: "by jSfraska",
-};
-
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Page() {

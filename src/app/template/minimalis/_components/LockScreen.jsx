@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
+import CustomizeContext from "@/context/customize";
 
 export default function LockScreen({ children }) {
   let lockRef = useRef(null);
   const timeline = useRef();
   const [state, setState] = useState(false);
+  const { dataGuest } = useContext(CustomizeContext);
 
   useEffect(() => {
     timeline.current = gsap.timeline({ paused: true });
@@ -66,7 +68,7 @@ export default function LockScreen({ children }) {
         <div className="w-64">
           <h1 className="text-center text-sm uppercase">spesial invitation</h1>
           <h1 className="text-center font-medium capitalize mt-2">
-            {/* {dataGuest?.name || "guest"} */}
+            {dataGuest?.name || "guest"}
           </h1>
           <button
             onClick={() => setState(true)}
