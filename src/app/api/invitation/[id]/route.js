@@ -1,6 +1,7 @@
 import { auth } from "@/libs/auth";
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
+import { z } from "zod";
 
 export const GET = auth(async function GET(req, { params }) {
   if (req.auth) {
