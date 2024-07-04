@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { getCookie, hasCookie, setCookie } from "cookies-next";
+import { setCookie } from "cookies-next";
 import { toast } from "sonner";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -92,33 +91,41 @@ export default function ConfirmSave({ open, onOpenChange }) {
     }
   };
 
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-white text-black">
-        <DialogHeader>
-          <DialogTitle className="font-medium">Save Customize</DialogTitle>
-          <DialogDescription className="text-[#737373]">
-            sign-in untuk menyimpan data secara permanen, atau klik continue
-            untuk save draft
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter className="flex flex-col-reverse gap-2">
-          <Button
-            className="text-black bg-white border-black border hover:bg-black hover:text-white"
-            onClick={handleSave}
-          >
-            Continue
-          </Button>
-          {!session && (
+  useEffect(() => {
+    if (open && session) {
+      handleSave();
+    }
+  }, [open]);
+
+  if (!session) {
+    return (
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="bg-white text-black">
+          <DialogHeader>
+            <DialogTitle className="font-medium">Save Customize</DialogTitle>
+            <DialogDescription className="text-[#737373]">
+              sign-in untuk menyimpan data secara permanen, atau klik continue
+              untuk save draft
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex flex-col-reverse gap-2">
             <Button
-              className="bg-black hover:bg-white hover:text-black"
-              onClick={handleLogin}
+              className="text-black bg-white border-black border hover:bg-black hover:text-white"
+              onClick={handleSave}
             >
-              Sign in
+              Continue
             </Button>
-          )}
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
+            {!session && (
+              <Button
+                className="bg-black hover:bg-white hover:text-black"
+                onClick={handleLogin}
+              >
+                Sign in
+              </Button>
+            )}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 }

@@ -53,7 +53,6 @@ export default function Template({ children }) {
             }
           } else {
             setStateSwitcher(true);
-            return;
           }
         } else {
           const template = localStorage?.getItem("template")

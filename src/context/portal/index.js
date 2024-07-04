@@ -1,6 +1,6 @@
 "use client";
 
-import { getCookie, hasCookie, setCookie } from "cookies-next";
+import { setCookie } from "cookies-next";
 import { createContext, useState } from "react";
 
 const options = {
@@ -19,11 +19,7 @@ export const PortalProvider = ({ children }) => {
 
   const updateInvitation = (invitation) => {
     setCookie("invitation", JSON.stringify(invitation), options);
-    setInvitation(
-      hasCookie("invitation")
-        ? JSON.parse(getCookie("invitation", options))
-        : null
-    );
+    setInvitation(invitation);
   };
 
   return (
