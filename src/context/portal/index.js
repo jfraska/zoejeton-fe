@@ -3,6 +3,13 @@
 import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { createContext, useState } from "react";
 
+const options = {
+  path: "/",
+  domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+    ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+    : null,
+};
+
 const PortalContext = createContext();
 
 export const PortalProvider = ({ children }) => {
@@ -10,17 +17,10 @@ export const PortalProvider = ({ children }) => {
   const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
   const [invitation, setInvitation] = useState(null);
 
-  const options = {
-    path: "/",
-    domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-      ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-      : null,
-  };
-
   const updateInvitation = (invitation) => {
     setCookie("invitation", JSON.stringify(invitation), options);
     setInvitation(
-      hasCookie("invitation", options)
+      hasCookie("invitation")
         ? JSON.parse(getCookie("invitation", options))
         : null
     );

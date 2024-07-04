@@ -17,12 +17,10 @@ import CustomizeContext from "@/context/customize";
 
 export default function ConfirmSave({ open, onOpenChange }) {
   const router = useRouter();
-  const [invitation, setInvitation] = useState(
-    hasCookie("invitation") ? JSON.parse(getCookie("invitation")) : null
-  );
   const { data: session } = useSession();
   const { saveDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
+  const { invitation, updateInvitation } = useContext(PortalContext);
 
   const handleLogin = () => {
     setCookie(
@@ -54,13 +52,8 @@ export default function ConfirmSave({ open, onOpenChange }) {
       return;
     }
 
-    if (!invitation) {
-      handleLogin();
-      return;
-    }
-
     try {
-      if (invitation.template) {
+      if (invitation?.template) {
         await fetch(`/api/template/${invitation.template.slug}`, {
           method: "PUT",
           headers: {
@@ -88,13 +81,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
           }),
         }).then((res) => res.json());
 
-        setCookie("invitation", JSON.stringify(response.data), {
-          path: "/",
-          domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-            ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-            : null,
-        });
-        setInvitation(response.data);
+        updateInvitation(response.data);
       }
 
       onOpenChange(false);

@@ -23,7 +23,7 @@ export default function Dashboard() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-10">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-10">
             <TemplateCard />
             <EventCard />
             {/* <Card className="col-span-3">

@@ -20,15 +20,15 @@ export default function Template({ children }) {
   useEffect(() => {
     (async () => {
       try {
-        const invitation = hasCookie("invitation")
+        const selected = hasCookie("invitation")
           ? JSON.parse(getCookie("invitation"))
           : null;
 
-        if (!invitation) {
+        if (!selected) {
           setStateSwitcher(true);
           return;
         }
-        const response = await fetch(`/api/invitation/${invitation.id}`).then(
+        const response = await fetch(`/api/invitation/${selected.id}`).then(
           (res) => res.json()
         );
 
@@ -39,7 +39,7 @@ export default function Template({ children }) {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [invitation]);
 
   return (
     <>

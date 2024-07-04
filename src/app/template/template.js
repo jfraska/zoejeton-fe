@@ -2,6 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { getCookie, hasCookie } from "cookies-next";
 import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
@@ -10,6 +11,7 @@ import CustomizeTool from "@/components/layouts/customize-tool";
 import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
 import ModeCustomize from "@/components/container/mode-customize";
+import PortalContext from "@/context/portal";
 import Loading from "./loading";
 
 export default function Template({ children }) {
@@ -18,7 +20,9 @@ export default function Template({ children }) {
   const [isOpenTool, setIsOpenTool] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { data: session } = useSession();
   const { initData, dataColor, setDataGuest } = useContext(CustomizeContext);
+  const { invitation, setStateSwitcher } = useContext(PortalContext);
 
   const urlShare = process.env.NEXT_PUBLIC_ROOT_DOMAIN
     ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
@@ -31,20 +35,25 @@ export default function Template({ children }) {
           res.json()
         );
 
-        const invitation = hasCookie("invitation")
-          ? JSON.parse(getCookie("invitation"))
-          : null;
+        if (session) {
+          const selected = hasCookie("invitation")
+            ? JSON.parse(getCookie("invitation"))
+            : null;
 
-        if (invitation?.template) {
-          const template = await fetch(
-            `/api/template/${invitation?.template.slug}`
-          ).then((res) => res.json());
+          if (selected?.template) {
+            const template = await fetch(
+              `/api/template/${selected.template.slug}`
+            ).then((res) => res.json());
 
-          if (template.data > 0) {
-            response.data = {
-              ...response.data,
-              ...template.data,
-            };
+            if (template.data > 0) {
+              response.data = {
+                ...response.data,
+                ...template.data,
+              };
+            }
+          } else {
+            setStateSwitcher(true);
+            return;
           }
         } else {
           const template = localStorage?.getItem("template")
@@ -79,7 +88,7 @@ export default function Template({ children }) {
         }, 2000);
       }
     })();
-  }, []);
+  }, [invitation]);
 
   return (
     <>
