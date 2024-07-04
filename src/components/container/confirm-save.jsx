@@ -20,8 +20,24 @@ export default function ConfirmSave({ open, onOpenChange }) {
   );
   const router = useRouter();
   const { data: session } = useSession();
-  const { saveDraftContent, data, dataContent, dataColor } =
+  const { saveDraftContent, deleteDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const local = localStorage.getItem("template")
+          ? JSON.parse(localStorage.getItem("template"))
+          : null;
+
+        if (!local) return;
+
+        await handleSave();
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    })();
+  }, []);
 
   const handleLogin = () => {
     saveDraftContent();
@@ -33,14 +49,15 @@ export default function ConfirmSave({ open, onOpenChange }) {
   };
 
   const handleSave = async () => {
-    saveDraftContent();
     if (!session) {
+      saveDraftContent();
       onOpenChange(false);
       toast.success("Save draft");
       return;
     }
 
     if (invitation) {
+      saveDraftContent();
       router.push(
         process.env.NEXT_PUBLIC_ROOT_DOMAIN
           ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?back=true`
@@ -87,11 +104,11 @@ export default function ConfirmSave({ open, onOpenChange }) {
             : null,
         });
         setInvitation(response.data);
-        localStorage.removeItem("template");
       }
 
-      onOpenChange(false);
       toast.success("Berhasil disimpan");
+      onOpenChange(false);
+      deleteDraftContent();
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
