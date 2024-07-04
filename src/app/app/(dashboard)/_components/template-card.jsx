@@ -62,8 +62,7 @@ export default function TemplateCard() {
             className="h-6 text-sm bg-background border border-input px-3 rounded-md"
           >
             {process.env.NEXT_PUBLIC_ROOT_DOMAIN
-              ? `https://$
-            {invitation?.template?.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+              ? `https://${invitation?.template?.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
               : `http://${invitation?.template?.slug}.localhost:3000`}
           </Link>
         </div>

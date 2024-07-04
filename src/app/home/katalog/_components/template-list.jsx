@@ -83,7 +83,7 @@ export default function TemplateList() {
 
             <a
               href={
-                process.env.NEXT_PUBLIC_VERCEL_ENV
+                process.env.NEXT_PUBLIC_ROOT_DOMAIN
                   ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${e.slug}`
                   : `http://template.localhost:3000/${e.slug}`
               }

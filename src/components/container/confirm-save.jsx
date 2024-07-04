@@ -46,15 +46,22 @@ export default function ConfirmSave({ open, onOpenChange }) {
     );
   };
 
-  const handleSaveDatabase = async () => {
-    try {
-      if (!invitation) {
-        handleLogin();
-      }
+  const handleSave = async () => {
+    if (!session) {
+      saveDraftContent();
+      onOpenChange(false);
+      toast.success("Save draft");
+      return;
+    }
 
-      const response = await fetch(
-        `/api/template/${invitation.template?.slug}`,
-        {
+    if (!invitation) {
+      handleLogin();
+      return;
+    }
+
+    try {
+      if (invitation.template) {
+        await fetch(`/api/template/${invitation.template.slug}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -64,12 +71,33 @@ export default function ConfirmSave({ open, onOpenChange }) {
             content: dataContent,
             color: [dataColor, ...data.color],
           }),
-        }
-      ).then((res) => res.json());
+        }).then((res) => res.json());
+      } else {
+        const response = await fetch(`/api/invitation/${invitation.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...invitation,
+            template: {
+              ...data,
+              content: dataContent,
+              color: [dataColor, ...data.color],
+            },
+          }),
+        }).then((res) => res.json());
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+        setCookie("invitation", JSON.stringify(response.data), {
+          path: "/",
+          domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+            ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+            : null,
+        });
+        setInvitation(response.data);
       }
+
+      toast.success("Berhasil disimpan");
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
@@ -79,21 +107,16 @@ export default function ConfirmSave({ open, onOpenChange }) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-white text-black">
         <DialogHeader>
-          <DialogTitle>Save Customize</DialogTitle>
+          <DialogTitle className="font-medium">Save Customize</DialogTitle>
           <DialogDescription className="text-[#737373]">
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            sign-in untuk menyimpan data secara permanen, atau klik continue
+            untuk save draft
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex flex-col-reverse gap-2">
           <Button
             className="text-black bg-white border-black border hover:bg-black hover:text-white"
-            onClick={() => {
-              session ? handleSaveDatabase() : saveDraftContent();
-
-              onOpenChange(false);
-              toast.success("Save draft");
-            }}
+            onClick={handleSave}
           >
             Continue
           </Button>

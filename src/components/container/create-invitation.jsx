@@ -53,7 +53,6 @@ export default function CreateInvitation() {
           ).then((res) => res.json());
 
           setTemplate(response.data);
-          return;
         }
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -63,7 +62,7 @@ export default function CreateInvitation() {
 
   const onSubmit = async (e) => {
     try {
-      const data = template && {
+      const template = {
         ...template,
         title: e.title,
         slug: e.subdomain,
@@ -77,7 +76,7 @@ export default function CreateInvitation() {
         },
         body: JSON.stringify({
           title: e.title,
-          template: data,
+          template,
           fitur: e.fitur,
           addon: e.addon,
         }),

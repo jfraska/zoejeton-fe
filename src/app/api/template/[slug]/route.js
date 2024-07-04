@@ -112,7 +112,7 @@ export const PUT = auth(async function PUT(req, { params }) {
         music,
       } = validator.data;
 
-      const data = await prisma.Invitation.update({
+      const data = await prisma.Template.update({
         where: { slug: id },
         data: {
           title,

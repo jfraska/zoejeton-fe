@@ -37,15 +37,17 @@ export default function EventCard() {
 
   return (
     <div className="col-span-4 flex flex-col gap-4">
-      <Card>
+      <Card className="grid h-full">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Rangkaian Acara</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-4 mb-10">
+        <CardContent className="grid gap-4">
           <div className="flex items-start justify-start gap-4 space-x-2">
             <div className="flex flex-col w-2/5 justify-start items-center font-medium">
-              <h1 className="text-xl">{date.getDate()}</h1>
-              <h1>{`${month[date.getMonth()]} ${date.getFullYear()}`}</h1>
+              <h1 className="text-4xl">{date.getDate()}</h1>
+              <h1 className="text-xl">{`${
+                month[date.getMonth()]
+              } ${date.getFullYear()}`}</h1>
             </div>
             <div className="h-full w-px bg-neutral-800" />
             <div className="flex flex-col justify-start items-start">
@@ -62,7 +64,7 @@ export default function EventCard() {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="mt-auto text-sm">
+        <CardFooter className="pb-2 text-sm">
           <button>Ubah Rangkaian Acara</button>
         </CardFooter>
       </Card>
