@@ -1,3 +1,5 @@
+import { getCookie, hasCookie } from "cookies-next";
+import { cookies } from "next/headers";
 import {
   Card,
   CardContent,
@@ -9,7 +11,27 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
 import TemplateCard from "./_components/template-card";
 import EventCard from "./_components/event-card";
 
-export default function Dashboard() {
+async function getData() {
+  const invitation = hasCookie("invitation", { cookies })
+    ? JSON.parse(getCookie("invitation", { cookies }))
+    : null;
+
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_ROOT_DOMAIN
+      ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/api/template/${invitation.templateId}`
+      : `http://localhost:3000/api/template/${invitation.templateId}`
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export default async function Dashboard() {
+  const { data } = await getData();
+
   return (
     <section className="flex h-full flex-col gap-4 lg:gap-6">
       <div className="flex items-center">
@@ -24,8 +46,8 @@ export default function Dashboard() {
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-10">
-            <TemplateCard />
-            <EventCard />
+            <TemplateCard data={data} />
+            <EventCard data={data} />
             {/* <Card className="col-span-3">
                   <CardHeader>
                     <CardTitle>Recent Sales</CardTitle>

@@ -5,10 +5,10 @@ import { z } from "zod";
 
 export async function GET(req, { params }) {
   try {
-    const { slug } = params;
-    const data = await prisma.Template.findUnique({
+    const { id } = params;
+    const data = await prisma.template.findFirst({
       where: {
-        slug,
+        OR: [{ slug: id }, { id }],
       },
     });
 
@@ -80,10 +80,10 @@ export const PUT = auth(async function PUT(req, { params }) {
         );
       }
 
-      const { slug: id } = params;
-      const template = await prisma.Template.findUnique({
+      const { id } = params;
+      const template = await prisma.template.findFirst({
         where: {
-          slug: id,
+          OR: [{ slug: id }, { id }],
         },
       });
 
@@ -112,7 +112,7 @@ export const PUT = auth(async function PUT(req, { params }) {
       } = validator.data;
 
       const data = await prisma.Template.update({
-        where: { slug: id },
+        where: { id: template.id },
         data: {
           title,
           slug,

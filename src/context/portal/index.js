@@ -1,13 +1,13 @@
 "use client";
 
-import { setCookie } from "cookies-next";
 import { createContext, useState } from "react";
+import { setCookie } from "cookies-next";
 
 const options = {
-  path: "/",
-  domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-    ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-    : null,
+  // path: "/",
+  // domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+  //   ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+  //   : "",
 };
 
 const PortalContext = createContext();
@@ -17,9 +17,9 @@ export const PortalProvider = ({ children }) => {
   const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
   const [invitation, setInvitation] = useState(null);
 
-  const updateInvitation = (invitation) => {
-    setCookie("invitation", JSON.stringify(invitation), options);
-    setInvitation(invitation);
+  const updateInvitation = (data) => {
+    setCookie("invitation", JSON.stringify(data), options);
+    setInvitation(data);
   };
 
   return (

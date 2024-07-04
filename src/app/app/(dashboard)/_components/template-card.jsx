@@ -1,37 +1,27 @@
-"use client";
-
-import { useContext } from "react";
-import PortalContext from "@/context/portal";
 import { Button } from "@/components/UI/button";
 import Image from "next/image";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/UI/card";
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
-import { Input } from "@/components/UI/input";
 import Link from "next/link";
 
-export default function TemplateCard() {
-  const { invitation } = useContext(PortalContext);
-
+export default function TemplateCard({ data }) {
   return (
     <Card className="col-span-4 md:col-span-3">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">
-          {invitation?.template?.title}
-        </CardTitle>
+        <CardTitle className="text-2xl">{data.title}</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="relative w-full aspect-video bg-secondary rounded-lg overflow-hidden bg-black bg-blend-multiply bg-opacity-80">
           <Image
             fill
-            src={`/templates/${invitation?.template?.slug}/${invitation?.template?.thumbnail}`}
+            src={`/templates/${data.slug}/${data.thumbnail}`}
             alt="thumbnail"
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -55,15 +45,14 @@ export default function TemplateCard() {
           <Link
             href={
               process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                ? `https://${invitation?.template?.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                : `http://${invitation?.template?.slug}.localhost:3000`
+                ? `https://${data.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                : `http://${data.slug}.localhost:3000`
             }
-            id="link"
             className="h-6 text-sm bg-background border border-input px-3 rounded-md"
           >
             {process.env.NEXT_PUBLIC_ROOT_DOMAIN
-              ? `https://${invitation?.template?.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-              : `http://${invitation?.template?.slug}.localhost:3000`}
+              ? `https://${data.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+              : `http://${data.slug}.localhost:3000`}
           </Link>
         </div>
       </CardContent>
@@ -72,8 +61,8 @@ export default function TemplateCard() {
           <Link
             href={
               process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${invitation?.template?.slug}`
-                : `http://template.localhost:3000/${invitation?.template?.slug}`
+                ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${data.slug}`
+                : `http://template.localhost:3000/${data.slug}`
             }
           >
             Customize

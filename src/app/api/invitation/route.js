@@ -16,9 +16,6 @@ export const GET = auth(async function GET(req) {
           title: { contains: search },
           userId: req.auth.user.id,
         },
-        include: {
-          template: true,
-        },
         skip: offset,
         take: limit,
       });

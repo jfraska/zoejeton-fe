@@ -11,7 +11,6 @@ import CustomizeTool from "@/components/layouts/customize-tool";
 import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
 import ModeCustomize from "@/components/container/mode-customize";
-import PortalContext from "@/context/portal";
 import Loading from "./loading";
 
 export default function Template({ children }) {
@@ -22,7 +21,6 @@ export default function Template({ children }) {
   const searchParams = useSearchParams();
   const { data: session } = useSession();
   const { initData, dataColor, setDataGuest } = useContext(CustomizeContext);
-  const { invitation, setStateSwitcher } = useContext(PortalContext);
 
   const urlShare = process.env.NEXT_PUBLIC_ROOT_DOMAIN
     ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
@@ -31,53 +29,49 @@ export default function Template({ children }) {
   useEffect(() => {
     (async () => {
       try {
-        let response = await fetch(`/api/template${pathname}`).then((res) =>
+        let res = await fetch(`/api/template${pathname}`).then((res) =>
           res.json()
         );
 
-        if (session) {
+        const local = localStorage?.getItem("template")
+          ? JSON.parse(localStorage.getItem("template"))
+          : null;
+
+        if (local) {
+          res.data = {
+            ...res.data,
+            ...local,
+          };
+        } else {
           const selected = hasCookie("invitation")
             ? JSON.parse(getCookie("invitation"))
             : null;
 
-          if (selected?.template) {
+          if (selected?.templateId) {
             const template = await fetch(
-              `/api/template/${selected.template.slug}`
+              `/api/template/${selected.templateId}`
             ).then((res) => res.json());
 
             if (template.data > 0) {
-              response.data = {
-                ...response.data,
+              res.data = {
+                ...res.data,
                 ...template.data,
               };
             }
-          } else {
-            setStateSwitcher(true);
-          }
-        } else {
-          const template = localStorage?.getItem("template")
-            ? JSON.parse(localStorage.getItem("template"))
-            : null;
-
-          if (template) {
-            response.data = {
-              ...response.data,
-              ...template,
-            };
           }
         }
 
-        initData(response.data);
+        initData(res.data);
         if (searchParams?.get("guest")) {
-          response = await fetch(
+          res = await fetch(
             `/api/guest/${searchParams.get(
               "guest"
             )}?invitation=${pathname.slice(1)}`
           ).then((res) => res.json());
-          if (!response.ok) {
+          if (!res.ok) {
             return;
           }
-          setDataGuest(response.data);
+          setDataGuest(res.data);
         }
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -87,7 +81,7 @@ export default function Template({ children }) {
         }, 2000);
       }
     })();
-  }, [invitation]);
+  }, []);
 
   return (
     <>

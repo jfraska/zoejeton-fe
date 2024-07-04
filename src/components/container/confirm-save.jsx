@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { setCookie } from "cookies-next";
+import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -13,48 +13,44 @@ import {
 } from "@/components/UI/dialog";
 import { Button } from "@/components/UI/button";
 import CustomizeContext from "@/context/customize";
-import PortalContext from "@/context/portal";
 
 export default function ConfirmSave({ open, onOpenChange }) {
+  const [invitation, setInvitation] = useState(
+    hasCookie("invitation") ? JSON.parse(getCookie("invitation")) : null
+  );
   const router = useRouter();
   const { data: session } = useSession();
   const { saveDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
-  const { invitation, updateInvitation } = useContext(PortalContext);
 
   const handleLogin = () => {
-    setCookie(
-      "template",
-      JSON.stringify({
-        ...data,
-        content: dataContent,
-        color: [dataColor, ...data.color],
-      }),
-      {
-        path: "/",
-        domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-          ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-          : null,
-      }
-    );
+    saveDraftContent();
     router.push(
       process.env.NEXT_PUBLIC_ROOT_DOMAIN
-        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-        : `http://app.localhost:3000`
+        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?template=${data.id}&back=true`
+        : `http://app.localhost:3000?template=${data.id}&back=true`
     );
   };
 
   const handleSave = async () => {
+    saveDraftContent();
     if (!session) {
-      saveDraftContent();
       onOpenChange(false);
       toast.success("Save draft");
       return;
     }
 
+    if (invitation) {
+      router.push(
+        process.env.NEXT_PUBLIC_ROOT_DOMAIN
+          ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?back=true`
+          : `http://app.localhost:3000?back=true`
+      );
+    }
+
     try {
-      if (invitation?.template) {
-        await fetch(`/api/template/${invitation.template.slug}`, {
+      if (invitation.templateId) {
+        await fetch(`/api/template/${invitation.templateId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -66,22 +62,32 @@ export default function ConfirmSave({ open, onOpenChange }) {
           }),
         }).then((res) => res.json());
       } else {
-        const response = await fetch(`/api/invitation/${invitation.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...invitation,
-            template: {
-              ...data,
-              content: dataContent,
-              color: [dataColor, ...data.color],
+        const response = await fetch(
+          `/api/invitation/${invitation.templateId}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
             },
-          }),
-        }).then((res) => res.json());
+            body: JSON.stringify({
+              ...invitation,
+              template: {
+                ...data,
+                content: dataContent,
+                color: [dataColor, ...data.color],
+              },
+            }),
+          }
+        ).then((res) => res.json());
 
-        updateInvitation(response.data);
+        setCookie("invitation", JSON.stringify(response.data), {
+          path: "/",
+          domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+            ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+            : null,
+        });
+        setInvitation(response.data);
+        localStorage.removeItem("template");
       }
 
       onOpenChange(false);

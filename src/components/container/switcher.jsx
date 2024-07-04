@@ -18,6 +18,7 @@ import {
 } from "@/components/UI/command";
 import PortalContext from "@/context/portal";
 import { Drawer, DrawerContent } from "@/components/UI/drawer";
+import { toast } from "sonner";
 
 export default function Switcher() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -68,6 +69,12 @@ export function ListInvitation({
   const [loading, setLoading] = useState(false);
   const [datainvitation, setDataInvitation] = useState([]);
 
+  const handleSelectedInvitation = (data) => {
+    updateInvitation(data);
+    setStateSwitcher(false);
+    toast.success(`${data.title} selected`);
+  };
+
   useEffect(() => {
     (async () => {
       try {
@@ -82,6 +89,7 @@ export function ListInvitation({
           setStateSwitcher(false);
           setStateCreateInvitation(true);
         }
+
         setDataInvitation(response.data);
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -105,10 +113,7 @@ export function ListInvitation({
           return (
             <CommandItem
               key={item.id}
-              onSelect={() => {
-                updateInvitation(item);
-                setStateSwitcher(false);
-              }}
+              onSelect={() => handleSelectedInvitation(item)}
               className="text-sm"
             >
               <Avatar className="mr-2 h-5 w-5">

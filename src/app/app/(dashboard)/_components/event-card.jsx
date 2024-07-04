@@ -1,7 +1,3 @@
-"use client";
-
-import { useContext } from "react";
-import PortalContext from "@/context/portal";
 import {
   Card,
   CardContent,
@@ -14,11 +10,8 @@ import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
 import { getDataContent } from "@/libs/utils";
 
-export default function EventCard() {
-  const { invitation } = useContext(PortalContext);
-  const date = new Date(
-    getDataContent(invitation?.template?.content, "event", "akad", "date")
-  );
+export default function EventCard({ data }) {
+  const date = new Date(getDataContent(data.content, "event", "akad", "date"));
 
   const month = [
     "Januari",
@@ -51,7 +44,7 @@ export default function EventCard() {
             </div>
             <div className="h-full w-px bg-neutral-800" />
             <div className="flex flex-col justify-start items-start">
-              {invitation?.template.content.map(
+              {data.content.map(
                 (item) =>
                   item.key === "event" &&
                   Object.keys(item.value).map((key) => (

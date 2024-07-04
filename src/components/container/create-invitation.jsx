@@ -1,18 +1,17 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import PortalContext from "@/context/portal";
-import { deleteCookie, getCookie, hasCookie } from "cookies-next";
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/UI/dialog";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/UI/alert-dialog";
 import {
   Form,
   FormControl,
@@ -38,11 +37,14 @@ const formSchema = z.object({
 
 export default function CreateInvitation() {
   const searchParams = useSearchParams();
-  const [template, setTemplate] = useState(
-    hasCookie("template") ? JSON.parse(getCookie("template")) : null
-  );
-  const { stateCreateInvitation, setStateCreateInvitation, updateInvitation } =
-    useContext(PortalContext);
+  const [template, setTemplate] = useState(null);
+  const router = useRouter();
+  const {
+    stateCreateInvitation,
+    setStateCreateInvitation,
+    invitation,
+    updateInvitation,
+  } = useContext(PortalContext);
 
   useEffect(() => {
     (async () => {
@@ -53,21 +55,28 @@ export default function CreateInvitation() {
           ).then((res) => res.json());
 
           setTemplate(response.data);
+          setStateCreateInvitation(true);
         }
       } catch (error) {
         console.log("Error fetching data:", error);
       }
     })();
-  }, []);
+
+    if (searchParams.get("back") && invitation) {
+      router.back();
+    }
+  }, [invitation]);
 
   const onSubmit = async (e) => {
     try {
-      const template = {
-        ...template,
-        title: e.title,
-        slug: e.subdomain,
-        parent: template.slug,
-      };
+      setTemplate(
+        template && {
+          ...template,
+          title: e.title,
+          slug: e.subdomain,
+          parent: template.slug,
+        }
+      );
 
       const response = await fetch("/api/invitation", {
         method: "POST",
@@ -87,7 +96,6 @@ export default function CreateInvitation() {
       }
 
       updateInvitation(response.data);
-      deleteCookie("template");
       setStateCreateInvitation(false);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
@@ -99,22 +107,21 @@ export default function CreateInvitation() {
     defaultValues: {
       title: "",
       subdomain: "",
-      template: template?.title,
+      template: "",
       fitur: searchParams.get("fitur") ?? [],
       addon: searchParams.get("addon") ?? [],
     },
   });
 
   return (
-    <Dialog
+    <AlertDialog
       open={stateCreateInvitation}
       onOpenChange={setStateCreateInvitation}
     >
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Create Invitaion</DialogTitle>
-          <DialogDescription>Add a new invitation</DialogDescription>
-        </DialogHeader>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Create Invitaion</AlertDialogTitle>
+        </AlertDialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div>
@@ -170,7 +177,7 @@ export default function CreateInvitation() {
                       <FormItem>
                         <FormLabel>Template</FormLabel>
                         <FormControl>
-                          <Input {...field} readOnly />
+                          <Input {...field} value={template?.title} readOnly />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -179,15 +186,17 @@ export default function CreateInvitation() {
                 )}
               </div>
             </div>
-            <DialogFooter>
-              <DialogClose asChild>
+            <AlertDialogFooter>
+              <AlertDialogCancel asChild>
                 <Button variant="outline">Cancel</Button>
-              </DialogClose>
-              <Button type="submit">Create</Button>
-            </DialogFooter>
+              </AlertDialogCancel>
+              <AlertDialogAction asChild>
+                <Button type="submit">Create</Button>
+              </AlertDialogAction>
+            </AlertDialogFooter>
           </form>
         </Form>
-      </DialogContent>
-    </Dialog>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }

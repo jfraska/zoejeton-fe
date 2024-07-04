@@ -8,14 +8,14 @@ import Loading from "@/components/UI/loading";
 import { Button } from "@/components/UI/button";
 
 export default function Template({ children }) {
+  const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
   const {
     invitation,
     updateInvitation,
     setStateSwitcher,
     setStateCreateInvitation,
   } = useContext(PortalContext);
-  const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
 
   useEffect(() => {
     (async () => {
@@ -39,7 +39,7 @@ export default function Template({ children }) {
         setLoading(false);
       }
     })();
-  }, [invitation]);
+  }, []);
 
   return (
     <>
