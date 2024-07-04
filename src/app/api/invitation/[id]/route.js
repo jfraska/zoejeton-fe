@@ -89,7 +89,7 @@ export const PUT = auth(async function PUT(req, { params }) {
           title,
           user: { connect: { id: req.auth.user.id } },
           fitur,
-          template = {
+          template: {
             create: {
               template,
             },
