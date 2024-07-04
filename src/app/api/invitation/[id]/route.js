@@ -99,6 +99,7 @@ export const PUT = auth(async function PUT(req, { params }) {
         },
         include: {
           user: true,
+          template: true,
         },
       });
 

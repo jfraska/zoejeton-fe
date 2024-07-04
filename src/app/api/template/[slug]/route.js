@@ -123,10 +123,6 @@ export const PUT = auth(async function PUT(req, { params }) {
           content,
           color,
           music,
-          user: { connect: { id: req.auth.user.id } },
-        },
-        include: {
-          user: true,
         },
       });
 

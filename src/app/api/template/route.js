@@ -91,7 +91,7 @@ export const POST = auth(async function POST(req) {
         music,
       } = validator.data;
 
-      const data = await prisma.Invitation.create({
+      const data = await prisma.Template.create({
         data: {
           title,
           slug,
@@ -102,9 +102,6 @@ export const POST = auth(async function POST(req) {
           content: { createMany: { data: content } },
           color: { createMany: { data: color } },
           music,
-        },
-        include: {
-          user: true,
         },
       });
 
