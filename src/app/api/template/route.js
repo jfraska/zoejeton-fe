@@ -51,8 +51,6 @@ export const POST = auth(async function POST(req) {
           "secondary-foreground": z.string(),
           accent: z.string(),
           "accent-foreground": z.string(),
-          card: z.string(),
-          "card-foreground": z.string(),
         }),
       });
 
