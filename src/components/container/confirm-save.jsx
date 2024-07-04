@@ -97,6 +97,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
         setInvitation(response.data);
       }
 
+      onOpenChange(false);
       toast.success("Berhasil disimpan");
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
