@@ -102,7 +102,6 @@ export const POST = auth(async function POST(req) {
           content: { createMany: { data: content } },
           color: { createMany: { data: color } },
           music,
-          user: { connect: { id: req.auth.user.id } },
         },
         include: {
           user: true,
