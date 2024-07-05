@@ -4,10 +4,10 @@ import { createContext, useState } from "react";
 import { setCookie } from "cookies-next";
 
 const options = {
-  // path: "/",
-  // domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-  //   ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-  //   : "",
+  path: "/",
+  domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+    ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+    : "",
 };
 
 const PortalContext = createContext();
