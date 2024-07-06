@@ -51,8 +51,8 @@ export default function TemplateCard({ data }) {
             className="h-6 text-sm bg-background border border-input px-3 rounded-md"
           >
             {process.env.NEXT_PUBLIC_ROOT_DOMAIN
-              ? `https://${data.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-              : `http://${data.slug}.localhost:3000`}
+              ? `${data.slug}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+              : `${data.slug}.localhost:3000`}
           </Link>
         </div>
       </CardContent>
