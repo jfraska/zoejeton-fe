@@ -80,23 +80,20 @@ export default function ConfirmSave({ open, onOpenChange }) {
           }),
         }).then((res) => res.json());
       } else {
-        const response = await fetch(
-          `/api/invitation/${invitation.templateId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
+        const response = await fetch(`/api/invitation/${invitation.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...invitation,
+            template: {
+              ...data,
+              content: dataContent,
+              color: [dataColor, ...data.color],
             },
-            body: JSON.stringify({
-              ...invitation,
-              template: {
-                ...data,
-                content: dataContent,
-                color: [dataColor, ...data.color],
-              },
-            }),
-          }
-        ).then((res) => res.json());
+          }),
+        }).then((res) => res.json());
 
         setCookie("invitation", JSON.stringify(response.data), {
           path: "/",
