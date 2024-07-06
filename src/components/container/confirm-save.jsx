@@ -56,7 +56,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
       return;
     }
 
-    if (invitation) {
+    if (!invitation) {
       saveDraftContent();
       router.push(
         process.env.NEXT_PUBLIC_ROOT_DOMAIN
