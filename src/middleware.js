@@ -11,7 +11,7 @@ export async function middleware(req) {
 
   const searchParams = req.nextUrl.searchParams.toString();
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
-  const path = `${url.pathname}${
+  const path = `${url.pathname === "/" ? "" : url.pathname}${
     searchParams.length > 0 ? `?${searchParams}` : ""
   }`;
 
@@ -23,9 +23,7 @@ export async function middleware(req) {
     } else if (session && path == "/login") {
       return NextResponse.redirect(new URL("/", req.nextUrl));
     }
-    return NextResponse.rewrite(
-      new URL(`/app${path === "/" ? "" : path}`, req.nextUrl)
-    );
+    return NextResponse.rewrite(new URL(`/app${path}`, req.nextUrl));
   }
 
   // rewrite root application to `/home` folder
@@ -37,15 +35,13 @@ export async function middleware(req) {
       return NextResponse.rewrite(new URL(`/bio`, req.nextUrl));
     }
 
-    return NextResponse.rewrite(
-      new URL(`/home${path === "/" ? "" : path}`, req.nextUrl)
-    );
+    return NextResponse.rewrite(new URL(`/home${path}`, req.nextUrl));
   }
 
   // rewrites for template pages
   if (hostname == `template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     const response = NextResponse.rewrite(
-      new URL(`/template${path === "/" ? "" : path}`, req.nextUrl)
+      new URL(`/template${path}`, req.nextUrl)
     );
     response.headers.set("pathname", url.pathname);
 
