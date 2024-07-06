@@ -63,6 +63,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
           ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?back=true`
           : `http://app.localhost:3000?back=true`
       );
+      return;
     }
 
     try {
