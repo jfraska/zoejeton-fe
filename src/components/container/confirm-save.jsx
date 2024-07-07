@@ -24,19 +24,13 @@ export default function ConfirmSave({ open, onOpenChange }) {
     useContext(CustomizeContext);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const local = localStorage.getItem("template")
-          ? JSON.parse(localStorage.getItem("template"))
-          : null;
+    const local = localStorage.getItem("template")
+      ? JSON.parse(localStorage.getItem("template"))
+      : null;
 
-        if (!local) return;
+    if (!local) return;
 
-        await handleSave();
-      } catch (error) {
-        console.log("Error fetching data:", error);
-      }
-    })();
+    handleSave();
   }, []);
 
   const handleLogin = () => {
@@ -78,35 +72,46 @@ export default function ConfirmSave({ open, onOpenChange }) {
             content: dataContent,
             color: [dataColor, ...data.color],
           }),
-        }).then((res) => res.json());
-      } else {
-        const response = await fetch(`/api/invitation/${invitation.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...invitation,
-            template: {
-              ...data,
-              content: dataContent,
-              color: [dataColor, ...data.color],
-            },
-          }),
-        }).then((res) => res.json());
+        })
+          .then((res) => res.json())
+          .catch(() => toast.success("Save gagal"));
 
-        setCookie("invitation", JSON.stringify(response.data), {
-          path: "/",
-          domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-            ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-            : null,
-        });
-        setInvitation(response.data);
+        deleteDraftContent();
+        onOpenChange(false);
+        toast.success("Berhasil disimpan");
+        return;
       }
 
-      toast.success("Berhasil disimpan");
-      onOpenChange(false);
+      await fetch(`/api/invitation/${invitation.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...invitation,
+          template: {
+            ...data,
+            content: dataContent,
+            color: [dataColor, ...data.color],
+          },
+        }),
+      })
+        .then((res) => res.json())
+        .catch(() => toast.success("Save gagal"))
+        .finally((e) => {
+          setCookie("invitation", JSON.stringify(e.data), {
+            path: "/",
+            domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+              ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+              : null,
+          });
+
+          setInvitation(e.data);
+        });
+
       deleteDraftContent();
+      onOpenChange(false);
+      toast.success("Berhasil disimpan");
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
