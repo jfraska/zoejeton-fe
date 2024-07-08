@@ -102,7 +102,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
           : null,
       });
 
-      setInvitation(e.data);
+      setInvitation(res.data);
 
       deleteDraftContent();
       onOpenChange(false);
