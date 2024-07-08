@@ -83,6 +83,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
         return;
       }
 
+      console.log(invitation);
       const res = await axios.put(
         `/api/invitation/${invitation.id}`,
         {
@@ -101,7 +102,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
       );
 
       if (res.status !== 200) {
-        throw new Error(res.statusText);
+        throw new Error(res);
       }
 
       const { data } = res;
@@ -119,7 +120,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
       onOpenChange(false);
       toast.success("Berhasil disimpan");
     } catch (error) {
-      toast.success(error);
+      toast.error(error.statusText);
       console.error("There was a problem with the fetch operation:", error);
     }
   };

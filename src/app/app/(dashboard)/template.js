@@ -34,7 +34,8 @@ export default function Template({ children }) {
         if (res.status !== 200) {
           throw new Error(res.statusText);
         }
-        const { data } = res;
+
+        const { data } = res.data;
 
         updateInvitation(data);
       } catch (error) {

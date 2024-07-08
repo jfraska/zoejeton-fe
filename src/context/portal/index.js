@@ -7,7 +7,7 @@ const options = {
   path: "/",
   domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
     ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-    : "",
+    : null,
 };
 
 const PortalContext = createContext();
