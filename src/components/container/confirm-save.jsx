@@ -74,6 +74,8 @@ export default function ConfirmSave({ open, onOpenChange }) {
           }),
         }).then((res) => res.json());
 
+        if (!res.ok) throw new Error("Save gagal");
+
         deleteDraftContent();
         onOpenChange(false);
         toast.success("Berhasil disimpan");
@@ -102,13 +104,15 @@ export default function ConfirmSave({ open, onOpenChange }) {
           : null,
       });
 
+      if (!res.ok) throw new Error("Save gagal");
+
       setInvitation(res.data);
 
       deleteDraftContent();
       onOpenChange(false);
       toast.success("Berhasil disimpan");
     } catch (error) {
-      toast.success("Save gagal");
+      toast.success(error);
       console.error("There was a problem with the fetch operation:", error);
     }
   };
