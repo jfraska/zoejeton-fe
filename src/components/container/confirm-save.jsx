@@ -13,6 +13,7 @@ import {
 } from "@/components/UI/dialog";
 import { Button } from "@/components/UI/button";
 import CustomizeContext from "@/context/customize";
+import axios from "axios";
 
 export default function ConfirmSave({ open, onOpenChange }) {
   const [invitation, setInvitation] = useState(
@@ -82,31 +83,37 @@ export default function ConfirmSave({ open, onOpenChange }) {
         return;
       }
 
-      const res = await fetch(`/api/invitation/${invitation.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const res = await axios.put(
+        `/api/invitation/${invitation.id}`,
+        {
           ...invitation,
           template: {
             ...data,
             content: dataContent,
             color: [dataColor, ...data.color],
           },
-        }),
-      }).then((res) => res.json());
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      setCookie("invitation", JSON.stringify(res.data), {
+      if (res.status !== 200) {
+        throw new Error(res.statusText);
+      }
+
+      const { data } = res;
+
+      setCookie("invitation", JSON.stringify(data), {
         path: "/",
         domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
           ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
           : null,
       });
 
-      if (!res.ok) throw new Error("Save gagal");
-
-      setInvitation(res.data);
+      setInvitation(data);
 
       deleteDraftContent();
       onOpenChange(false);
