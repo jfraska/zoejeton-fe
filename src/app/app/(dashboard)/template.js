@@ -7,6 +7,7 @@ import PortalContext from "@/context/portal";
 import Loading from "@/components/UI/loading";
 import { Button } from "@/components/UI/button";
 import NotfoundDashboard from "@/components/container/notfound-dashboard";
+import axios from "axios";
 
 export default function Template({ children }) {
   const [loading, setLoading] = useState(true);
@@ -29,11 +30,13 @@ export default function Template({ children }) {
           setStateSwitcher(true);
           return;
         }
-        const response = await fetch(`/api/invitation/${selected.id}`).then(
-          (res) => res.json()
-        );
+        const res = await axios.get(`/api/invitation/${selected.id}`);
+        if (res.status !== 200) {
+          throw new Error(res.statusText);
+        }
+        const { data } = res;
 
-        updateInvitation(response.data);
+        updateInvitation(data);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
