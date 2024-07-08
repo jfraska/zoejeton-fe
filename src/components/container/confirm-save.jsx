@@ -72,9 +72,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
             content: dataContent,
             color: [dataColor, ...data.color],
           }),
-        })
-          .then((res) => res.json())
-          .catch(() => toast.success("Save gagal"));
+        }).then((res) => res.json());
 
         deleteDraftContent();
         onOpenChange(false);
@@ -82,7 +80,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
         return;
       }
 
-      await fetch(`/api/invitation/${invitation.id}`, {
+      const res = await fetch(`/api/invitation/${invitation.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -95,24 +93,22 @@ export default function ConfirmSave({ open, onOpenChange }) {
             color: [dataColor, ...data.color],
           },
         }),
-      })
-        .then((res) => res.json())
-        .catch(() => toast.success("Save gagal"))
-        .finally((e) => {
-          setCookie("invitation", JSON.stringify(e.data), {
-            path: "/",
-            domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-              ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-              : null,
-          });
+      }).then((res) => res.json());
 
-          setInvitation(e.data);
-        });
+      setCookie("invitation", JSON.stringify(res.data), {
+        path: "/",
+        domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+          ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+          : null,
+      });
+
+      setInvitation(e.data);
 
       deleteDraftContent();
       onOpenChange(false);
       toast.success("Berhasil disimpan");
     } catch (error) {
+      toast.success("Save gagal");
       console.error("There was a problem with the fetch operation:", error);
     }
   };
