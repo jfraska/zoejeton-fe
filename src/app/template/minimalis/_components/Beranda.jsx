@@ -10,7 +10,7 @@ export default function Beranda() {
   useEffect(() => {
     animate(
       ".animate",
-      { x: 0 },
+      { x: 100 },
       {
         delay: stagger(0.1),
         duration: 0.5,
@@ -28,7 +28,7 @@ export default function Beranda() {
       }}
     >
       <div className="mx-auto flex flex-col gap-6 justify-start items-center px-10 text-center">
-        <h2 className="text-lg mt-16">THE WEDDING OF</h2>
+        <h2 className="text-lg mt-16 animate">THE WEDDING OF</h2>
         <h1 className={`${Runalto.className} text-5xl font-medium`}>
           <Editable type="text" field="heading" section="beranda" />
         </h1>
