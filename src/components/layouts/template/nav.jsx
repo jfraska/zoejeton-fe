@@ -23,7 +23,7 @@ export default function Nav() {
 
   return (
     <>
-      <header className="sticky top-0 z-10 flex h-14 bg-white items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+      <header className="sticky top-0 z-[99] flex h-14 bg-white items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button

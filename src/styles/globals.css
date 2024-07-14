@@ -25,4 +25,15 @@
 }
 
 @tailwind components;
+@layer components {
+  .scroll::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .scroll::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 20px;
+  }
+}
+
 @tailwind utilities;

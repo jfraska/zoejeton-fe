@@ -13,8 +13,6 @@ import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
 
-import { ScrollArea } from "@/components/UI/scroll-area";
-
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Page() {
@@ -24,7 +22,7 @@ export default function Page() {
     >
       <Cover />
       <Music />
-      <div className="w-full h-full overflow-y-auto md:max-w-md">
+      <div className="w-full h-full overflow-y-auto md:max-w-md scroll">
         <Beranda />
         <Quotes />
         <Couple />

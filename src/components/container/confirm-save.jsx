@@ -24,15 +24,15 @@ export default function ConfirmSave({ open, onOpenChange }) {
   const { saveDraftContent, deleteDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
 
-  useEffect(() => {
-    const local = localStorage.getItem("template")
-      ? JSON.parse(localStorage.getItem("template"))
-      : null;
+  // useEffect(() => {
+  //   const local = localStorage.getItem("template")
+  //     ? JSON.parse(localStorage.getItem("template"))
+  //     : null;
 
-    if (!local) return;
+  //   if (!local) return;
 
-    handleSave();
-  }, []);
+  //   handleSave();
+  // }, []);
 
   const handleLogin = () => {
     saveDraftContent();
@@ -125,11 +125,11 @@ export default function ConfirmSave({ open, onOpenChange }) {
     }
   };
 
-  useEffect(() => {
-    if (open && session) {
-      handleSave();
-    }
-  }, [open]);
+  // useEffect(() => {
+  //   if (open && session) {
+  //     handleSave();
+  //   }
+  // }, [open]);
 
   if (!session) {
     return (

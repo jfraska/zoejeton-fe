@@ -8,7 +8,6 @@ import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
 
 import ButtonAction from "@/components/container/button-action";
-import Loading from "./loading";
 import CustomizeMode from "@/components/layouts/template/customize-mode";
 
 export default function Template({ children }) {
@@ -56,9 +55,7 @@ export default function Template({ children }) {
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000);
+        setLoading(false);
       }
     })();
   }, []);
@@ -66,14 +63,14 @@ export default function Template({ children }) {
   return (
     <>
       {loading ? (
-        <Loading />
+        <div />
       ) : (
         <>
           {isEdit ? (
             <CustomizeMode>{children}</CustomizeMode>
           ) : (
             <>
-              {children}
+              <div className="relative w-full h-screen">{children}</div>
               <ButtonAction />
             </>
           )}

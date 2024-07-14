@@ -22,12 +22,13 @@ export default function ButtonShare({ children, classname, link, ...props }) {
     const link = document.getElementById("link").value;
     navigator.clipboard.writeText(link).then(
       () => {
-        toast.success("Link copied to clipboard");
+        toast.success("Link berhasil di copy");
       },
       (err) => {
         toast.error("Failed to copy");
       }
     );
+    props.onOpenChange(false);
   };
 
   return (
@@ -37,7 +38,7 @@ export default function ButtonShare({ children, classname, link, ...props }) {
         <DialogHeader>
           <DialogTitle className="font-medium">Share link</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this.
+            Share template ini ke orang lain yuk !
           </DialogDescription>
         </DialogHeader>
         <div className="flex items-center space-x-2">

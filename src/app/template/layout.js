@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { CustomizeProvider } from "@/context/customize";
+import Loading from "./loading";
 
 export async function generateMetadata() {
   const pathname = headers().get("pathname");
@@ -40,5 +41,10 @@ export async function generateMetadata() {
 }
 
 export default function Layout({ children }) {
-  return <CustomizeProvider>{children}</CustomizeProvider>;
+  return (
+    <CustomizeProvider>
+      {children}
+      <Loading />
+    </CustomizeProvider>
+  );
 }

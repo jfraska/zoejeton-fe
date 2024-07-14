@@ -72,12 +72,12 @@ export default function TemplateList() {
         {data.map((e) => (
           <div
             key={e.id}
-            className="group flex justify-center items-center bg-cover w-[47%] md:w-[23%] aspect-9/16 relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
+            className="group flex justify-center items-center bg-cover w-[47%] md:w-[23%] aspect-9/16 md:aspect-square relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
             style={{
               backgroundImage: `url(/templates/${e.slug}/${e.thumbnail})`,
             }}
           >
-            <div className="absolute top-0 left-0 md:text-base text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-blend-multiply bg-opacity-80">
+            <div className="absolute top-0 left-0 md:text-lg text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-blend-multiply bg-opacity-90">
               {e.category}
             </div>
 
@@ -97,12 +97,12 @@ export default function TemplateList() {
               <h1 className="md:text-base text-sm">Demo Invitation</h1>
             </a>
 
-            <div className="absolute bottom-0 inset-x-0 px-2 md:py-1 py-2 bg-black text-white flex justify-between items-center w-full bg-blend-multiply bg-opacity-80">
+            <div className="absolute bottom-0 inset-x-0 px-2 md:py-1 py-2 bg-black text-white flex justify-between items-center w-full bg-blend-multiply bg-opacity-90">
               <div className="flex flex-col justify-start items-start">
-                <h1 className="font-medium md:text-base text-sm w-fit leading-tight rounded">
+                <h1 className="font-medium md:text-lg text-sm w-fit leading-tight rounded">
                   {e.title}
                 </h1>
-                <h1 className="md:text-sm text-xs font-normal w-fit leading-tight rounded">
+                <h1 className="md:text-base text-xs font-normal w-fit leading-tight rounded">
                   <CurrencyFormat
                     value={e.price}
                     displayType={"text"}
@@ -122,7 +122,7 @@ export default function TemplateList() {
                   width="20"
                   height="20"
                   alt="cart"
-                  className="w-5 aspect-square"
+                  className="md:w-7 w-5 aspect-square"
                 />
               </LoadingButton>
             </div>

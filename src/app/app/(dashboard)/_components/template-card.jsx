@@ -61,8 +61,8 @@ export default function TemplateCard({ data }) {
           <Link
             href={
               process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${data.slug}`
-                : `http://template.localhost:3000/${data.slug}`
+                ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${data.parent}?customize`
+                : `http://template.localhost:3000/${data.parent}?customize`
             }
           >
             Customize

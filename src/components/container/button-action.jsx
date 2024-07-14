@@ -9,11 +9,11 @@ import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import { toast } from "sonner";
 import ButtonShare from "@/components/container/button-share";
-import { Edit2, LayoutDashboard, Share2, ShoppingBag } from "lucide-react";
+import { Edit2, Edit3, Share2, ShoppingBag } from "lucide-react";
 
 const actions = [
   {
-    icon: <Edit2 className="w-4 aspect-square" />,
+    icon: <Edit3 className="w-4 aspect-square" />,
     name: "Customize",
     visible: true,
   },
@@ -82,7 +82,8 @@ export default function ButtonAction() {
                 },
               },
             }}
-            icon={<SpeedDialIcon sx={{ color: "black" }} />}
+            icon={<Edit2 className="w-4 aspect-square text-black" />}
+            openIcon={<SpeedDialIcon sx={{ color: "black" }} />}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             direction="down"
