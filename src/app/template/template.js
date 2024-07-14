@@ -1,30 +1,21 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { getCookie, hasCookie } from "cookies-next";
 import CustomizeContext from "@/context/customize";
 import { GlobalStyles } from "@mui/material";
 
-import CustomizeTool from "@/components/layouts/customize-tool";
-import ButtonShare from "@/components/container/button-share";
 import ButtonAction from "@/components/container/button-action";
-import ModeCustomize from "@/components/container/mode-customize";
 import Loading from "./loading";
+import CustomizeMode from "@/components/layouts/template/customize-mode";
 
 export default function Template({ children }) {
-  const [loading, setLoading] = useState(true);
-  const [isOpenShare, setIsOpenShare] = useState(false);
-  const [isOpenTool, setIsOpenTool] = useState(false);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const [loading, setLoading] = useState(true);
   const { data: session } = useSession();
-  const { initData, dataColor, setDataGuest } = useContext(CustomizeContext);
-
-  const urlShare = process.env.NEXT_PUBLIC_ROOT_DOMAIN
-    ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
-    : `http://template.localhost:3000/${pathname}`;
+  const { initData, dataColor, isEdit } = useContext(CustomizeContext);
 
   useEffect(() => {
     (async () => {
@@ -62,17 +53,6 @@ export default function Template({ children }) {
         }
 
         initData(res.data);
-        if (searchParams?.get("guest")) {
-          res = await fetch(
-            `/api/guest/${searchParams.get(
-              "guest"
-            )}?invitation=${pathname.slice(1)}`
-          ).then((res) => res.json());
-          if (!res.ok) {
-            return;
-          }
-          setDataGuest(res.data);
-        }
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
@@ -89,16 +69,15 @@ export default function Template({ children }) {
         <Loading />
       ) : (
         <>
-          {children}
+          {isEdit ? (
+            <CustomizeMode>{children}</CustomizeMode>
+          ) : (
+            <>
+              {children}
+              <ButtonAction />
+            </>
+          )}
 
-          <ButtonAction handleOpenShare={setIsOpenShare} />
-          <ModeCustomize handleOpenTool={setIsOpenTool} />
-          <ButtonShare
-            open={isOpenShare}
-            onOpenChange={setIsOpenShare}
-            link={urlShare}
-          />
-          <CustomizeTool open={isOpenTool} setOpen={setIsOpenTool} />
           <GlobalStyles
             styles={{
               ":root": {

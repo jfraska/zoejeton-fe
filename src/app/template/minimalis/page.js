@@ -13,15 +13,18 @@ import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
 
+import { ScrollArea } from "@/components/UI/scroll-area";
+
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Page() {
   return (
-    <main
-      className={`${montserrat.className} w-full bg-primary md:max-w-md ml-auto`}
+    <LockScreen
+      className={`${montserrat.className} absolute inset-0 flex justify-between w-full h-full bg-primary`}
     >
       <Cover />
-      <LockScreen>
+      <Music />
+      <div className="w-full h-full overflow-y-auto md:max-w-md">
         <Beranda />
         <Quotes />
         <Couple />
@@ -30,8 +33,7 @@ export default function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-        <Music />
-      </LockScreen>
-    </main>
+      </div>
+    </LockScreen>
   );
 }

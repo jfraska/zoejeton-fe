@@ -4,7 +4,7 @@ import { Runalto } from "@/styles/fonts";
 export default function Thanks() {
   return (
     <section
-      className="relative w-full h-screen bg-cover flex flex-col justify-center items-center bg-black bg-opacity-20 bg-blend-multiply pb-10"
+      className="relative w-full h-full bg-cover flex flex-col justify-center items-center bg-black bg-opacity-20 bg-blend-multiply pb-10"
       style={{
         backgroundImage: "url('/templates/minimalis/8.heic')",
       }}

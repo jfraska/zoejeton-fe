@@ -1,15 +1,19 @@
 "use client";
 
 import { createContext, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 const CustomizeContext = createContext();
 
 export const CustomizeProvider = ({ children }) => {
+  const searchParams = useSearchParams();
   const [data, setData] = useState({});
   const [dataContent, setDataContent] = useState([]);
   const [dataColor, setDataColor] = useState({});
   const [dataGuest, setDataGuest] = useState({});
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(
+    searchParams.has("customize") ? true : false
+  );
 
   const saveDraftContent = () => {
     localStorage.setItem(

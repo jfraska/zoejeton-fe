@@ -8,14 +8,10 @@ import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import { toast } from "sonner";
+import ButtonShare from "@/components/container/button-share";
 import { Edit2, LayoutDashboard, Share2, ShoppingBag } from "lucide-react";
 
 const actions = [
-  {
-    icon: <LayoutDashboard className="w-4 aspect-square" />,
-    name: "Dashboard",
-    visible: true,
-  },
   {
     icon: <Edit2 className="w-4 aspect-square" />,
     name: "Customize",
@@ -33,28 +29,21 @@ const actions = [
   },
 ];
 
-export default function ButtonAction({ handleOpenShare = () => {} }) {
+export default function ButtonAction() {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [isOpenShare, setIsOpenShare] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const { isEdit, setIsEdit } = React.useContext(CustomizeContext);
 
   const handleAction = (actionName) => {
     switch (actionName) {
-      case "Dashboard":
-        router.push(
-          process.env.NEXT_PUBLIC_ROOT_DOMAIN
-            ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-            : `http://app.localhost:3000/`
-        );
-        break;
       case "Customize":
         toast.success("mode customize");
         setIsEdit(true);
         break;
       case "Share":
-        handleOpenShare(true);
+        setIsOpenShare(true);
         break;
       case "Buy":
         router.push(
@@ -87,15 +76,15 @@ export default function ButtonAction({ handleOpenShare = () => {} }) {
               "& .MuiSpeedDial-fab": {
                 width: 40,
                 height: 40,
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                backgroundColor: "rgba(255, 255, 255, 0.7)",
                 "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  backgroundColor: "rgba(255, 255, 255, 0.9)",
                 },
               },
             }}
-            icon={<SpeedDialIcon />}
+            icon={<SpeedDialIcon sx={{ color: "black" }} />}
             onClose={() => setOpen(false)}
-            onOpen={handleOpen}
+            onOpen={() => setOpen(true)}
             direction="down"
             open={open}
           >
@@ -111,6 +100,16 @@ export default function ButtonAction({ handleOpenShare = () => {} }) {
           </SpeedDial>
         </Box>
       )}
+
+      <ButtonShare
+        open={isOpenShare}
+        onOpenChange={setIsOpenShare}
+        link={
+          process.env.NEXT_PUBLIC_ROOT_DOMAIN
+            ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
+            : `http://template.localhost:3000/${pathname}`
+        }
+      />
     </>
   );
 }

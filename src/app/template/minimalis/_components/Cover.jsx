@@ -4,7 +4,7 @@ import { Runalto } from "@/styles/fonts";
 
 export default function Cover() {
   return (
-    <div className="fixed inset-y-0 left-0 right-[28rem] hidden md:block">
+    <div className="relative w-full h-full hidden md:block">
       <Image
         fill
         src="/templates/minimalis/5.heic"

@@ -21,7 +21,7 @@ export default function Beranda() {
 
   return (
     <section
-      className="relative w-full h-screen bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
+      className="relative w-full h-full bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       id="beranda"
       style={{
         backgroundImage: "url('/templates/minimalis/5.heic')",

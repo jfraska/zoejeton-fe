@@ -6,7 +6,7 @@ import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
 import CustomizeContext from "@/context/customize";
 
-export default function LockScreen({ children }) {
+export default function LockScreen({ children, ...props }) {
   let lockRef = useRef(null);
   const timeline = useRef();
   const [state, setState] = useState(false);
@@ -39,11 +39,11 @@ export default function LockScreen({ children }) {
     <>
       <div
         ref={(el) => (lockRef = el)}
-        className="fixed inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
+        className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
         style={{
           backgroundImage: "url('/templates/minimalis/7.heic')",
         }}
-        id="cover"
+        // id="cover"
       >
         <div className="max-w-xs text-center ">
           <Image
@@ -85,7 +85,7 @@ export default function LockScreen({ children }) {
         </div>
       </div>
 
-      {state && children}
+      {state && <div {...props}>{children}</div>}
     </>
   );
 }

@@ -4,7 +4,7 @@ import { Runalto } from "@/styles/fonts";
 export default function LiveStream() {
   return (
     <section
-      className="relative w-full h-screen bg-secondary p-10 flex flex-col justify-between bg-cover bg-center bg-opacity-20 bg-blend-multiply"
+      className="relative w-full h-full bg-secondary p-10 flex flex-col justify-between bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       style={{
         backgroundImage: "url('/templates/minimalis/4.heic')",
       }}
