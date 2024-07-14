@@ -18,7 +18,7 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 export default function Page() {
   return (
     <LockScreen
-      className={`${montserrat.className} absolute inset-0 flex justify-between w-full h-full bg-primary`}
+      className={`${montserrat.className} absolute inset-0 flex justify-between w-full h-full bg-primary-bg`}
     >
       <Cover />
       <Music />

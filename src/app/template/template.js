@@ -70,7 +70,7 @@ export default function Template({ children }) {
             <CustomizeMode>{children}</CustomizeMode>
           ) : (
             <>
-              <div className="relative w-full h-screen">{children}</div>
+              <main className="relative w-full h-screen">{children}</main>
               <ButtonAction />
             </>
           )}
@@ -78,25 +78,21 @@ export default function Template({ children }) {
           <GlobalStyles
             styles={{
               ":root": {
-                "--background": dataColor?.value.background,
-                "--foreground": dataColor?.value.foreground,
-
                 // primary
-                "--primary": dataColor?.value.primary,
-                "--primary-foreground": dataColor?.value["primary-foregroundd"],
+                "--primary-bg": dataColor?.value.primary,
+                "--primary-text": dataColor?.value["primary-text"],
 
                 // secondary
-                "--secondary": dataColor?.value.secondary,
-                "--secondary-foreground":
-                  dataColor?.value["secondary-foreground"],
+                "--secondary-bg": dataColor?.value.secondary,
+                "--secondary-text": dataColor?.value["secondary-text"],
 
                 // accent
-                "--accent": dataColor?.value.accent,
-                "--accent-foreground": dataColor?.value["accent-foreground"],
+                "--accent-bg": dataColor?.value.accent,
+                "--accent-text": dataColor?.value["accent-text"],
               },
-              body: {
-                backgroundColor: "var(--background)",
-                color: "var(--foreground)",
+              main: {
+                backgroundColor: "var(--primary-bg)",
+                color: "var(--primary-text)",
               },
             }}
           />

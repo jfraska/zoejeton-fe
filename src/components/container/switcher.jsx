@@ -32,7 +32,11 @@ export default function Switcher() {
 
   if (isDesktop) {
     return (
-      <CommandDialog open={stateSwitcher} onOpenChange={setStateSwitcher}>
+      <CommandDialog
+        open={stateSwitcher}
+        onOpenChange={setStateSwitcher}
+        className="p-2"
+      >
         <ListInvitation
           invitation={invitation}
           updateInvitation={updateInvitation}

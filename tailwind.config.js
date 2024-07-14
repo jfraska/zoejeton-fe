@@ -42,8 +42,6 @@ module.exports = {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
-
-        //additional
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
@@ -58,6 +56,20 @@ module.exports = {
         popover: {
           DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",
+        },
+
+        //template
+        primary: {
+          bg: "var(--primary-bg)",
+          text: "var(--primary-text)",
+        },
+        secondary: {
+          bg: "var(--secondary-bg)",
+          text: "var(--secondary-text)",
+        },
+        accent: {
+          bg: "var(--accent-bg)",
+          text: "var(--accent-text)",
         },
       },
       // borderRadius: {

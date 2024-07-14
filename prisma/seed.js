@@ -19,9 +19,6 @@ const templateData = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           background: ["/templates/minimalis/5.heic"],
         },
-        visible: {
-          group: [],
-        },
       },
       {
         key: "beranda",
@@ -30,6 +27,9 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
       {
@@ -41,6 +41,9 @@ const templateData = [
           resepsi: {
             date: "Maret 10 2024",
           },
+        },
+        visible: {
+          group: [],
         },
       },
       {
@@ -57,6 +60,9 @@ const templateData = [
             instagram: "https://instagram.com",
           },
         },
+        visible: {
+          group: [],
+        },
       },
       {
         key: "love story",
@@ -66,6 +72,9 @@ const templateData = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           background: ["/templates/minimalis/5.heic"],
         },
+        visible: {
+          group: [],
+        },
       },
       {
         key: "galery",
@@ -73,6 +82,9 @@ const templateData = [
           heading: "Our Galery",
           image1: "/templates/minimalis/5.heic",
           image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
         },
       },
       {
@@ -84,6 +96,9 @@ const templateData = [
           link: "https://youtube.com",
           background: ["/templates/minimalis/5.heic"],
         },
+        visible: {
+          group: [],
+        },
       },
       {
         key: "thanks",
@@ -93,20 +108,21 @@ const templateData = [
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           background: ["/templates/minimalis/5.heic"],
         },
+        visible: {
+          group: [],
+        },
       },
     ],
     color: [
       {
         key: "natural",
         value: {
-          background: "#000",
-          foreground: "#fff",
           primary: "#263234",
-          "primary-foreground": "#fff",
+          "primary-text": "#000",
           secondary: "#9D9E9A",
-          "secondary-foreground": "#fff",
+          "secondary-text": "#fff",
           accent: "#ff4081",
-          "accent-foreground": "#fff",
+          "accent-text": "#fff",
         },
       },
     ],
@@ -121,40 +137,117 @@ const templateData = [
     category: "Basic",
     content: [
       {
-        key: "beranda",
+        key: "cover",
         value: {
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: "bg1.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
-        key: "date",
+        key: "beranda",
         value: {
-          akad: "Maret 10, 2024",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "event",
+        value: {
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
+        },
+        visible: {
+          group: [],
         },
       },
       {
         key: "couple",
         value: {
-          groom: "Jeton",
-          bride: "Zoe",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
-          background: "#fff",
-          foreground: "#000",
-          primary: "#ff0000",
-          "primary-foreground": "#fff",
-          secondary: "#00ff00",
-          "secondary-foreground": "#000",
-          accent: "#0000ff",
-          "accent-foreground": "#fff",
-          card: "#f0f0f0",
-          "card-foreground": "#333",
+          primary: "#263234",
+          "primary-text": "#000",
+          secondary: "#9D9E9A",
+          "secondary-text": "#fff",
+          accent: "#ff4081",
+          "accent-text": "#fff",
         },
       },
     ],
@@ -169,40 +262,117 @@ const templateData = [
     category: "Premium",
     content: [
       {
-        key: "beranda",
+        key: "cover",
         value: {
-          desc: "Experience the charm of vintage aesthetics with a touch of modern elegance.",
-          background: "bg2.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
-        key: "date",
+        key: "beranda",
         value: {
-          akad: "April 15, 2024",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "event",
+        value: {
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
+        },
+        visible: {
+          group: [],
         },
       },
       {
         key: "couple",
         value: {
-          groom: "Michael",
-          bride: "Sarah",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
-          background: "#f5f5dc",
-          foreground: "#8b4513",
-          primary: "#c0c0c0",
-          "primary-foreground": "#000",
-          secondary: "#808080",
-          "secondary-foreground": "#fff",
-          accent: "#ff6347",
-          "accent-foreground": "#fff",
-          card: "#ffffff",
-          "card-foreground": "#000",
+          primary: "#263234",
+          "primary-text": "#000",
+          secondary: "#9D9E9A",
+          "secondary-text": "#fff",
+          accent: "#ff4081",
+          "accent-text": "#fff",
         },
       },
     ],
@@ -217,40 +387,117 @@ const templateData = [
     category: "Premium",
     content: [
       {
-        key: "beranda",
+        key: "cover",
         value: {
-          desc: "Sleek and stylish, perfect for the contemporary couple.",
-          background: "bg3.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
-        key: "date",
+        key: "beranda",
         value: {
-          akad: "June 20, 2024",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "event",
+        value: {
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
+        },
+        visible: {
+          group: [],
         },
       },
       {
         key: "couple",
         value: {
-          groom: "David",
-          bride: "Emily",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
-          background: "#ffffff",
-          foreground: "#333333",
-          primary: "#ff1493",
-          "primary-foreground": "#fff",
-          secondary: "#ffa500",
-          "secondary-foreground": "#000",
-          accent: "#32cd32",
-          "accent-foreground": "#fff",
-          card: "#f0f8ff",
-          "card-foreground": "#000",
+          primary: "#263234",
+          "primary-text": "#000",
+          secondary: "#9D9E9A",
+          "secondary-text": "#fff",
+          accent: "#ff4081",
+          "accent-text": "#fff",
         },
       },
     ],
@@ -265,40 +512,117 @@ const templateData = [
     category: "Basic",
     content: [
       {
-        key: "beranda",
+        key: "cover",
         value: {
-          desc: "A warm and inviting template inspired by nature.",
-          background: "bg4.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
-        key: "date",
+        key: "beranda",
         value: {
-          akad: "May 30, 2024",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "event",
+        value: {
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
+        },
+        visible: {
+          group: [],
         },
       },
       {
         key: "couple",
         value: {
-          groom: "Lucas",
-          bride: "Emma",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
-          background: "#d2b48c",
-          foreground: "#8b4513",
-          primary: "#deb887",
-          "primary-foreground": "#fff",
-          secondary: "#a52a2a",
-          "secondary-foreground": "#fff",
-          accent: "#ffd700",
-          "accent-foreground": "#000",
-          card: "#fffaf0",
-          "card-foreground": "#000",
+          primary: "#263234",
+          "primary-text": "#000",
+          secondary: "#9D9E9A",
+          "secondary-text": "#fff",
+          accent: "#ff4081",
+          "accent-text": "#fff",
         },
       },
     ],
@@ -313,40 +637,117 @@ const templateData = [
     category: "Premium",
     content: [
       {
-        key: "beranda",
+        key: "cover",
         value: {
-          desc: "Elegant and sophisticated design for a timeless celebration.",
-          background: "bg5.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
-        key: "date",
+        key: "beranda",
         value: {
-          akad: "July 5, 2024",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "event",
+        value: {
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
+        },
+        visible: {
+          group: [],
         },
       },
       {
         key: "couple",
         value: {
-          groom: "James",
-          bride: "Anna",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
-          background: "#ffffff",
-          foreground: "#000000",
-          primary: "#ff69b4",
-          "primary-foreground": "#ffffff",
-          secondary: "#b0e0e6",
-          "secondary-foreground": "#000000",
-          accent: "#dda0dd",
-          "accent-foreground": "#ffffff",
-          card: "#fffaf0",
-          "card-foreground": "#000000",
+          primary: "#263234",
+          "primary-text": "#000",
+          secondary: "#9D9E9A",
+          "secondary-text": "#fff",
+          accent: "#ff4081",
+          "accent-text": "#fff",
         },
       },
     ],
@@ -361,40 +762,117 @@ const templateData = [
     category: "Basic",
     content: [
       {
-        key: "beranda",
+        key: "cover",
         value: {
-          desc: "Bring the tropical vibes to your celebration with this lively design.",
-          background: "bg6.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
-        key: "date",
+        key: "beranda",
         value: {
-          akad: "August 18, 2024",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "event",
+        value: {
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
+        },
+        visible: {
+          group: [],
         },
       },
       {
         key: "couple",
         value: {
-          groom: "Ethan",
-          bride: "Olivia",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
-          background: "#00ced1",
-          foreground: "#ff6347",
-          primary: "#4682b4",
-          "primary-foreground": "#ffffff",
-          secondary: "#ffa07a",
-          "secondary-foreground": "#000000",
-          accent: "#9acd32",
-          "accent-foreground": "#ffffff",
-          card: "#ffffff",
-          "card-foreground": "#000000",
+          primary: "#263234",
+          "primary-text": "#000",
+          secondary: "#9D9E9A",
+          "secondary-text": "#fff",
+          accent: "#ff4081",
+          "accent-text": "#fff",
         },
       },
     ],
@@ -409,40 +887,117 @@ const templateData = [
     category: "Premium",
     content: [
       {
-        key: "beranda",
+        key: "cover",
         value: {
-          desc: "Timeless and elegant, perfect for a traditional celebration.",
-          background: "bg7.jpg",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
         },
       },
       {
-        key: "date",
+        key: "beranda",
         value: {
-          akad: "September 25, 2024",
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "event",
+        value: {
+          akad: {
+            date: "Maret 10 2024",
+          },
+          resepsi: {
+            date: "Maret 10 2024",
+          },
+        },
+        visible: {
+          group: [],
         },
       },
       {
         key: "couple",
         value: {
-          groom: "Henry",
-          bride: "Sophia",
+          groom: {
+            name: "jeton",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+          bride: {
+            name: "zoe",
+            image: "/templates/minimalis/5.heic",
+            instagram: "https://instagram.com",
+          },
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "love story",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "galery",
+        value: {
+          heading: "Our Galery",
+          image1: "/templates/minimalis/5.heic",
+          image2: "/templates/minimalis/5.heic",
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "live streaming",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          link: "https://youtube.com",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
+        },
+      },
+      {
+        key: "thanks",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/5.heic"],
+        },
+        visible: {
+          group: [],
         },
       },
     ],
     color: [
       {
-        key: "color1",
+        key: "natural",
         value: {
-          background: "#f8f8ff",
-          foreground: "#000000",
-          primary: "#2e8b57",
-          "primary-foreground": "#ffffff",
-          secondary: "#6b8e23",
-          "secondary-foreground": "#ffffff",
-          accent: "#4682b4",
-          "accent-foreground": "#ffffff",
-          card: "#ffffff",
-          "card-foreground": "#000000",
+          primary: "#263234",
+          "primary-text": "#000",
+          secondary: "#9D9E9A",
+          "secondary-text": "#fff",
+          accent: "#ff4081",
+          "accent-text": "#fff",
         },
       },
     ],
