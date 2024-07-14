@@ -39,7 +39,7 @@ export default function LockScreen({ children, ...props }) {
     <>
       <div
         ref={(el) => (lockRef = el)}
-        className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
+        className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-40 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
         style={{
           backgroundImage: "url('/templates/minimalis/7.heic')",
         }}

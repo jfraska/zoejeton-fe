@@ -15,15 +15,19 @@ import {
 import ButtonCustomize from "@/components/container/button-customize";
 import CustomizeContext from "@/context/customize";
 import ConfirmSave from "@/components/container/confirm-save";
+import { useSession } from "next-auth/react";
+import PortalContext from "@/context/portal";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
   const [alertSave, setAlertSave] = useState(false);
+  const { invitation, setStateSwitcher } = useContext(PortalContext);
   const { dataContent, setIsEdit } = useContext(CustomizeContext);
 
   return (
     <>
-      <header className="sticky top-0 z-[99] flex h-14 bg-white items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+      <header className="sticky top-0 z-50 flex h-14 bg-white items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button
@@ -40,11 +44,11 @@ export default function Nav() {
             overlay="false"
             className="h-full bg-white text-neutral-950 overflow-y-auto scrollbar-default md:scrollbar-hide"
           >
-            <SheetHeader>
+            {/* <SheetHeader>
               <SheetTitle className="text-neutral-950 font-medium">
                 Customize Tool
               </SheetTitle>
-            </SheetHeader>
+            </SheetHeader> */}
             <h1 className="mt-5 mb-2">Fitur</h1>
             <ButtonCustomize type="color" />
 
@@ -57,23 +61,25 @@ export default function Nav() {
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">
-          {/* <Button
-          variant="outline"
-          onClick={() => setStateSwitcher(true)}
-          aria-label="Select a invitation"
-          className="w-32 md:w-[200px] text-sm justify-between"
-        >
-          <Avatar className="mr-2 h-5 w-5 hidden md:block">
-            <AvatarImage
-              src={`https://avatar.vercel.sh/${invitation?.id}.png`}
-              alt={invitation?.title}
-              className="grayscale"
-            />
-            <AvatarFallback>JZ</AvatarFallback>
-          </Avatar>
-          {invitation?.title}
-          <CaretSortIcon className="ml-auto h-4 w-4 shrink-0 opacity-50" />
-        </Button> */}
+          {session && (
+            <Button
+              variant="outline"
+              onClick={() => setStateSwitcher(true)}
+              aria-label="Select a invitation"
+              className="w-32 md:w-[200px] text-sm justify-between"
+            >
+              <Avatar className="mr-2 h-5 w-5 hidden md:block">
+                <AvatarImage
+                  src={`https://avatar.vercel.sh/${invitation?.id}.png`}
+                  alt={invitation?.title}
+                  className="grayscale"
+                />
+                <AvatarFallback>JZ</AvatarFallback>
+              </Avatar>
+              {invitation?.title}
+              <CaretSortIcon className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          )}
         </div>
         <button>
           <MoreHorizontal className="w-5 aspect-square bg-transparent text-[#0a0a0a]" />

@@ -5,10 +5,8 @@ import { Copy } from "lucide-react";
 import { Button } from "@/components/UI/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -63,13 +61,6 @@ export default function ButtonShare({ children, classname, link, ...props }) {
             <Copy className="h-4 w-4" />
           </Button>
         </div>
-        {/* <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );
