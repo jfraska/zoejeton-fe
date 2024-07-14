@@ -1,5 +1,5 @@
-import Nav from "@/components/layouts/nav";
-import Sidebar from "@/components/layouts/sidebar";
+import Nav from "@/components/layouts/dashboard/nav";
+import Sidebar from "@/components/layouts/dashboard/sidebar";
 import { Providers } from "./providers";
 
 export const metadata = {
