@@ -114,7 +114,7 @@ export default function TemplateList() {
               </div>
 
               <LoadingButton
-                onClick={() => router.push(`/${e.slug}`)}
+                onClick={() => router.push(`/katalog/${e.slug}`)}
                 className="flex justify-center items-center p-2 rounded-md hover:scale-110 transition-all ease-in-out"
               >
                 <Image
