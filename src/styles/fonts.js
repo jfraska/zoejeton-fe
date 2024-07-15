@@ -68,3 +68,8 @@ export const Catamaran = localFont({
   variable: "--font-Catamaran",
 });
 
+export const Selina = localFont({
+  src: "./assets/fonts/selina/selina.ttf",
+  variable: "--font-Selina",
+});
+

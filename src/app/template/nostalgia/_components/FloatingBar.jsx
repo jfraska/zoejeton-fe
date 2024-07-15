@@ -17,7 +17,7 @@ export default function FloatingBar() {
   return (
     <div className="fixed bottom-5 left-5 z-40 w-12 aspect-square border-none rounded-full bg-white backdrop-filter backdrop-blur-md bg-opacity-70 shadow-md">
       <audio ref={audioRef} loop>
-        <source src="/assets/templates/minimalis/1.mp3" type="audio/mpeg" />
+        <source src="/templates/nostalgia/1.mp3" type="audio/mpeg" />
       </audio>
       <button
         onClick={() => setIsPlaying((prev) => !prev)}
