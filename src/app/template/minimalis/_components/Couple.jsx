@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function Couple() {
   return (
-    <section className="relative h-fit py-10" id="couple">
+    <section className="relative w-full h-fit py-10" id="couple">
       <Editable
-        className="relative w-72 aspect-square bg-secondary animate"
+        className="relative w-72 aspect-square bg-secondary-bg"
         type="image"
         field="bride"
         subfield="image"

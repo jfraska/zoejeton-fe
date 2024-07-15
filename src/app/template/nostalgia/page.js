@@ -22,7 +22,7 @@ export default function Page() {
     >
       <Cover />
       <LockScreen />
-      <div className="w-full h-full overflow-y-auto md:max-w-md scroll">
+      <div className="relative w-full h-full overflow-y-auto md:max-w-md scroll">
         <Beranda />
         <Couple />
         <LoveStory />

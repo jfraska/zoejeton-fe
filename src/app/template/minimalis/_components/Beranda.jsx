@@ -10,7 +10,7 @@ export default function Beranda() {
   useEffect(() => {
     animate(
       ".animate",
-      { x: 100 },
+      { x: 0 },
       {
         delay: stagger(0.1),
         duration: 0.5,

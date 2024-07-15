@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import ButtonCustomize from "@/components/container/button-customize";
 import CustomizeContext from "@/context/customize";
+import { Button } from "@/components/UI/button";
+import { LayoutDashboard } from "lucide-react";
 
 export default function Sidebar() {
   const { data: session } = useSession();
@@ -25,6 +27,10 @@ export default function Sidebar() {
             />
             <span className="">ZoeJeton</span>
           </Link>
+          <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
+            <LayoutDashboard className="h-4 w-4" />
+            <span className="sr-only">Toggle notifications</span>
+          </Button>
         </div>
         <div className="flex-1 overflow-y-auto scrollbar-default md:scrollbar-hide">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">

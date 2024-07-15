@@ -125,19 +125,13 @@ export default function ConfirmSave({ open, onOpenChange }) {
     }
   };
 
-  // useEffect(() => {
-  //   if (open && session) {
-  //     handleSave();
-  //   }
-  // }, [open]);
-
   if (!session) {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="bg-white text-black">
+        <DialogContent>
           <DialogHeader>
             <DialogTitle className="font-medium">Save Customize</DialogTitle>
-            <DialogDescription className="text-[#737373]">
+            <DialogDescription>
               sign-in untuk menyimpan data secara permanen, atau klik continue
               untuk save draft
             </DialogDescription>
@@ -151,7 +145,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
             </Button>
             {!session && (
               <Button
-                className="bg-black hover:bg-white hover:text-black"
+                className="bg-black text-white hover:bg-white hover:text-black"
                 onClick={handleLogin}
               >
                 Sign in
