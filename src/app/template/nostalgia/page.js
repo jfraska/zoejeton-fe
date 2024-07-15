@@ -1,6 +1,5 @@
 import "./style.css";
 import { Montserrat } from "next/font/google";
-import { ScrollArea } from "@/components/UI/scroll-area";
 
 import LockScreen from "./_components/LockScreen";
 import Cover from "./_components/Cover";
@@ -9,7 +8,7 @@ import Couple from "./_components/Couple";
 import LoveStory from "./_components/LoveStory";
 import Event from "./_components/Event";
 import Rsvp from "./_components/Rsvp";
-import FloatingBar from "./_components/FloatingBar";
+import Music from "./_components/Music";
 import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
@@ -18,10 +17,12 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Page() {
   return (
-    <section className={`${montserrat.className} flex w-full h-screen`}>
+    <section
+      className={`${montserrat.className} absolute inset-0 flex justify-between w-full h-full bg-primary-bg`}
+    >
       <Cover />
       <LockScreen />
-      <ScrollArea className="w-full md:max-w-[430px] h-screen bg-primary">
+      <div className="w-full h-full overflow-y-auto md:max-w-md scroll">
         <Beranda />
         <Couple />
         <LoveStory />
@@ -30,8 +31,8 @@ export default function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-      </ScrollArea>
-      <FloatingBar />
+      </div>
+      <Music />
     </section>
   );
 }

@@ -2,9 +2,7 @@ import { GenteRomantica } from "@/styles/fonts";
 
 export default function Thanks() {
   return (
-    <section
-      className="relative w-full h-screen bg-cover flex flex-col justify-center items-center bg-[#333333] pb-10"
-    >
+    <section className="relative w-full h-full bg-cover flex flex-col justify-center items-center bg-[#333333] pb-10">
       <h1 className={`${GenteRomantica.className} text-5xl font-medium w-2/4`}>
         Thank You
       </h1>

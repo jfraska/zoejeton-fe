@@ -36,7 +36,7 @@ export default function LockScreen() {
   return (
     <div
       ref={(el) => (lockRef = el)}
-      className="fixed inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
+      className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
       style={{
         backgroundImage: "url('/templates/classic/lockscreen.png')",
       }}
@@ -49,9 +49,7 @@ export default function LockScreen() {
           height={20}
           alt="logo"
         />
-        <h1
-          className={`${Selina.className} text-7xl text-white`}
-        >
+        <h1 className={`${Selina.className} text-7xl text-white`}>
           Zoel & Cali
         </h1>
         <h2 className={`${Catamaran.className} inset-x-10 text-white`}>

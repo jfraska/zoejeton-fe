@@ -36,22 +36,20 @@ export default function LockScreen() {
   return (
     <div
       ref={(el) => (lockRef = el)}
-      className="fixed inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-top bg-opacity-20 bg-blend-multiply"
+      className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-top bg-opacity-20 bg-blend-multiply"
       style={{
         backgroundImage: "url('/templates/elegance/lockscreen.png')",
       }}
     >
       <div className="flex flex-col text-left text-left w-64">
-      <h1
-        className={`${Selina.className} text-7xl text-white`}
-      >
-        <span>
-          Zoel & <br /> Cali
-        </span>
-      </h1>
-      <h2 className={`${Catamaran.className} inset-x-10 text-white`}>
-        Minggu, 30 September 2026
-      </h2>
+        <h1 className={`${Selina.className} text-7xl text-white`}>
+          <span>
+            Zoel & <br /> Cali
+          </span>
+        </h1>
+        <h2 className={`${Catamaran.className} inset-x-10 text-white`}>
+          Minggu, 30 September 2026
+        </h2>
       </div>
       <div
         className={`${Catamaran.className} w-64 text-center inset-x-10 mt-20`}
