@@ -49,13 +49,14 @@ export default function Page() {
           className="text-black bg-white backdrop-filter backdrop-blur-sm bg-opacity-60"
           title={"Katalog & Price List"}
           desc={"lihat desain undangan "}
-          href={"#"}
+          href={"/"}
         />
         <Button
           className="text-black bg-white backdrop-filter backdrop-blur-md bg-opacity-60"
-          title={"Website Undangan"}
-          desc={"beranda zoejeton"}
-          href={"#"}
+          title={"Dashboard"}
+          desc={"kelola undanganmu dengan mudah"}
+          type="dashboard"
+          href={"/"}
         />
       </section>
 

@@ -26,7 +26,6 @@ export default function ButtonShare({ children, classname, link, ...props }) {
         toast.error("Failed to copy");
       }
     );
-    props.onOpenChange(false);
   };
 
   return (

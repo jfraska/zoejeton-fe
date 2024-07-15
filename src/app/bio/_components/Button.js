@@ -11,8 +11,8 @@ export default function Button({
   const url = () => {
     if (type === "dashboard") {
       return process.env.NEXT_PUBLIC_VERCEL_ENV
-        ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}${href}`
-        : `http://dashboard.localhost:3000${href}`;
+        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}${href}`
+        : `http://app.localhost:3000${href}`;
     } else {
       return href;
     }

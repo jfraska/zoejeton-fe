@@ -19,8 +19,6 @@ export async function generateMetadata({ params }) {
   }
   const { title, description, thumbnail } = response.data;
 
-  console.log(title);
-
   return {
     title,
     description,

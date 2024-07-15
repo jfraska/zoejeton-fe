@@ -36,7 +36,7 @@ export async function middleware(req) {
       return NextResponse.rewrite(new URL(`/bio`, req.nextUrl));
     }
 
-    return NextResponse.rewrite(new URL(`/home${path}`, req.nextUrl));
+    return NextResponse.rewrite(new URL(`/home/katalog${path}`, req.nextUrl));
   }
 
   // rewrites for template pages
