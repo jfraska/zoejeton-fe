@@ -82,9 +82,7 @@ export default function Menu({ state, setState }) {
                 key={index}
                 onClick={() => {
                   setState(false);
-                  if (pathname === "/") {
-                    scroll.scrollTo(nav.href);
-                  }
+                  // scroll.scrollTo(nav.href);
                 }}
               >
                 {nav.title}

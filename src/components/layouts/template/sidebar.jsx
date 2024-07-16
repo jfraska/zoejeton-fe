@@ -28,8 +28,16 @@ export default function Sidebar() {
             <span className="">ZoeJeton</span>
           </Link>
           <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-            <LayoutDashboard className="h-4 w-4" />
-            <span className="sr-only">Toggle notifications</span>
+            <Link
+              href={
+                process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                  ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                  : `http://app.localhost:3000`
+              }
+            >
+              <LayoutDashboard className="h-4 w-4" />
+              <span className="sr-only">Toggle Dashboard</span>
+            </Link>
           </Button>
         </div>
         <div className="flex-1 overflow-y-auto scrollbar-default md:scrollbar-hide">

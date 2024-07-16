@@ -77,7 +77,7 @@ export default function TemplateList() {
               backgroundImage: `url(/templates/${e.slug}/${e.thumbnail})`,
             }}
           >
-            <div className="absolute top-0 left-0 md:text-lg text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-blend-multiply bg-opacity-90">
+            <div className="absolute top-0 left-0 md:text-lg text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-opacity-70">
               {e.category}
             </div>
 
@@ -97,12 +97,10 @@ export default function TemplateList() {
               <h1 className="md:text-base text-sm">Demo Invitation</h1>
             </a>
 
-            <div className="absolute bottom-0 inset-x-0 px-2 md:py-1 py-2 bg-black text-white flex justify-between items-center w-full bg-blend-multiply bg-opacity-90">
+            <div className="absolute bottom-0 inset-x-0 px-2 md:py-1 py-2 bg-black text-white flex justify-between items-center w-full bg-blend-multiply bg-opacity-30">
               <div className="flex flex-col justify-start items-start">
-                <h1 className="font-medium md:text-lg text-sm w-fit leading-tight rounded">
-                  {e.title}
-                </h1>
-                <h1 className="md:text-base text-xs font-normal w-fit leading-tight rounded">
+                <h1 className="font-medium md:text-lg text-sm">{e.title}</h1>
+                <h1 className="md:text-base text-xs">
                   <CurrencyFormat
                     value={e.price}
                     displayType={"text"}
@@ -122,7 +120,7 @@ export default function TemplateList() {
                   width="20"
                   height="20"
                   alt="cart"
-                  className="md:w-7 w-5 aspect-square"
+                  className="md:w-6 w-5 aspect-square"
                 />
               </LoadingButton>
             </div>

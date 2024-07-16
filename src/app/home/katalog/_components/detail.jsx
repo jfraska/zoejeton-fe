@@ -1,19 +1,17 @@
 "use client";
 
 import "./styles.scss";
-import { useState, useEffect, useMemo, useContext } from "react";
+import { useState, useMemo, useContext } from "react";
 import CartContext from "@/context/cart";
 import { addOns, extraFitur } from "@/constants";
 import CurrencyFormat from "react-currency-format";
 import { WaCheckout } from "@/libs/contact";
 import LoadingButton from "@/components/UI/loading-button";
 
-export default function Detail({ params }) {
+export default function Detail({ data }) {
   const [selectAll, setSelectAll] = useState(false);
   const { addItemsToCart } = useContext(CartContext);
   const [checkboxes, setCheckboxes] = useState([...extraFitur, ...addOns]);
-
-  const [data, setData] = useState({});
 
   const handleSelectAll = (isChecked) => {
     setSelectAll(isChecked);
@@ -100,16 +98,6 @@ export default function Detail({ params }) {
     WaCheckout(temp);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`/api/template/${params.slug}`);
-      const result = await response.json();
-      setData(result.data);
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <div className="p-[3%] my-10 flex flex-col md:flex-row gap-10 justify-center">
       <div
@@ -118,7 +106,7 @@ export default function Detail({ params }) {
           backgroundImage: `url(/templates/${data.slug}/${data.thumbnail})`,
         }}
       >
-        <div className="absolute top-0 left-0 clip-polygon pr-8 pl-2  py-1 bg-black text-white shadow">
+        <div className="absolute top-0 left-0 clip-polygon pr-8 pl-2  py-1 bg-black text-white bg-opacity-70">
           {data.category}
         </div>
 

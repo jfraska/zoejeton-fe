@@ -21,6 +21,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
@@ -163,10 +164,49 @@ export default function Nav() {
           />
         </div>
       </form> */}
-      <Button variant="outline" size="sm" className="ml-auto gap-1.5 text-sm">
-        <Share className="w-5 aspect-square" />
-        <h1 className="hidden md:block">Publish</h1>
-      </Button>
+
+      {/* {invitation?.templateId ? ( */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            className="ml-auto gap-1.5 text-sm"
+          >
+            <Share className="w-5 aspect-square" />
+            <h1 className="hidden md:block">Publish</h1>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" side="bottom">
+          <DropdownMenuLabel>Preview</DropdownMenuLabel>
+          <DropdownMenuItem>
+            {/* <Link
+              href={
+                process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                  ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${invitation.slug}`
+                  : `http://template.localhost:3000/${invitation.slug}`
+              }
+              className="h-6 text-sm bg-background border border-input px-3 rounded-md"
+            >
+              {process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                ? `template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${invitation.slug}`
+                : `template.localhost:3000/${invitation.slug}`}
+            </Link> */}
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <button className="bg-foreground text-background w-full p-2 rounded-md">
+              Publish
+            </button>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      {/* ) : (
+        <Button variant="outline" size="sm" className="ml-auto gap-1.5 text-sm">
+          <Share className="w-5 aspect-square" />
+          <h1 className="hidden md:block">Publish</h1>
+        </Button>
+      )} */}
     </header>
   );
 }
