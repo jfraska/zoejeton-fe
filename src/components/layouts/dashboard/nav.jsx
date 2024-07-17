@@ -26,6 +26,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/sheet";
+import { DescriptionOutlined } from "@mui/icons-material";
+import { Separator } from "@/components/UI/separator";
 
 export default function Nav() {
   const { data: session } = useSession();
@@ -101,6 +103,16 @@ export default function Nav() {
             ))}
           </nav>
           <div className="mt-auto">
+            <Link
+              href="/invoice"
+              className={`${
+                segments[0] === "invoice" ? "bg-muted text" : null
+              } flex items-center gap-3 rounded-lg py-2 text-muted-foreground transition-all hover:text-primary`}
+            >
+              <DescriptionOutlined width={18} />
+              <span className="text-sm font-medium">Invoice</span>
+            </Link>
+            <Separator className="my-2" />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="flex w-full items-center gap-4 rounded-lg py-2 text-muted-foreground transition-all hover:text-primary">
@@ -195,9 +207,7 @@ export default function Nav() {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <button className="bg-foreground text-background w-full p-2 rounded-md">
-              Publish
-            </button>
+            <Button className="w-full">Publish</Button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

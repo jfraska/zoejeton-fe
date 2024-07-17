@@ -18,9 +18,9 @@ export async function middleware(req) {
   // rewrites for app pages
   if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     const session = await auth();
-    if (!session && path !== "/login") {
+    if (!session && path !== "/login" && path !== "/signup") {
       return NextResponse.redirect(new URL("/login", req.nextUrl));
-    } else if (session && path == "/login") {
+    } else if (session && (path == "/login" || path == "/signup")) {
       return NextResponse.redirect(new URL("/", req.nextUrl));
     }
     return NextResponse.rewrite(new URL(`/app${path}`, req.nextUrl));

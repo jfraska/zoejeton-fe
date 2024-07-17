@@ -25,5 +25,5 @@ export default async function Page({ params }) {
     notFound();
   }
 
-  return <Detail data={template} />;
+  return <Detail data={template.data} />;
 }

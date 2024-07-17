@@ -29,7 +29,7 @@ export default function LiveStream() {
           <a
             href="/"
             target="_blank"
-            className="border border-foreground py-2 px-10"
+            className="border border-primary-text py-2 px-10"
           >
             Join Now
           </a>

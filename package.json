@@ -44,6 +44,7 @@
     "@studio-freight/react-lenis": "^0.0.47",
     "@tanstack/react-table": "^8.17.3",
     "@vercel/analytics": "^1.2.2",
+    "aos": "^3.0.0-beta.6",
     "autoprefixer": "10.4.15",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",

@@ -1,4 +1,5 @@
 import { CustomizeProvider } from "@/context/customize";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const domain = decodeURIComponent(params.domain);
@@ -6,18 +7,20 @@ export async function generateMetadata({ params }) {
     ? domain.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
     : null;
 
-  const response = await fetch(
+  const res = await fetch(
     `${
       process.env.NEXT_PUBLIC_ROOT_DOMAIN
         ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
         : "http://localhost:3000"
     }/api/template/${subdomain}`
-  ).then((res) => res.json());
+  );
 
-  if (!response) {
-    return null;
+  if (!res.ok) {
+    return notFound();
   }
-  const { title, description, thumbnail } = response.data;
+
+  const result = await res.json();
+  const { title, description, thumbnail } = result.data;
 
   return {
     title,

@@ -14,6 +14,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
+import { Separator } from "@/components/UI/separator";
+import { DescriptionOutlined } from "@mui/icons-material";
 
 export default function Sidebar() {
   const { data: session } = useSession();
@@ -84,6 +86,16 @@ export default function Sidebar() {
           </nav>
         </div>
         <div className="mt-auto py-4 px-2 lg:px-4">
+          <Link
+            href="/invoice"
+            className={`${
+              segments[0] === "invoice" ? "bg-muted text" : null
+            } flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
+          >
+            <DescriptionOutlined width={18} />
+            <span className="text-sm font-medium">Invoice</span>
+          </Link>
+          <Separator className="my-2" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">

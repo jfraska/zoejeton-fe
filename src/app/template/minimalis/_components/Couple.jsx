@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Couple() {
   return (
-    <section className="relative w-full h-fit py-10" id="couple">
+    <section className="relative w-full h-fit py-10 bg-primary-bg" id="couple">
       <Editable
         className="relative w-72 aspect-square bg-secondary-bg"
         type="image"
@@ -28,7 +28,7 @@ export default function Couple() {
             section="couple"
           />
         </h1>
-        <p className="text-sm">
+        <p data-aos="fade-right" className="text-sm">
           Putra dari Bapak Demak Parsaoran (Alm) & Ibu Ratnawati Hutauruk
         </p>
       </div>
@@ -39,7 +39,7 @@ export default function Couple() {
       </div>
       <div className="flex justify-around w-full h-64 px-10">
         <Editable
-          className="relative w-full h-full bg-secondary"
+          className="relative w-full h-full bg-secondary-bg"
           type="image"
           field="groom"
           subfield="image"
@@ -54,8 +54,8 @@ export default function Couple() {
           />
         </Editable>
         <div className="w-full h-full flex flex-col justify-around">
-          <div className="w-full h-full bg-secondary"></div>
-          <div className="w-full h-full bg-secondary"></div>
+          <div className="w-full h-full bg-secondary-bg"></div>
+          <div className="w-full h-full bg-secondary-bg"></div>
         </div>
       </div>
       <div className="mt-7 flex flex-col items-center gap-2 px-10 text-center">
@@ -69,7 +69,7 @@ export default function Couple() {
         </h1>
         <p className="text-sm">Putri dari Bpk M Syarik & Ibu Isharni</p>
       </div>
-      <div className="mt-10 flex justify-center w-full">
+      <div data-aos="fade-right" className="mt-10 flex justify-center w-full">
         <Editable
           type="link"
           field="groom"
@@ -81,7 +81,7 @@ export default function Couple() {
             target="_blank"
             className="flex gap-2 items-center justify-center"
           >
-            <span className="w-5 text-foreground aspect-square icon-[ic--baseline-arrow-circle-right]" />
+            <span className="w-5 text-primary-text aspect-square icon-[ic--baseline-arrow-circle-right]" />
             <h1>Instagram</h1>
           </a>
         </Editable>

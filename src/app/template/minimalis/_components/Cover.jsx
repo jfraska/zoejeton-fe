@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Editable from "@/components/container/editable";
 import { Runalto } from "@/styles/fonts";
+import { Cover as CoverWrapper } from "@/components/container/wrapper-template";
 
 export default function Cover() {
   return (
-    <div className="relative w-full h-full hidden md:block">
+    <CoverWrapper className="hidden md:block">
       <Image
         fill
         src="/templates/minimalis/5.heic"
@@ -18,6 +19,6 @@ export default function Cover() {
           <Editable type="text" field="heading" section="cover" />
         </h1>
       </div>
-    </div>
+    </CoverWrapper>
   );
 }

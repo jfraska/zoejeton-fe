@@ -21,23 +21,24 @@ export default function Publish({ params }) {
   useEffect(() => {
     (async () => {
       try {
-        let response = await fetch(`/api/template/${subdomain}`).then((res) =>
-          res.json()
-        );
-        // if (!response.ok) {
-        //   notFound();
-        // }
-        initData(response.data);
+        let res = await fetch(`/api/template/${subdomain}`);
+        if (!res.ok) {
+          throw new Error(res);
+        }
+
+        let result = await res.json();
+        initData(result.data);
+
         if (searchParams.has("guest")) {
-          response = await fetch(
+          res = await fetch(
             `/api/guest/${searchParams.get(
               "guest"
             )}?invitation=${pathname.slice(1)}`
           ).then((res) => res.json());
-          if (!response.ok) {
+          if (!res.ok) {
             return;
           }
-          setDataGuest(response.data);
+          setDataGuest(res.data);
         }
       } catch (error) {
         console.log("Error fetching data:", error);

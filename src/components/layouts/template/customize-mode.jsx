@@ -8,7 +8,7 @@ export default function CustomizeMode({ children }) {
       <div className="flex flex-col">
         <Nav />
         <main className="flex justify-center items-center flex-1 gap-4 p-4 bg-[#f3f3f3]">
-          <div className="relative aspect-9/16 h-full md:aspect-video md:h-5/6 overflow-hidden rounded-lg border border-[#737373] bg-[#737373]">
+          <div className="relative aspect-9/16 h-full md:aspect-video md:h-5/6 overflow-hidden rounded-lg border border-[#737373] bg-[#b4b4b4]">
             {children}
           </div>
         </main>

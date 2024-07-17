@@ -70,7 +70,7 @@ export default function Template({ children }) {
             <CustomizeMode>{children}</CustomizeMode>
           ) : (
             <>
-              <main className="relative w-full h-screen">{children}</main>
+              <main>{children}</main>
               <ButtonAction />
             </>
           )}
@@ -91,9 +91,11 @@ export default function Template({ children }) {
                 "--accent-text": dataColor?.value["accent-text"],
               },
               main: {
-                backgroundColor: "var(--primary-bg)",
                 color: "var(--primary-text)",
               },
+              body: {
+                backgroundColor: "var(--primary-bg)",
+              }
             }}
           />
         </>

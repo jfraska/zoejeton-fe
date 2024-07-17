@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LoginButton from "../_components/login-button";
 import { Suspense } from "react";
 import { Button } from "@/components/UI/button";
@@ -7,19 +6,23 @@ import { Label } from "@/components/UI/label";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Login | ZoeJeton",
+  title: "Sign Up | ZoeJeton",
 };
 
 export default function Page() {
   return (
     <div className="mx-auto grid w-[350px] gap-6">
       <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-bold">Login</h1>
+        <h1 className="text-3xl font-bold">Sign up</h1>
         <p className="text-balance text-muted-foreground">
           Enter your email below to login to your account
         </p>
       </div>
       <div className="grid gap-4">
+        <div className="grid gap-2">
+          <Label htmlFor="email">Name</Label>
+          <Input id="name" type="text" placeholder="zoe" required />
+        </div>
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
           <Input id="email" type="email" placeholder="m@example.com" required />
@@ -27,16 +30,16 @@ export default function Page() {
         <div className="grid gap-2">
           <div className="flex items-center">
             <Label htmlFor="password">Password</Label>
-            {/* <Link
-                  href="/forgot-password"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link> */}
           </div>
           <Input id="password" type="password" required />
         </div>
-        <Button type="submit">Login</Button>
+        <div className="grid gap-2">
+          <div className="flex items-center">
+            <Label htmlFor="re-password">Re-Password</Label>
+          </div>
+          <Input id="re-password" type="password" required />
+        </div>
+        <Button type="submit">Signup</Button>
         <Suspense
           fallback={
             <div className="h-10 w-full rounded-md border border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800" />
@@ -95,9 +98,9 @@ export default function Page() {
         </Suspense>
       </div>
       <div className="mt-4 text-center text-sm">
-        Don&apos;t have an account?
-        <Link href="/signup" className="underline">
-          Sign up
+        You have an account?
+        <Link href="/login" className="underline">
+          Login
         </Link>
       </div>
     </div>

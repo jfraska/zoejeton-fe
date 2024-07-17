@@ -13,6 +13,7 @@ import Cart from "@/components/container/cart";
 import Menu from "@/components/container/menu";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState({ state: true, header: false });
@@ -79,14 +80,14 @@ export default function Navbar() {
           </button>
         )}
 
-        <TransitionLink
+        <Link
           href="/"
           className={`${Runalto.className} font-semibold ${
             menuState && "text-black"
           } transition-all ease-in-out text-lg leading-tight mt-1`}
         >
           ZoeJeton
-        </TransitionLink>
+        </Link>
 
         <button
           onClick={() => {

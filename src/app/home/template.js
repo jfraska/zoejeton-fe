@@ -22,17 +22,16 @@ export default function Template({ children }) {
     };
   });
 
-  useEffect(() => {
-    animatePageIn();
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   animatePageIn();
+  // }, []);
 
   return (
     <>
-      <div
+      {/* <div
         id="transition"
         className="fixed min-h-screen bg-white inset-0 w-full z-[90]"
-      />
+      /> */}
 
       <Navbar />
 

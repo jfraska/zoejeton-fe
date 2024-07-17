@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
         className={`${cn(
           MonumentExtended.variable,
           NeueMontreal.variable
-        )} font-default bg-primary scroll`}
+        )} font-default bg-background scroll`}
       >
         <Providers>
           {children}

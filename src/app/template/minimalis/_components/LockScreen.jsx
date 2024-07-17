@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import gsap from "gsap";
 import CustomizeContext from "@/context/customize";
+import { Template } from "@/components/container/wrapper-template";
 
 export default function LockScreen({ children, ...props }) {
   let lockRef = useRef(null);
@@ -39,7 +40,7 @@ export default function LockScreen({ children, ...props }) {
     <>
       <div
         ref={(el) => (lockRef = el)}
-        className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-40 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
+        className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-40 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply "
         style={{
           backgroundImage: "url('/templates/minimalis/7.heic')",
         }}
@@ -85,7 +86,7 @@ export default function LockScreen({ children, ...props }) {
         </div>
       </div>
 
-      {state && <div {...props}>{children}</div>}
+      {state && <Template {...props}>{children}</Template>}
     </>
   );
 }

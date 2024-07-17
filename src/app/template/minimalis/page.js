@@ -1,6 +1,7 @@
 import "./style.css";
 import { Montserrat } from "next/font/google";
 
+import { Main } from "@/components/container/wrapper-template";
 import LockScreen from "./_components/LockScreen";
 import Cover from "./_components/Cover";
 import Beranda from "./_components/Beranda";
@@ -17,12 +18,10 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Page() {
   return (
-    <LockScreen
-      className={`${montserrat.className} absolute inset-0 flex justify-between w-full h-full bg-primary-bg`}
-    >
+    <Main className={`${montserrat.className}`}>
       <Cover />
       <Music />
-      <div className="w-full h-full overflow-y-auto md:max-w-md scroll">
+      <LockScreen className="w-full h-full">
         <Beranda />
         <Quotes />
         <Couple />
@@ -31,7 +30,7 @@ export default function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-      </div>
-    </LockScreen>
+      </LockScreen>
+    </Main>
   );
 }

@@ -29,14 +29,26 @@ module.exports = {
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
+
+          //template
+          bg: "var(--primary-bg)",
+          text: "var(--primary-text)",
         },
         secondary: {
           DEFAULT: "var(--secondary)",
           foreground: "var(--secondary-foreground)",
+
+          // template
+          bg: "var(--secondary-bg)",
+          text: "var(--secondary-text)",
         },
         accent: {
           DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
+
+          //template
+          bg: "var(--accent-bg)",
+          text: "var(--accent-text)",
         },
         card: {
           DEFAULT: "var(--card)",
@@ -56,20 +68,6 @@ module.exports = {
         popover: {
           DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",
-        },
-
-        //template
-        primary: {
-          bg: "var(--primary-bg)",
-          text: "var(--primary-text)",
-        },
-        secondary: {
-          bg: "var(--secondary-bg)",
-          text: "var(--secondary-text)",
-        },
-        accent: {
-          bg: "var(--accent-bg)",
-          text: "var(--accent-text)",
         },
       },
       // borderRadius: {

@@ -145,7 +145,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
             </Button>
             {!session && (
               <Button
-                className="bg-black text-white hover:bg-white hover:text-black"
+                className="bg-black hover:bg-white hover:text-black"
                 onClick={handleLogin}
               >
                 Sign in
