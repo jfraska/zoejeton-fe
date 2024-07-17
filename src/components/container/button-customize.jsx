@@ -11,7 +11,7 @@ import CustomizeContext from "@/context/customize";
 import ColorPalette from "@/components/container/color-palette";
 
 export default function ButtonCustomize({ data, type = "page" }) {
-  const [state, setState] = useState(true);
+  const [state, setState] = useState(!data?.visible?.disable);
   const { dataContent, setDataContent, dataColor, setDataColor } =
     useContext(CustomizeContext);
 
@@ -26,26 +26,17 @@ export default function ButtonCustomize({ data, type = "page" }) {
     setDataContent(updatedData);
   };
 
-  useEffect(() => {
-    if (type !== "page") {
-      return;
-    }
-    const element = document.getElementById(data.key);
-    const image = data.value.background;
-    if (image && typeof image[0] !== "string") {
-      element.style.backgroundImage = `url(${image[0].getFileEncodeDataURL()})`;
-    }
-  }, [data]);
+  const handleChangeVisbility = (e) => {
+    const updatedData = dataContent?.map((item) => {
+      if (item.key === data.key) {
+        return { ...item, visible: { ...item.visible, disable: state } };
+      }
+      return item;
+    });
 
-  useEffect(() => {
-    if (type !== "page") {
-      return;
-    }
-    const element = document.getElementById(data.key);
-    if (element) {
-      element.style.display = state ? "block" : "none";
-    }
-  }, [state]);
+    setDataContent(updatedData);
+    setState(!state);
+  };
 
   return (
     <Collapsible className="px-2 py-2 bg-neutral-300 rounded-xl">
@@ -66,12 +57,11 @@ export default function ButtonCustomize({ data, type = "page" }) {
           </a>
         </CollapsibleTrigger>
 
-        {type === "page" && (
+        {type === "page" && data.visible && (
           <Switch
             className="data-[state=unchecked]:bg-[#e5e5e5]"
-            defaultChecked={true}
             checked={state}
-            onCheckedChange={() => setState(!state)}
+            onCheckedChange={handleChangeVisbility}
           />
         )}
       </div>

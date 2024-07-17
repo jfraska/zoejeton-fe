@@ -1,6 +1,7 @@
 "use client";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import Image from "next/image";
 import CustomizeContext from "@/context/customize";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -37,6 +38,43 @@ export function Template({ children, className }) {
     >
       {children}
     </div>
+  );
+}
+
+export function Section({ children, className, id, style }) {
+  const { dataContent } = useContext(CustomizeContext);
+  const [background, setBackground] = useState(null);
+
+  useEffect(() => {
+    const section = dataContent.find((item) => item.key === id);
+
+    const element = document.getElementById(id);
+    if (element) {
+      element.style.display = section.visible.disable ? "none" : "block";
+    }
+
+    if (section.value.background) {
+      setBackground(section.value.background);
+    }
+  }, [dataContent]);
+
+  return (
+    <section id={id} className={`${className}`} style={style}>
+      {background && (
+        <Image
+          fill
+          src={
+            background[0]?.getFileEncodeDataURL
+              ? background[0].getFileEncodeDataURL()
+              : background[0]
+          }
+          alt="background"
+          className="object-cover brightness-90 -z-0"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      )}
+      {children}
+    </section>
   );
 }
 

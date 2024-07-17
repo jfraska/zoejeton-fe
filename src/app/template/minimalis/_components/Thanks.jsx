@@ -1,13 +1,11 @@
 import Editable from "@/components/container/editable";
+import { Section } from "@/components/container/wrapper-template";
 import { Runalto } from "@/styles/fonts";
 
 export default function Thanks() {
   return (
-    <section
-      className="relative w-full h-full bg-cover flex flex-col justify-center items-center bg-black bg-opacity-20 bg-blend-multiply pb-10"
-      style={{
-        backgroundImage: "url('/templates/minimalis/8.heic')",
-      }}
+    <Section
+      className="relative w-full h-full flex flex-col justify-center items-center pb-10"
       id="thanks"
     >
       <h1 className={`${Runalto.className} text-5xl font-medium w-2/4`}>
@@ -20,6 +18,6 @@ export default function Thanks() {
       <div className="absolute bottom-5 inset-x-0 w-full text-center">
         <h2 className="text-xs">© All right reserved by ZoeJeton</h2>
       </div>
-    </section>
+    </Section>
   );
 }

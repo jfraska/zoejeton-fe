@@ -15,11 +15,7 @@ export default function EditableLink({ children, name, ...props }) {
           <Label htmlFor="link" className="capitalize">
             {name}
           </Label>
-          <Input
-            id="link"
-            className="bg-white border-[#e5e5e5] ring-offset-white placeholder:text-[#737373] focus-visible:ring-[#0a0a0a]"
-            {...props}
-          />
+          <Input id="link" className="focus-visible:ring-0" {...props} />
         </div>
       </PopoverContent>
     </Popover>

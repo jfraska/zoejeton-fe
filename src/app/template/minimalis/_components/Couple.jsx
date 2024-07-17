@@ -1,10 +1,11 @@
 import Editable from "@/components/container/editable";
+import { Section } from "@/components/container/wrapper-template";
 import { Runalto } from "@/styles/fonts";
 import Image from "next/image";
 
 export default function Couple() {
   return (
-    <section className="relative w-full h-fit py-10 bg-primary-bg" id="couple">
+    <Section className="relative w-full h-fit py-10 bg-primary-bg" id="couple">
       <Editable
         className="relative w-72 aspect-square bg-secondary-bg"
         type="image"
@@ -86,6 +87,6 @@ export default function Couple() {
           </a>
         </Editable>
       </div>
-    </section>
+    </Section>
   );
 }

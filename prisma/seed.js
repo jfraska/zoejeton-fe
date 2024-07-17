@@ -29,6 +29,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -43,6 +44,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -61,6 +63,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -73,6 +76,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -84,6 +88,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -97,6 +102,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -106,9 +112,10 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["/templates/minimalis/8.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -118,7 +125,7 @@ const templateData = [
         key: "natural",
         value: {
           primary: "#263234",
-          "primary-text": "#000",
+          "primary-text": "#fff",
           secondary: "#9D9E9A",
           "secondary-text": "#fff",
           accent: "#ff4081",
@@ -154,6 +161,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -168,6 +176,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -186,6 +195,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -198,6 +208,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -209,6 +220,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -222,6 +234,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -234,6 +247,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -243,7 +257,7 @@ const templateData = [
         key: "natural",
         value: {
           primary: "#263234",
-          "primary-text": "#000",
+          "primary-text": "#fff",
           secondary: "#9D9E9A",
           "secondary-text": "#fff",
           accent: "#ff4081",
@@ -279,6 +293,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -293,6 +308,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -311,6 +327,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -323,6 +340,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -334,6 +352,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -347,6 +366,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -359,6 +379,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -404,6 +425,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -418,6 +440,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -436,6 +459,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -448,6 +472,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -459,6 +484,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -472,6 +498,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -484,6 +511,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -529,6 +557,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -543,6 +572,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -561,6 +591,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -573,6 +604,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -584,6 +616,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -597,6 +630,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -609,6 +643,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -654,6 +689,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -668,6 +704,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -686,6 +723,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -698,6 +736,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -709,6 +748,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -722,6 +762,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -734,6 +775,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -743,7 +785,7 @@ const templateData = [
         key: "natural",
         value: {
           primary: "#263234",
-          "primary-text": "#000",
+          "primary-text": "#fff",
           secondary: "#9D9E9A",
           "secondary-text": "#fff",
           accent: "#ff4081",
@@ -779,6 +821,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -793,6 +836,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -811,6 +855,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -823,6 +868,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -834,6 +880,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -847,6 +894,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -859,6 +907,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -904,6 +953,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -918,6 +968,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -936,6 +987,7 @@ const templateData = [
           },
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -948,6 +1000,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -959,6 +1012,7 @@ const templateData = [
           image2: "/templates/minimalis/5.heic",
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -972,6 +1026,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -984,6 +1039,7 @@ const templateData = [
           background: ["/templates/minimalis/5.heic"],
         },
         visible: {
+          disable: false,
           group: [],
         },
       },
@@ -993,7 +1049,7 @@ const templateData = [
         key: "natural",
         value: {
           primary: "#263234",
-          "primary-text": "#000",
+          "primary-text": "#fff",
           secondary: "#9D9E9A",
           "secondary-text": "#fff",
           accent: "#ff4081",
