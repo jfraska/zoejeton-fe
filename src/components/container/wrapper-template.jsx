@@ -104,7 +104,7 @@ export function Cover({ children, className }) {
         isEdit
           ? "relative w-full h-full "
           : "fixed right-[28rem] inset-y-0 left-0 "
-      }`}
+      } hidden md:block`}
     >
       {background && (
         <Image

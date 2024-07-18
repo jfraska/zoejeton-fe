@@ -17,10 +17,13 @@ export default function ColorPicker({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button
-          className="w-5 aspect-square rounded border"
-          style={{ backgroundColor: color }}
-        />
+        <button className="flex gap-2 p-2 bg-gray-100 rounded-lg">
+          <div
+            className="w-5 aspect-square rounded border border-gray-300 shadow-sm"
+            style={{ backgroundColor: color }}
+          />
+          <h1>{name}</h1>
+        </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" sideOffset={2} className="p-0">
         <SketchPicker

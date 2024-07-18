@@ -44,7 +44,7 @@ export default function ColorPalette({ colors, setColor }) {
   }, []);
 
   return (
-    <div className="bg-white p-2 flex flex-wrap gap-2 rounded">
+    <div className="p-2 flex flex-col gap-2 rounded">
       {Object.keys(colors.value).map((key) => (
         <ColorPicker
           key={key}
