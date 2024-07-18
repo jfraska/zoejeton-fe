@@ -1,8 +1,7 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import PortalContext from "@/context/portal";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,68 +34,68 @@ const formSchema = z.object({
   addon: z.array().optional(),
 });
 
-export default function CreateInvitation() {
+export default function CreateInvitation({
+  open,
+  setOpen,
+  invitation,
+  updateInvitation,
+}) {
   const searchParams = useSearchParams();
   const [template, setTemplate] = useState(null);
-  const router = useRouter();
-  const {
-    stateCreateInvitation,
-    setStateCreateInvitation,
-    invitation,
-    updateInvitation,
-  } = useContext(PortalContext);
 
   useEffect(() => {
     (async () => {
       try {
-        if (searchParams.get("template")) {
+        if (searchParams.has("template")) {
           const response = await fetch(
             `/api/template/${searchParams.get("template")}`
           ).then((res) => res.json());
 
           setTemplate(response.data);
-          setStateCreateInvitation(true);
+          setOpen(true);
         }
       } catch (error) {
         console.log("Error fetching data:", error);
       }
     })();
-
-    if (searchParams.get("back") && invitation) {
-      router.back();
-    }
   }, [invitation]);
 
   const onSubmit = async (e) => {
     try {
-      setTemplate(
-        template && {
-          ...template,
-          title: e.title,
-          slug: e.subdomain,
-          parent: template.slug,
-        }
-      );
+      let data = {
+        title: e.title,
+        fitur: e.fitur,
+        addon: e.addon,
+      };
 
-      const response = await fetch("/api/invitation", {
+      if (template) {
+        data = {
+          ...data,
+          template: {
+            ...template,
+            title: e.title,
+            slug: e.subdomain,
+            parent: template.slug,
+          },
+        };
+      }
+
+      const res = await fetch("/api/invitation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          title: e.title,
-          template,
-          fitur: e.fitur,
-          addon: e.addon,
-        }),
-      }).then((res) => res.json());
+        body: JSON.stringify(data),
+      });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      if (!res.ok) {
+        throw new Error(res);
       }
 
-      updateInvitation(response.data);
-      setStateCreateInvitation(false);
+      const result = await res.json();
+
+      updateInvitation(result.data);
+      setOpen(false);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
@@ -114,10 +113,7 @@ export default function CreateInvitation() {
   });
 
   return (
-    <AlertDialog
-      open={stateCreateInvitation}
-      onOpenChange={setStateCreateInvitation}
-    >
+    <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Create Invitaion</AlertDialogTitle>

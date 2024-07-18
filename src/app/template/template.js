@@ -95,7 +95,7 @@ export default function Template({ children }) {
               },
               body: {
                 backgroundColor: "var(--primary-bg)",
-              }
+              },
             }}
           />
         </>

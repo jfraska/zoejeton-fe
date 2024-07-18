@@ -5,8 +5,7 @@ import { useSelectedLayoutSegments } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Bell, Users, Home, SendHorizontal, ChevronRight } from "lucide-react";
-import { Button } from "@/components/UI/button";
+import { Users, Home, SendHorizontal, ChevronRight } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +15,8 @@ import {
 } from "@/components/UI/dropdown-menu";
 import { Separator } from "@/components/UI/separator";
 import { DescriptionOutlined } from "@mui/icons-material";
+import { Badge } from "@/components/UI/badge";
+import Notification from "@/components/container/notification";
 
 export default function Sidebar() {
   const { data: session } = useSession();
@@ -54,7 +55,14 @@ export default function Sidebar() {
     <aside className="hidden inset-y fixed left-0 z-20 md:w-[220px] lg:w-[280px] h-full bg-background border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link href="/" className="flex items-center gap-4 font-medium">
+          <Link
+            href={
+              process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                ? `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                : `localhost:3000`
+            }
+            className="flex items-center gap-4 font-medium"
+          >
             <Image
               src="/assets/icons/zoejeton.svg"
               width={200}
@@ -64,10 +72,7 @@ export default function Sidebar() {
             />
             <span className="">ZoeJeton</span>
           </Link>
-          <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-            <Bell className="h-4 w-4" />
-            <span className="sr-only">Toggle notifications</span>
-          </Button>
+          <Notification />
         </div>
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
@@ -94,6 +99,9 @@ export default function Sidebar() {
           >
             <DescriptionOutlined width={18} />
             <span className="text-sm font-medium">Invoice</span>
+            <Badge className="ml-auto flex h-6 px-2 bg-muted-foreground shrink-0 items-center justify-center rounded-md font-normal">
+              Unpaid
+            </Badge>
           </Link>
           <Separator className="my-2" />
           <DropdownMenu>

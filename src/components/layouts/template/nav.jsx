@@ -17,6 +17,8 @@ import CustomizeContext from "@/context/customize";
 import ConfirmSave from "@/components/container/confirm-save";
 import { useSession } from "next-auth/react";
 import PortalContext from "@/context/portal";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -44,11 +46,25 @@ export default function Nav() {
             overlay="false"
             className="h-full overflow-y-auto scrollbar-default md:scrollbar-hide"
           >
-            {/* <SheetHeader>
-              <SheetTitle className="text-neutral-950 font-medium">
-                Customize Tool
-              </SheetTitle>
-            </SheetHeader> */}
+            <SheetHeader>
+              <Link
+                href={
+                  process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                    ? `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `localhost:3000`
+                }
+                className="flex items-center gap-4 text-lg font-medium"
+              >
+                <Image
+                  src="/assets/icons/zoejeton.svg"
+                  width={200}
+                  height={200}
+                  alt="logo"
+                  className="h-6 w-6"
+                />
+                <span className="">ZoeJeton</span>
+              </Link>
+            </SheetHeader>
             <h1 className="mt-5 mb-2">Fitur</h1>
             <ButtonCustomize type="color" />
 
@@ -61,7 +77,7 @@ export default function Nav() {
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">
-          {session && (
+          {session ? (
             <Button
               variant="outline"
               onClick={() => setStateSwitcher(true)}
@@ -78,6 +94,21 @@ export default function Nav() {
               </Avatar>
               {invitation?.title}
               <CaretSortIcon className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          ) : (
+            <Button
+              aria-label="Select a invitation"
+              className="md:flex hidden w-20"
+            >
+              <Link
+                href={
+                  process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                    ? `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`
+                    : `app.localhost:3000/login`
+                }
+              >
+                Sign in
+              </Link>
             </Button>
           )}
         </div>

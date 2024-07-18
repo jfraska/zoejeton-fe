@@ -14,7 +14,6 @@ const PortalContext = createContext();
 
 export const PortalProvider = ({ children }) => {
   const [stateSwitcher, setStateSwitcher] = useState(false);
-  const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
   const [invitation, setInvitation] = useState(null);
 
   const updateInvitation = (data) => {
@@ -27,8 +26,6 @@ export const PortalProvider = ({ children }) => {
       value={{
         stateSwitcher,
         setStateSwitcher,
-        stateCreateInvitation,
-        setStateCreateInvitation,
         invitation,
         updateInvitation,
       }}

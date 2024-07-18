@@ -21,8 +21,8 @@ export function Main({ children, className }) {
       className={`${className} ${
         isEdit
           ? "absolute h-full flex justify-between"
-          : "h-screen ml-auto md:max-w-md"
-      } w-full`}
+          : "h-screen ml-auto md:max-w-md @container-normal"
+      } w-full @container/main`}
     >
       {children}
     </div>
@@ -103,8 +103,9 @@ export function Cover({ children, className }) {
       className={`${
         isEdit
           ? "relative w-full h-full "
-          : "fixed right-[28rem] inset-y-0 left-0 "
-      } hidden md:block`}
+          : "fixed right-[28rem] inset-y-0 left-0 md:block"
+      } hidden @md/main:block`}
+      id="cover"
     >
       {background && (
         <Image
@@ -150,7 +151,6 @@ export function LockScreen({
     if (hash === "#lockscreen") {
       handleOpen();
       window.location.hash = "";
-      console.log(hash);
     }
   }, [hash]);
 

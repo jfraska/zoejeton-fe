@@ -18,7 +18,14 @@ export default function Sidebar() {
     <aside className="hidden inset-y-0 fixed left-0 z-20 md:w-[250px] lg:w-[320px] h-full border-r md:block bg-background">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link href="/" className="flex items-center gap-4 font-medium">
+          <Link
+            href={
+              process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                ? `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                : `localhost:3000`
+            }
+            className="flex items-center gap-4 font-medium"
+          >
             <Image
               src="/assets/icons/zoejeton.svg"
               width={200}

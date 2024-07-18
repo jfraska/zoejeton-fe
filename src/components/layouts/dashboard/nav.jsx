@@ -76,7 +76,11 @@ export default function Nav() {
         <SheetContent side="left" className="flex flex-col">
           <nav className="grid gap-2 text-lg font-medium">
             <Link
-              href="#"
+              href={
+                process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                  ? `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                  : `localhost:3000`
+              }
               className="flex items-center gap-4 text-lg font-medium"
             >
               <Image

@@ -5,19 +5,14 @@ import { getCookie, hasCookie } from "cookies-next";
 import { usePathname } from "next/navigation";
 import PortalContext from "@/context/portal";
 import Loading from "@/components/UI/loading";
-import { Button } from "@/components/UI/button";
 import NotfoundDashboard from "@/components/container/notfound-dashboard";
 import axios from "axios";
 
 export default function Template({ children }) {
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
-  const {
-    invitation,
-    updateInvitation,
-    setStateSwitcher,
-    setStateCreateInvitation,
-  } = useContext(PortalContext);
+  const { invitation, updateInvitation, setStateSwitcher } =
+    useContext(PortalContext);
 
   useEffect(() => {
     (async () => {
@@ -59,8 +54,8 @@ export default function Template({ children }) {
           pathname={pathname === "/" ? "dashboard" : pathname.slice(1)}
           title="You have no invitation"
           desc="You can start a new experience with an invitation from us."
-          textButton="Add invitation"
-          onClick={() => setStateCreateInvitation(true)}
+          textButton="Pilih Invitation"
+          onClick={() => setStateSwitcher(true)}
         />
       )}
     </>

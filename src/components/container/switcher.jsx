@@ -19,16 +19,12 @@ import {
 import PortalContext from "@/context/portal";
 import { Drawer, DrawerContent } from "@/components/UI/drawer";
 import { toast } from "sonner";
+import CreateInvitation from "@/components/container/create-invitation";
 
 export default function Switcher() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const {
-    invitation,
-    updateInvitation,
-    stateSwitcher,
-    setStateSwitcher,
-    setStateCreateInvitation,
-  } = useContext(PortalContext);
+  const { invitation, updateInvitation, stateSwitcher, setStateSwitcher } =
+    useContext(PortalContext);
 
   if (isDesktop) {
     return (
@@ -40,7 +36,6 @@ export default function Switcher() {
         <ListInvitation
           invitation={invitation}
           updateInvitation={updateInvitation}
-          setStateCreateInvitation={setStateCreateInvitation}
           setStateSwitcher={setStateSwitcher}
         />
       </CommandDialog>
@@ -54,7 +49,6 @@ export default function Switcher() {
           <ListInvitation
             invitation={invitation}
             updateInvitation={updateInvitation}
-            setStateCreateInvitation={setStateCreateInvitation}
             setStateSwitcher={setStateSwitcher}
           />
         </Command>
@@ -66,12 +60,13 @@ export default function Switcher() {
 export function ListInvitation({
   invitation,
   updateInvitation,
-  setStateCreateInvitation,
   setStateSwitcher,
 }) {
   const [search, setSearch] = useState("");
+
+  const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [datainvitation, setDataInvitation] = useState([]);
+  const [datainvitation, setDataInvitation] = useState(null);
 
   const handleSelectedInvitation = (data) => {
     updateInvitation(data);
@@ -139,21 +134,32 @@ export function ListInvitation({
           );
         })}
       </CommandList>
-      <CommandSeparator />
-      <CommandList>
-        <CommandGroup>
-          <CommandItem
-            className="cursor-pointer"
-            onSelect={() => {
-              setStateCreateInvitation(true);
-              setStateSwitcher(false);
-            }}
-          >
-            <PlusCircledIcon className="mr-2 h-5 w-5" />
-            Create Invitation
-          </CommandItem>
-        </CommandGroup>
-      </CommandList>
+      {datainvitation && datainvitation.length < 2 && (
+        <>
+          <CommandSeparator />
+          <CommandList>
+            <CommandGroup>
+              <CommandItem
+                className="cursor-pointer"
+                onSelect={() => {
+                  setStateCreateInvitation(true);
+                  setStateSwitcher(false);
+                }}
+              >
+                <PlusCircledIcon className="mr-2 h-5 w-5" />
+                Create Invitation
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </>
+      )}
+
+      <CreateInvitation
+        open={stateCreateInvitation}
+        setOpen={setStateCreateInvitation}
+        invitation={invitation}
+        updateInvitation={updateInvitation}
+      />
     </>
   );
 }
