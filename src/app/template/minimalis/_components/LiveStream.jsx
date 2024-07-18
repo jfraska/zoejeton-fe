@@ -1,13 +1,11 @@
 import Editable from "@/components/container/editable";
+import { Section } from "@/components/container/wrapper-template";
 import { Runalto } from "@/styles/fonts";
 
 export default function LiveStream() {
   return (
-    <section
-      className="relative w-full h-full bg-secondary p-10 flex flex-col justify-between bg-cover bg-center bg-opacity-20 bg-blend-multiply"
-      style={{
-        backgroundImage: "url('/templates/minimalis/4.heic')",
-      }}
+    <Section
+      className="h-full p-10 flex flex-col justify-between"
       id="live streaming"
     >
       <div>
@@ -35,6 +33,6 @@ export default function LiveStream() {
           </a>
         </Editable>
       </div>
-    </section>
+    </Section>
   );
 }

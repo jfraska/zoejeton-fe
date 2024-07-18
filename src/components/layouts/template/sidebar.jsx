@@ -15,7 +15,7 @@ export default function Sidebar() {
   const { dataContent } = useContext(CustomizeContext);
 
   return (
-    <aside className="hidden inset-y-0 fixed left-0 z-20 md:w-[300px] lg:w-[380px] h-full border-r md:block bg-background">
+    <aside className="hidden inset-y-0 fixed left-0 z-20 md:w-[250px] lg:w-[320px] h-full border-r md:block bg-background">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link href="/" className="flex items-center gap-4 font-medium">

@@ -1,50 +1,24 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
-import gsap from "gsap";
 import CustomizeContext from "@/context/customize";
-import { Template } from "@/components/container/wrapper-template";
+import {
+  LockScreen as LockScreenWrapper,
+  Template,
+} from "@/components/container/wrapper-template";
 
 export default function LockScreen({ children, ...props }) {
-  let lockRef = useRef(null);
-  const timeline = useRef();
   const [state, setState] = useState(false);
   const { dataGuest } = useContext(CustomizeContext);
 
-  useEffect(() => {
-    timeline.current = gsap.timeline({ paused: true });
-    timeline.current.fromTo(
-      lockRef,
-      {
-        duration: 0,
-        y: "0",
-      },
-      {
-        duration: 0.75,
-        y: "-100%",
-        ease: "power3.inOut",
-        stagger: {
-          amount: 0.5,
-        },
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    state ? timeline.current.play() : timeline.current.reverse();
-  }, [state]);
-
   return (
     <>
-      <div
-        ref={(el) => (lockRef = el)}
-        className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-40 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply "
-        style={{
-          backgroundImage: "url('/templates/minimalis/7.heic')",
-        }}
-        // id="cover"
+      <LockScreenWrapper
+        open={state}
+        handleOpen={() => setState(false)}
+        className="flex flex-col justify-around items-center"
       >
         <div className="max-w-xs text-center ">
           <Image
@@ -84,7 +58,7 @@ export default function LockScreen({ children, ...props }) {
             <h1 className="w-full text-center">Buka Undangan</h1>
           </button>
         </div>
-      </div>
+      </LockScreenWrapper>
 
       {state && <Template {...props}>{children}</Template>}
     </>

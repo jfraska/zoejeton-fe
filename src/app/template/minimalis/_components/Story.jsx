@@ -1,7 +1,9 @@
+import { Section } from "@/components/container/wrapper-template";
+
 export default function Story() {
   return (
-    <section
-      className="relative w-full h-fit pt-10 pb-20 px-10 bg-secondary-bg flex flex-col justify-start items-center gap-4 text-center"
+    <Section
+      className="h-fit pt-10 pb-20 px-10 bg-secondary-bg flex flex-col justify-start items-center gap-4 text-center"
       id="love story"
     >
       <h1 className="mb-4 text-2xl">Love Story</h1>
@@ -23,6 +25,6 @@ export default function Story() {
           fringilla accumsan, risus sem sollicitudin lacus.
         </p>
       </div>
-    </section>
+    </Section>
   );
 }

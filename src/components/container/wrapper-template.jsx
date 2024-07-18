@@ -1,10 +1,12 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import CustomizeContext from "@/context/customize";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { extractClass } from "@/libs/utils";
+import gsap from "gsap";
 
 export function Main({ children, className }) {
   const { isEdit } = useContext(CustomizeContext);
@@ -41,7 +43,7 @@ export function Template({ children, className }) {
   );
 }
 
-export function Section({ children, className, id, style }) {
+export function Section({ children, className, id }) {
   const { dataContent } = useContext(CustomizeContext);
   const [background, setBackground] = useState(null);
 
@@ -53,13 +55,18 @@ export function Section({ children, className, id, style }) {
       element.style.display = section.visible.disable ? "none" : "block";
     }
 
-    if (section.value.background) {
+    if (section?.value?.background) {
       setBackground(section.value.background);
     }
   }, [dataContent]);
 
   return (
-    <section id={id} className={`${className}`} style={style}>
+    <section
+      id={id}
+      className={`${extractClass(className, "h-")} ${
+        background && "relative"
+      } w-full`}
+    >
       {background && (
         <Image
           fill
@@ -69,27 +76,129 @@ export function Section({ children, className, id, style }) {
               : background[0]
           }
           alt="background"
-          className="object-cover brightness-90 -z-0"
+          className="object-cover brightness-90"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       )}
-      {children}
+
+      <div className={`${className} relative w-full h-full`}>{children}</div>
     </section>
   );
 }
 
 export function Cover({ children, className }) {
-  const { isEdit } = useContext(CustomizeContext);
+  const { isEdit, dataContent } = useContext(CustomizeContext);
+  const [background, setBackground] = useState(null);
+
+  useEffect(() => {
+    const section = dataContent.find((item) => item.key === "cover");
+
+    if (section?.value?.background) {
+      setBackground(section.value.background);
+    }
+  }, [dataContent]);
 
   return (
     <div
-      className={`${className}  ${
+      className={`${
         isEdit
           ? "relative w-full h-full "
           : "fixed right-[28rem] inset-y-0 left-0 "
       }`}
     >
-      {children}
+      {background && (
+        <Image
+          fill
+          priority
+          src={
+            background[0]?.getFileEncodeDataURL
+              ? background[0].getFileEncodeDataURL()
+              : background[0]
+          }
+          alt="background"
+          className="object-cover brightness-90"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      )}
+
+      <div className={`${className} relative w-full h-full`}>{children}</div>
+    </div>
+  );
+}
+
+export function LockScreen({
+  children,
+  className,
+  open,
+  handleOpen = () => {},
+}) {
+  let lockRef = useRef(null);
+  const timeline = useRef(null);
+  const { isEdit, dataContent } = useContext(CustomizeContext);
+  const [background, setBackground] = useState(null);
+  const hash = window.location.hash;
+
+  useEffect(() => {
+    const section = dataContent.find((item) => item.key === "lockscreen");
+
+    if (section?.value?.background) {
+      setBackground(section.value.background);
+    }
+  }, [dataContent]);
+
+  useEffect(() => {
+    if (hash === "#lockscreen") {
+      handleOpen();
+      window.location.hash = "";
+      console.log(hash);
+    }
+  }, [hash]);
+
+  useEffect(() => {
+    timeline.current = gsap.timeline({ paused: true });
+    timeline.current.fromTo(
+      lockRef,
+      {
+        duration: 0,
+        y: "0",
+      },
+      {
+        duration: 0.75,
+        y: "-100%",
+        ease: "power3.inOut",
+        stagger: {
+          amount: 0.5,
+        },
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    open ? timeline.current.play() : timeline.current.reverse();
+  }, [open]);
+
+  return (
+    <div
+      ref={(el) => (lockRef = el)}
+      className={`${
+        isEdit ? "absolute h-full" : "fixed h-screen"
+      } inset-0 w-full z-40 bg-primary-bg`}
+    >
+      {background && (
+        <Image
+          fill
+          priority
+          src={
+            background[0]?.getFileEncodeDataURL
+              ? background[0].getFileEncodeDataURL()
+              : background[0]
+          }
+          alt="background"
+          className="object-cover brightness-90"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      )}
+      <div className={`${className} relative w-full h-full`}>{children}</div>
     </div>
   );
 }

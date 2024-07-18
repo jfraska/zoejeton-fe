@@ -1,9 +1,10 @@
 import Editable from "@/components/container/editable";
+import { Section } from "@/components/container/wrapper-template";
 import Image from "next/image";
 
 export default function Galery() {
   return (
-    <section className="relative w-full flex flex-col" id="galery">
+    <Section className="flex flex-col" id="galery">
       <Editable
         className="relative w-full aspect-video bg-secondary"
         type="image"
@@ -59,6 +60,6 @@ export default function Galery() {
           backgroundImage: "url('/templates/minimalis/5.heic')",
         }}
       />
-    </section>
+    </Section>
   );
 }

@@ -5,7 +5,7 @@ import { Runalto } from "@/styles/fonts";
 export default function Thanks() {
   return (
     <Section
-      className="relative w-full h-full flex flex-col justify-center items-center pb-10"
+      className="h-full flex flex-col justify-center items-center pb-10"
       id="thanks"
     >
       <h1 className={`${Runalto.className} text-5xl font-medium w-2/4`}>

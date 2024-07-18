@@ -3,7 +3,7 @@ import Sidebar from "@/components/layouts/template/sidebar";
 
 export default function CustomizeMode({ children }) {
   return (
-    <div className="grid h-screen w-full md:pl-[300px] lg:pl-[380px]">
+    <div className="grid h-screen w-full md:pl-[250px] lg:pl-[320px]">
       <Sidebar />
       <div className="flex flex-col">
         <Nav />

@@ -12,6 +12,15 @@ const templateData = [
     category: "Premium",
     content: [
       {
+        key: "lockscreen",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          background: ["/templates/minimalis/7.heic"],
+        },
+      },
+      {
         key: "cover",
         value: {
           heading: "Zoe & Jeton",
@@ -99,7 +108,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["/templates/minimalis/4.heic"],
         },
         visible: {
           disable: false,

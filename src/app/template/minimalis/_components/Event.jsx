@@ -1,9 +1,10 @@
+import { Section } from "@/components/container/wrapper-template";
 import { Runalto } from "@/styles/fonts";
 
 export default function Event() {
   return (
-    <section
-      className="relative w-full h-fit pt-10 pb-20 px-14 flex flex-col justify-start items-center gap-4 text-center bg-primary-bg"
+    <Section
+      className="h-fit pt-10 pb-20 px-14 flex flex-col justify-start items-center gap-4 text-center bg-primary-bg"
       name="date"
     >
       <h1 className={`${Runalto.className} font-medium text-4xl`}>
@@ -33,6 +34,6 @@ export default function Event() {
           fringilla accumsan, risus sem sollicitudin lacus.
         </p>
       </div>
-    </section>
+    </Section>
   );
 }

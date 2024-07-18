@@ -30,3 +30,9 @@ export const generateSlug = (string) => {
     .replace(/-+/g, "-")
     .substring(0, 50);
 };
+
+export function extractClass(className, prefix) {
+  const classes = className.trim().replace(/\s+/g, " ").split(" ");
+  const filteredClasses = classes.filter((cls) => cls.startsWith(prefix));
+  return filteredClasses.join(" ");
+}

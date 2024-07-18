@@ -21,7 +21,7 @@ export default function Beranda() {
   }, []);
 
   return (
-    <Section className="relative w-full h-full" id="beranda">
+    <Section className="h-full" id="beranda">
       <div className="mx-auto flex flex-col gap-6 justify-start items-center px-10 text-center">
         <h2 className="text-lg mt-16 animate">THE WEDDING OF</h2>
         <h1 className={`${Runalto.className} text-5xl font-medium`}>
