@@ -24,31 +24,23 @@ registerPlugin(
 );
 
 export default function BackgroundCustomize({ image, setImage, slug }) {
-  const handleFileUpload = (items) => {
-    if (items.length > 0) {
-      let data = [];
 
-      if (
-        (image[0]?.file?.name || path.basename(image[0])) === items[0].file.name
-      ) {
-        return;
+  // const handleAddFile = (error,file) => {
+  //   if (error) {
+  //     return;
+  //   }
+
+  //   setFile(file);
+  //     console.log(file)
+    
+  // };
+
+  const handleFileUpload = (files) => {
+    
+    if (files.length > 0) {
+      if(files[0].status === 2 || files[0].status === 8) {
+        setImage(files)
       }
-
-      items.map((item, index) => {
-        const itemFileName = item.file.name;
-        const imageFileName =
-          image[index]?.file?.name || path.basename(image[index]);
-
-        if (!image[index]?.getFileEncodeDataURL) {
-          if (imageFileName !== itemFileName) {
-            data = [...data, item];
-          }
-        } else if (imageFileName !== itemFileName) {
-          data = [...data, item];
-        }
-      });
-
-      setImage(data);
     }
   };
 
@@ -60,9 +52,14 @@ export default function BackgroundCustomize({ image, setImage, slug }) {
           item?.getFileEncodeDataURL ? item : `/templates/${slug}/${item}`
         )}
         allowMultiple
+        allowReorder
+        maxFiles={3}
+        dropOnPage
         onupdatefiles={handleFileUpload}
+        // onaddfile={handleAddFile}
         acceptedFileTypes={["image/*"]}
         labelFileTypeNotAllowed={"File of invalid type"}
+        credits=""
       />
     </div>
   );

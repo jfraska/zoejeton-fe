@@ -10,19 +10,14 @@ import BackgroundCustomize from "@/components/container/background-customize";
 import CustomizeContext from "@/context/customize";
 import ColorPalette from "@/components/container/color-palette";
 
-export default function ButtonCustomize({ data, type = "page" }) {
-  const [state, setState] = useState(!data?.visible?.disable);
-  const {
-    dataContent,
-    setDataContent,
-    dataColor,
-    setDataColor,
-    data: slug,
-  } = useContext(CustomizeContext);
+export default function ButtonCustomize({ template, type = "page" }) {
+  const [state, setState] = useState(!template?.visible?.disable);
+  const { dataContent, setDataContent, dataColor, setDataColor, data } =
+    useContext(CustomizeContext);
 
   const handleChangeBackground = (e) => {
     const updatedData = dataContent?.map((item) => {
-      if (item.key === data.key) {
+      if (item.key === template.key) {
         return { ...item, value: { ...item.value, background: e } };
       }
       return item;
@@ -33,7 +28,7 @@ export default function ButtonCustomize({ data, type = "page" }) {
 
   const handleChangeVisbility = (e) => {
     const updatedData = dataContent?.map((item) => {
-      if (item.key === data.key) {
+      if (item.key === template.key) {
         return { ...item, visible: { ...item.visible, disable: state } };
       }
       return item;
@@ -54,15 +49,17 @@ export default function ButtonCustomize({ data, type = "page" }) {
       >
         <CollapsibleTrigger asChild>
           <a
-            href={`#${data?.key ? data.key : type}`}
+            href={`#${template?.key ? template.key : type}`}
             className="flex items-center gap-2 font-medium text-neutral-900"
           >
             <TokensIcon />
-            <h1 className="capitalize">{data?.key ? data.key : type}</h1>
+            <h1 className="capitalize">
+              {template?.key ? template.key : type}
+            </h1>
           </a>
         </CollapsibleTrigger>
 
-        {type === "page" && data.visible && (
+        {type === "page" && template.visible && (
           <Switch
             className="data-[state=unchecked]:bg-[#e5e5e5]"
             checked={state}
@@ -71,11 +68,11 @@ export default function ButtonCustomize({ data, type = "page" }) {
         )}
       </div>
       <CollapsibleContent className="mt-2">
-        {type === "page" && data.value.background && (
+        {type === "page" && template.value.background && (
           <BackgroundCustomize
-            slug={slug}
-            key={data.key}
-            image={data.value.background}
+            slug={data.slug}
+            key={template.key}
+            image={template.value.background}
             setImage={handleChangeBackground}
           />
         )}

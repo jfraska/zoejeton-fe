@@ -33,19 +33,27 @@ export default function EditableImage({
   image,
   setImage = () => {},
 }) {
-  const handleFileUpload = (items) => {
-    if (items.length > 0) {
-      const itemFileName = items[0].file.name;
-      const imageFileName = image?.file?.name || path.basename(image);
+  // const handleFileUpload = (items) => {
+  //   if (items.length > 0) {
+  //     const itemFileName = items[0].file.name;
+  //     const imageFileName = image?.file?.name || path.basename(image);
 
-      if (!image?.getFileEncodeDataURL) {
-        if (imageFileName !== itemFileName) {
-          setImage(items[0]);
-        }
-      } else if (imageFileName !== itemFileName) {
-        setImage(items[0]);
-      }
+  //     if (!image?.getFileEncodeDataURL) {
+  //       if (imageFileName !== itemFileName) {
+  //         setImage(items[0]);
+  //       }
+  //     } else if (imageFileName !== itemFileName) {
+  //       setImage(items[0]);
+  //     }
+  //   }
+  // };
+
+  const handleAddFile = (error, file) => {
+    if (error) {
+      return;
     }
+
+    setImage(file);
   };
 
   return (
@@ -54,9 +62,14 @@ export default function EditableImage({
       <PopoverContent>
         <FilePond
           files={[image]}
-          onupdatefiles={handleFileUpload}
+          allowMultiple
+          allowRemove={false}
+          dropOnPage
+          // onupdatefiles={handleFileUpload}
+          onaddfile={handleAddFile}
           acceptedFileTypes={["image/*"]}
           labelFileTypeNotAllowed={"File of invalid type"}
+          credits=""
         />
       </PopoverContent>
     </Popover>

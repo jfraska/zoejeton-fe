@@ -20,21 +20,15 @@ export default function Editable({
   const { dataContent, data, setDataContent, isEdit } =
     useContext(CustomizeContext);
   const [state, setState] = useState(
-    getDataContent(dataContent, section, field, subfield, data.slug, type)
+    getDataContent(dataContent, section, field, subfield)
   );
 
   const handleChange = (e) => {
     let data = e.target?.value ? e.target.value : e;
 
-    // if (type == "image") {
-    //   setState(
-    //     data.getFileEncodeDataURL() ? data.getFileEncodeDataURL() : data
-    //   );
-    // } else {
-    if (typeof data !== "string" && type !== "date" && type !== "image")
+    if (typeof data !== "string" && type !== "date" && typeof data !== "object")
       data = "";
     setState(data);
-    // }
 
     const updatedData = dataContent?.map((item) => {
       if (item.key === section) {
@@ -131,7 +125,7 @@ export default function Editable({
               cloneElement(children, {
                 src: state?.getFileEncodeDataURL
                   ? state.getFileEncodeDataURL()
-                  : state,
+                  : `/templates/${data.slug}/${state}`,
                 className: "image",
               })}
           </button>

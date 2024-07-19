@@ -17,7 +17,7 @@ export default function Loading() {
   return (
     <>
       {loading && (
-        <div className="relative w-full h-screen bg-white flex flex-col gap-2 justify-center items-center p-20">
+        <div className="relative w-full h-screen bg-white flex flex-col gap-2 justify-center items-center p-20 z-[99]">
           <Image
             src="/assets/icons/zoejeton-outline-black.svg"
             width={300}

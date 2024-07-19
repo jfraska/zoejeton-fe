@@ -71,7 +71,7 @@ export default function Nav() {
             <h1 className="mt-5">Page</h1>
             <div className="flex flex-col gap-2 mt-2">
               {dataContent?.map((item, index) => (
-                <ButtonCustomize key={index} data={item} />
+                <ButtonCustomize key={index} template={item} />
               ))}
             </div>
           </SheetContent>

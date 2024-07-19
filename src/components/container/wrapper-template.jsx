@@ -138,22 +138,29 @@ export function LockScreen({
   const timeline = useRef(null);
   const { isEdit, dataContent, data } = useContext(CustomizeContext);
   const [background, setBackground] = useState(null);
-  const hash = window.location.hash;
 
   useEffect(() => {
     const section = dataContent.find((item) => item.key === "lockscreen");
 
-    if (section?.value?.background) {
+    if (section?.value?.background && section?.value?.background !== []) { 
       setBackground(section.value.background);
     }
   }, [dataContent]);
 
   useEffect(() => {
-    if (hash === "#lockscreen") {
-      handleOpen();
-      window.location.hash = "";
-    }
-  }, [hash]);
+    const handleHashChange = () => {
+      if (window.location.hash ==="#lockscreen"){
+        handleOpen();
+        window.location.hash = "";
+      };
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   useEffect(() => {
     timeline.current = gsap.timeline({ paused: true });
