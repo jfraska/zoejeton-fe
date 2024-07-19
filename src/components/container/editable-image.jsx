@@ -3,6 +3,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/UI/popover";
+import path from "path";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 
@@ -33,12 +34,17 @@ export default function EditableImage({
   setImage = () => {},
 }) {
   const handleFileUpload = (items) => {
-    // if (image?.name === items[0].file.name) {
-    //   return;
-    // }
-
     if (items.length > 0) {
-      setImage(items[0]);
+      const itemFileName = items[0].file.name;
+      const imageFileName = image?.file?.name || path.basename(image);
+
+      if (!image?.getFileEncodeDataURL) {
+        if (imageFileName !== itemFileName) {
+          setImage(items[0]);
+        }
+      } else if (imageFileName !== itemFileName) {
+        setImage(items[0]);
+      }
     }
   };
 

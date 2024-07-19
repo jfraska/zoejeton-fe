@@ -15,11 +15,16 @@ export async function saltAndHashPassword(password) {
   return hashedPassword;
 }
 
-export const getDataContent = (data, key, field, subfield) => {
-  const item = data.find((item) => item.key === key);
-  return item && item.value[field] && !subfield
-    ? item.value[field]
-    : item.value[field][subfield];
+export const getDataContent = (data, key, field, subfield, slug, type) => {
+  let item = data.find((item) => item.key === key);
+  item =
+    item && item.value[field] && !subfield
+      ? item.value[field]
+      : item.value[field][subfield];
+
+  return type === "image"
+    ? !item?.getFileEncodeDataURL && `/templates/${slug}/${item}`
+    : item;
 };
 
 export const generateSlug = (string) => {

@@ -44,7 +44,7 @@ export function Template({ children, className }) {
 }
 
 export function Section({ children, className, id }) {
-  const { dataContent } = useContext(CustomizeContext);
+  const { dataContent, data } = useContext(CustomizeContext);
   const [background, setBackground] = useState(null);
 
   useEffect(() => {
@@ -70,10 +70,11 @@ export function Section({ children, className, id }) {
       {background && (
         <Image
           fill
+          priority
           src={
             background[0]?.getFileEncodeDataURL
               ? background[0].getFileEncodeDataURL()
-              : background[0]
+              : `/templates/${data.slug}/${background[0]}`
           }
           alt="background"
           className="object-cover brightness-90"
@@ -87,7 +88,7 @@ export function Section({ children, className, id }) {
 }
 
 export function Cover({ children, className }) {
-  const { isEdit, dataContent } = useContext(CustomizeContext);
+  const { isEdit, dataContent, data } = useContext(CustomizeContext);
   const [background, setBackground] = useState(null);
 
   useEffect(() => {
@@ -114,7 +115,7 @@ export function Cover({ children, className }) {
           src={
             background[0]?.getFileEncodeDataURL
               ? background[0].getFileEncodeDataURL()
-              : background[0]
+              : `/templates/${data.slug}/${background[0]}`
           }
           alt="background"
           className="object-cover brightness-90"
@@ -135,7 +136,7 @@ export function LockScreen({
 }) {
   let lockRef = useRef(null);
   const timeline = useRef(null);
-  const { isEdit, dataContent } = useContext(CustomizeContext);
+  const { isEdit, dataContent, data } = useContext(CustomizeContext);
   const [background, setBackground] = useState(null);
   const hash = window.location.hash;
 
@@ -191,7 +192,7 @@ export function LockScreen({
           src={
             background[0]?.getFileEncodeDataURL
               ? background[0].getFileEncodeDataURL()
-              : background[0]
+              : `/templates/${data.slug}/${background[0]}`
           }
           alt="background"
           className="object-cover brightness-90"

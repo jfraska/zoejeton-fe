@@ -21,8 +21,8 @@ export default function Sidebar() {
           <Link
             href={
               process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                ? `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                : `localhost:3000`
+                ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                : `http://localhost:3000`
             }
             className="flex items-center gap-4 font-medium"
           >

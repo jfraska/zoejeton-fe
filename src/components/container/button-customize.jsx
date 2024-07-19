@@ -12,8 +12,13 @@ import ColorPalette from "@/components/container/color-palette";
 
 export default function ButtonCustomize({ data, type = "page" }) {
   const [state, setState] = useState(!data?.visible?.disable);
-  const { dataContent, setDataContent, dataColor, setDataColor } =
-    useContext(CustomizeContext);
+  const {
+    dataContent,
+    setDataContent,
+    dataColor,
+    setDataColor,
+    data: slug,
+  } = useContext(CustomizeContext);
 
   const handleChangeBackground = (e) => {
     const updatedData = dataContent?.map((item) => {
@@ -68,6 +73,7 @@ export default function ButtonCustomize({ data, type = "page" }) {
       <CollapsibleContent className="mt-2">
         {type === "page" && data.value.background && (
           <BackgroundCustomize
+            slug={slug}
             key={data.key}
             image={data.value.background}
             setImage={handleChangeBackground}

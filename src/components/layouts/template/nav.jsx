@@ -50,8 +50,8 @@ export default function Nav() {
               <Link
                 href={
                   process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                    : `localhost:3000`
+                    ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `http://localhost:3000`
                 }
                 className="flex items-center gap-4 text-lg font-medium"
               >
@@ -103,8 +103,8 @@ export default function Nav() {
               <Link
                 href={
                   process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`
-                    : `app.localhost:3000/login`
+                    ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`
+                    : `http://app.localhost:3000/login`
                 }
               >
                 Sign in

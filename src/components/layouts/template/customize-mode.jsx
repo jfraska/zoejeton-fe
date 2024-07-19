@@ -17,7 +17,7 @@ export default function CustomizeMode({ children }) {
             <Tabs
               value={mode}
               onValueChange={setMode}
-              className={mode === "mobile" ? "h-5/6" : "w-5/6"}
+              className={`${mode === "mobile" ? "h-5/6" : "w-5/6"} mt-2`}
             >
               <TabsList>
                 <TabsTrigger value="desktop">Desktop</TabsTrigger>
