@@ -20,9 +20,9 @@ export function Main({ children, className }) {
     <div
       className={`${className} ${
         isEdit
-          ? "absolute h-full flex justify-between"
+          ? "absolute h-full flex justify-between @container/main"
           : "h-screen ml-auto md:max-w-md @container-normal"
-      } w-full @container/main`}
+      } w-full`}
     >
       {children}
     </div>

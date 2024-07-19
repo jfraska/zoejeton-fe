@@ -33,6 +33,10 @@ export default function EditableImage({
   setImage = () => {},
 }) {
   const handleFileUpload = (items) => {
+    // if (image?.name === items[0].file.name) {
+    //   return;
+    // }
+
     if (items.length > 0) {
       setImage(items[0]);
     }
