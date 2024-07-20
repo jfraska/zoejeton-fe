@@ -41,10 +41,5 @@ export async function generateMetadata() {
 }
 
 export default function Layout({ children }) {
-  return (
-    <CustomizeProvider>
-      {children}
-      <Loading />
-    </CustomizeProvider>
-  );
+  return <CustomizeProvider>{children}</CustomizeProvider>;
 }
