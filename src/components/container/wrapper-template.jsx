@@ -21,7 +21,7 @@ export function Main({ children, className }) {
       className={`${className} ${
         isEdit
           ? "absolute h-full flex justify-between @container/main"
-          : "h-full ml-auto md:max-w-md @container-normal"
+          : "h-screen ml-auto md:max-w-md @container-normal"
       } w-full`}
     >
       {children}
