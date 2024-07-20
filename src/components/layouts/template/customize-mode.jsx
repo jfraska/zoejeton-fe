@@ -10,14 +10,16 @@ export default function CustomizeMode({ children }) {
   return (
     <div className="grid h-screen w-full md:pl-[250px] lg:pl-[320px]">
       <Sidebar />
-      <div className="flex h-full w-full flex-col bg-[#f3f3f3] overflow-hidden">
+      <div className="flex w-full h-full flex-col bg-[#f3f3f3]">
         <Nav />
-        <main className="flex-1 w-full flex flex-col items-center p-4">
+        <main className="flex-1 w-full flex flex-col items-center p-4 overflow-hidden">
           {isDesktop ? (
             <Tabs
               value={mode}
               onValueChange={setMode}
-              className={`${mode === "mobile" ? "h-5/6" : "w-5/6"} mt-2`}
+              className={`${
+                mode === "mobile" ? "h-[calc(100%_-_10%)]" : "w-full xl:w-5/6"
+              } mt-2`}
             >
               <TabsList>
                 <TabsTrigger value="desktop">Desktop</TabsTrigger>

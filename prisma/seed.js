@@ -15,9 +15,8 @@ const templateData = [
         key: "lockscreen",
         value: {
           heading: "Zoe & Jeton",
-          subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/7.heic"],
+          subheading: "We invite you to our wedding ceremony",
+          background: ["7.heic"],
         },
       },
       {
@@ -26,7 +25,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -35,7 +34,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -47,9 +46,15 @@ const templateData = [
         value: {
           akad: {
             date: "Maret 10 2024",
+            time: "12.00 - 14.00",
+            loc: "Grand Hotel",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
           resepsi: {
             date: "Maret 10 2024",
+            time: "12.00 - 14.00",
+            loc: "Grand Hotel",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
         },
         visible: {
@@ -61,13 +66,15 @@ const templateData = [
         key: "couple",
         value: {
           groom: {
-            name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            name: "Jeton Hizaya",
+            desc: "Putra dari Bapak Demak Parsaoran (Alm) & Ibu Ratnawati Hutauruk",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
-            name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            name: "Zoe Himaya",
+            desc: "Putri dari Bpk M Syarik & Ibu Isharni",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -79,10 +86,11 @@ const templateData = [
       {
         key: "love story",
         value: {
-          heading: "Zoe & Jeton",
-          subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          story1: {
+            heading: "Semarang, 19 Juni 2021",
+            subheading:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          },
         },
         visible: {
           disable: false,
@@ -92,9 +100,8 @@ const templateData = [
       {
         key: "galery",
         value: {
-          heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -107,8 +114,10 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          date: "Minggu, 30 Juni 2023",
+          time: "12.00 - 14.00",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/4.heic"],
+          background: ["4.heic"],
         },
         visible: {
           disable: false,
@@ -118,10 +127,10 @@ const templateData = [
       {
         key: "thanks",
         value: {
-          heading: "Zoe & Jeton",
+          heading: "Thank You",
           subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/8.heic"],
+            "Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada kami.",
+          background: ["8.heic"],
         },
         visible: {
           disable: false,
@@ -158,7 +167,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -167,7 +176,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -194,12 +203,12 @@ const templateData = [
         value: {
           groom: {
             name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -214,7 +223,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -225,8 +234,8 @@ const templateData = [
         key: "galery",
         value: {
           heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -240,7 +249,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -253,7 +262,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -290,7 +299,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -299,7 +308,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -326,12 +335,12 @@ const templateData = [
         value: {
           groom: {
             name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -346,7 +355,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -357,8 +366,8 @@ const templateData = [
         key: "galery",
         value: {
           heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -372,7 +381,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -385,7 +394,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -422,7 +431,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -431,7 +440,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -458,12 +467,12 @@ const templateData = [
         value: {
           groom: {
             name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -478,7 +487,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -489,8 +498,8 @@ const templateData = [
         key: "galery",
         value: {
           heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -504,7 +513,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -517,7 +526,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -554,7 +563,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -563,7 +572,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -590,12 +599,12 @@ const templateData = [
         value: {
           groom: {
             name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -610,7 +619,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -621,8 +630,8 @@ const templateData = [
         key: "galery",
         value: {
           heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -636,7 +645,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -649,7 +658,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -686,7 +695,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -695,7 +704,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -722,12 +731,12 @@ const templateData = [
         value: {
           groom: {
             name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -742,7 +751,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -753,8 +762,8 @@ const templateData = [
         key: "galery",
         value: {
           heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -768,7 +777,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -781,7 +790,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -818,7 +827,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -827,7 +836,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -854,12 +863,12 @@ const templateData = [
         value: {
           groom: {
             name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -874,7 +883,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -885,8 +894,8 @@ const templateData = [
         key: "galery",
         value: {
           heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -900,7 +909,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -913,7 +922,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -950,7 +959,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
       },
       {
@@ -959,7 +968,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -986,12 +995,12 @@ const templateData = [
         value: {
           groom: {
             name: "jeton",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "zoe",
-            image: "/templates/minimalis/5.heic",
+            image: "5.heic",
             instagram: "https://instagram.com",
           },
         },
@@ -1006,7 +1015,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -1017,8 +1026,8 @@ const templateData = [
         key: "galery",
         value: {
           heading: "Our Galery",
-          image1: "/templates/minimalis/5.heic",
-          image2: "/templates/minimalis/5.heic",
+          image1: "5.heic",
+          image2: "5.heic",
         },
         visible: {
           disable: false,
@@ -1032,7 +1041,7 @@ const templateData = [
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           link: "https://youtube.com",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,
@@ -1045,7 +1054,7 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["/templates/minimalis/5.heic"],
+          background: ["5.heic"],
         },
         visible: {
           disable: false,

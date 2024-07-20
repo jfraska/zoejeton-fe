@@ -21,7 +21,7 @@ module.exports = {
         title: ["var(--font-MonumentExtended)", ...fontFamily.sans],
       },
       aspectRatio: {
-        "9/16": "9 / 16",
+        "9/16": "9/16",
       },
       colors: {
         background: "var(--background)",
