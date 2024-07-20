@@ -9,6 +9,7 @@ import { GlobalStyles } from "@mui/material";
 
 import ButtonAction from "@/components/container/button-action";
 import CustomizeMode from "@/components/layouts/template/customize-mode";
+import Loading from "./loading";
 
 export default function Template({ children }) {
   const pathname = usePathname();
@@ -55,7 +56,9 @@ export default function Template({ children }) {
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 2500);
       }
     })();
   }, []);
@@ -63,7 +66,7 @@ export default function Template({ children }) {
   return (
     <>
       {loading ? (
-        <div />
+        <Loading />
       ) : (
         <>
           {isEdit ? (
