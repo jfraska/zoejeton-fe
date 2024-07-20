@@ -61,7 +61,11 @@ export default function EditableImage({
       <PopoverTrigger asChild>{children}</PopoverTrigger>
       <PopoverContent>
         <FilePond
-          files={[image]}
+          files={
+            image?.getFileEncodeDataURL
+              ? [image.getFileEncodeDataURL()]
+              : [`/templates/${data.slug}/${image}`]
+          }
           allowMultiple
           allowRemove={false}
           dropOnPage
