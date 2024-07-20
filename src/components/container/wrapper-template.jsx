@@ -21,7 +21,7 @@ export function Main({ children, className }) {
       className={`${className} ${
         isEdit
           ? "absolute h-full flex justify-between @container/main"
-          : "h-screen ml-auto md:max-w-md @container-normal"
+          : "h-full ml-auto md:max-w-md @container-normal"
       } w-full`}
     >
       {children}
@@ -77,7 +77,7 @@ export function Section({ children, className, id }) {
               : `/templates/${data.slug}/${background[0]}`
           }
           alt="background"
-          className="object-cover brightness-90"
+          className="object-cover brightness-90 image"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       )}
@@ -142,17 +142,17 @@ export function LockScreen({
   useEffect(() => {
     const section = dataContent.find((item) => item.key === "lockscreen");
 
-    if (section?.value?.background && section?.value?.background !== []) { 
+    if (section?.value?.background && section?.value?.background !== []) {
       setBackground(section.value.background);
     }
   }, [dataContent]);
 
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash ==="#lockscreen"){
+      if (window.location.hash === "#lockscreen") {
         handleOpen();
         window.location.hash = "";
-      };
+      }
     };
 
     window.addEventListener("hashchange", handleHashChange);
