@@ -30,6 +30,7 @@ registerPlugin(
 
 export default function EditableImage({
   children,
+  slug,
   image,
   setImage = () => {},
 }) {
@@ -64,7 +65,7 @@ export default function EditableImage({
           files={
             image?.getFileEncodeDataURL
               ? [image.getFileEncodeDataURL()]
-              : [`/templates/${data.slug}/${image}`]
+              : [`/templates/${slug}/${image}`]
           }
           allowMultiple
           allowRemove={false}

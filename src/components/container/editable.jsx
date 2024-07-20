@@ -111,7 +111,7 @@ export default function Editable({
       )}
 
       {type === "image" && (
-        <EditableImage image={state} setImage={handleChange}>
+        <EditableImage image={state} setImage={handleChange} slug={data.slug}>
           <button
             className={cn(
               isEdit
