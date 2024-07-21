@@ -20,8 +20,8 @@ export function Main({ children, className }) {
     <div
       className={`${className} ${
         isEdit
-          ? "absolute h-full flex justify-between @container/main"
-          : "h-screen ml-auto md:max-w-md @container-normal"
+          ? "absolute h-full flex justify-between @container"
+          : "h-screen ml-auto lg:max-w-md @container-normal"
       } w-full`}
     >
       {children}
@@ -35,7 +35,7 @@ export function Template({ children, className }) {
   return (
     <div
       className={`${className}  ${
-        isEdit && "overflow-y-auto md:max-w-md scroll"
+        isEdit && "overflow-y-auto @3xl:max-w-md scroll"
       }`}
     >
       {children}
@@ -103,9 +103,9 @@ export function Cover({ children, className }) {
     <div
       className={`${
         isEdit
-          ? "relative w-full h-full "
+          ? "relative w-full h-full @3xl:block"
           : "fixed right-[28rem] inset-y-0 left-0 md:block"
-      } hidden @md/main:block`}
+      } hidden`}
       id="cover"
     >
       {background && (
@@ -142,7 +142,7 @@ export function LockScreen({
   useEffect(() => {
     const section = dataContent.find((item) => item.key === "lockscreen");
 
-    if (section?.value?.background && section?.value?.background !== []) {
+    if (section?.value?.background) {
       setBackground(section.value.background);
     }
   }, [dataContent]);
