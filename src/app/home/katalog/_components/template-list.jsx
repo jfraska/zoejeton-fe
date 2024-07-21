@@ -53,7 +53,7 @@ export default function TemplateList() {
       <div className="flex justify-between items-center text-base border-b border-black">
         <div className="relative hover-underline-animation py-2">
           <select
-            className="appearance-none focus:outline-none pr-4 md:pr-10 text-lg md:text-xl bg-transparent"
+            className="appearance-none focus:outline-none pr-4 lg:pr-10 text-lg lg:text-xl bg-transparent"
             value={category}
             onChange={handleCategory}
           >
@@ -72,12 +72,12 @@ export default function TemplateList() {
         {data.map((e) => (
           <div
             key={e.id}
-            className="group flex justify-center items-center bg-cover w-[47%] md:w-[18%] aspect-9/16 relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-md overflow-hidden transition-all duration-200 ease-in-out"
+            className="group flex justify-center items-center bg-cover w-[47%] lg:w-[18%] aspect-9/16 relative bg-blend-overlay hover:bg-[#0000008e] border border-black rounded-lg overflow-hidden transition-all duration-200 ease-in-out"
             style={{
               backgroundImage: `url(/templates/${e.slug}/${e.thumbnail})`,
             }}
           >
-            <div className="absolute top-0 left-0 md:text-lg text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-opacity-70">
+            <div className="absolute top-0 left-0 lg:text-lg text-sm clip-polygon pr-8 pl-2 py-1 bg-black text-white bg-opacity-70">
               {e.category}
             </div>
 
@@ -94,13 +94,13 @@ export default function TemplateList() {
                 className="w-5 aspect-square icon-[ph--eye]"
                 style={{ color: "black" }}
               />
-              <h1 className="md:text-base text-sm">Demo Invitation</h1>
+              <h1 className="lg:text-base text-sm">Demo Invitation</h1>
             </a>
 
-            <div className="absolute bottom-0 inset-x-0 px-2 md:py-1 py-2 bg-black text-white flex justify-between items-center w-full bg-blend-multiply bg-opacity-30">
+            <div className="absolute bottom-0 inset-x-0 px-2 lg:py-1 py-2 bg-black text-white flex justify-between items-center w-full bg-blend-multiply bg-opacity-30">
               <div className="flex flex-col justify-start items-start">
-                <h1 className="font-medium md:text-lg text-sm">{e.title}</h1>
-                <h1 className="md:text-base text-xs">
+                <h1 className="font-medium lg:text-lg text-sm">{e.title}</h1>
+                <h1 className="lg:text-base text-xs">
                   <CurrencyFormat
                     value={e.price}
                     displayType={"text"}
@@ -113,14 +113,14 @@ export default function TemplateList() {
 
               <LoadingButton
                 onClick={() => router.push(`/katalog/${e.slug}`)}
-                className="flex justify-center items-center p-2 rounded-md hover:scale-110 transition-all ease-in-out"
+                className="flex justify-center items-center p-2 rounded-lg hover:scale-110 transition-all ease-in-out"
               >
                 <Image
                   src={"/assets/icons/cart.svg"}
                   width="20"
                   height="20"
                   alt="cart"
-                  className="md:w-6 w-5 aspect-square"
+                  className="lg:w-6 w-5 aspect-square"
                 />
               </LoadingButton>
             </div>

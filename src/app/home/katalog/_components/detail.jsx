@@ -99,9 +99,9 @@ export default function Detail({ data }) {
   };
 
   return (
-    <div className="p-[3%] my-10 flex flex-col md:flex-row gap-10 justify-center">
+    <div className="p-[3%] my-10 flex flex-col lg:flex-row gap-10 justify-center">
       <div
-        className="bg-cover mx-auto md:mx-0 md:w-1/5 w-2/3 aspect-9/16 relative border border-black rounded-md overflow-hidden bg-[#00000051] transition-all ease-in-out bg-blend-overlay flex justify-center items-center"
+        className="bg-cover mx-auto lg:mx-0 lg:w-1/5 w-2/3 aspect-9/16 relative border border-black rounded-lg overflow-hidden bg-[#00000051] transition-all ease-in-out bg-blend-overlay flex justify-center items-center"
         style={{
           backgroundImage: `url(/templates/${data.slug}/${data.thumbnail})`,
         }}
@@ -127,8 +127,8 @@ export default function Detail({ data }) {
         </a>
       </div>
 
-      <div className="flex flex-col gap-5 items-center md:items-start w-full md:w-2/4">
-        <div className="text-center md:text-left">
+      <div className="flex flex-col gap-5 items-center lg:items-start w-full lg:w-2/4">
+        <div className="text-center lg:text-left">
           <h1 className="text-3xl font-medium">{data.title}</h1>
           <h2>
             <CurrencyFormat

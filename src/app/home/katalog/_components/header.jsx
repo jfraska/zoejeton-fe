@@ -4,8 +4,8 @@ import { WaContact } from "@/libs/contact";
 
 export default function Header() {
   return (
-    <header className="relative w-full md:pt-[20vh] pt-[15vh] pb-[10vh] text-black  bg-opacity-30 flex flex-col md:items-center items-start px-[3%] justify-center">
-      <h1 className="text-2xl md:text-center text-left uppercase w-2/3">
+    <header className="relative w-full lg:pt-[20vh] pt-[15vh] pb-[10vh] text-black  bg-opacity-30 flex flex-col lg:items-center items-start px-[3%] justify-center">
+      <h1 className="text-2xl lg:text-center text-left uppercase w-2/3">
         Tentukan tema, warna, ornament, dan impian lain yang kamu inginkan
         bersama tim desain yang sudah ahli dibidangnya.
       </h1>
