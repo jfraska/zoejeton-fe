@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import { Progress } from "@/components/UI/progress";
