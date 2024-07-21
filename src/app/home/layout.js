@@ -11,7 +11,8 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <CartProvider>
-      <Loading>{children}</Loading>
+      {children}
+      <Loading />
     </CartProvider>
   );
 }
