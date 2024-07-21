@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/layouts/preloader";
 
-export default function Loading() {
+export default function Loading({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,6 +14,14 @@ export default function Loading() {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">{loading && <Preloader />}</AnimatePresence>
+    <>
+      {loading ? (
+        <AnimatePresence mode="wait">
+          <Preloader />
+        </AnimatePresence>
+      ) : (
+        children
+      )}
+    </>
   );
 }
