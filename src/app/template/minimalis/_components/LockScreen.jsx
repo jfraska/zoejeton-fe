@@ -17,7 +17,7 @@ export default function LockScreen({ children, ...props }) {
     <>
       <LockScreenWrapper
         open={state}
-        handleOpen={() => setState(false)}
+        handleOpen={setState}
         className="flex flex-col justify-around items-center"
       >
         <div className="max-w-xs text-center ">

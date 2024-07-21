@@ -13,7 +13,7 @@ export default function CustomizeMode({ children }) {
       <Sidebar />
       <div className="flex flex-col bg-[#f3f3f3]">
         <Nav />
-        <main className="flex-1 flex p-4">
+        <main className="flex-1 flex h-full p-4 overflow-hidden">
           <Tabs
             value={mode}
             onValueChange={setMode}

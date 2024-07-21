@@ -24,7 +24,6 @@ registerPlugin(
 );
 
 export default function BackgroundCustomize({ image, setImage, slug }) {
-
   // const handleAddFile = (error,file) => {
   //   if (error) {
   //     return;
@@ -32,14 +31,14 @@ export default function BackgroundCustomize({ image, setImage, slug }) {
 
   //   setFile(file);
   //     console.log(file)
-    
+
   // };
 
   const handleFileUpload = (files) => {
-    
     if (files.length > 0) {
-      if(files[0].status === 2 || files[0].status === 8) {
-        setImage(files)
+      console.log(files[0].status);
+      if (files[0].status === 2 || files[0].status === 8) {
+        setImage(files);
       }
     }
   };
