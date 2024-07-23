@@ -107,8 +107,8 @@ export default function ButtonAction() {
         onOpenChange={setIsOpenShare}
         link={
           process.env.NEXT_PUBLIC_ROOT_DOMAIN
-            ? `template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${pathname}`
-            : `template.localhost:3000/${pathname}`
+            ? `template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}${pathname}`
+            : `template.localhost:3000${pathname}`
         }
       />
     </>

@@ -24,16 +24,6 @@ export default function ConfirmSave({ open, onOpenChange }) {
   const { saveDraftContent, deleteDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
 
-  // useEffect(() => {
-  //   const local = localStorage.getItem("template")
-  //     ? JSON.parse(localStorage.getItem("template"))
-  //     : null;
-
-  //   if (!local) return;
-
-  //   handleSave();
-  // }, []);
-
   const handleLogin = () => {
     saveDraftContent();
     router.push(
@@ -52,13 +42,6 @@ export default function ConfirmSave({ open, onOpenChange }) {
     }
 
     if (!invitation) {
-      saveDraftContent();
-      router.push(
-        process.env.NEXT_PUBLIC_ROOT_DOMAIN
-          ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?back=true`
-          : `http://app.localhost:3000?back=true`
-      );
-      return;
     }
 
     try {

@@ -9,6 +9,7 @@ import CustomizeContext from "@/context/customize";
 import { Button } from "@/components/UI/button";
 import { LayoutDashboard } from "lucide-react";
 import ButtonTooltip from "@/components/container/button-tooltip";
+import ListPage from "@/components/container/list-page";
 
 export default function Sidebar() {
   const { data: session } = useSession();
@@ -56,11 +57,7 @@ export default function Sidebar() {
             <ButtonCustomize type="color" />
 
             <h1 className="mt-5">Page</h1>
-            <div className="flex flex-col gap-2 mt-2">
-              {dataContent?.map((item, index) => (
-                <ButtonCustomize key={index} template={item} />
-              ))}
-            </div>
+            <ListPage items={dataContent} />
           </nav>
         </div>
       </div>

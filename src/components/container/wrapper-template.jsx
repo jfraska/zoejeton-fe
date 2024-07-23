@@ -128,7 +128,13 @@ export function Cover({ children, className }) {
   );
 }
 
-export function LockScreen({ children, className, open, handleOpen }) {
+export function LockScreen({
+  children,
+  className,
+  open,
+  handleOpen,
+  handleClose,
+}) {
   let lockRef = useRef(null);
   const timeline = useRef(null);
   const { isEdit, dataContent, data } = useContext(CustomizeContext);
@@ -145,11 +151,9 @@ export function LockScreen({ children, className, open, handleOpen }) {
   useEffect(() => {
     const handleHashChange = () => {
       if (window.location.hash === "#lockscreen") {
-        handleOpen(false);
-        window.location.hash = "";
+        handleClose();
       } else {
-        handleOpen(true);
-        window.location.hash = "";
+        handleOpen();
       }
     };
 

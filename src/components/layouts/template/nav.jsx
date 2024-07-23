@@ -19,6 +19,7 @@ import { useSession } from "next-auth/react";
 import PortalContext from "@/context/portal";
 import Link from "next/link";
 import Image from "next/image";
+import ListPage from "@/components/container/list-page";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -69,11 +70,7 @@ export default function Nav() {
             <ButtonCustomize type="color" />
 
             <h1 className="mt-5">Page</h1>
-            <div className="flex flex-col gap-2 mt-2">
-              {dataContent?.map((item, index) => (
-                <ButtonCustomize key={index} template={item} />
-              ))}
-            </div>
+            <ListPage items={dataContent} />
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">

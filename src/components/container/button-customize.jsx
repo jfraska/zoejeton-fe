@@ -9,11 +9,13 @@ import { TokensIcon } from "@radix-ui/react-icons";
 import BackgroundCustomize from "@/components/container/background-customize";
 import CustomizeContext from "@/context/customize";
 import ColorPalette from "@/components/container/color-palette";
+import { useDragControls } from "framer-motion";
 
 export default function ButtonCustomize({ template, type = "page" }) {
   const [state, setState] = useState(!template?.visible?.disable);
   const { dataContent, setDataContent, dataColor, setDataColor, data } =
     useContext(CustomizeContext);
+  const controls = useDragControls();
 
   const handleChangeBackground = (e) => {
     const updatedData = dataContent?.map((item) => {
@@ -47,7 +49,7 @@ export default function ButtonCustomize({ template, type = "page" }) {
           justifyContent: "space-between",
         }}
       >
-        <CollapsibleTrigger asChild>
+        <CollapsibleTrigger onPointerDown={(e) => controls.start(e)} asChild>
           <a
             href={`#${template?.key ? template.key : type}`}
             className="flex items-center gap-2 font-medium text-neutral-900"

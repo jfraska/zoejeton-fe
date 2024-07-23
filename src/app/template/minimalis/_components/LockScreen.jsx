@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import CustomizeContext from "@/context/customize";
@@ -17,7 +17,8 @@ export default function LockScreen({ children, ...props }) {
     <>
       <LockScreenWrapper
         open={state}
-        handleOpen={setState}
+        handleOpen={() => setState(true)}
+        handleClose={() => setState(false)}
         className="flex flex-col justify-around items-center"
       >
         <div className="max-w-xs text-center ">

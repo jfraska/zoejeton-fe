@@ -24,16 +24,6 @@ registerPlugin(
 );
 
 export default function BackgroundCustomize({ image, setImage, slug }) {
-  // const handleAddFile = (error,file) => {
-  //   if (error) {
-  //     return;
-  //   }
-
-  //   setFile(file);
-  //     console.log(file)
-
-  // };
-
   const handleFileUpload = (files) => {
     if (files.length > 0) {
       console.log(files[0].status);
