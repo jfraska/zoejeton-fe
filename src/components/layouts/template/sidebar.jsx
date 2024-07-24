@@ -13,7 +13,7 @@ import ListPage from "@/components/container/list-page";
 
 export default function Sidebar() {
   const { data: session } = useSession();
-  const { dataContent } = useContext(CustomizeContext);
+  const { dataContent, setDataContent } = useContext(CustomizeContext);
 
   return (
     <aside className="hidden inset-y-0 fixed left-0 z-20 md:w-[250px] lg:w-[320px] h-full border-r md:block bg-background">
@@ -57,7 +57,7 @@ export default function Sidebar() {
             <ButtonCustomize type="color" />
 
             <h1 className="mt-5">Page</h1>
-            <ListPage items={dataContent} />
+            <ListPage content={dataContent} />
           </nav>
         </div>
       </div>

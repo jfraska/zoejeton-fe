@@ -9,13 +9,16 @@ import { TokensIcon } from "@radix-ui/react-icons";
 import BackgroundCustomize from "@/components/container/background-customize";
 import CustomizeContext from "@/context/customize";
 import ColorPalette from "@/components/container/color-palette";
-import { useDragControls } from "framer-motion";
 
-export default function ButtonCustomize({ template, type = "page" }) {
+export default function ButtonCustomize({
+  template,
+  type = "page",
+  isSelected,
+  setSelected,
+}) {
   const [state, setState] = useState(!template?.visible?.disable);
   const { dataContent, setDataContent, dataColor, setDataColor, data } =
     useContext(CustomizeContext);
-  const controls = useDragControls();
 
   const handleChangeBackground = (e) => {
     const updatedData = dataContent?.map((item) => {
@@ -40,24 +43,43 @@ export default function ButtonCustomize({ template, type = "page" }) {
     setState(!state);
   };
 
-  return (
-    <Collapsible className="px-2 py-2 bg-neutral-300 rounded-xl">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
+  if (type !== "page") {
+    return (
+      <Collapsible
+        open={isSelected}
+        onOpenChange={setSelected}
+        className="px-2 py-2 bg-neutral-300 rounded-xl"
       >
-        <CollapsibleTrigger onPointerDown={(e) => controls.start(e)} asChild>
+        <CollapsibleTrigger asChild>
+          <button className="flex items-center gap-2 font-medium text-neutral-900">
+            <TokensIcon />
+            <h1 className="capitalize">{type}</h1>
+          </button>
+        </CollapsibleTrigger>
+
+        <CollapsibleContent className="mt-2">
+          {type === "color" && (
+            <ColorPalette colors={dataColor} setColor={setDataColor} />
+          )}
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  }
+
+  return (
+    <Collapsible
+      open={isSelected}
+      onOpenChange={setSelected}
+      className="px-2 py-2 bg-neutral-300 rounded-xl"
+    >
+      <div className="flex items-center justify-between">
+        <CollapsibleTrigger asChild>
           <a
-            href={`#${template?.key ? template.key : type}`}
+            href={`#${template.key}`}
             className="flex items-center gap-2 font-medium text-neutral-900"
           >
             <TokensIcon />
-            <h1 className="capitalize">
-              {template?.key ? template.key : type}
-            </h1>
+            <h1 className="capitalize">{template.key}</h1>
           </a>
         </CollapsibleTrigger>
 
@@ -77,10 +99,6 @@ export default function ButtonCustomize({ template, type = "page" }) {
             image={template.value.background}
             setImage={handleChangeBackground}
           />
-        )}
-
-        {type === "color" && (
-          <ColorPalette colors={dataColor} setColor={setDataColor} />
         )}
       </CollapsibleContent>
     </Collapsible>
