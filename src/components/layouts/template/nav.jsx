@@ -70,7 +70,7 @@ export default function Nav() {
             <ButtonCustomize type="color" />
 
             <h1 className="mt-5">Page</h1>
-            <ListPage items={dataContent} />
+            <ListPage content={dataContent} />
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">
