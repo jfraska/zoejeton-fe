@@ -104,7 +104,7 @@ export function Cover({ children, className }) {
       className={`${
         isEdit
           ? "relative w-full h-full @3xl:block"
-          : "fixed right-[28rem] inset-y-0 left-0 md:block"
+          : "fixed right-[28rem] inset-y-0 left-0 lg:block"
       } hidden`}
       id="cover"
     >

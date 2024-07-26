@@ -5,14 +5,7 @@ import { useSelectedLayoutSegments } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Home, SendHorizontal, ChevronRight } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/UI/dropdown-menu";
+import { Users, Home, SendHorizontal, LogOut, Settings } from "lucide-react";
 import { Separator } from "@/components/UI/separator";
 import { DescriptionOutlined } from "@mui/icons-material";
 import { Badge } from "@/components/UI/badge";
@@ -92,49 +85,36 @@ export default function Sidebar() {
         </div>
         <div className="mt-auto py-4 px-2 lg:px-4">
           <Link
-            href="/invoice"
+            href="/setting"
             className={`${
-              segments[0] === "invoice" ? "bg-muted text" : null
+              segments[0] === "setting" ? "bg-muted text" : null
             } flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
           >
-            <DescriptionOutlined width={18} />
-            <span className="text-sm font-medium">Invoice</span>
+            <Settings className="w-5 aspect-square" />
+            <span className="text-sm font-medium">Setting</span>
             <Badge className="ml-auto flex h-6 px-2 bg-muted-foreground shrink-0 items-center justify-center rounded-md font-normal">
               Unpaid
             </Badge>
           </Link>
           <Separator className="my-2" />
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">
-                <Image
-                  src={
-                    session?.user.image ??
-                    `https://avatar.vercel.sh/${session?.user.email}`
-                  }
-                  width={40}
-                  height={40}
-                  alt={session?.user.name ?? "User avatar"}
-                  className="h-6 w-6 rounded-full"
-                />
-                <span className="text-sm font-medium">
-                  {session?.user.name}
-                </span>
-                <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">
-                  <ChevronRight className="h-5 w-5" />
-                  <span className="sr-only">arrow</span>
-                </div>
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" side="right">
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <button onClick={() => signOut("github")}>Logout</button>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">
+            <Image
+              src={
+                session?.user.image ??
+                `https://avatar.vercel.sh/${session?.user.email}`
+              }
+              width={40}
+              height={40}
+              alt={session?.user.name ?? "User avatar"}
+              className="h-6 w-6 rounded-full"
+              onClick={() => signOut("github")}
+            />
+            <span className="text-sm font-medium">{session?.user.name}</span>
+            <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">
+              <LogOut className="w-5 aspect-square" />
+              <span className="sr-only">arrow</span>
+            </div>
+          </button>
         </div>
       </div>
     </aside>

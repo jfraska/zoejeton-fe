@@ -13,14 +13,14 @@ export default function CustomizeMode({ children }) {
       <Sidebar />
       <div className="flex flex-col bg-[#f3f3f3]">
         <Nav />
-        <main className="flex-1 flex h-full p-4 overflow-hidden">
+        <main className="flex-1 flex justify-start lg:justify-center h-full p-4 overflow-hidden">
           <Tabs
             value={mode}
             onValueChange={setMode}
             className={`${mode === "mobile" && isDesktop && "h-full"} ${
               mode === "desktop" && isDesktop && "w-full xl:w-10/12"
             } 
-            ${!isDesktop && "w-full h-full"} mx-auto max-w-full max-h-full`}
+            ${!isDesktop && "w-full h-full"} max-w-full max-h-full`}
           >
             <TabsList className="xl:block hidden">
               <TabsTrigger value="desktop">Desktop</TabsTrigger>
