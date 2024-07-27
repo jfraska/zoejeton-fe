@@ -13,6 +13,7 @@ import {
   Share,
   SendHorizontal,
   ChevronRight,
+  UserPlus,
 } from "lucide-react";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
@@ -28,6 +29,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/sheet";
 import { DescriptionOutlined } from "@mui/icons-material";
 import { Separator } from "@/components/UI/separator";
+import { TeamMembers } from "@/components/container/team-members";
 
 export default function Nav() {
   const { data: session } = useSession();
@@ -180,6 +182,22 @@ export default function Nav() {
           />
         </div>
       </form> */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            className="ml-auto gap-1.5 text-sm"
+          >
+            <UserPlus className="w-5 aspect-square" />
+            <h1 className="hidden md:block">Share</h1>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="p-0 relative w-80">
+          <TeamMembers />
+        </DropdownMenuContent>
+        {/* <Card className="rounded-none border-none bg-transparent shadow-none"></Card> */}
+      </DropdownMenu>
 
       {/* {invitation?.templateId ? ( */}
       <DropdownMenu>

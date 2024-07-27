@@ -5,11 +5,24 @@ import { useSelectedLayoutSegments } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Home, SendHorizontal, LogOut, Settings } from "lucide-react";
+import {
+  Users,
+  Home,
+  SendHorizontal,
+  LogOut,
+  Settings,
+  ChevronDown,
+  User,
+} from "lucide-react";
 import { Separator } from "@/components/UI/separator";
 import { DescriptionOutlined } from "@mui/icons-material";
 import { Badge } from "@/components/UI/badge";
 import Notification from "@/components/container/notification";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/UI/collapsible";
 
 export default function Sidebar() {
   const { data: session } = useSession();
@@ -97,24 +110,46 @@ export default function Sidebar() {
             </Badge>
           </Link>
           <Separator className="my-2" />
-          <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">
-            <Image
-              src={
-                session?.user.image ??
-                `https://avatar.vercel.sh/${session?.user.email}`
-              }
-              width={40}
-              height={40}
-              alt={session?.user.name ?? "User avatar"}
-              className="h-6 w-6 rounded-full"
-              onClick={() => signOut("github")}
-            />
-            <span className="text-sm font-medium">{session?.user.name}</span>
-            <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">
-              <LogOut className="w-5 aspect-square" />
-              <span className="sr-only">arrow</span>
-            </div>
-          </button>
+          <Collapsible>
+            <CollapsibleTrigger asChild>
+              <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">
+                <Image
+                  src={
+                    session?.user.image ??
+                    `https://avatar.vercel.sh/${session?.user.email}`
+                  }
+                  width={40}
+                  height={40}
+                  alt={session?.user.name ?? "User avatar"}
+                  className="w-5 aspect-square rounded-full"
+                />
+                <span className="text-sm font-medium">
+                  {session?.user.name}
+                </span>
+                <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">
+                  <ChevronDown className="w-5 aspect-square" />
+                  <span className="sr-only">arrow</span>
+                </div>
+              </button>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <Link
+                href="/profile"
+                className={`${
+                  segments[0] === "profile" ? "bg-muted text" : null
+                } flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
+              >
+                <User className="w-5 aspect-square" />
+                <span className="text-sm font-medium">Ubah Profile</span>
+              </Link>
+              <button
+                className={`w-full flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
+              >
+                <LogOut className="w-5 aspect-square" />
+                <span className="text-sm font-medium">Logout</span>
+              </button>
+            </CollapsibleContent>
+          </Collapsible>
         </div>
       </div>
     </aside>
