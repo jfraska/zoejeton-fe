@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useSelectedLayoutSegments } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -25,6 +25,7 @@ import {
 } from "@/components/UI/collapsible";
 
 export default function Sidebar() {
+  const [openProfile, setOpenProfile] = useState(false);
   const { data: session } = useSession();
   const segments = useSelectedLayoutSegments();
 
@@ -44,8 +45,8 @@ export default function Sidebar() {
       // },
       {
         name: "Tamu",
-        href: "/tamu",
-        isActive: segments[0] === "tamu",
+        href: "/guest",
+        isActive: segments[0] === "guest",
         icon: <Users width={18} />,
       },
       {
@@ -96,11 +97,11 @@ export default function Sidebar() {
             ))}
           </nav>
         </div>
-        <div className="mt-auto py-4 px-2 lg:px-4">
+        <div className="mt-auto space-y-2 py-4 px-2 lg:px-4">
           <Link
-            href="/setting"
+            href="/settings"
             className={`${
-              segments[0] === "setting" ? "bg-muted text" : null
+              segments[0] === "settings" ? "bg-muted text" : null
             } flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
           >
             <Settings className="w-5 aspect-square" />
@@ -109,8 +110,8 @@ export default function Sidebar() {
               Unpaid
             </Badge>
           </Link>
-          <Separator className="my-2" />
-          <Collapsible>
+          {/* <Separator className="my-2" /> */}
+          <Collapsible open={openProfile} onOpenChange={setOpenProfile}>
             <CollapsibleTrigger asChild>
               <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">
                 <Image
@@ -127,12 +128,17 @@ export default function Sidebar() {
                   {session?.user.name}
                 </span>
                 <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">
-                  <ChevronDown className="w-5 aspect-square" />
+                  <ChevronDown
+                    className={`${
+                      openProfile ? "rotate-180" : "rotate-0"
+                    } transition-all duration-100 ease-in-out w-5 aspect-square`}
+                  />
                   <span className="sr-only">arrow</span>
                 </div>
               </button>
             </CollapsibleTrigger>
             <CollapsibleContent>
+              <Separator className="my-2" />
               <Link
                 href="/profile"
                 className={`${

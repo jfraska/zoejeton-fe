@@ -10,31 +10,35 @@ import {
   Users,
   Home,
   PanelLeft,
-  Share,
   SendHorizontal,
-  ChevronRight,
-  UserPlus,
+  ChevronDown,
+  User,
+  Settings,
+  LogOut,
 } from "lucide-react";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
 import { Button } from "@/components/UI/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/UI/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/sheet";
-import { DescriptionOutlined } from "@mui/icons-material";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/UI/sheet";
 import { Separator } from "@/components/UI/separator";
-import { TeamMembers } from "@/components/container/team-members";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/UI/collapsible";
+import { Badge } from "@/components/UI/badge";
+import ButtonPublish from "@/components/container/button-publish";
 
 export default function Nav() {
   const { data: session } = useSession();
   const segments = useSelectedLayoutSegments();
   const [open, setOpen] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
   const { invitation, setStateSwitcher } = useContext(PortalContext);
 
   const tabs = useMemo(() => {
@@ -53,8 +57,8 @@ export default function Nav() {
       // },
       {
         name: "Tamu",
-        href: "/tamu",
-        isActive: segments[0] === "tamu",
+        href: "/guest",
+        isActive: segments[0] === "guest",
         icon: <Users width={18} />,
       },
       {
@@ -76,7 +80,7 @@ export default function Nav() {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col">
-          <nav className="grid gap-2 text-lg font-medium">
+          <SheetHeader>
             <Link
               href={
                 process.env.NEXT_PUBLIC_ROOT_DOMAIN
@@ -94,6 +98,8 @@ export default function Nav() {
               />
               <span className="">ZoeJeton</span>
             </Link>
+          </SheetHeader>
+          <nav className="space-y-2 text-lg font-medium">
             {tabs.map(({ name, href, isActive, icon }) => (
               <Link
                 key={name}
@@ -101,27 +107,31 @@ export default function Nav() {
                 onClick={() => setOpen(false)}
                 className={`${
                   isActive ? "bg-muted text" : null
-                } mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground`}
+                } flex items-center gap-4 rounded-xl p-2 text-muted-foreground hover:text-foreground`}
               >
                 {icon}
                 <span className="text-sm font-medium">{name}</span>
               </Link>
             ))}
           </nav>
-          <div className="mt-auto">
+          <div className="mt-auto space-y-2">
             <Link
-              href="/invoice"
+              href="/settings"
               className={`${
-                segments[0] === "invoice" ? "bg-muted text" : null
-              } flex items-center gap-3 rounded-lg py-2 text-muted-foreground transition-all hover:text-primary`}
+                segments[0] === "settings" ? "bg-muted text" : null
+              } flex items-center gap-3 rounded-lg p-2 text-muted-foreground transition-all hover:text-primary`}
+              onClick={() => setOpen(false)}
             >
-              <DescriptionOutlined width={18} />
-              <span className="text-sm font-medium">Invoice</span>
+              <Settings className="w-5 aspect-square" />
+              <span className="text-sm font-medium">Setting</span>
+              <Badge className="ml-auto flex h-6 px-2 bg-muted-foreground shrink-0 items-center justify-center rounded-md font-normal">
+                Unpaid
+              </Badge>
             </Link>
-            <Separator className="my-2" />
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="flex w-full items-center gap-4 rounded-lg py-2 text-muted-foreground transition-all hover:text-primary">
+            {/* <Separator className="my-2" /> */}
+            <Collapsible open={openProfile} onOpenChange={setOpenProfile}>
+              <CollapsibleTrigger asChild>
+                <button className="flex w-full items-center gap-3 rounded-lg p-2 text-muted-foreground transition-all hover:text-primary">
                   <Image
                     src={
                       session?.user.image ??
@@ -130,26 +140,41 @@ export default function Nav() {
                     width={40}
                     height={40}
                     alt={session?.user.name ?? "User avatar"}
-                    className="h-6 w-6 rounded-full"
+                    className="w-5 aspect-square rounded-full"
                   />
                   <span className="text-sm font-medium">
                     {session?.user.name}
                   </span>
                   <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">
-                    <ChevronRight className="h-5 w-5" />
+                    <ChevronDown
+                      className={`${
+                        openProfile ? "rotate-180" : "rotate-0"
+                      } transition-all duration-100 ease-in-out w-5 aspect-square`}
+                    />
                     <span className="sr-only">arrow</span>
                   </div>
                 </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" side="right">
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <button onClick={() => signOut("github")}>Logout</button>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="space-y-2">
+                <Separator className="my-2" />
+                <Link
+                  href="/profile"
+                  onClick={() => setOpen(false)}
+                  className={`${
+                    segments[0] === "profile" ? "bg-muted text" : null
+                  } flex items-center gap-3 rounded-lg p-2 text-muted-foreground transition-all hover:text-primary`}
+                >
+                  <User className="w-5 aspect-square" />
+                  <span className="text-sm font-medium">Ubah Profile</span>
+                </Link>
+                <button
+                  className={`w-full flex items-center gap-3 rounded-lg p-2 text-muted-foreground transition-all hover:text-primary`}
+                >
+                  <LogOut className="w-5 aspect-square" />
+                  <span className="text-sm font-medium">Logout</span>
+                </button>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </SheetContent>
       </Sheet>
@@ -182,63 +207,8 @@ export default function Nav() {
           />
         </div>
       </form> */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="sm"
-            className="ml-auto gap-1.5 text-sm"
-          >
-            <UserPlus className="w-5 aspect-square" />
-            <h1 className="hidden md:block">Share</h1>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="p-0 relative w-80">
-          <TeamMembers />
-        </DropdownMenuContent>
-        {/* <Card className="rounded-none border-none bg-transparent shadow-none"></Card> */}
-      </DropdownMenu>
 
-      {/* {invitation?.templateId ? ( */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="sm"
-            className="ml-auto gap-1.5 text-sm"
-          >
-            <Share className="w-5 aspect-square" />
-            <h1 className="hidden md:block">Publish</h1>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" side="bottom">
-          <DropdownMenuLabel>Preview</DropdownMenuLabel>
-          <DropdownMenuItem>
-            {/* <Link
-              href={
-                process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                  ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${invitation.slug}`
-                  : `http://template.localhost:3000/${invitation.slug}`
-              }
-              className="h-6 text-sm bg-background border border-input px-3 rounded-md"
-            >
-              {process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                ? `template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${invitation.slug}`
-                : `template.localhost:3000/${invitation.slug}`}
-            </Link> */}
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Button className="w-full">Publish</Button>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      {/* ) : (
-        <Button variant="outline" size="sm" className="ml-auto gap-1.5 text-sm">
-          <Share className="w-5 aspect-square" />
-          <h1 className="hidden md:block">Publish</h1>
-        </Button>
-      )} */}
+      <ButtonPublish />
     </header>
   );
 }

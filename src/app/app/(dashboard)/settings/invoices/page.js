@@ -1,3 +1,11 @@
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/UI/breadcrum";
 import { Button } from "@/components/UI/button";
 import {
   Card,
@@ -15,21 +23,112 @@ import {
   DropdownMenuTrigger,
 } from "@/components/UI/dropdown-menu";
 import { Separator } from "@/components/UI/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
-import { Copy, CreditCard, MoreVertical, Printer, Truck } from "lucide-react";
+import { Copy, CreditCard, MoreVertical, Printer } from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/UI/table";
+
+const invoices = [
+  {
+    invoice: "INV001",
+    paymentStatus: "Paid",
+    totalAmount: "$250.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV002",
+    paymentStatus: "Pending",
+    totalAmount: "$150.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV003",
+    paymentStatus: "Unpaid",
+    totalAmount: "$350.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV004",
+    paymentStatus: "Paid",
+    totalAmount: "$450.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV005",
+    paymentStatus: "Paid",
+    totalAmount: "$550.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV006",
+    paymentStatus: "Pending",
+    totalAmount: "$200.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV007",
+    paymentStatus: "Unpaid",
+    totalAmount: "$300.00",
+    paymentMethod: "Credit Card",
+  },
+];
 
 export default function Page() {
   return (
     <section className="flex h-full flex-col gap-4 lg:gap-6">
       <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl">Transaksi</h1>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/settings">Setting</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Tagihan</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-10">
         <Card className="space-y-4 col-span-4 md:col-span-6">
           <CardHeader>
-            <CardTitle>Package</CardTitle>
+            <CardTitle>Tagihan</CardTitle>
           </CardHeader>
-          <CardContent className="grid gap-4"></CardContent>
+          <CardContent className="grid gap-4">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[100px]">Invoice</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead className="w-2/5">Keterangan</TableHead>
+                  <TableHead>Total</TableHead>
+                  <TableHead></TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {invoices.map((invoice) => (
+                  <TableRow key={invoice.invoice}>
+                    <TableCell className="font-medium">
+                      {invoice.invoice}
+                    </TableCell>
+                    <TableCell>{invoice.paymentStatus}</TableCell>
+                    <TableCell>{invoice.paymentMethod}</TableCell>
+                    <TableCell>{invoice.totalAmount}</TableCell>
+                    <TableCell className="text-right">
+                      <Button>Bayar Sekarang</Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
         </Card>
         <Card className="col-span-4 md:col-span-4">
           <CardHeader className="flex flex-row items-start bg-muted/50">

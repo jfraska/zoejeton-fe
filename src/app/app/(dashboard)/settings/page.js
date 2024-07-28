@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/UI/card";
+import { DescriptionOutlined } from "@mui/icons-material";
 import { Edit2, PackagePlus, UserPlus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +19,7 @@ export default function Page() {
       </div>
       <div className="space-y-4">
         <Card className="space-y-4 col-span-4 md:col-span-6">
-          <CardContent className="flex justify-between p-6">
+          <CardContent className="flex lg:flex-row flex-col gap-4 justify-between p-6">
             <div className="space-y-3">
               <h1 className="text-4xl font-medium leading-none tracking-tight">
                 Jeton&Zoe
@@ -44,22 +45,28 @@ export default function Page() {
                 </button>
               </div>
             </div>
-            <div className="flex flex-col border w-5/12">
-              <Link href="#" className="flex gap-2 p-2 border-b">
+            <div className="flex flex-col border w-full lg:w-5/12">
+              <Link
+                href="/settings/packages"
+                className="flex gap-2 p-2 border-b hover:bg-muted"
+              >
                 <PackagePlus className="w-5 aspect-square" />
                 <h1>Paket dan Tambahan</h1>
                 <Badge className="ml-auto flex h-6 px-2 bg-muted-foreground shrink-0 items-center justify-center rounded-md font-normal">
-                  Free
+                  Demo
                 </Badge>
               </Link>
-              <Link href="#" className="flex gap-2 p-2 border-b">
-                <PackagePlus className="w-5 aspect-square" />
+              <Link
+                href="/settings/invoices"
+                className="flex gap-2 p-2 border-b hover:bg-muted"
+              >
+                <DescriptionOutlined className="w-5 aspect-square" />
                 <h1>Tagihan</h1>
                 <Badge className="ml-auto flex h-6 px-2 bg-muted text-muted-foreground shrink-0 items-center justify-center rounded-full font-normal">
                   2
                 </Badge>
               </Link>
-              <Link href="#" className="flex gap-2 p-2 border-b">
+              <Link href="#" className="flex gap-2 p-2 border-b hover:bg-muted">
                 <UserPlus className="w-5 aspect-square" />
                 <h1>Pengguna</h1>
                 <Badge className="ml-auto flex h-6 aspect-square bg-muted text-muted-foreground shrink-0 items-center justify-center rounded-full font-normal">

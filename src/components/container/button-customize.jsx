@@ -84,11 +84,7 @@ export default function ButtonCustomize({
         </CollapsibleTrigger>
 
         {type === "page" && template.visible && (
-          <Switch
-            className="data-[state=unchecked]:bg-[#e5e5e5]"
-            checked={state}
-            onCheckedChange={handleChangeVisbility}
-          />
+          <Switch checked={state} onCheckedChange={handleChangeVisbility} />
         )}
       </div>
       <CollapsibleContent className="mt-2">
