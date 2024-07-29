@@ -150,6 +150,7 @@ export default function Sidebar() {
               </Link>
               <button
                 className={`w-full flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
+                onClick={() => signOut()}
               >
                 <LogOut className="w-5 aspect-square" />
                 <span className="text-sm font-medium">Logout</span>

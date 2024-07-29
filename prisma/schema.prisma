@@ -78,11 +78,12 @@ model Template {
   parent        String?     
   thumbnail     String
   price         Int
-  discount      Int
+  discount      Int?
   category      String      @default("basic")
   content       Json[]
   color         Json[]
   music         String
+  meta          Json[]
   published     Boolean     @default(false)
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
@@ -93,15 +94,14 @@ model Template {
 model Invitation {
   id            String      @default(cuid()) @id 
   title         String
+  subdomain     String      @unique
   userId        String
-  templateId    String?      @unique
-  fitur         Json[]
-  addon         Json[]
+  templateId    String?     @unique
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
 
   guests        Guest[]
-  payment       Payment?
+  payment       Payment[]
 
   user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   template      Template?    @relation(fields: [templateId], references: [id], onDelete: Cascade)
@@ -112,10 +112,11 @@ model Invitation {
 model Payment {
   id            String      @default(cuid()) @id 
   invitationId  String      @unique
+  desc          String
   items         Json[]
   discount      Int         @default(0)
-  subTotal      Int
-  status        String      @default("pending")
+  total         Int
+  status        Int         @default(0)
   createdAt     DateTime    @default(now()) @map(name: "created_at")
   updatedAt     DateTime    @updatedAt @map(name: "updated_at")
 
@@ -127,11 +128,11 @@ model Payment {
 model Guest {
   id                      String    @id @default(cuid())
   invitationId            String
-  number                  String
+  no                      String
   name                    String
-  additional              Json?
-  sosmed                  Json?
-  attended                Json?
+  additional              Json[]
+  sosmed                  Json[]
+  attended                Json[]
   createdAt               DateTime  @default(now())
   updatedAt               DateTime  @updatedAt
 

@@ -6,7 +6,7 @@ export default function LiveStream() {
   return (
     <Section
       className="h-full p-10 flex flex-col justify-between"
-      id="live streaming"
+      id="live-streaming"
     >
       <div>
         <h1 className={`${Runalto.className} text-5xl`}>Live Streaming</h1>
@@ -22,7 +22,7 @@ export default function LiveStream() {
           className="mt-10"
           type="link"
           field="link"
-          section="live streaming"
+          section="live-streaming"
         >
           <a
             href="/"

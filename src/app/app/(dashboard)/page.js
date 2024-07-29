@@ -33,24 +33,23 @@ async function getData() {
 export default async function Dashboard() {
   const res = await getData();
 
-  if (res) {
-    return (
-      <section className="flex h-full flex-col gap-4 lg:gap-6">
-        <div className="flex items-center">
-          <h1 className="text-lg font-semibold md:text-2xl">Dashboard</h1>
-        </div>
-        <Tabs defaultValue="overview" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="reports" disabled>
-              Reports
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="overview" className="space-y-4">
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-10">
-              <TemplateCard data={res.data} />
-              <EventCard data={res.data} />
-              {/* <Card className="col-span-3">
+  return (
+    <section className="flex h-full flex-col gap-4 lg:gap-6">
+      <div className="flex items-center">
+        <h1 className="text-lg font-semibold md:text-2xl">Dashboard</h1>
+      </div>
+      <Tabs defaultValue="overview" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="reports" disabled>
+            Reports
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview" className="space-y-4">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-10">
+            <TemplateCard result={res} />
+            <EventCard result={res} />
+            {/* <Card className="col-span-3">
                     <CardHeader>
                       <CardTitle>Recent Sales</CardTitle>
                       <CardDescription>
@@ -59,8 +58,8 @@ export default async function Dashboard() {
                     </CardHeader>
                     <CardContent><RecentSales /></CardContent>
                   </Card> */}
-            </div>
-            {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          </div>
+          {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                   <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
@@ -163,23 +162,22 @@ export default async function Dashboard() {
                     </CardContent>
                   </Card>
                 </div> */}
-          </TabsContent>
-        </Tabs>
-      </section>
-    );
-  }
-
-  return (
-    <NotfoundDashboard
-      pathname="Dashboard"
-      title="You have no template"
-      desc="You can start a new experience with an invitation from us."
-      link={
-        process.env.NEXT_PUBLIC_ROOT_DOMAIN
-          ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/katalog`
-          : `http://localhost:3000/katalog`
-      }
-      textButton="Temukan templatemu"
-    />
+        </TabsContent>
+      </Tabs>
+    </section>
   );
+
+  // return (
+  //   <NotfoundDashboard
+  //     pathname="Dashboard"
+  //     title="You have no template"
+  //     desc="You can start a new experience with an invitation from us."
+  //     link={
+  //       process.env.NEXT_PUBLIC_ROOT_DOMAIN
+  //         ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/katalog`
+  //         : `http://localhost:3000/katalog`
+  //     }
+  //     textButton="Temukan templatemu"
+  //   />
+  // );
 }

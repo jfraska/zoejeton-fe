@@ -19,12 +19,16 @@ import {
 import PortalContext from "@/context/portal";
 import { Drawer, DrawerContent } from "@/components/UI/drawer";
 import { toast } from "sonner";
-import CreateInvitation from "@/components/container/create-invitation";
 
 export default function Switcher() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const { invitation, updateInvitation, stateSwitcher, setStateSwitcher } =
-    useContext(PortalContext);
+  const {
+    invitation,
+    updateInvitation,
+    stateSwitcher,
+    setStateSwitcher,
+    setStateCreateInvitation,
+  } = useContext(PortalContext);
 
   if (isDesktop) {
     return (
@@ -35,6 +39,7 @@ export default function Switcher() {
       >
         <ListInvitation
           invitation={invitation}
+          create={setStateCreateInvitation}
           updateInvitation={updateInvitation}
           setStateSwitcher={setStateSwitcher}
         />
@@ -48,6 +53,7 @@ export default function Switcher() {
         <Command className="px-4 py-2">
           <ListInvitation
             invitation={invitation}
+            create={setStateCreateInvitation}
             updateInvitation={updateInvitation}
             setStateSwitcher={setStateSwitcher}
           />
@@ -61,10 +67,9 @@ export function ListInvitation({
   invitation,
   updateInvitation,
   setStateSwitcher,
+  create,
 }) {
   const [search, setSearch] = useState("");
-
-  const [stateCreateInvitation, setStateCreateInvitation] = useState(false);
   const [loading, setLoading] = useState(false);
   const [datainvitation, setDataInvitation] = useState(null);
 
@@ -81,15 +86,16 @@ export function ListInvitation({
           search,
           limit: 5,
         });
-        const response = await fetch(
-          `/api/invitation?${params.toString()}`
-        ).then((res) => res.json());
-        if (response.data < 1) {
+        const res = await fetch(`/api/invitation?${params.toString()}`);
+        const result = await res.json();
+
+        if (result.data < 1) {
+          create(true);
           setStateSwitcher(false);
-          setStateCreateInvitation(true);
+          return;
         }
 
-        setDataInvitation(response.data);
+        setDataInvitation(result.data);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
@@ -134,32 +140,21 @@ export function ListInvitation({
           );
         })}
       </CommandList>
-      {datainvitation && datainvitation.length < 2 && (
-        <>
-          <CommandSeparator />
-          <CommandList>
-            <CommandGroup>
-              <CommandItem
-                className="cursor-pointer"
-                onSelect={() => {
-                  setStateCreateInvitation(true);
-                  setStateSwitcher(false);
-                }}
-              >
-                <PlusCircledIcon className="mr-2 h-5 w-5" />
-                Create Invitation
-              </CommandItem>
-            </CommandGroup>
-          </CommandList>
-        </>
-      )}
-
-      <CreateInvitation
-        open={stateCreateInvitation}
-        setOpen={setStateCreateInvitation}
-        invitation={invitation}
-        updateInvitation={updateInvitation}
-      />
+      <CommandSeparator />
+      <CommandList>
+        <CommandGroup>
+          <CommandItem
+            className="cursor-pointer"
+            onSelect={() => {
+              create(true);
+              setStateSwitcher(false);
+            }}
+          >
+            <PlusCircledIcon className="mr-2 h-5 w-5" />
+            Create Invitation
+          </CommandItem>
+        </CommandGroup>
+      </CommandList>
     </>
   );
 }

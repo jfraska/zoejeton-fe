@@ -41,9 +41,8 @@ export const POST = auth(async function POST(req) {
     try {
       const invitationSchema = z.object({
         title: z.string().min(2).max(50),
-        template: z.object().optional(),
-        fitur: z.array().optional(),
-        addon: z.array().optional(),
+        subdomain: z.string().min(2).max(50),
+        // template: z.object().optional(),
       });
 
       const body = await req.json();
@@ -59,27 +58,26 @@ export const POST = auth(async function POST(req) {
         );
       }
 
-      const { title, template, fitur, addon } = validator.data;
+      const { title, subdomain } = validator.data;
 
       let config = {
         data: {
           title,
+          subdomain,
           user: { connect: { id: req.auth.user.id } },
-          fitur,
-          addon,
         },
         include: {
           user: true,
         },
       };
 
-      if (template) {
-        config.data.template = {
-          create: {
-            template,
-          },
-        };
-      }
+      // if (template) {
+      //   config.data.template = {
+      //     create: {
+      //       template,
+      //     },
+      //   };
+      // }
 
       const data = await prisma.Invitation.create(config);
 

@@ -26,6 +26,17 @@ export async function middleware(req) {
     return NextResponse.rewrite(new URL(`/app${path}`, req.nextUrl));
   }
 
+  // rewrites for guestbook pages
+  if (hostname == `guestbook.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+    const session = await auth();
+    if (!session && path !== "/login" && path !== "/signup") {
+      return NextResponse.redirect(new URL("/login", req.nextUrl));
+    } else if (session && (path == "/login" || path == "/signup")) {
+      return NextResponse.redirect(new URL("/", req.nextUrl));
+    }
+    return NextResponse.rewrite(new URL(`/guestbook${path}`, req.nextUrl));
+  }
+
   // rewrite root application to `/home` folder
   if (
     hostname === "localhost:3000" ||

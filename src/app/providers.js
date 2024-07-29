@@ -3,6 +3,7 @@ import { Toaster } from "@/components/UI/sonner";
 import { auth } from "@/libs/auth";
 import { PortalProvider } from "@/context/portal";
 import Switcher from "@/components/container/switcher";
+import CreateInvitation from "@/components/container/create-invitation";
 
 export async function Providers({ children }) {
   const session = await auth();
@@ -11,6 +12,7 @@ export async function Providers({ children }) {
       <PortalProvider>
         {children}
         <Switcher />
+        <CreateInvitation />
       </PortalProvider>
       <Toaster />
     </SessionProvider>
