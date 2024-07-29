@@ -10,6 +10,8 @@ import {
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
 import Link from "next/link";
+import { Skeleton } from "@/components/UI/skeleton";
+import { Plus } from "lucide-react";
 
 export default function TemplateCard({ result }) {
   if (result) {
@@ -21,13 +23,14 @@ export default function TemplateCard({ result }) {
           <CardTitle className="text-2xl">{data.title}</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <div className="relative w-full aspect-video bg-secondary rounded-lg overflow-hidden bg-black bg-blend-multiply bg-opacity-80">
+          <div className="relative w-full aspect-video bg-secondary rounded-lg overflow-hidden">
             <Image
               fill
               src={`/templates/${data.slug}/${data.thumbnail}`}
               alt="thumbnail"
               style={{ objectFit: "cover" }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="brightness-75"
             />
           </div>
           <div className="flex items-center gap-5 space-x-2">
@@ -77,8 +80,13 @@ export default function TemplateCard({ result }) {
   }
 
   return (
-    <Card className="col-span-4 md:col-span-3">
-      <CardContent className="grid gap-4"></CardContent>
+    <Card className="col-span-4 md:col-span-3 border-dashed">
+      <CardContent className="mt-4 grid gap-4">
+        <Button variant="outline" className="border-dashed space-x-2">
+          <Plus className="w-4 aspect-square" />
+          <h1>Tambah Template</h1>
+        </Button>
+      </CardContent>
     </Card>
   );
 }

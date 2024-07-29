@@ -85,10 +85,4 @@ export default function EventCard({ result }) {
       </div>
     );
   }
-
-  return (
-    <Card className="grid h-full">
-      <CardContent className="grid gap-4"></CardContent>
-    </Card>
-  );
 }
