@@ -20,10 +20,10 @@ export default function Page() {
 
   return (
     <main
-      className={`${montserrat.className} h-screen relative md:my-10 max-w-[430px] min-h-full px-5 pt-24 pb-5 mx-auto md:rounded-lg md:overflow-hidden bg-blend-multiply bg-black bg-opacity-10`}
+      className={`${montserrat.className} h-screen relative lg:my-10 lg:max-w-md w-full min-h-full px-5 pt-24 pb-5 mx-auto lg:rounded-lg lg:overflow-hidden`}
     >
       <Image
-        className="h-full -z-10"
+        className="h-full -z-10 brightness-75"
         alt="background image"
         src="/assets/images/bio.jpg"
         style={{ objectFit: "cover" }}
