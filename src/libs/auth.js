@@ -6,7 +6,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/libs/prisma";
 import { saltAndHashPassword } from "@/libs/utils";
 
-const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL;
+const VERCEL_DEPLOYMENT = !!process.env.NEXT_PUBLIC_ROOT_DOMAIN;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -21,19 +21,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
     Google({
-      profile(profile) {
-        return {
-          id: profile.id.toString(),
-          name: profile.name || profile.login,
-          email: profile.email,
-          image: profile.avatar_url,
-        };
-      },
+      // profile(profile) {
+      //   return {
+      //     id: profile.id.toString(),
+      //     name: profile.name || profile.login,
+      //     email: profile.email,
+      //     image: profile.avatar_url,
+      //   };
+      // },
     }),
     Credentials({
       credentials: {
         email: { label: "Email" },
-        // password: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
         let user = null;
@@ -76,7 +76,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
         domain: VERCEL_DEPLOYMENT
           ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-          : undefined,
+          : null,
         secure: VERCEL_DEPLOYMENT,
       },
     },
@@ -84,7 +84,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     jwt({ token, user }) {
       if (user) {
-        // User is available during sign-in
         token.id = user.id;
       }
       return token;
