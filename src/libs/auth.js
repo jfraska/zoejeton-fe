@@ -11,7 +11,7 @@ const VERCEL_DEPLOYMENT = !!process.env.NEXT_PUBLIC_ROOT_DOMAIN;
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GitHub({
-      profile(profile) {
+      async profile(profile) {
         return {
           id: profile.id.toString(),
           name: profile.name || profile.login,
@@ -21,14 +21,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
     Google({
-      // profile(profile) {
-      //   return {
-      //     id: profile.id.toString(),
-      //     name: profile.name || profile.login,
-      //     email: profile.email,
-      //     image: profile.avatar_url,
-      //   };
-      // },
+      async profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+        };
+      },
     }),
     Credentials({
       credentials: {
