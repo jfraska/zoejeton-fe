@@ -23,7 +23,7 @@ export async function middleware(req) {
     } else if (session && (path == "/login" || path == "/signup")) {
       return NextResponse.redirect(new URL("/", req.nextUrl));
     }
-    return NextResponse.rewrite(new URL(`/app${path}`, req.nextUrl));
+    return NextResponse.rewrite(new URL(`/dashboard${path}`, req.nextUrl));
   }
 
   // rewrites for guestbook pages
