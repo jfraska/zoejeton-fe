@@ -28,8 +28,8 @@ export default function ConfirmSave({ open, onOpenChange }) {
     saveDraftContent();
     router.push(
       process.env.NEXT_PUBLIC_ROOT_DOMAIN
-        ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?template=${data.id}&back=true`
-        : `http://app.localhost:3000?template=${data.id}&back=true`
+        ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?template=${data.id}&back=true`
+        : `http://dashboard.localhost:3000?template=${data.id}&back=true`
     );
   };
 

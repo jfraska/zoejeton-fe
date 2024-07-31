@@ -15,8 +15,8 @@ export async function middleware(req) {
     searchParams.length > 0 ? `?${searchParams}` : ""
   }`;
 
-  // rewrites for app pages
-  if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+  // rewrites for dashboard pages
+  if (hostname == `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     const session = await auth();
     if (!session && path !== "/login" && path !== "/signup") {
       return NextResponse.redirect(new URL("/login", req.nextUrl));

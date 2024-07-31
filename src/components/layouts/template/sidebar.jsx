@@ -41,8 +41,8 @@ export default function Sidebar() {
               <Link
                 href={
                   process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                    : `http://app.localhost:3000`
+                    ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `http://dashboard.localhost:3000`
                 }
               >
                 <LayoutDashboard className="h-4 w-4" />
