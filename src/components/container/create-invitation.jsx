@@ -83,7 +83,7 @@ export default function CreateInvitation() {
       const result = await res.json();
 
       updateInvitation(result.data);
-      setOpen(false);
+      setStateCreateInvitation(false);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
