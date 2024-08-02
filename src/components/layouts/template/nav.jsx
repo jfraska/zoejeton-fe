@@ -20,6 +20,7 @@ import PortalContext from "@/context/portal";
 import Link from "next/link";
 import Image from "next/image";
 import ListPage from "@/components/container/list-page";
+import { getCookie, hasCookie } from "cookies-next";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
