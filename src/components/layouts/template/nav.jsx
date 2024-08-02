@@ -100,8 +100,8 @@ export default function Nav() {
               <Link
                 href={
                   process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `https://app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`
-                    : `http://app.localhost:3000/login`
+                    ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`
+                    : `http://dashboard.localhost:3000/login`
                 }
               >
                 Sign in
