@@ -29,8 +29,11 @@ import { generateSlug } from "@/libs/utils";
 import PortalContext from "@/context/portal";
 
 const formSchema = z.object({
-  title: z.string().min(2).max(50),
-  subdomain: z.string().max(50),
+  title: z
+    .string()
+    .min(2, { message: "title minimal 2 karakter" })
+    .max(20, { message: "title tidak boleh lebih dari 20 karakter" }),
+  subdomain: z.string().max(20),
   template: z.string().optional(),
 });
 
@@ -84,6 +87,7 @@ export default function CreateInvitation() {
 
       updateInvitation(result.data);
       setStateCreateInvitation(false);
+      form.reset();
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }

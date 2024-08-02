@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { getCookie, hasCookie, setCookie } from "cookies-next";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -13,23 +12,33 @@ import {
 } from "@/components/UI/dialog";
 import { Button } from "@/components/UI/button";
 import CustomizeContext from "@/context/customize";
+import PortalContext from "@/context/portal";
 import axios from "axios";
 
 export default function ConfirmSave({ open, onOpenChange }) {
-  const [invitation, setInvitation] = useState(
-    hasCookie("invitation") ? JSON.parse(getCookie("invitation")) : null
-  );
   const router = useRouter();
   const { data: session } = useSession();
   const { saveDraftContent, deleteDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
+  const { invitation, updateInvitation, setStateSwitcher } =
+    useContext(PortalContext);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.has("save")) {
+      handleSave();
+      router.push(data.slug);
+    }
+  }, [searchParams]);
 
   const handleLogin = () => {
     saveDraftContent();
     router.push(
-      process.env.NEXT_PUBLIC_ROOT_DOMAIN
-        ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}?template=${data.id}&back=true`
-        : `http://dashboard.localhost:3000?template=${data.id}&back=true`
+      `${
+        process.env.NEXT_PUBLIC_ROOT_DOMAIN
+          ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+          : `http://dashboard.localhost:3000`
+      }?&back=${data.slug}`
     );
   };
 
@@ -42,6 +51,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
     }
 
     if (!invitation) {
+      setStateSwitcher(true);
     }
 
     try {
@@ -54,7 +64,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
           body: JSON.stringify({
             ...data,
             content: dataContent,
-            color: [dataColor, ...data.color],
+            color: [dataColor],
           }),
         }).then((res) => res.json());
 
@@ -66,15 +76,16 @@ export default function ConfirmSave({ open, onOpenChange }) {
         return;
       }
 
-      console.log(invitation);
       const res = await axios.put(
         `/api/invitation/${invitation.id}`,
         {
           ...invitation,
           template: {
             ...data,
+            slug: invitation.subdomain,
+            parent: data.slug,
             content: dataContent,
-            color: [dataColor, ...data.color],
+            color: [dataColor],
           },
         },
         {
@@ -90,14 +101,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
 
       const { data } = res;
 
-      setCookie("invitation", JSON.stringify(data), {
-        path: "/",
-        domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-          ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-          : null,
-      });
-
-      setInvitation(data);
+      updateInvitation(data);
 
       deleteDraftContent();
       onOpenChange(false);

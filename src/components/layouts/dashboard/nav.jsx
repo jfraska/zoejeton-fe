@@ -142,7 +142,7 @@ export default function Nav() {
                     alt={session?.user.name ?? "User avatar"}
                     className="w-5 aspect-square rounded-full"
                   />
-                  <span className="text-sm font-medium">
+                  <span className="text-sm font-medium truncate">
                     {session?.user.name}
                   </span>
                   <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">
@@ -194,7 +194,7 @@ export default function Nav() {
             />
             <AvatarFallback>JZ</AvatarFallback>
           </Avatar>
-          {invitation?.title}
+          <h1 className="truncate">{invitation?.title}</h1>
           <CaretSortIcon className="ml-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </div>

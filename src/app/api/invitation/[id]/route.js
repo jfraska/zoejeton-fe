@@ -46,8 +46,6 @@ export const PUT = auth(async function PUT(req, { params }) {
       const invitationSchema = z.object({
         title: z.string().min(2).max(50),
         template: z.object().optional(),
-        fitur: z.array().optional(),
-        addon: z.array().optional(),
       });
 
       const body = await req.json();
@@ -82,20 +80,18 @@ export const PUT = auth(async function PUT(req, { params }) {
         );
       }
 
-      const { title, template, fitur, addon } = validator.data;
+      const { title, template } = validator.data;
 
       const data = await prisma.Invitation.update({
         where: { id },
         data: {
           title,
           user: { connect: { id: req.auth.user.id } },
-          fitur,
           template: {
             create: {
               template,
             },
           },
-          addon,
         },
         include: {
           user: true,

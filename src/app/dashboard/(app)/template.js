@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { getCookie, hasCookie } from "cookies-next";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import PortalContext from "@/context/portal";
 import Loading from "@/components/UI/loading";
 import NotfoundDashboard from "@/components/container/notfound-dashboard";
@@ -13,9 +13,20 @@ export default function Template({ children }) {
   const pathname = usePathname();
   const { invitation, updateInvitation, setStateSwitcher } =
     useContext(PortalContext);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     (async () => {
+      if (searchParams.has("back")) {
+        router.push(
+          `${
+            process.env.NEXT_PUBLIC_ROOT_DOMAIN
+              ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+              : `http://template.localhost:3000`
+          }/${searchParams.get("back")}?save`
+        );
+      }
       try {
         const selected = hasCookie("invitation")
           ? JSON.parse(getCookie("invitation"))

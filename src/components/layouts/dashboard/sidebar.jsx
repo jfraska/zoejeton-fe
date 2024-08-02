@@ -124,7 +124,7 @@ export default function Sidebar() {
                   alt={session?.user.name ?? "User avatar"}
                   className="w-5 aspect-square rounded-full"
                 />
-                <span className="text-sm font-medium">
+                <span className="text-sm font-medium truncate">
                   {session?.user.name}
                 </span>
                 <div className="ml-auto flex h-6 w-6 shrink-0 items-center justify-end rounded-full">

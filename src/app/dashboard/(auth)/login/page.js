@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LoginButton from "../_components/login-button";
 import { Suspense } from "react";
 import { Button } from "@/components/UI/button";
@@ -7,7 +6,7 @@ import { Label } from "@/components/UI/label";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Login | ZoeJeton",
+  title: "Login | Dashboard ZoeJeton",
 };
 
 export default function Page() {

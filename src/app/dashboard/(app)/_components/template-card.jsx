@@ -82,9 +82,18 @@ export default function TemplateCard({ result }) {
   return (
     <Card className="col-span-4 md:col-span-3 border-dashed">
       <CardContent className="mt-4 grid gap-4">
-        <Button variant="outline" className="border-dashed space-x-2">
-          <Plus className="w-4 aspect-square" />
-          <h1>Tambah Template</h1>
+        <Button variant="outline" className="border-dashed">
+          <Link
+            href={
+              process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/katalog`
+                : `http://localhost:3000/katalog`
+            }
+            className="flex gap-2 items-center"
+          >
+            <Plus className="w-4 aspect-square" />
+            <h1>Temukan Template</h1>
+          </Link>
         </Button>
       </CardContent>
     </Card>
