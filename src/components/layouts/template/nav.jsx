@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MoreHorizontal, PanelLeft, PlayCircle, Save } from "lucide-react";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
@@ -25,8 +25,17 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
   const [alertSave, setAlertSave] = useState(false);
-  const { invitation, setStateSwitcher } = useContext(PortalContext);
-  const { dataContent, setIsEdit } = useContext(CustomizeContext);
+  const { invitation, updateInvitation, setStateSwitcher } =
+    useContext(PortalContext);
+  const { data, dataContent, setIsEdit } = useContext(CustomizeContext);
+
+  useEffect(() => {
+    const selected = hasCookie("invitation")
+      ? JSON.parse(getCookie("invitation"))
+      : null;
+
+    updateInvitation(selected);
+  }, []);
 
   return (
     <>
@@ -98,11 +107,11 @@ export default function Nav() {
               className="md:flex hidden w-20"
             >
               <Link
-                href={
+                href={`${
                   process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/login`
-                    : `http://dashboard.localhost:3000/login`
-                }
+                    ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `http://dashboard.localhost:3000`
+                }/login?back=${data.slug}`}
               >
                 Sign in
               </Link>

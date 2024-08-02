@@ -143,4 +143,6 @@ export default function ConfirmSave({ open, onOpenChange }) {
       </Dialog>
     );
   }
+
+  handleSave();
 }
