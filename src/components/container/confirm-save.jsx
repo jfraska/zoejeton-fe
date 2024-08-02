@@ -55,7 +55,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
     }
 
     try {
-      if (invitation.templateId) {
+      if (invitation?.templateId) {
         await fetch(`/api/template/${invitation.templateId}`, {
           method: "PUT",
           headers: {
@@ -144,5 +144,22 @@ export default function ConfirmSave({ open, onOpenChange }) {
     );
   }
 
-  handleSave();
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle className="font-medium">Save Customize</DialogTitle>
+          <DialogDescription>save in {data.title}</DialogDescription>
+        </DialogHeader>
+        <DialogFooter className="flex flex-col-reverse gap-2">
+          <Button
+            className="bg-black hover:bg-white hover:text-black"
+            onClick={handleSave}
+          >
+            Continue
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
 }
