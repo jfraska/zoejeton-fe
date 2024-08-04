@@ -4,7 +4,7 @@ export default function Button({
   className = null,
   title = "",
   desc = "",
-  type = "default",
+  type,
   href,
   ...props
 }) {
