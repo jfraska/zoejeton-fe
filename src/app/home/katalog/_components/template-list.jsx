@@ -49,7 +49,7 @@ export default function TemplateList() {
   }, [category, pagination]);
 
   return (
-    <section className="w-full p-[3%] mb-10">
+    <section className="w-full p-[3%] mb-10" id="katalog">
       <div className="flex justify-between items-center text-base border-b border-black">
         <div className="relative hover-underline-animation py-2">
           <select

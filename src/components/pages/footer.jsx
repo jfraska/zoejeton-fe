@@ -22,29 +22,27 @@ export default function Footer() {
       id="footer"
       className="relative w-full text-white bg-black p-[5%] min-h-fit -z-0"
     >
-      {pathname === "/" && (
-        <section className="h-auto min-h-fit md:pr-20" id="faq">
-          <div className="w-full flex md:flex-row flex-col md:gap-0 gap-4 justify-around">
-            <div className="w-full">
-              <h1 className="text-4xl md:w-3/4 w-full">
-                Frequently Asked Question
-              </h1>
-              <h1 className="text-4xl w-3/4">(FAQ)</h1>
-            </div>
-            <div className="w-full">
-              {faq.map((faq, index) => (
-                <FAQ
-                  faq={faq}
-                  index={index}
-                  key={index}
-                  toggle={toggle}
-                  selected={selected}
-                />
-              ))}
-            </div>
+      <section className="h-auto min-h-fit md:pr-20" id="faq">
+        <div className="w-full flex md:flex-row flex-col md:gap-0 gap-4 justify-around">
+          <div className="w-full">
+            <h1 className="text-4xl md:w-3/4 w-full">
+              Frequently Asked Question
+            </h1>
+            <h1 className="text-4xl w-3/4">(FAQ)</h1>
           </div>
-        </section>
-      )}
+          <div className="w-full">
+            {faq.map((faq, index) => (
+              <FAQ
+                faq={faq}
+                index={index}
+                key={index}
+                toggle={toggle}
+                selected={selected}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="pt-10 pb-20 md:pr-20" id="contact">
         <div className="w-full flex md:flex-row flex-col-reverse md:gap-0 gap-14 justify-around">
