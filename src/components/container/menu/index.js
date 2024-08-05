@@ -1,16 +1,16 @@
 import "./style.css";
 import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { navLinks } from "@/constants";
+import { useRouter } from "next/navigation";
 
 export default function Menu({ state, setState }) {
+  const router = useRouter();
   let sidebarMenu = useRef(null);
   let menuLayer = useRef(null);
   const menuTimeline = useRef();
-  const pathname = usePathname();
 
   useEffect(() => {
     menuTimeline.current = gsap.timeline({ paused: true });
@@ -77,17 +77,58 @@ export default function Menu({ state, setState }) {
 
         <div className="flex flex-col h-full justify-between items-start">
           <div className="flex flex-col gap-1 items-start text-xl">
-            {navLinks.map((nav, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setState(false);
-                  // scroll.scrollTo(nav.href);
-                }}
-              >
-                {nav.title}
-              </button>
-            ))}
+            <button
+              onClick={() => {
+                setState(false);
+                router.push(
+                  process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                    ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `http://dashboard.localhost:3000`
+                );
+              }}
+            >
+              Dashboard
+            </button>
+
+            <button
+              onClick={() => {
+                setState(false);
+                router.push("#katalog");
+              }}
+            >
+              Katalog
+            </button>
+
+            <button
+              onClick={() => {
+                setState(false);
+                router.push(
+                  process.env.NEXT_PUBLIC_ROOT_DOMAIN
+                    ? `https://guestbook.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+                    : `http://guestbook.localhost:3000`
+                );
+              }}
+            >
+              Guestbook
+            </button>
+
+            <button
+              onClick={() => {
+                setState(false);
+                router.push("#faq");
+              }}
+            >
+              FAQ
+            </button>
+
+            <button
+              onClick={() => {
+                setState(false);
+                router.push("#contact");
+              }}
+            >
+              Contact Us
+            </button>
           </div>
 
           <div className="flex gap-2">
@@ -120,7 +161,6 @@ export default function Menu({ state, setState }) {
             Invitation
           </h3>
           <div className="flex flex-col text-[#5d5d5d]">
-            <Link href="#">FAQ</Link>
             <Link href="#">Terms of Service</Link>
             <Link href="#">Policy</Link>
           </div>

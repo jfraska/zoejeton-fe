@@ -58,6 +58,13 @@ export default function Page() {
           type="dashboard"
           href={"/"}
         />
+        <Button
+          className="text-black bg-white backdrop-filter backdrop-blur-md bg-opacity-60"
+          title={"Guestbook"}
+          desc={"sistem check in acaramu"}
+          type="guestbook"
+          href={"/"}
+        />
       </section>
 
       <section className="mt-10 w-full rounded-lg flex justify-between items-center p-3 bg-neutral-800 backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg">

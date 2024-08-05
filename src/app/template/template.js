@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { getCookie, hasCookie } from "cookies-next";
 import CustomizeContext from "@/context/customize";
+import PortalContext from "@/context/portal";
 import { GlobalStyles } from "@mui/material";
 
 import ButtonAction from "@/components/container/button-action";
@@ -14,7 +15,9 @@ export default function Template({ children }) {
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
   const { data: session } = useSession();
-  const { initData, dataColor, isEdit } = useContext(CustomizeContext);
+  const { initData, dataColor, isEdit, deleteDraftContent } =
+    useContext(CustomizeContext);
+  const { invitation, setStateSwitcher } = useContext(PortalContext);
 
   useEffect(() => {
     (async () => {
@@ -32,10 +35,16 @@ export default function Template({ children }) {
             ...res.data,
             ...local,
           };
-        } else {
+          deleteDraftContent();
+        } else if (session) {
           const selected = hasCookie("invitation")
             ? JSON.parse(getCookie("invitation"))
             : null;
+
+          if (!selected) {
+            setStateSwitcher(true);
+            return;
+          }
 
           if (selected?.templateId) {
             const template = await fetch(
@@ -58,7 +67,7 @@ export default function Template({ children }) {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [invitation]);
 
   return (
     <>
