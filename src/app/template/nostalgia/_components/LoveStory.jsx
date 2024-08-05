@@ -1,10 +1,12 @@
+import { Section } from "@/components/container/wrapper-template";
 import { GenteRomantica, Catamaran } from "@/styles/fonts";
+import Editable from "@/components/container/editable";
 
 export default function LoveStory() {
   return (
-    <section
-      className="relative w-full h-fit py-20 px-10 flex flex-col justify-start items-center gap-4 text-center"
-      name="story"
+    <Section
+      className="h-full py-20 px-10 flex flex-col justify-start items-center gap-4 text-center"
+      id="love-story"
     >
       <h1 className={`${GenteRomantica.className} mb-4 text-5xl`}>
         Kisah Cinta
@@ -12,25 +14,21 @@ export default function LoveStory() {
 
       <div>
         <h1 className={`${Catamaran.className}text-base font-medium`}>
-          SEMARANG, 19 jUNI 2021
+          <Editable type="text" field="story1" subfield="heading" section="love-story" />
         </h1>
         <p className={`${Catamaran.className}text-sm pt-4`}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-          turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
-          fringilla accumsan, risus sem sollicitudin lacus.
+          <Editable type="text" field="story1" subfield="subheading" section="love-story" />
         </p>
       </div>
 
       <div>
-        <h1 className={`${Catamaran.className}text-base font-medium pt-8`}>
-          SEMARANG, 19 jUNI 2021
+      <h1 className={`${Catamaran.className}text-base font-medium`}>
+          <Editable type="text" field="story2" subfield="heading" section="love-story" />
         </h1>
         <p className={`${Catamaran.className}text-sm pt-4`}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-          turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
-          fringilla accumsan, risus sem sollicitudin lacus.
+          <Editable type="text" field="story2" subfield="subheading" section="love-story" />
         </p>
       </div>
-    </section>
+    </Section>
   );
 }
