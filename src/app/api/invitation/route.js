@@ -8,6 +8,7 @@ export const GET = auth(async function GET(req) {
     try {
       const url = new URL(req.url);
       const search = url.searchParams.get("search") || "";
+      
       const offset = parseInt(url.searchParams.get("offset")) || 0;
       const limit = parseInt(url.searchParams.get("limit")) || 2;
 
