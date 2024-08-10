@@ -12,7 +12,7 @@ import ColorPalette from "@/components/container/color-palette";
 
 export default function ButtonCustomize({
   template,
-  type = "page",
+  type,
   isSelected,
   setSelected,
 }) {
@@ -43,7 +43,7 @@ export default function ButtonCustomize({
     setState(!state);
   };
 
-  if (type !== "page") {
+  if (type === "color") {
     return (
       <Collapsible
         open={isSelected}
@@ -66,37 +66,69 @@ export default function ButtonCustomize({
     );
   }
 
-  return (
-    <Collapsible
-      open={isSelected}
-      onOpenChange={setSelected}
-      className="px-2 py-2 bg-neutral-300 rounded-xl"
-    >
-      <div className="flex items-center justify-between">
-        <CollapsibleTrigger asChild>
-          <a
-            href={`#${template.key}`}
-            className="flex items-center gap-2 font-medium text-neutral-900"
-          >
-            <TokensIcon />
-            <h1 className="capitalize">{template.key}</h1>
-          </a>
-        </CollapsibleTrigger>
+  if (type === "fitur" && !template.visible) {
+    return (
+      <Collapsible
+        open={isSelected}
+        onOpenChange={setSelected}
+        className="px-2 py-2 bg-neutral-300 rounded-xl"
+      >
+        <div className="flex items-center justify-between">
+          <CollapsibleTrigger asChild>
+            <a
+              href={`#${template.key}`}
+              className="flex items-center gap-2 font-medium text-neutral-900"
+            >
+              <TokensIcon />
+              <h1 className="capitalize">{template.key}</h1>
+            </a>
+          </CollapsibleTrigger>
+        </div>
+        <CollapsibleContent className="mt-2">
+          {template.value.background && (
+            <BackgroundCustomize
+              slug={data.slug}
+              key={template.key}
+              image={template.value.background}
+              setImage={handleChangeBackground}
+            />
+          )}
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  }
 
-        {type === "page" && template.visible && (
+  if (template.visible) {
+    return (
+      <Collapsible
+        open={isSelected}
+        onOpenChange={setSelected}
+        className="px-2 py-2 bg-neutral-300 rounded-xl"
+      >
+        <div className="flex items-center justify-between">
+          <CollapsibleTrigger asChild>
+            <a
+              href={`#${template.key}`}
+              className="flex items-center gap-2 font-medium text-neutral-900"
+            >
+              <TokensIcon />
+              <h1 className="capitalize">{template.key}</h1>
+            </a>
+          </CollapsibleTrigger>
+
           <Switch checked={state} onCheckedChange={handleChangeVisbility} />
-        )}
-      </div>
-      <CollapsibleContent className="mt-2">
-        {type === "page" && template.value.background && (
-          <BackgroundCustomize
-            slug={data.slug}
-            key={template.key}
-            image={template.value.background}
-            setImage={handleChangeBackground}
-          />
-        )}
-      </CollapsibleContent>
-    </Collapsible>
-  );
+        </div>
+        <CollapsibleContent className="mt-2">
+          {template.value.background && (
+            <BackgroundCustomize
+              slug={data.slug}
+              key={template.key}
+              image={template.value.background}
+              setImage={handleChangeBackground}
+            />
+          )}
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  }
 }

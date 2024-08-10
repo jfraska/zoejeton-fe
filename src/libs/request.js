@@ -1,10 +1,8 @@
 import axios from "axios";
 import { getCookie, hasCookie } from "cookies-next";
 
-// const tempBaseUrl = "http://192.168.0.121:8000";
 // create an axios instance
 const REQUEST = axios.create({
-  // baseURL: tempBaseUrl, // api
   timeout: 60 * 1000, // ms request timeout
 });
 

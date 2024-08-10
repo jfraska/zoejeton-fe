@@ -1,9 +1,10 @@
 "use client";
 
+import { signIn } from "@/api/auth";
 import LoadingDots from "@/components/icons/loading-dots";
-import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
+import OauthPopup from "react-oauth-popup";
 import { toast } from "sonner";
 
 export default function LoginButton({ children, provider }) {
@@ -18,12 +19,28 @@ export default function LoginButton({ children, provider }) {
     errorMessage && toast.error(errorMessage);
   }, [error]);
 
+  const handleLogin = async () => {
+    const authResponse = await signIn(provider);
+
+    const authUrl = authResponse.data.data?.provider_redirect;
+
+    if (!authUrl) {
+      throw new Error("Redirect URL tidak tersedia");
+    }
+
+    const popup = window.open(authUrl, "myPopup", "width=500,height=600");
+
+    window.addEventListener("message", (event) => {
+      console.log(event);
+    });
+  };
+
   return (
     <button
       disabled={loading}
-      onClick={() => {
+      onClick={async () => {
+        handleLogin();
         setLoading(true);
-        signIn(provider);
       }}
       className={`${
         loading

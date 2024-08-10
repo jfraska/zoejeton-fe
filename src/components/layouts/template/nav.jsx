@@ -19,8 +19,8 @@ import { useSession } from "next-auth/react";
 import PortalContext from "@/context/portal";
 import Link from "next/link";
 import Image from "next/image";
-import ListPage from "@/components/container/list-page";
 import { getCookie, hasCookie } from "cookies-next";
+import CustomizeList from "@/components/container/customize-list";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -80,7 +80,7 @@ export default function Nav() {
             <ButtonCustomize type="color" />
 
             <h1 className="mt-5">Page</h1>
-            <ListPage content={dataContent} />
+            <CustomizeList content={dataContent} />
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">

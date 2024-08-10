@@ -2,30 +2,29 @@ import request from "@/libs/request";
 
 export function login(data) {
   return request({
-    url: `${process.env.API_BASE_URL}/login`,
+    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/login`,
     method: "POST",
     data,
   });
 }
 
-export function signin(params, data) {
+export function signIn(provider) {
   return request({
-    url: `${process.env.API_BASE_URL}/auth/redirect/${provider}`,
+    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/redirect/${provider}`,
     method: "GET",
-    data,
   });
 }
 
 export function getSession() {
   return request({
-    url: `${process.env.API_BASE_URL}/auth/check`,
+    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/check`,
     method: "GET",
   });
 }
 
 export function register(data) {
   return request({
-    url: `${process.env.API_BASE_URL}/register`,
+    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/register`,
     method: "POST",
     data,
   });
@@ -33,7 +32,7 @@ export function register(data) {
 
 export function logout() {
   return request({
-    url: `${process.env.API_BASE_URL}/logout`,
+    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/logout`,
     method: "GET",
   });
 }

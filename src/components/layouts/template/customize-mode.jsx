@@ -9,7 +9,7 @@ export default function CustomizeMode({ children }) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="grid h-screen w-full md:pl-[250px] lg:pl-[320px]">
+    <div className="grid h-screen w-full md:pl-[250px] lg:pl-[350px]">
       <Sidebar />
       <div className="flex flex-col bg-[#f3f3f3]">
         <Nav />

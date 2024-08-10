@@ -1,23 +1,24 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import ButtonCustomize from "@/components/container/button-customize";
 import CustomizeContext from "@/context/customize";
 import { Button } from "@/components/UI/button";
-import { LayoutDashboard } from "lucide-react";
+import { CloudUpload, Layers, LayoutDashboard, Settings } from "lucide-react";
 import ButtonTooltip from "@/components/container/button-tooltip";
-import ListPage from "@/components/container/list-page";
+import CustomizeList from "@/components/container/customize-list";
 
 export default function Sidebar() {
   const { data: session } = useSession();
+  const [tabs, setTabs] = useState("page");
   const { dataContent, setDataContent } = useContext(CustomizeContext);
 
   return (
-    <aside className="hidden inset-y-0 fixed left-0 z-20 md:w-[250px] lg:w-[320px] h-full border-r md:block bg-background">
-      <div className="flex h-full max-h-screen flex-col gap-2">
+    <aside className="hidden inset-y-0 fixed left-0 z-20 md:w-[250px] lg:w-[350px] h-full border-r md:block bg-background">
+      <div className="flex h-full max-h-screen flex-col">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link
             href={
@@ -51,14 +52,46 @@ export default function Sidebar() {
             </Button>
           </ButtonTooltip>
         </div>
-        <div className="flex-1 overflow-y-auto scrollbar-default md:scrollbar-hide">
-          <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            <h1 className="mt-5 mb-2">Fitur</h1>
-            <ButtonCustomize type="color" />
+        <div className="flex h-12 w-full border-b">
+          <button
+            onClick={() => setTabs("page")}
+            className={`w-full h-full flex flex-col justify-center items-center ${
+              tabs === "page" && "bg-muted"
+            }`}
+          >
+            <Layers className="w-5 aspect-square" />
+          </button>
+          <button className="w-full h-full flex flex-col justify-center items-center">
+            <CloudUpload className="w-5 aspect-square" />
+          </button>
+          <button
+            onClick={() => setTabs("setting")}
+            className={`w-full h-full flex flex-col justify-center items-center ${
+              tabs === "setting" && "bg-muted"
+            }`}
+          >
+            <Settings className="w-5 aspect-square" />
+          </button>
+        </div>
 
-            <h1 className="mt-5">Page</h1>
-            <ListPage content={dataContent} />
-          </nav>
+        <div className="flex-1 flex items-start text-sm font-medium">
+          <div className="overflow-y-auto w-full scrollbar-default md:scrollbar-hide px-2 lg:px-4">
+            {tabs === "page" && (
+              <>
+                <h1 className="mt-5">Page</h1>
+                <CustomizeList content={dataContent} />
+              </>
+            )}
+
+            {tabs === "setting" && (
+              <>
+                <h1 className="mt-5 mb-2">Setting</h1>
+                <ButtonCustomize type="color" />
+
+                <CustomizeList type="fitur" content={dataContent} />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </aside>

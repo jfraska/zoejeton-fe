@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Reorder, useDragControls, useMotionValue } from "framer-motion";
 import ButtonCustomize from "@/components/container/button-customize";
 
-export default function ListPage({ content, handleReorder = () => {} }) {
+export default function CustomizeList({
+  content,
+  type = "page",
+  handleReorder = () => {},
+}) {
   const controls = useDragControls();
   const [selected, setSelected] = useState(null);
   // const y = useMotionValue(0);
@@ -27,13 +31,16 @@ export default function ListPage({ content, handleReorder = () => {} }) {
         //   dragListener={false}
         //   dragControls={controls}
         // >
+
         <ButtonCustomize
+          type={type}
           template={item}
           isSelected={selected === item.key}
           setSelected={() =>
             setSelected(selected === item.key ? null : item.key)
           }
         />
+
         // </Reorder.Item>
       ))}
     </div>
