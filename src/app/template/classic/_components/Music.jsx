@@ -1,5 +1,6 @@
 "use client";
 
+import { Floating } from "@/components/container/wrapper-template";
 import { useEffect, useRef, useState } from "react";
 
 export default function Music() {
@@ -15,9 +16,9 @@ export default function Music() {
   }, [isPlaying, audioRef]);
 
   return (
-    <div className="absolute bottom-5 left-5 z-40 w-12 aspect-square border-none rounded-full bg-white backdrop-filter backdrop-blur-md bg-opacity-70 shadow-md">
+    <Floating className="bottom-5 left-5 z-40 w-12 aspect-square border-none rounded-full bg-white backdrop-filter backdrop-blur-md bg-opacity-70 shadow-md">
       <audio ref={audioRef} loop>
-        <source src="/templates/nostalgia/1.mp3" type="audio/mpeg" />
+        <source src="/templates/classic/1.mp3" type="audio/mpeg" />
       </audio>
       <button
         onClick={() => setIsPlaying((prev) => !prev)}
@@ -35,6 +36,6 @@ export default function Music() {
           />
         )}
       </button>
-    </div>
+    </Floating>
   );
 }

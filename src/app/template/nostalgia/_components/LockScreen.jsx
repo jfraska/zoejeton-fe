@@ -5,39 +5,16 @@ import Image from "next/image";
 import { GenteRomantica, Catamaran } from "@/styles/fonts";
 import gsap from "gsap";
 import CountDown from "./CountDown";
+import { LockScreen as LockScreenWrapper } from "@/components/container/wrapper-template";
 
-export default function LockScreen() {
-  let lockRef = useRef(null);
-  const timeline = useRef();
+export default function LockScreen({ type }) {
   const [state, setState] = useState(false);
 
-  useEffect(() => {
-    timeline.current = gsap.timeline({ paused: true });
-    timeline.current.fromTo(
-      lockRef,
-      {
-        duration: 0,
-        y: "0",
-      },
-      {
-        duration: 0.75,
-        y: "-100%",
-        ease: "power3.inOut",
-        stagger: {
-          amount: 0.5,
-        },
-      }
-    );
-  }, []);
-
-  useEffect(() => {
-    state ? timeline.current.play() : timeline.current.reverse();
-  }, [state]);
-
   return (
-    <div
-      ref={(el) => (lockRef = el)}
-      className="absolute inset-0 flex flex-col justify-around items-center w-full h-full z-50 bg-black bg-cover bg-center bg-opacity-20 bg-blend-multiply"
+    <LockScreenWrapper
+      open={state}
+      type={type}
+      className="flex flex-col justify-around items-center "
       style={{
         backgroundImage: "url('/templates/nostalgia/lockscreen.png')",
       }}
@@ -66,19 +43,22 @@ export default function LockScreen() {
 
       <div className="w-64">
         <h1 className="text-center text-sm uppercase">spesial for you</h1>
-        <button
-          onClick={() => setState(true)}
-          className="relative rounded-full py-3 w-full bg-white text-black backdrop-filter backdrop-blur-md bg-opacity-50 mt-5"
-        >
-          <div className="absolute inset-y-0 left-0 h-full aspect-square rounded-full bg-black flex justify-center items-center z-10">
-            <span
-              className="w-4 aspect-square icon-[heroicons--envelope-open-20-solid]"
-              style={{ color: "white" }}
-            />
-          </div>
-          <h1 className="ml-5">Open Invitation</h1>
-        </button>
+
+        {type === "lock" && (
+          <button
+            onClick={() => setState(true)}
+            className="relative rounded-full p-2 w-full bg-white text-black flex justify-between items-center backdrop-filter backdrop-blur-md bg-opacity-50 mt-5"
+          >
+            <div className="h-10 aspect-square rounded-full bg-black flex justify-center items-center z-10">
+              <span
+                className="w-4 aspect-square icon-[heroicons--envelope-open-20-solid]"
+                style={{ color: "white" }}
+              />
+            </div>
+            <h1 className="w-full text-center">Buka Undangan</h1>
+          </button>
+        )}
       </div>
-    </div>
+    </LockScreenWrapper>
   );
 }

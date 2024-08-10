@@ -1,7 +1,7 @@
 import "./style.css";
 import { Montserrat } from "next/font/google";
 
-import { Main } from "@/components/container/wrapper-template";
+import { Main, Template } from "@/components/container/wrapper-template";
 import LockScreen from "./_components/LockScreen";
 import Cover from "./_components/Cover";
 import Beranda from "./_components/Beranda";
@@ -21,7 +21,9 @@ export default function Page() {
     <Main className={`${montserrat.className}`}>
       <Cover />
       <Music />
-      <LockScreen className="w-full h-full">
+      <LockScreen type="lock" />
+      <Template className="w-full h-full">
+        <LockScreen id="lockscreen" />
         <Beranda />
         <Quotes />
         <Couple />
@@ -30,7 +32,7 @@ export default function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-      </LockScreen>
+      </Template>
     </Main>
   );
 }

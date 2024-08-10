@@ -1,19 +1,41 @@
 "use client";
 
+import Editable from "@/components/container/editable";
+import { Section } from "@/components/container/wrapper-template";
 import { Selina, Catamaran } from "@/styles/fonts";
+import Image from "next/image";
 
 export default function Beranda() {
   return (
-    <section
-      className="bg-white relative w-full h-full flex flex-col justify-start items-center gap-4 text-center"
-      name="story"
+    <Section
+      className="bg-white w-full min-h-full flex flex-col justify-start items-center gap-4 text-center"
+      id="beranda"
     >
-      <div className="rounded-2xl overflow-hidden max-w-sm p-4 flex flex-col items-center py-40">
-        <img
-          src="/templates/classic/beranda.png"
-          alt="love story"
-          className="w-56 h-96 rounded-full"
-        />
+      <div className="relative h-full w-full px-4 py-20">
+        <h2 className={`${Catamaran.className} text-lg text-black`}>
+          THE WEDDING OF
+        </h2>
+        <h1 className={`${Selina.className} text-6xl my-4 text-black`}>
+          <Editable
+            type="text"
+            field="heading"
+            section="beranda"
+            className="outline-black focus:outline-black"
+          />
+        </h1>
+        <Editable
+          className="relative w-[50%] h-96 rounded-full overflow-hidden outline-black focus:outline-black"
+          type="image"
+          field="image"
+          section="beranda"
+        >
+          <Image
+            fill
+            alt="image"
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </Editable>
         <div className="p-6">
           <img
             src="/templates/classic/decor-tl.png"
@@ -30,15 +52,14 @@ export default function Beranda() {
             alt="decor bl"
             className="w-52 absolute bottom-0 left-0"
           />
-          <h2 className={`${Catamaran.className} text-lg`}>THE WEDDING OF</h2>
-          <h1 className={`${Selina.className} text-6xl my-4`}>Zoel & Cali</h1>
-          <p className={`${Catamaran.className} text-base`}>
-            Glory be to Allah who has created humans in pairs. By asking for the
-            Grace and Ridho of Allah SWT, we intend to invite you to our wedding
-            reception.
-          </p>
+          <Editable
+            type="text"
+            field="subheading"
+            section="beranda"
+            className={`${Catamaran.className} text-base text-black outline-black focus:outline-black`}
+          />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
