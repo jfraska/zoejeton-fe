@@ -1,17 +1,14 @@
 import { GenteRomantica } from "@/styles/fonts";
+import Editable from "@/components/container/editable";
+import { Cover as CoverWrapper } from "@/components/container/wrapper-template";
 
 export default function Cover() {
   return (
-    <div
-      className="relative hidden md:flex w-full h-full bg-cover flex-col justify-end gap-5 items-start p-32"
-      style={{
-        backgroundImage: "url('/templates/nostalgia/lockscreen.png')",
-      }}
-    >
+    <CoverWrapper className="flex w-full h-full bg-cover flex-col justify-end gap-5 items-start p-32">
       <h2 className="text-xl mt-16">THE WEDDING OF</h2>
       <h1 className={`${GenteRomantica.className} text-7xl font-medium`}>
-        Zoel and Cali
+        <Editable type="text" field="heading" section="cover" />
       </h1>
-    </div>
+    </CoverWrapper>
   );
 }

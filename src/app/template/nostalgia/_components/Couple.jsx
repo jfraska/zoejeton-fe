@@ -9,10 +9,10 @@ export default function Couple() {
       className="flex items-center justify-center min-h-full"
       id="couple"
     >
-      <div className="bg-white rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full shadow-lg p-8 w-full mx-auto z-10">
+      <div className="bg-secondary-bg rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full shadow-lg p-8 w-full mx-auto z-10">
         <div className="text-center">
           <div className="relative mb-4">
-          <Editable
+            <Editable
               className="relative rounded-tl-full rounded-tr-full w-full h-72 overflow-hidden"
               type="image"
               field="groom"
@@ -27,7 +27,7 @@ export default function Couple() {
               />
             </Editable>
             <h2
-              className={`${GenteRomantica.className} absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-4xl`}
+              className={`${GenteRomantica.className} absolute bottom-4 left-1/2 transform -translate-x-1/2 text-primary-text text-4xl`}
             >
               <Editable
                 type="text"
@@ -37,7 +37,7 @@ export default function Couple() {
               />
             </h2>
           </div>
-          <p className={`${Catamaran.className} text-black`}>
+          <p className={`${Catamaran.className} text-secondary-text`}>
             Putra Pertama dari
           </p>
           <Editable
@@ -45,7 +45,7 @@ export default function Couple() {
             field="groom"
             subfield="desc"
             section="couple"
-            className={`${Catamaran.className} text-black`}
+            className={`${Catamaran.className} text-secondary-text`}
           />
           <Editable
             type="link"
@@ -81,9 +81,9 @@ export default function Couple() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </Editable>
-            
+
             <h2
-              className={`${GenteRomantica.className} absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-4xl`}
+              className={`${GenteRomantica.className} absolute bottom-4 left-1/2 transform -translate-x-1/2 text-primary-text text-4xl`}
             >
               <Editable
                 type="text"
@@ -93,7 +93,7 @@ export default function Couple() {
               />
             </h2>
           </div>
-          <p className={`${Catamaran.className} text-black`}>
+          <p className={`${Catamaran.className} text-secondary-text`}>
             Putri Kedua dari
           </p>
           <Editable
@@ -101,7 +101,7 @@ export default function Couple() {
             field="bride"
             subfield="desc"
             section="couple"
-            className={`${Catamaran.className} text-black`}
+            className={`${Catamaran.className} text-secondary-text`}
           />
           <Editable
             type="link"
