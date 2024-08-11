@@ -5,7 +5,7 @@ import Editable from "@/components/container/editable";
 export default function LiveStream() {
   return (
     <Section
-      className="relative w-full h-full bg-[#333333] p-10 flex flex-col text-center justify-between gap-10"
+      className="relative w-full h-full bg-primary-bg p-10 flex flex-col text-center justify-between gap-10 text-primary-text"
       id="live-streaming"
     >
       <h1 className={`${GenteRomantica.className} text-5xl`}>Live Streaming</h1>
