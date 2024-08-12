@@ -5,7 +5,7 @@ import { Selina, Catamaran } from "@/styles/fonts";
 export default function Couple() {
   return (
     <Section
-      className="relative w-full bg-white flex items-center justify-center min-h-screen"
+      className="relative w-full bg-primary-bg text-secondary-text flex items-center justify-center min-h-screen"
       id="couple"
     >
       <div className="flex items-center justify-center w-full space-y-8 pb-10 px-2">
@@ -20,7 +20,7 @@ export default function Couple() {
             backgroundImage: "url('/templates/classic/couple.png')",
           }}
         >
-          <div className="flex flex-col items-left justify-around p-5 mb-10 space-x-4 w-72 text-white">
+          <div className="flex flex-col items-left justify-around p-5 mb-10 space-x-4 w-72">
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable
@@ -62,7 +62,7 @@ export default function Couple() {
               </Editable>
             </div>
           </div>
-          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-white">
+          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72">
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable

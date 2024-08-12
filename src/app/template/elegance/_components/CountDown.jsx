@@ -35,9 +35,9 @@ const CountDown = ({ deadline }) => {
   }, [deadline]);
 
   return (
-    <div className="bg-[#333333] flex flex-col justify-center gap-10 items-center text-center text-lg py-20 px-5">
-      <h1 className={`${Selina.className} text-6xl text-white`}>COUNTDOWN</h1>
-      <div className="flex items-center justify-between gap-10 text-white pb-5">
+    <div className="bg-secondary-bg text-secondary-text flex flex-col justify-center gap-10 items-center text-center text-lg py-20 px-5">
+      <h1 className={`${Selina.className} text-6xl`}>COUNTDOWN</h1>
+      <div className="flex items-center justify-between gap-10 pb-5">
         <div>
           <h2>{leading0(days)}</h2>
           <h1 className={`${Catamaran.className} text-lg font-normal`}>day</h1>
@@ -61,7 +61,7 @@ const CountDown = ({ deadline }) => {
       </div>
       <a
         href="#"
-        className={`${Catamaran.className} flex items-center justify-center bg-transparent text-white text-lg px-4 rounded-lg border w-full`}
+        className={`${Catamaran.className} flex items-center justify-center bg-transparent text-secondary-text text-lg px-4 rounded-lg border w-full`}
       >
         Save Date
       </a>

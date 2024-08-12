@@ -5,7 +5,7 @@ import { Section } from "@/components/container/wrapper-template";
 export default function Couple() {
   return (
     <Section
-      className=" bg-black flex items-center justify-center min-h-screen px-5"
+      className=" bg-primary-bg flex items-center justify-center min-h-screen px-5"
       id="couple"
     >
       <div className="flex flex-col items-center w-full gap-3 space-y-8 py-10">
@@ -15,7 +15,7 @@ export default function Couple() {
             backgroundImage: "url('/templates/elegance/couple-1.png')",
           }}
         >
-          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-white">
+          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-primary-text">
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable
@@ -42,7 +42,7 @@ export default function Couple() {
                 <a
                   href="/"
                   target="_blank"
-                  className={`${Catamaran.className} w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center`}
+                  className={`${Catamaran.className} w-28 h-8 bg-accent-bg text-accent-text rounded-lg flex items-center justify-center`}
                 >
                   <svg
                     className="inline w-5 h-5 mr-2"
@@ -64,7 +64,7 @@ export default function Couple() {
             backgroundImage: "url('/templates/elegance/couple-2.png')",
           }}
         >
-          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-white">
+          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-primary-text">
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable
@@ -91,7 +91,7 @@ export default function Couple() {
                 <a
                   href="/"
                   target="_blank"
-                  className={`${Catamaran.className} w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center`}
+                  className={`${Catamaran.className} w-28 h-8 bg-accent-bg text-accent-text rounded-lg flex items-center justify-center`}
                 >
                   <svg
                     className="inline w-5 h-5 mr-2"

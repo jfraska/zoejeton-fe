@@ -5,10 +5,10 @@ import { Selina, Catamaran } from "@/styles/fonts";
 export default function Gift() {
   return (
     <Section
-      className="bg-[#75787C] flex items-center justify-center w-full h-96 px-5 py-10 mx-auto"
+      className="bg-secondary-bg text-secondary-text flex items-center justify-center w-full h-96 px-5 py-10 mx-auto"
       name="gift"
     >
-      <div className="flex flex-col gap-5 pt-7 text-white items-center justify-center">
+      <div className="flex flex-col gap-5 pt-7 items-center justify-center">
         <h1 className={`${Selina.className} text-5xl`}>WEDDING GIFT</h1>
         <Editable
           type="text"

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Event() {
   return (
     <Section
-      className="bg-white flex flex-col gap-8 items-center justify-center min-h-full py-10 px-5"
+      className="bg-primary-bg text-secondary-text flex flex-col gap-8 items-center justify-center min-h-full py-10 px-5"
       id="event"
     >
       <div className="relative w-full h-full min-h-[352px] overflow-hidden rounded-[100px] text-center flex flex-col items-center justify-center">

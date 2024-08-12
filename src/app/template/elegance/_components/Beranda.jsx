@@ -7,7 +7,7 @@ import { Section } from "@/components/container/wrapper-template";
 export default function Beranda() {
   return (
     <Section
-      className="flex flex-col gap-10 justify-around items-center h-full"
+      className="flex flex-col gap-10 justify-around items-center h-full text-primary-text"
       id="beranda"
     >
       <div className="flex flex-col gap-5">

@@ -6,10 +6,10 @@ import Image from "next/image";
 export default function Gift() {
   return (
     <Section
-      className="bg-[#333333] flex items-center justify-start w-full h-fit px-5 mx-auto"
+      className="bg-secondary-bg text-secondary-text flex items-center justify-start w-full h-fit px-5 mx-auto"
       id="gift"
     >
-      <div className="rounded-2xl overflow-hidden w-full text-center relative text-white">
+      <div className="rounded-2xl overflow-hidden w-full text-center relative">
         <Image
           fill
           src="/templates/elegance/gift.png"

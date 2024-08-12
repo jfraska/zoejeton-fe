@@ -6,11 +6,11 @@ import Image from "next/image";
 export default function Galery() {
   return (
     <Section
-      className="relative flex flex-col w-full h-fit px-5 py-10 items-center mx-auto bg-[#29414A]"
+      className="relative flex flex-col w-full h-fit px-5 py-10 items-center mx-auto bg-accent-bg text-accent-text"
       id="galery"
     >
       <div className="flex gap-3 w-full justify-around mb-4 h-20">
-        <h2 className={`${Selina.className} text-white text-7xl`}>GALLERY</h2>
+        <h2 className={`${Selina.className}text-7xl`}>GALLERY</h2>
       </div>
       <Editable
         className="relative w-[100%] h-56 rounded-2xl overflow-hidden"

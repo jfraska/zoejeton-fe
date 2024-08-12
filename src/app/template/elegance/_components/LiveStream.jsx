@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function LiveStream() {
   return (
     <Section
-      className="bg-[#333333] text-white flex items-center justify-center min-h-screen py-8 px-5"
+      className="bg-secondary-bg text-secondary-text flex items-center justify-center min-h-screen py-8 px-5"
       id="live-streaming"
     >
       <div className="max-w-md w-full">
@@ -50,7 +50,7 @@ export default function LiveStream() {
           <a
             href="/"
             target="_blank"
-            className="bg-transparent hover:bg-gray-900 text-white font-normal py-2 px-4 rounded-lg border border-white w-56"
+            className="bg-transparent hover:bg-gray-900 text-secondary-text font-normal py-2 px-4 rounded-lg border border-secondary-text w-56"
           >
             Join Now
           </a>
