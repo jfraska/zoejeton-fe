@@ -4,7 +4,6 @@ import { signIn } from "@/api/auth";
 import LoadingDots from "@/components/icons/loading-dots";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import OauthPopup from "react-oauth-popup";
 import { toast } from "sonner";
 
 export default function LoginButton({ children, provider }) {
@@ -19,26 +18,40 @@ export default function LoginButton({ children, provider }) {
     errorMessage && toast.error(errorMessage);
   }, [error]);
 
+  function openOAuthPopup(url, width = 500, height = 600) {
+    const left = window.screen.width / 2 - width / 2;
+    const top = window.screen.height / 2 - height / 2;
+    return window.open(
+      url,
+      "OAuthLogin",
+      `width=${width},height=${height},top=${top},left=${left}`
+    );
+  }
+
   const handleLogin = async () => {
-    const authResponse = await signIn(provider);
+    const auth = await signIn(provider);
 
-    const authUrl = authResponse.data.data?.provider_redirect;
-
-    if (!authUrl) {
-      throw new Error("Redirect URL tidak tersedia");
-    }
-
-    const popup = window.open(authUrl, "myPopup", "width=500,height=600");
+    const popup = openOAuthPopup(auth.data.data.provider_redirect);
 
     window.addEventListener("message", (event) => {
-      console.log(event);
+      if (event.origin === "https://zoejeton.com") {
+        // Mendapatkan token dari event data
+        const token = event.data.token;
+        if (token) {
+          // Simpan token dan lanjutkan
+          localStorage.setItem("accessToken", token);
+          console.log("Token:", token);
+          // Tutup popup setelah login berhasil
+          popup.close();
+        }
+      }
     });
   };
 
   return (
     <button
       disabled={loading}
-      onClick={async () => {
+      onClick={() => {
         handleLogin();
         setLoading(true);
       }}

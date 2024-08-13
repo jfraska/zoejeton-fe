@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/libs/auth";
+import { getSession } from "@/api/auth";
 
 export async function middleware(req) {
   const url = req.nextUrl;
@@ -28,7 +29,7 @@ export async function middleware(req) {
 
   // rewrites for guestbook pages
   if (hostname == `guestbook.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    const session = await auth();
+    const session = await getSession();
     if (!session && path !== "/login" && path !== "/signup") {
       return NextResponse.redirect(new URL("/login", req.nextUrl));
     } else if (session && (path == "/login" || path == "/signup")) {
