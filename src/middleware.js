@@ -30,9 +30,9 @@ export async function middleware(req) {
   // rewrites for guestbook pages
   if (hostname == `guestbook.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     const session = await getSession();
-    if (!session && path !== "/login" && path !== "/signup") {
+    if (!session && path !== "/login") {
       return NextResponse.redirect(new URL("/login", req.nextUrl));
-    } else if (session && (path == "/login" || path == "/signup")) {
+    } else if (session && path == "/login") {
       return NextResponse.redirect(new URL("/", req.nextUrl));
     }
     return NextResponse.rewrite(new URL(`/guestbook${path}`, req.nextUrl));

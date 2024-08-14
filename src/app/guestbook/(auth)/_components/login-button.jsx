@@ -2,6 +2,7 @@
 
 import { signIn } from "@/api/auth";
 import LoadingDots from "@/components/icons/loading-dots";
+import { setCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
@@ -24,28 +25,46 @@ export default function LoginButton({ children, provider }) {
     return window.open(
       url,
       "OAuthLogin",
-      `width=${width},height=${height},top=${top},left=${left}`
+      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars,status`
     );
   }
 
+  const options = {
+    path: "/",
+    domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
+      ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+      : null,
+    secure: true,
+  };
+
   const handleLogin = async () => {
-    const auth = await signIn(provider);
+    try {
+      const auth = await signIn(provider);
+      const redirectUrl = auth?.data?.data?.provider_redirect;
 
-    const popup = openOAuthPopup(auth.data.data.provider_redirect);
+      if (redirectUrl) {
+        const popup = openOAuthPopup(redirectUrl);
+        if (popup) {
+          const messageListener = (event) => {
+            if (event.origin === "https://api.zoejeton.com") {
+              const token = event.data.token;
+              if (token) {
+                setCookie("client", token, options);
+                window.removeEventListener("message", messageListener);
+              }
+            }
+          };
 
-    window.addEventListener("message", (event) => {
-      if (event.origin === "https://zoejeton.com") {
-        // Mendapatkan token dari event data
-        const token = event.data.token;
-        if (token) {
-          // Simpan token dan lanjutkan
-          localStorage.setItem("accessToken", token);
-          console.log("Token:", token);
-          // Tutup popup setelah login berhasil
-          popup.close();
+          window.addEventListener("message", messageListener);
+        } else {
+          console.error("Popup failed to open.");
         }
+      } else {
+        console.error("Invalid provider redirect URL.");
       }
-    });
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   return (
