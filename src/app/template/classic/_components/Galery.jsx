@@ -10,7 +10,7 @@ export default function Galery() {
       id="galery"
     >
       <div className="flex gap-3 w-full justify-around mb-4 h-20">
-        <h2 className={`${Selina.className}text-7xl`}>GALLERY</h2>
+        <h2 className={`${Selina.className} text-7xl`}>GALLERY</h2>
       </div>
       <Editable
         className="relative w-[100%] h-56 rounded-2xl overflow-hidden"

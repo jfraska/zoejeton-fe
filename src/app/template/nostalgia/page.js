@@ -3,15 +3,7 @@ import { Montserrat } from "next/font/google";
 
 import LockScreen from "./_components/LockScreen";
 import Cover from "./_components/Cover";
-import Beranda from "./_components/Beranda";
-import Couple from "./_components/Couple";
-import LoveStory from "./_components/LoveStory";
-import Event from "./_components/Event";
-import Rsvp from "./_components/Rsvp";
 import Music from "./_components/Music";
-import Thanks from "./_components/Thanks";
-import Galery from "./_components/Galery";
-import LiveStream from "./_components/LiveStream";
 import { Main, Template } from "@/components/container/wrapper-template";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -22,17 +14,7 @@ export default function Page() {
       <Cover />
       <Music />
       <LockScreen type="lock" />
-      <Template className="w-full h-full">
-        <LockScreen id="lockscreen" />
-        <Beranda />
-        <Couple />
-        <LoveStory />
-        <Event />
-        <Rsvp />
-        <LiveStream />
-        <Galery />
-        <Thanks />
-      </Template>
+      <Template className="w-full h-full" />
     </Main>
   );
 }

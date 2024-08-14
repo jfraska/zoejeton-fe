@@ -10,7 +10,13 @@ export default function Galery() {
       id="galery"
     >
       <div className="flex flex-row w-full gap-3 justify-around mb-4 h-20">
-        <h2 className={`${Selina.className} text-8xl`}>OUR</h2>
+        <h2
+          className={`${Selina.className} text-8xl`}
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        >
+          OUR
+        </h2>
         <div className="w-full">
           <img
             src="/templates/elegance/gallery.png"
@@ -32,7 +38,6 @@ export default function Galery() {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </Editable>
-
       <div className="flex items-center justify-between w-full gap-5">
         <div className="relative w-full flex flex-col items-center justify-between gap-5 mb-4 py-5">
           <Editable

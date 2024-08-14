@@ -23,7 +23,11 @@ export default function LoveStory() {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Editable>
-        <div className="p-6 text-accent-text">
+        <div
+          className="p-6 text-accent-text"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
           <h1 className={`${Selina.className} text-6xl mb-4`}>Love Story</h1>
           <Editable
             type="text"

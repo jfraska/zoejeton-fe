@@ -10,21 +10,24 @@ export default function LiveStream() {
       id="live-streaming"
     >
       <div className="max-w-md w-full">
-        <h1 className={`${Selina.className} text-6xl font-light mb-4`}>
-          LIVE <br /> STREAMING
-        </h1>
-        <Editable
-          type="text"
-          field="date"
-          section="live-streaming"
-          className={`${Catamaran.className} text-lg mb-8`}
-        />
-        <Editable
-          type="text"
-          field="time"
-          section="live-streaming"
-          className={`${Catamaran.className} text-lg mb-8`}
-        />
+        <div data-aos="fade-up" data-aos-duration="1000">
+          <h1 className={`${Selina.className} text-6xl font-light mb-4`}>
+            LIVE <br /> STREAMING
+          </h1>
+          <Editable
+            type="text"
+            field="date"
+            section="live-streaming"
+            className={`${Catamaran.className} text-lg mb-8`}
+          />
+          <Editable
+            type="text"
+            field="time"
+            section="live-streaming"
+            className={`${Catamaran.className} text-lg mb-8`}
+          />
+        </div>
+
         <div className="mb-8">
           <Editable
             className="relative w-full h-56 rounded-xl overflow-hidden"
@@ -40,21 +43,23 @@ export default function LiveStream() {
             />
           </Editable>
         </div>
-        <Editable
-          type="text"
-          field="subheading"
-          section="live-streaming"
-          className={`${Catamaran.className} mb-8`}
-        />
-        <Editable type="link" field="link" section="live-streaming">
-          <a
-            href="/"
-            target="_blank"
-            className="bg-transparent hover:bg-gray-900 text-secondary-text font-normal py-2 px-4 rounded-lg border border-secondary-text w-56"
-          >
-            Join Now
-          </a>
-        </Editable>
+        <div data-aos="fade-up" data-aos-duration="1000">
+          <Editable
+            type="text"
+            field="subheading"
+            section="live-streaming"
+            className={`${Catamaran.className} mb-8`}
+          />
+          <Editable type="link" field="link" section="live-streaming">
+            <a
+              href="/"
+              target="_blank"
+              className="bg-transparent hover:bg-gray-900 text-secondary-text font-normal py-2 px-4 rounded-lg border border-secondary-text w-56"
+            >
+              Join Now
+            </a>
+          </Editable>
+        </div>
       </div>
     </Section>
   );

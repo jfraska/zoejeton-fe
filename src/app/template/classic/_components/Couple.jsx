@@ -20,7 +20,11 @@ export default function Couple() {
             backgroundImage: "url('/templates/classic/couple.png')",
           }}
         >
-          <div className="flex flex-col items-left justify-around p-5 mb-10 space-x-4 w-72">
+          <div
+            className="flex flex-col items-left justify-around p-5 mb-10 space-x-4 w-72"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable
@@ -62,7 +66,11 @@ export default function Couple() {
               </Editable>
             </div>
           </div>
-          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72">
+          <div
+            className="flex flex-col items-left justify-around p-5 space-x-4 w-72"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable

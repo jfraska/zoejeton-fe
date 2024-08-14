@@ -18,7 +18,11 @@ export default function Event() {
             />
           </div>
           <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-3 text-secondary-text">
+            <div
+              className="flex flex-col gap-3 text-secondary-text"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               <p className={`${GenteRomantica.className}`}>Akad Nikah</p>
               <Editable
                 type="text"
@@ -49,7 +53,11 @@ export default function Event() {
                 className={`${Catamaran.className}`}
               />
             </div>
-            <div className="flex flex-col gap-3 text-secondary-text">
+            <div
+              className="flex flex-col gap-3 text-secondary-text"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               <p className={`${GenteRomantica.className}`}>Resepsi</p>
               <Editable
                 type="text"

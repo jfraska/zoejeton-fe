@@ -17,7 +17,7 @@ export default function Event() {
           className="brightness-125 bg-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="z-10">
+        <div className="z-10" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className={`${Selina.className} text-6xl`}>
             AKAD <br /> NIKAH
           </h1>
@@ -68,7 +68,7 @@ export default function Event() {
           className="brightness-125 bg-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="z-10">
+        <div className="z-10" data-aos="zoom-in" data-aos-duration="1000">
           <h1 className={`${Selina.className} text-6xl`}>RESEPSI</h1>
           <Editable
             type="text"

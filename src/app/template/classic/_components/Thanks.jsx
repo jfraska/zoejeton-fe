@@ -8,7 +8,11 @@ export default function Thanks() {
       className="relative flex flex-col items-center justify-start h-full text-accent-text"
       id="thanks"
     >
-      <div className="flex flex-col items-start justify-start gap-5 pt-20 pl-7">
+      <div
+        className="flex flex-col items-start justify-start gap-5 pt-20 pl-7"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
         <h1 className={`${Selina.className} text-6xl text-left`}>
           <Editable type="text" field="heading" section="thanks" />
         </h1>

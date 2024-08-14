@@ -11,7 +11,11 @@ export default function Beranda() {
       className="bg-primary-bg text-primary-text w-full min-h-full flex flex-col justify-start items-center gap-4 text-center"
       id="beranda"
     >
-      <div className="relative h-full w-full px-4 py-20">
+      <div
+        className="relative h-full w-full px-4 py-20"
+        data-aos="fade-right"
+        data-aos-duration="1000"
+      >
         <h2 className={`${Catamaran.className} text-lg`}>THE WEDDING OF</h2>
         <h1 className={`${Selina.className} text-6xl my-4`}>
           <Editable
@@ -35,21 +39,6 @@ export default function Beranda() {
           />
         </Editable>
         <div className="p-6">
-          <img
-            src="/templates/classic/decor-tl.png"
-            alt="decor tl"
-            className="w-52 aspect-square absolute top-0 left-0"
-          />
-          <img
-            src="/templates/classic/decor-tr.png"
-            alt="decor tr"
-            className="w-40 absolute top-0 right-0"
-          />
-          <img
-            src="/templates/classic/decor-bl.png"
-            alt="decor bl"
-            className="w-52 absolute bottom-0 left-0"
-          />
           <Editable
             type="text"
             field="subheading"
@@ -58,6 +47,21 @@ export default function Beranda() {
           />
         </div>
       </div>
+      <img
+        src="/templates/classic/decor-tl.png"
+        alt="decor tl"
+        className="w-52 aspect-square absolute top-0 left-0"
+      />
+      <img
+        src="/templates/classic/decor-tr.png"
+        alt="decor tr"
+        className="w-40 absolute top-0 right-0"
+      />
+      <img
+        src="/templates/classic/decor-bl.png"
+        alt="decor bl"
+        className="w-52 absolute bottom-0 left-0"
+      />
     </Section>
   );
 }

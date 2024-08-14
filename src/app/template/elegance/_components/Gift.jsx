@@ -17,7 +17,11 @@ export default function Gift() {
           className="bg-cover oppacity-50 -z-0"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="flex flex-col items-start justify-start gap-5 p-7">
+        <div
+          className="flex flex-col items-start justify-start gap-5 p-7"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        >
           <h1 className={`${Selina.className} text-5xl z-10`}>
             <Editable type="text" field="heading" section="gift" />
           </h1>

@@ -11,7 +11,11 @@ export default function LiveStream() {
       <div className="bg-[#D9D9D9] rounded-[100px] overflow-hidden max-w-sm p-4 flex flex-col items-center shadow-xl">
         <div className="w-full h-[455px] bg-[#797979] rounded-[100px]">
           <div className="flex flex-col text-left items-center justify-start pt-16">
-            <div className="flex flex-col text-left items-start justify-start">
+            <div
+              className="flex flex-col text-left items-start justify-start"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+            >
               <h1 className={`${Selina.className} text-6xl`}>
                 LIVE <br /> STREAMING
               </h1>
@@ -30,7 +34,11 @@ export default function LiveStream() {
             </div>
           </div>
         </div>
-        <div className="py-6 px-10 flex flex-col items-center justify-center">
+        <div
+          className="py-6 px-10 flex flex-col items-center justify-center"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
           <Editable
             type="text"
             field="subheading"

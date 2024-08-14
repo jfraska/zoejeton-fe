@@ -15,7 +15,11 @@ export default function Couple() {
             backgroundImage: "url('/templates/elegance/couple-1.png')",
           }}
         >
-          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-primary-text">
+          <div
+            className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-primary-text"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+          >
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable
@@ -64,7 +68,11 @@ export default function Couple() {
             backgroundImage: "url('/templates/elegance/couple-2.png')",
           }}
         >
-          <div className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-primary-text">
+          <div
+            className="flex flex-col items-left justify-around p-5 space-x-4 w-72 text-primary-text"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+          >
             <div>
               <h2 className={`${Selina.className} text-6xl`}>
                 <Editable
