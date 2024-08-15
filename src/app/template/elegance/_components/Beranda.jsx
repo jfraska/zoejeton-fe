@@ -1,7 +1,7 @@
 "use client";
 
 import { Selina, Catamaran } from "@/styles/fonts";
-import Editable from "@/components/container/template/editable";
+import Editable from "@/components/container/editable";
 import { Section } from "@/components/container/wrapper-template";
 
 export default function Beranda() {

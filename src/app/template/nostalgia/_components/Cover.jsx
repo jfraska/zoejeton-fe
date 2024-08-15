@@ -1,5 +1,5 @@
 import { GenteRomantica } from "@/styles/fonts";
-import Editable from "@/components/container/template/editable";
+import Editable from "@/components/container/editable";
 import { Cover as CoverWrapper } from "@/components/container/wrapper-template";
 
 export default function Cover() {

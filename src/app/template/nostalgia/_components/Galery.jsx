@@ -1,6 +1,6 @@
 import { Section } from "@/components/container/wrapper-template";
 import { GenteRomantica } from "@/styles/fonts";
-import Editable from "@/components/container/template/editable";
+import Editable from "@/components/container/editable";
 import Image from "next/image";
 
 export default function Galery() {

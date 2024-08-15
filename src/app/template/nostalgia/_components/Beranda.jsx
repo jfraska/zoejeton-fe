@@ -1,6 +1,6 @@
 "use client";
 
-import Editable from "@/components/container/template/editable";
+import Editable from "@/components/container/editable";
 import { Section } from "@/components/container/wrapper-template";
 import { GenteRomantica } from "@/styles/fonts";
 import Image from "next/image";

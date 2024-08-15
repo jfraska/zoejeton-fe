@@ -2,9 +2,8 @@
 
 import { useContext, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { getCookie, hasCookie } from "cookies-next";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import PortalContext from "@/context/PortalContext";
 import { GlobalStyles } from "@mui/material";
 
@@ -14,7 +13,6 @@ import CustomizeMode from "@/components/layouts/template/customize-mode";
 export default function Template({ children }) {
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
-  const { data: session } = useSession();
   const { initData, dataColor, isEdit, deleteDraftContent } =
     useContext(CustomizeContext);
   const { invitation, setStateSwitcher } = useContext(PortalContext);
@@ -36,29 +34,30 @@ export default function Template({ children }) {
             ...local,
           };
           deleteDraftContent();
-        } else if (session) {
-          const selected = hasCookie("invitation")
-            ? JSON.parse(getCookie("invitation"))
-            : null;
-
-          if (!selected) {
-            setStateSwitcher(true);
-            return;
-          }
-
-          if (selected?.templateId) {
-            const template = await fetch(
-              `/api/template/${selected.templateId}`
-            ).then((res) => res.json());
-
-            if (template.data > 0) {
-              res.data = {
-                ...res.data,
-                ...template.data,
-              };
-            }
-          }
         }
+        // else if (session) {
+        //   const selected = hasCookie("invitation")
+        //     ? JSON.parse(getCookie("invitation"))
+        //     : null;
+
+        //   if (!selected) {
+        //     setStateSwitcher(true);
+        //     return;
+        //   }
+
+        //   if (selected?.templateId) {
+        //     const template = await fetch(
+        //       `/api/template/${selected.templateId}`
+        //     ).then((res) => res.json());
+
+        //     if (template.data > 0) {
+        //       res.data = {
+        //         ...res.data,
+        //         ...template.data,
+        //       };
+        //     }
+        //   }
+        // }
 
         initData(res.data);
       } catch (error) {

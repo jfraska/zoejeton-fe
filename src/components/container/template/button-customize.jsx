@@ -7,7 +7,7 @@ import {
 import { Switch } from "@/components/UI/switch";
 import { TokensIcon } from "@radix-ui/react-icons";
 import BackgroundCustomize from "@/components/container/template/background-customize";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import ColorPalette from "@/components/container/template/color-palette";
 
 export default function ButtonCustomize({
