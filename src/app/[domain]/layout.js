@@ -1,4 +1,4 @@
-import { CustomizeProvider } from "@/context/customize";
+import { CustomizeProvider } from "@/context/CustomizeContext";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {

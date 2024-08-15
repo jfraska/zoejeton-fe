@@ -29,17 +29,17 @@ export default function Publish({ params }) {
         let result = await res.json();
         initData(result.data);
 
-        if (searchParams.has("guest")) {
-          res = await fetch(
-            `/api/guest/${searchParams.get(
-              "guest"
-            )}?invitation=${pathname.slice(1)}`
-          ).then((res) => res.json());
-          if (!res.ok) {
-            return;
-          }
-          setDataGuest(res.data);
-        }
+        // if (searchParams.has("guest")) {
+        //   res = await fetch(
+        //     `/api/guest/${searchParams.get(
+        //       "guest"
+        //     )}?invitation=${pathname.slice(1)}`
+        //   ).then((res) => res.json());
+        //   if (!res.ok) {
+        //     return;
+        //   }
+        //   setDataGuest(res.data);
+        // }
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
