@@ -6,7 +6,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import PortalContext from "@/context/PortalContext";
 import Loading from "@/components/UI/loading";
 import NotfoundDashboard from "@/components/container/dashboard/notfound-dashboard";
-import axios from "axios";
 
 export default function Template({ children }) {
   const [loading, setLoading] = useState(true);
