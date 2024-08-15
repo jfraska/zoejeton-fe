@@ -1,13 +1,13 @@
 "use client";
 
 import { useContext, useState } from "react";
-import { templates } from "@/constants";
+import { templates } from "@/constant";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
 import CartContext from "@/context/cart";
 import TransitionLink from "@/components/UI/TransitionLink";
 import LoadingButton from "@/components/UI/loading-button";
-import { Parallax } from "@/libs/parallax";
+import { Parallax } from "@/lib/parallax";
 
 export default function Katalog() {
   const { addItemToCart } = useContext(CartContext);

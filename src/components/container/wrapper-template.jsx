@@ -2,10 +2,10 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { extractClass } from "@/libs/utils";
+import { extractClass } from "@/lib/utils";
 import gsap from "gsap";
 
 export function Main({ children, className }) {

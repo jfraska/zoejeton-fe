@@ -4,12 +4,12 @@ import { useContext, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import ButtonCustomize from "@/components/container/button-customize";
+import ButtonCustomize from "@/components/container/template/button-customize";
 import CustomizeContext from "@/context/customize";
 import { Button } from "@/components/UI/button";
 import { CloudUpload, Layers, LayoutDashboard, Settings } from "lucide-react";
 import ButtonTooltip from "@/components/container/button-tooltip";
-import CustomizeList from "@/components/container/customize-list";
+import CustomizeList from "@/components/container/template/customize-list";
 
 export default function Sidebar() {
   const { data: session } = useSession();

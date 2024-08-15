@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import { GlobalStyles } from "@mui/material";
 import dynamic from "next/dynamic";
 import Loading from "@/app/template/loading";

@@ -6,9 +6,9 @@ import {
 } from "@/components/UI/collapsible";
 import { Switch } from "@/components/UI/switch";
 import { TokensIcon } from "@radix-ui/react-icons";
-import BackgroundCustomize from "@/components/container/background-customize";
+import BackgroundCustomize from "@/components/container/template/background-customize";
 import CustomizeContext from "@/context/customize";
-import ColorPalette from "@/components/container/color-palette";
+import ColorPalette from "@/components/container/template/color-palette";
 
 export default function ButtonCustomize({
   template,

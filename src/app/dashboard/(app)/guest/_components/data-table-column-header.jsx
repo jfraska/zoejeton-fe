@@ -5,7 +5,7 @@ import {
   EyeNoneIcon,
 } from "@radix-ui/react-icons";
 
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/UI/button";
 import {
   DropdownMenu,

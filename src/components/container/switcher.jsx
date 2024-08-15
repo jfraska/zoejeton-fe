@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@mui/material";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
 import {
@@ -16,9 +16,10 @@ import {
   CommandLoading,
   CommandSeparator,
 } from "@/components/UI/command";
-import PortalContext from "@/context/portal";
+import PortalContext from "@/context/PortalContext";
 import { Drawer, DrawerContent } from "@/components/UI/drawer";
 import { toast } from "sonner";
+import { getAllInvitation } from "@/services/invitation-service";
 
 export default function Switcher() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -86,16 +87,17 @@ export function ListInvitation({
           search,
           limit: 5,
         });
-        const res = await fetch(`/api/invitation?${params.toString()}`);
-        const result = await res.json();
+        // const res = await fetch(`/api/invitation?${params.toString()}`);
+        // const result = await res.json();
+        const result = await getAllInvitation();
 
-        if (result.data < 1) {
+        if (result.data.data < 1) {
           create(true);
           setStateSwitcher(false);
           return;
         }
 
-        setDataInvitation(result.data);
+        setDataInvitation(result.data.data);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {

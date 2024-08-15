@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { MonumentExtended, NeueMontreal } from "@/styles/fonts";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 
 export const metadata = {

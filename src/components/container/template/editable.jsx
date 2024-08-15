@@ -1,11 +1,11 @@
 "use client";
 
 import { cloneElement, useContext, useState } from "react";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import ContentEditable from "react-contenteditable";
 import EditableDate from "@/components/container/editable-date";
-import EditableImage from "@/components/container/editable-image";
-import { cn, getDataContent } from "@/libs/utils";
+import EditableImage from "@/components/container/template/editable-image";
+import { cn, getDataContent } from "@/lib/utils";
 import EditableLink from "./editable-link";
 
 export default function Editable({

@@ -3,7 +3,7 @@
 import { useContext, useState } from "react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import { LockScreen as LockScreenWrapper } from "@/components/container/wrapper-template";
 
 export default function LockScreen({ type, id }) {

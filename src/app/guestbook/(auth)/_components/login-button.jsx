@@ -1,23 +1,12 @@
 "use client";
 
-import { signIn } from "@/api/auth";
+import { signIn } from "@/services/auth-service";
 import LoadingDots from "@/components/icons/loading-dots";
-import { setCookie } from "cookies-next";
-import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginButton({ children, provider }) {
-  const [loading, setLoading] = useState(false);
-
-  // Get error message added by next/auth in URL.
-  const searchParams = useSearchParams();
-  const error = searchParams?.get("error");
-
-  useEffect(() => {
-    const errorMessage = Array.isArray(error) ? error.pop() : error;
-    errorMessage && toast.error(errorMessage);
-  }, [error]);
+  const { login, loading, setLoading } = useAuth();
 
   function openOAuthPopup(url, width = 500, height = 600) {
     const left = window.screen.width / 2 - width / 2;
@@ -29,14 +18,6 @@ export default function LoginButton({ children, provider }) {
     );
   }
 
-  const options = {
-    path: "/",
-    domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-      ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-      : null,
-    secure: true,
-  };
-
   const handleLogin = async () => {
     try {
       const auth = await signIn(provider);
@@ -45,11 +26,18 @@ export default function LoginButton({ children, provider }) {
       if (redirectUrl) {
         const popup = openOAuthPopup(redirectUrl);
         if (popup) {
+          const checkPopupClosed = setInterval(() => {
+            if (popup.closed) {
+              clearInterval(checkPopupClosed);
+              setLoading(false);
+            }
+          }, 500);
+
           const messageListener = (event) => {
             if (event.origin === "https://api.zoejeton.com") {
               const token = event.data.token;
               if (token) {
-                setCookie("client", token, options);
+                login(token);
                 window.removeEventListener("message", messageListener);
               }
             }

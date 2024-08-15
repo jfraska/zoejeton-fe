@@ -1,5 +1,5 @@
 import "./style.css";
-import { WaContact } from "@/libs/contact";
+import { WaContact } from "@/lib/contact";
 import { useForm } from "react-hook-form";
 
 export default function Contact() {

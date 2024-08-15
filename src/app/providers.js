@@ -1,14 +1,12 @@
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "@/context/SessionContext";
 import { Toaster } from "@/components/UI/sonner";
-import { auth } from "@/libs/auth";
-import { PortalProvider } from "@/context/portal";
+import { PortalProvider } from "@/context/PortalContext";
 import Switcher from "@/components/container/switcher";
 import CreateInvitation from "@/components/container/create-invitation";
 
 export async function Providers({ children }) {
-  const session = await auth();
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       <PortalProvider>
         {children}
         <Switcher />

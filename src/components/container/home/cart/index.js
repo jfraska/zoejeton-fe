@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import CartContext from "@/context/cart";
 import CurrencyFormat from "react-currency-format";
-import { WaCheckout } from "@/libs/contact";
+import { WaCheckout } from "@/lib/contact";
 
 export default function Cart({ state, setState }) {
   let sidebarMenu = useRef(null);

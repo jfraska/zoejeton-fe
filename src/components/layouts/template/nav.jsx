@@ -12,15 +12,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/UI/sheet";
-import ButtonCustomize from "@/components/container/button-customize";
+import ButtonCustomize from "@/components/container/template/button-customize";
 import CustomizeContext from "@/context/customize";
-import ConfirmSave from "@/components/container/confirm-save";
+import ConfirmSave from "@/components/container/template/confirm-save";
 import { useSession } from "next-auth/react";
-import PortalContext from "@/context/portal";
+import PortalContext from "@/context/PortalContext";
 import Link from "next/link";
 import Image from "next/image";
 import { getCookie, hasCookie } from "cookies-next";
-import CustomizeList from "@/components/container/customize-list";
+import CustomizeList from "@/components/container/template/customize-list";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);

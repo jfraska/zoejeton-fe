@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Reorder, useDragControls, useMotionValue } from "framer-motion";
-import ButtonCustomize from "@/components/container/button-customize";
+import ButtonCustomize from "@/components/container/template/button-customize";
 
 export default function CustomizeList({
   content,

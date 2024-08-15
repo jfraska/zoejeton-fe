@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
-import { navLinks } from "@/constants";
+import { navLinks } from "@/constant";
 import { useRouter } from "next/navigation";
 
 export default function Menu({ state, setState }) {

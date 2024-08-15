@@ -3,9 +3,9 @@
 import "./styles.scss";
 import { useState, useMemo, useContext } from "react";
 import CartContext from "@/context/cart";
-import { addOns, extraFitur } from "@/constants";
+import { addOns, extraFitur } from "@/constant";
 import CurrencyFormat from "react-currency-format";
-import { WaCheckout } from "@/libs/contact";
+import { WaCheckout } from "@/lib/contact";
 import LoadingButton from "@/components/UI/loading-button";
 
 export default function Detail({ data }) {

@@ -1,6 +1,6 @@
-import { auth } from "@/libs/auth";
+import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import prisma from "@/libs/prisma";
+import prisma from "@/lib/prisma";
 const { z } = require("zod");
 
 export async function GET(req, res) {

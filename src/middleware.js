@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/libs/auth";
-import { getSession } from "@/api/auth";
+import { getSession } from "@/services/auth-service";
 
 export async function middleware(req) {
   const url = req.nextUrl;
@@ -18,7 +17,7 @@ export async function middleware(req) {
 
   // rewrites for dashboard pages
   if (hostname == `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    const session = await auth();
+    const session = await getSession(req, NextResponse.next());
     if (!session && path !== "/login" && path !== "/signup") {
       return NextResponse.redirect(new URL("/login", req.nextUrl));
     } else if (session && (path == "/login" || path == "/signup")) {
@@ -29,7 +28,7 @@ export async function middleware(req) {
 
   // rewrites for guestbook pages
   if (hostname == `guestbook.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    const session = await getSession();
+    const session = await getSession(req, NextResponse.next());
     if (!session && path !== "/login") {
       return NextResponse.redirect(new URL("/login", req.nextUrl));
     } else if (session && path == "/login") {

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { ReactLenis } from "@studio-freight/react-lenis";
-import { animatePageIn } from "@/libs/animations";
+import { animatePageIn } from "@/lib/animations";
 import Navbar from "@/components/pages/navbar";
 import gsap from "gsap";
 import Footer from "@/components/pages/footer";

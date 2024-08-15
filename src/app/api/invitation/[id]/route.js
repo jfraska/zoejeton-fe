@@ -1,6 +1,6 @@
-import { auth } from "@/libs/auth";
+import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import prisma from "@/libs/prisma";
+import prisma from "@/lib/prisma";
 import { z } from "zod";
 
 export const GET = auth(async function GET(req, { params }) {

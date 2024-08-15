@@ -23,7 +23,7 @@ import { Progress } from "@/components/UI/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
 import DataTable from "./_components/data-table";
 import { columns } from "./_components/columns";
-import ButtonAddGuest from "@/components/container/button-add-guest";
+import ButtonAddGuest from "./_components/button-add-guest";
 
 export default function Tamu() {
   return (

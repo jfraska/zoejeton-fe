@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { getCookie, hasCookie } from "cookies-next";
 import CustomizeContext from "@/context/customize";
-import PortalContext from "@/context/portal";
+import PortalContext from "@/context/PortalContext";
 import { GlobalStyles } from "@mui/material";
 
-import ButtonAction from "@/components/container/button-action";
+import ButtonAction from "@/components/container/template/button-action";
 import CustomizeMode from "@/components/layouts/template/customize-mode";
 
 export default function Template({ children }) {

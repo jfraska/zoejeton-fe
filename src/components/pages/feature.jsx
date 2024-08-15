@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { feature } from "@/constants";
+import { feature } from "@/constant";
 
 export default function Feature() {
   const sectionRef = useRef(null);

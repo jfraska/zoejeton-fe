@@ -3,6 +3,7 @@ import { getCookie, hasCookie } from "cookies-next";
 
 // create an axios instance
 const REQUEST = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   timeout: 60 * 1000, // ms request timeout
 });
 

@@ -2,8 +2,7 @@
 
 import { useContext, useMemo, useState } from "react";
 import { useSelectedLayoutSegments } from "next/navigation";
-import PortalContext from "@/context/portal";
-import { signOut, useSession } from "next-auth/react";
+import PortalContext from "@/context/PortalContext";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -33,13 +32,16 @@ import {
 } from "@/components/UI/collapsible";
 import { Badge } from "@/components/UI/badge";
 import ButtonPublish from "@/components/container/button-publish";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Nav() {
-  const { data: session } = useSession();
+  const { session, logout } = useAuth();
   const segments = useSelectedLayoutSegments();
   const [open, setOpen] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
   const { invitation, setStateSwitcher } = useContext(PortalContext);
+
+  console.log(session);
 
   const tabs = useMemo(() => {
     return [
@@ -134,7 +136,7 @@ export default function Nav() {
                 <button className="flex w-full items-center gap-3 rounded-lg p-2 text-muted-foreground transition-all hover:text-primary">
                   <Image
                     src={
-                      session?.user.image ??
+                      session?.user.linked_social_accounts[0].avatar ??
                       `https://avatar.vercel.sh/${session?.user.email}`
                     }
                     width={40}
@@ -169,7 +171,7 @@ export default function Nav() {
                 </Link>
                 <button
                   className={`w-full flex items-center gap-3 rounded-lg p-2 text-muted-foreground transition-all hover:text-primary`}
-                  onClick={() => signOut()}
+                  onClick={logout}
                 >
                   <LogOut className="w-5 aspect-square" />
                   <span className="text-sm font-medium">Logout</span>

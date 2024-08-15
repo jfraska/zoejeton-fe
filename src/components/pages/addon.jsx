@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { addOns } from "@/constants";
+import { addOns } from "@/constant";
 import Image from "next/image";
 import LoadingButton from "@/components/UI/loading-button";
 import CartContext from "@/context/cart";

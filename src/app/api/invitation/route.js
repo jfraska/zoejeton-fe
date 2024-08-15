@@ -1,6 +1,6 @@
-import { auth } from "@/libs/auth";
+import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import prisma from "@/libs/prisma";
+import prisma from "@/lib/prisma";
 import { z } from "zod";
 
 export const GET = auth(async function GET(req) {
@@ -8,7 +8,7 @@ export const GET = auth(async function GET(req) {
     try {
       const url = new URL(req.url);
       const search = url.searchParams.get("search") || "";
-      
+
       const offset = parseInt(url.searchParams.get("offset")) || 0;
       const limit = parseInt(url.searchParams.get("limit")) || 2;
 
