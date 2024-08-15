@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import { usePathname, useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";

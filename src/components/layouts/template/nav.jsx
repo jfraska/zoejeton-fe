@@ -13,9 +13,8 @@ import {
   SheetTrigger,
 } from "@/components/UI/sheet";
 import ButtonCustomize from "@/components/container/template/button-customize";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import ConfirmSave from "@/components/container/template/confirm-save";
-import { useSession } from "next-auth/react";
 import PortalContext from "@/context/PortalContext";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,7 +23,6 @@ import CustomizeList from "@/components/container/template/customize-list";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const { data: session } = useSession();
   const [alertSave, setAlertSave] = useState(false);
   const { invitation, updateInvitation, setStateSwitcher } =
     useContext(PortalContext);
@@ -84,7 +82,7 @@ export default function Nav() {
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">
-          {session ? (
+          {/* {session ? (
             <Button
               variant="outline"
               onClick={() => setStateSwitcher(true)}
@@ -117,7 +115,7 @@ export default function Nav() {
                 Sign in
               </Link>
             </Button>
-          )}
+          )} */}
         </div>
         <button>
           <MoreHorizontal className="w-5 aspect-square" />

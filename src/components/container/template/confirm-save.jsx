@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -11,13 +10,12 @@ import {
   DialogTitle,
 } from "@/components/UI/dialog";
 import { Button } from "@/components/UI/button";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import PortalContext from "@/context/PortalContext";
 import axios from "axios";
 
 export default function ConfirmSave({ open, onOpenChange }) {
   const router = useRouter();
-  const { data: session } = useSession();
   const { saveDraftContent, deleteDraftContent, data, dataContent, dataColor } =
     useContext(CustomizeContext);
   const { invitation, updateInvitation, setStateSwitcher } =
@@ -43,12 +41,12 @@ export default function ConfirmSave({ open, onOpenChange }) {
   };
 
   const handleSave = async () => {
-    if (!session) {
-      saveDraftContent();
-      onOpenChange(false);
-      toast.success("Save draft");
-      return;
-    }
+    // if (!session) {
+    //   saveDraftContent();
+    //   onOpenChange(false);
+    //   toast.success("Save draft");
+    //   return;
+    // }
 
     if (!invitation) {
       setStateSwitcher(true);
@@ -112,37 +110,37 @@ export default function ConfirmSave({ open, onOpenChange }) {
     }
   };
 
-  if (!session) {
-    return (
-      <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle className="font-medium">Save Customize</DialogTitle>
-            <DialogDescription>
-              sign-in untuk menyimpan data secara permanen, atau klik continue
-              untuk save draft
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="flex flex-col-reverse gap-2">
-            <Button
-              className="text-black bg-white border-black border hover:bg-black hover:text-white"
-              onClick={handleSave}
-            >
-              Continue
-            </Button>
-            {!session && (
-              <Button
-                className="bg-black hover:bg-white hover:text-black"
-                onClick={handleLogin}
-              >
-                Sign in
-              </Button>
-            )}
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    );
-  }
+  // if (!session) {
+  //   return (
+  //     <Dialog open={open} onOpenChange={onOpenChange}>
+  //       <DialogContent>
+  //         <DialogHeader>
+  //           <DialogTitle className="font-medium">Save Customize</DialogTitle>
+  //           <DialogDescription>
+  //             sign-in untuk menyimpan data secara permanen, atau klik continue
+  //             untuk save draft
+  //           </DialogDescription>
+  //         </DialogHeader>
+  //         <DialogFooter className="flex flex-col-reverse gap-2">
+  //           <Button
+  //             className="text-black bg-white border-black border hover:bg-black hover:text-white"
+  //             onClick={handleSave}
+  //           >
+  //             Continue
+  //           </Button>
+  //           {!session && (
+  //             <Button
+  //               className="bg-black hover:bg-white hover:text-black"
+  //               onClick={handleLogin}
+  //             >
+  //               Sign in
+  //             </Button>
+  //           )}
+  //         </DialogFooter>
+  //       </DialogContent>
+  //     </Dialog>
+  //   );
+  // }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
