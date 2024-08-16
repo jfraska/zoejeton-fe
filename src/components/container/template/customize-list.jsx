@@ -33,6 +33,7 @@ export default function CustomizeList({
         // >
 
         <ButtonCustomize
+          key={item.key}
           type={type}
           template={item}
           isSelected={selected === item.key}

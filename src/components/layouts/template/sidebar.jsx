@@ -85,8 +85,6 @@ export default function Sidebar() {
               <>
                 <h1 className="mt-5 mb-2">Setting</h1>
                 <ButtonCustomize type="color" />
-
-                <CustomizeList type="fitur" content={dataContent} />
               </>
             )}
           </div>

@@ -148,7 +148,7 @@ export default function ConfirmSave({ open, onOpenChange }) {
         <DialogHeader>
           <DialogTitle className="font-medium">Save Customize</DialogTitle>
           <DialogDescription>
-            Save customize di {invitation.title}
+            {/* Save customize di {invitation.title} */}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex flex-col-reverse gap-2">
