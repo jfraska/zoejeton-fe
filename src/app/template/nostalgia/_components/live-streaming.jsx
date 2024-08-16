@@ -5,11 +5,11 @@ import Editable from "@/components/container/editable";
 export default function LiveStream() {
   return (
     <Section
-      className="relative w-full h-full bg-primary-bg "
+      className="relative w-full h-full min-h-screen bg-primary-bg "
       id="live-streaming"
     >
       <div
-        className="w-full h-full p-10 flex flex-col text-center justify-between gap-10 text-primary-text"
+        className="w-full h-full min-h-screen p-10 flex flex-col text-center justify-between gap-10 text-primary-text"
         data-aos="fade-right"
         data-aos-duration="1000"
       >

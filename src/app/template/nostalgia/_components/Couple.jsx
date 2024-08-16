@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Couple() {
   return (
     <Section
-      className="flex items-center justify-center min-h-full bg-primary-bg"
+      className="flex items-center justify-center min-h-screen h-full bg-primary-bg py-10"
       id="couple"
     >
       <div className="bg-secondary-bg rounded-tl-full rounded-tr-full rounded-bl-full rounded-br-full shadow-lg p-8 w-full mx-auto z-10">

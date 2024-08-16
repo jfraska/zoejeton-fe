@@ -17,7 +17,7 @@ export default function Beranda() {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <Section className=" inset-0 w-full h-full" id="beranda">
+      <Section className="w-full h-full min-h-screen" id="beranda">
         <div
           className="mx-auto flex flex-col gap-6 justify-end items-center p-10 text-center"
           data-aos="fade-right"
