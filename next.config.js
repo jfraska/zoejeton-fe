@@ -24,6 +24,23 @@ const nextConfig = {
       // { hostname: "illustrations.popsy.co" },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)", // Adjust the path as necessary
+        headers: [
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin-allow-popups", // This allows the window to close
+          },
+          {
+            key: "Cross-Origin-Embedder-Policy",
+            value: "require-corp", // Adjust COEP if necessary
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
