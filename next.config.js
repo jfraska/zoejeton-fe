@@ -5,6 +5,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
+    missingSuspenseWithCSRBailout: false,
     serverActions: {
       allowedOrigins: ["dashboard.localhost:3000"],
     },

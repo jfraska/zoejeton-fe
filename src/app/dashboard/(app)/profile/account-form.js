@@ -8,7 +8,7 @@ import { z } from "zod";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/UI/button";
-import { Calendar } from "@/components/UI/calendar";
+// import { Calendar } from "@/components/UI/calendar";
 import {
   Command,
   CommandEmpty,
@@ -126,7 +126,7 @@ export function AccountForm() {
                   </FormControl>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
+                  {/* <Calendar
                     mode="single"
                     selected={field.value}
                     onSelect={field.onChange}
@@ -134,7 +134,7 @@ export function AccountForm() {
                       date > new Date() || date < new Date("1900-01-01")
                     }
                     initialFocus
-                  />
+                  /> */}
                 </PopoverContent>
               </Popover>
               <FormDescription>
