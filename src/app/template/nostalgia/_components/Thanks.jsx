@@ -4,7 +4,7 @@ import Editable from "@/components/container/editable";
 
 export default function Thanks() {
   return (
-    <Section className="h-full bg-cover bg-primary-bg" id="thanks">
+    <Section className="min-h-screen h-full bg-cover bg-primary-bg" id="thanks">
       <div
         className="flex flex-col justify-center items-center text-primary-text pb-10"
         data-aos="fade-up"

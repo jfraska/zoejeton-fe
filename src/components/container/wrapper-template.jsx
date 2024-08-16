@@ -8,7 +8,6 @@ import "aos/dist/aos.css";
 import { extractClass } from "@/lib/utils";
 import gsap from "gsap";
 import Splide from "@splidejs/splide";
-import "@splidejs/react-splide/css";
 import dynamic from "next/dynamic";
 
 export function Main({ children, className }) {
@@ -62,66 +61,32 @@ export function Template() {
   }, [dataContent]);
 
   useEffect(() => {
-    var splide = new Splide(".splide", {
+    const splide = new Splide(".splide", {
       direction: "ttb",
-      wheel: true,
-      gap: 0,
+      height: "100vh",
       releaseWheel: true,
+      wheel: true,
+      pagination: false,
       arrows: false,
-      paginationDirection: "ltr",
-      width: "100%",
-      height: "100%",
     });
 
     splide.mount();
   }, []);
 
   return (
-    <div
-      className={`${
-        isEdit && "overflow-y-auto @3xl:max-w-md scroll"
-      } splide w-full h-full`}
-    >
+    <div className={`${isEdit && "@3xl:max-w-md scroll"} w-full h-full splide`}>
       <div className="splide__track">
-        <ul className="splide__list h-full">
-          {pages.map((PageComponent, index) => {
-            return (
+        <ul className="splide__list">
+          {pages.map(
+            (PageComponent, index) =>
               PageComponent && (
-                <li className="splide__slide h-full">
-                  <PageComponent key={index} />
+                <li key={index} className="splide__slide h-full">
+                  <PageComponent />
                 </li>
               )
-            );
-          })}
+          )}
         </ul>
       </div>
-
-      <ul
-        class="splide__pagination splide__pagination--ltr"
-        role="tablist"
-        aria-label="Select a slide to show"
-      >
-        <li role="presentation">
-          <button
-            class="splide__pagination__page is-active"
-            type="button"
-            role="tab"
-            aria-controls="splide01-slide01"
-            aria-label="Go to slide 1"
-            aria-selected="true"
-          ></button>
-        </li>
-        <li role="presentation">
-          <button
-            class="splide__pagination__page"
-            type="button"
-            role="tab"
-            aria-controls="splide01-slide02"
-            aria-label="Go to slide 2"
-            tabindex="-1"
-          ></button>
-        </li>
-      </ul>
     </div>
   );
 }

@@ -42,6 +42,7 @@
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.14.1",
     "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@studio-freight/react-lenis": "^0.0.47",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tanstack/react-table": "^8.17.3",
