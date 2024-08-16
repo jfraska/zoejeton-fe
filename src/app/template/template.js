@@ -87,16 +87,16 @@ export default function Template({ children }) {
             styles={{
               ":root": {
                 // primary
-                "--primary-bg": dataColor?.value.primary,
-                "--primary-text": dataColor?.value["primary-text"],
+                "--primary-bg": dataColor.value.primary,
+                "--primary-text": dataColor.value["primary-text"],
 
                 // secondary
-                "--secondary-bg": dataColor?.value.secondary,
-                "--secondary-text": dataColor?.value["secondary-text"],
+                "--secondary-bg": dataColor.value.secondary,
+                "--secondary-text": dataColor.value["secondary-text"],
 
                 // accent
-                "--accent-bg": dataColor?.value.accent,
-                "--accent-text": dataColor?.value["accent-text"],
+                "--accent-bg": dataColor.value.accent,
+                "--accent-text": dataColor.value["accent-text"],
               },
               main: {
                 color: "var(--primary-text)",

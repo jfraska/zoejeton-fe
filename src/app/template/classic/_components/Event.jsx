@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Event() {
   return (
     <Section
-      className="bg-white flex flex-col gap-8 items-center justify-center min-h-full py-10 px-5"
+      className="bg-primary-bg text-secondary-text flex flex-col gap-8 items-center justify-center min-h-full py-10 px-5"
       id="event"
     >
       <div className="relative w-full h-full min-h-[352px] overflow-hidden rounded-[100px] text-center flex flex-col items-center justify-center">
@@ -17,7 +17,11 @@ export default function Event() {
           className="bg-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="flex flex-col items-center justify-around py-10 z-10">
+        <div
+          className="flex flex-col items-center justify-around py-10 z-10"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
           <h1 className={`${Selina.className} text-6xl`}>
             AKAD <br /> NIKAH
           </h1>
@@ -66,7 +70,11 @@ export default function Event() {
           className="bg-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="flex flex-col items-center justify-around py-10 z-10">
+        <div
+          className="flex flex-col items-center justify-around py-10 z-10"
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+        >
           <h1 className={`${Selina.className} text-6xl`}>RESEPSI</h1>
           <Editable
             type="text"

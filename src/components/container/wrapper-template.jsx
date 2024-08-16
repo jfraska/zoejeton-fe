@@ -7,6 +7,9 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { extractClass } from "@/lib/utils";
 import gsap from "gsap";
+import Splide from "@splidejs/splide";
+import "@splidejs/react-splide/css";
+import dynamic from "next/dynamic";
 
 export function Main({ children, className }) {
   const { isEdit } = useContext(CustomizeContext);
@@ -29,16 +32,96 @@ export function Main({ children, className }) {
   );
 }
 
-export function Template({ children, className }) {
-  const { isEdit } = useContext(CustomizeContext);
+export function Template() {
+  const { isEdit, dataContent, data } = useContext(CustomizeContext);
+  const [pages, setPages] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const loadedPages = await Promise.all(
+        dataContent.map(async (page) => {
+          try {
+            console.log(page);
+            const module = await import(
+              `@/app/template/${data.parent ?? data.slug}/_components/${
+                page.key
+              }.jsx`
+            );
+
+            return dynamic(() => Promise.resolve({ default: module.default }), {
+              ssr: false,
+            });
+          } catch (error) {
+            console.error(`Failed to load module for key: ${page.key}`, error);
+            return null;
+          }
+        })
+      );
+      setPages(loadedPages);
+    })();
+  }, [dataContent]);
+
+  useEffect(() => {
+    var splide = new Splide(".splide", {
+      direction: "ttb",
+      wheel: true,
+      gap: 0,
+      releaseWheel: true,
+      arrows: false,
+      paginationDirection: "ltr",
+      width: "100%",
+      height: "100%",
+    });
+
+    splide.mount();
+  }, []);
 
   return (
     <div
-      className={`${className}  ${
+      className={`${
         isEdit && "overflow-y-auto @3xl:max-w-md scroll"
-      }`}
+      } splide w-full h-full`}
     >
-      {children}
+      <div className="splide__track">
+        <ul className="splide__list h-full">
+          {pages.map((PageComponent, index) => {
+            return (
+              PageComponent && (
+                <li className="splide__slide h-full">
+                  <PageComponent key={index} />
+                </li>
+              )
+            );
+          })}
+        </ul>
+      </div>
+
+      <ul
+        class="splide__pagination splide__pagination--ltr"
+        role="tablist"
+        aria-label="Select a slide to show"
+      >
+        <li role="presentation">
+          <button
+            class="splide__pagination__page is-active"
+            type="button"
+            role="tab"
+            aria-controls="splide01-slide01"
+            aria-label="Go to slide 1"
+            aria-selected="true"
+          ></button>
+        </li>
+        <li role="presentation">
+          <button
+            class="splide__pagination__page"
+            type="button"
+            role="tab"
+            aria-controls="splide01-slide02"
+            aria-label="Go to slide 2"
+            tabindex="-1"
+          ></button>
+        </li>
+      </ul>
     </div>
   );
 }

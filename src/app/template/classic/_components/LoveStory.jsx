@@ -6,12 +6,12 @@ import Image from "next/image";
 export default function LoveStory() {
   return (
     <Section
-      className="relative w-full h-fit pb-5 px-5 bg-white gap-4 text-center"
+      className="relative w-full h-fit pb-5 px-5 bg-primary-bg text-primary-text gap-4 text-center"
       id="love-story"
     >
       <div className="bg-[#EEEEEE] rounded-[100px] overflow-hidden max-w-sm p-4 flex flex-col items-center shadow-xl">
         <Editable
-          className="relative w-80 h-96 rounded-[100px] overflow-hidden outline-black focus:outline-black filter grayscale"
+          className="relative w-80 h-96 rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text filter grayscale"
           type="image"
           field="story1"
           subfield="image"
@@ -24,21 +24,25 @@ export default function LoveStory() {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Editable>
-        <div className="p-6 flex flex-col items-center text-black">
+        <div
+          className="p-6 flex flex-col items-center"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
           <h1 className={`${Selina.className} text-6xl mb-4`}>Love Story</h1>
           <Editable
             type="text"
             field="story1"
             subfield="subheading"
             section="love-story"
-            className={`${Catamaran.className} mb-20 outline-black focus:outline-black`}
+            className={`${Catamaran.className} mb-20 outline-primary-text focus:outline-primary-text`}
           />
           <Editable
             type="link"
             field="story1"
             subfield="more"
             section="love-story"
-            className="outline-black focus:outline-black"
+            className="outline-primary-text focus:outline-primary-text"
           >
             <a
               href="/"

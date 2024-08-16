@@ -6,10 +6,10 @@ import Image from "next/image";
 export default function LoveStory() {
   return (
     <Section
-      className="relative w-full h-fit py-5 px-5 bg-black flex flex-col justify-start items-center gap-4 text-center"
+      className="relative w-full h-fit py-5 px-5 bg-primary-bg flex flex-col justify-start items-center gap-4 text-center"
       id="love-story"
     >
-      <div className="bg-[#EEEEEE] rounded-2xl overflow-hidden shadow-lg max-w-sm p-4">
+      <div className="bg-accent-bg rounded-2xl overflow-hidden shadow-lg max-w-sm p-4">
         <Editable
           className="relative rounded-2xl w-full h-96 overflow-hidden outline-black focus:outline-black"
           type="image"
@@ -23,27 +23,29 @@ export default function LoveStory() {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Editable>
-        <div className="p-6">
-          <h1 className={`${Selina.className} text-6xl text-gray-800 mb-4`}>
-            Love Story
-          </h1>
+        <div
+          className="p-6 text-accent-text"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
+          <h1 className={`${Selina.className} text-6xl mb-4`}>Love Story</h1>
           <Editable
             type="text"
             field="story1"
             subfield="subheading"
             section="love-story"
-            className={`${Catamaran.className} text-gray-600 mb-6 outline-black focus:outline-black`}
+            className={`${Catamaran.className} mb-6 outline-accent-text focus:outline-accent-text`}
           />
           <Editable
             type="link"
             field="more"
             section="love-story"
-            className="outline-black focus:outline-black"
+            className="outline-accent-text focus:outline-accent-text"
           >
             <a
               href="/"
               target="_blank"
-              className={`${Catamaran.className} flex items-center justify-center text-black hover:text-gray-500`}
+              className={`${Catamaran.className} flex items-center justify-center text-accent-text hover:text-gray-500`}
             >
               <svg
                 className="w-5 h-5 mr-1"

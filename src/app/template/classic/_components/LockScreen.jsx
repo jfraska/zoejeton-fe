@@ -14,7 +14,7 @@ export default function LockScreen({ type, id }) {
     <LockScreenWrapper
       open={state}
       type={type}
-      className="flex flex-col justify-around items-center"
+      className="flex flex-col justify-around items-center text-secondary-text"
       id={id}
     >
       <div className="flex flex-col text-center w-64">
@@ -25,20 +25,20 @@ export default function LockScreen({ type, id }) {
           height={20}
           alt="logo"
         />
-        <h1 className={`${Selina.className} text-7xl text-white`}>
+        <h1 className={`${Selina.className} text-7xl`}>
           <Editable type="text" field="name" section="lockscreen" />
         </h1>
-        <h2 className={`${Catamaran.className} inset-x-10 text-white`}>
+        <h2 className={`${Catamaran.className} inset-x-10`}>
           <Editable type="text" field="date" section="lockscreen" />
         </h2>
       </div>
       <div
         className={`${Catamaran.className} w-64 text-center inset-x-10 mt-20`}
       >
-        <h1 className={`${Catamaran.className} text-sm text-white`}>
+        <h1 className={`${Catamaran.className} text-sm`}>
           <Editable type="text" field="heading" section="lockscreen" />
         </h1>
-        <h1 className={`${Catamaran.className} text-sm text-white`}>
+        <h1 className={`${Catamaran.className} text-sm`}>
           <Editable type="text" field="subheading" section="lockscreen" />
         </h1>
       </div>

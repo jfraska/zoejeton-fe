@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Galery() {
   return (
     <Section
-      className="relative flex flex-col w-full h-fit p-4 items-center mx-auto bg-[#333333]"
+      className="relative flex flex-col w-full h-fit p-4 items-center mx-auto bg-primary-bg"
       id="galery"
     >
       <div className="relative mb-4 w-full">
@@ -24,7 +24,7 @@ export default function Galery() {
           />
         </Editable>
         <h2
-          className={`${GenteRomantica.className} absolute top-4 inset-x-0 w-full text-center text-4xl`}
+          className={`${GenteRomantica.className} absolute top-4 inset-x-0 w-full text-center text-4xl text-primary-text`}
         >
           Our Gallery
         </h2>

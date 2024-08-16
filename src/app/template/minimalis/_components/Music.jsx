@@ -8,6 +8,22 @@ export default function Music() {
   const audioRef = useRef(null);
 
   useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        setIsPlaying(false);
+      } else {
+        setIsPlaying(true);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
     } else {

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Event() {
   return (
     <Section
-      className="bg-[#333333] flex flex-col items-center justify-center min-h-full space-y-8 py-10 px-3"
+      className="bg-secondary-bg text-secondary-text flex flex-col items-center justify-center min-h-full space-y-8 py-10 px-3"
       id="event"
     >
       <div className="relative h-full rounded-xl shadow-lg max-w-sm text-center flex flex-col items-center justify-around py-3">
@@ -17,8 +17,8 @@ export default function Event() {
           className="brightness-125 bg-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="z-10">
-          <h1 className={`${Selina.className} text-6xl text-white`}>
+        <div className="z-10" data-aos="zoom-in" data-aos-duration="1000">
+          <h1 className={`${Selina.className} text-6xl`}>
             AKAD <br /> NIKAH
           </h1>
           <Editable
@@ -26,27 +26,27 @@ export default function Event() {
             field="akad"
             subfield="date"
             section="event"
-            className={`${Catamaran.className} text-white mt-2 text-base`}
+            className={`${Catamaran.className} mt-2 text-base`}
           />
           <Editable
             type="text"
             field="akad"
             subfield="time"
             section="event"
-            className={`${Catamaran.className} text-white mb-4 text-base`}
+            className={`${Catamaran.className} mb-4 text-base`}
           />
           <Editable
             type="text"
             field="akad"
             subfield="desc"
             section="event"
-            className={`${Catamaran.className} text-gray-400 mb-6 px-4 text-sm`}
+            className={`${Catamaran.className} mb-6 px-4 text-sm`}
           />
           <Editable type="link" field="akad" subfield="loc" section="event">
             <a
               href="/"
               target="_blank"
-              className={`${Catamaran.className} flex items-center justify-center bg-white text-gray-800 px-4 py-2 rounded-full`}
+              className={`${Catamaran.className} flex items-center justify-center bg-accent-bg text-accent-text px-4 py-2 rounded-full`}
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -68,34 +68,34 @@ export default function Event() {
           className="brightness-125 bg-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="z-10">
-          <h1 className={`${Selina.className} text-6xl text-white`}>RESEPSI</h1>
+        <div className="z-10" data-aos="zoom-in" data-aos-duration="1000">
+          <h1 className={`${Selina.className} text-6xl`}>RESEPSI</h1>
           <Editable
             type="text"
             field="resepsi"
             subfield="date"
             section="event"
-            className={`${Catamaran.className} text-white mt-2 text-base`}
+            className={`${Catamaran.className} mt-2 text-base`}
           />
           <Editable
             type="text"
             field="resepsi"
             subfield="time"
             section="event"
-            className={`${Catamaran.className} text-white mb-4 text-base`}
+            className={`${Catamaran.className} mb-4 text-base`}
           />
           <Editable
             type="text"
             field="resepsi"
             subfield="desc"
             section="event"
-            className={`${Catamaran.className} text-gray-400 mb-6 px-4 text-sm`}
+            className={`${Catamaran.className} mb-6 px-4 text-sm`}
           />
           <Editable type="link" field="resepsi" subfield="loc" section="event">
             <a
               href="/"
               target="_blank"
-              className={`${Catamaran.className} flex items-center justify-center bg-white text-gray-800 px-4 py-2 rounded-full`}
+              className={`${Catamaran.className} flex items-center justify-center bg-accent-bg text-accent-text px-4 py-2 rounded-full`}
             >
               <svg
                 className="w-5 h-5 mr-2"

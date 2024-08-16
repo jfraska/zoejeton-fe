@@ -18,7 +18,11 @@ export default function Beranda() {
         />
       </div>
       <Section className=" inset-0 w-full h-full" id="beranda">
-        <div className="mx-auto flex flex-col gap-6 justify-end items-center p-10 text-center">
+        <div
+          className="mx-auto flex flex-col gap-6 justify-end items-center p-10 text-center"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
           <h2 className="text-lg mt-16">PERNIKAHAN</h2>
           <h1 className={`${GenteRomantica.className} text-5xl font-medium`}>
             <Editable type="text" field="heading" section="beranda" />
