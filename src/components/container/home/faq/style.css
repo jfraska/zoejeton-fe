@@ -1,0 +1,43 @@
+.accordion {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+  margin-top: 4px;
+}
+.accordion.show {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+}
+
+.underline-footer {
+  position: relative;
+}
+
+.underline-footer::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(1);
+  height: 1.3px;
+  bottom: 0;
+  left: 0;
+  background-color: #bfbfbf;
+}
+
+.underline-footer::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+  background-color: white;
+}
+.underline-footer:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

@@ -8,7 +8,7 @@ import {
 } from "@/components/UI/card";
 import { Label } from "@/components/UI/label";
 import { Switch } from "@/components/UI/switch";
-import { getDataContent } from "@/libs/utils";
+import { getDataContent } from "@/lib/utils";
 
 export default function EventCard({ result }) {
   if (result) {

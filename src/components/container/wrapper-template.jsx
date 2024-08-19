@@ -2,10 +2,10 @@
 
 import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { extractClass } from "@/libs/utils";
+import { extractClass } from "@/lib/utils";
 import gsap from "gsap";
 
 export function Main({ children, className }) {
@@ -131,7 +131,9 @@ export function Cover({ children, className }) {
 export function LockScreen({
   children,
   className,
+  type = "page",
   open,
+  id,
   handleOpen,
   handleClose,
 }) {
@@ -148,21 +150,21 @@ export function LockScreen({
     }
   }, [dataContent]);
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash === "#lockscreen") {
-        handleClose();
-      } else {
-        handleOpen();
-      }
-    };
+  // useEffect(() => {
+  //   const handleHashChange = () => {
+  //     if (window.location.hash === "#lockscreen") {
+  //       handleClose();
+  //     } else {
+  //       handleOpen();
+  //     }
+  //   };
 
-    window.addEventListener("hashchange", handleHashChange);
+  //   window.addEventListener("hashchange", handleHashChange);
 
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("hashchange", handleHashChange);
+  //   };
+  // }, []);
 
   useEffect(() => {
     timeline.current = gsap.timeline({ paused: true });
@@ -190,8 +192,9 @@ export function LockScreen({
   return (
     <div
       ref={(el) => (lockRef = el)}
-      className={`${
-        isEdit ? "absolute h-full" : "fixed h-screen"
+      id={id}
+      className={`${isEdit ? "absolute h-full" : "fixed h-screen"} ${
+        type === "page" && "!relative !z-0"
       } inset-0 w-full z-40 bg-primary-bg`}
     >
       {background && (

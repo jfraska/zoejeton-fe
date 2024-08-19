@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import CustomizeContext from "@/context/customize";
+import CustomizeContext from "@/context/CustomizeContext";
 import { GlobalStyles } from "@mui/material";
 import dynamic from "next/dynamic";
 import Loading from "@/app/template/loading";
@@ -29,17 +29,17 @@ export default function Publish({ params }) {
         let result = await res.json();
         initData(result.data);
 
-        if (searchParams.has("guest")) {
-          res = await fetch(
-            `/api/guest/${searchParams.get(
-              "guest"
-            )}?invitation=${pathname.slice(1)}`
-          ).then((res) => res.json());
-          if (!res.ok) {
-            return;
-          }
-          setDataGuest(res.data);
-        }
+        // if (searchParams.has("guest")) {
+        //   res = await fetch(
+        //     `/api/guest/${searchParams.get(
+        //       "guest"
+        //     )}?invitation=${pathname.slice(1)}`
+        //   ).then((res) => res.json());
+        //   if (!res.ok) {
+        //     return;
+        //   }
+        //   setDataGuest(res.data);
+        // }
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {

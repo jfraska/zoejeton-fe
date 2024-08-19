@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { useSelectedLayoutSegments } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -15,7 +14,6 @@ import {
   User,
 } from "lucide-react";
 import { Separator } from "@/components/UI/separator";
-import { DescriptionOutlined } from "@mui/icons-material";
 import { Badge } from "@/components/UI/badge";
 import Notification from "@/components/container/notification";
 import {
@@ -23,10 +21,11 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/UI/collapsible";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Sidebar() {
   const [openProfile, setOpenProfile] = useState(false);
-  const { data: session } = useSession();
+  const { session, logout } = useAuth();
   const segments = useSelectedLayoutSegments();
 
   const tabs = useMemo(() => {
@@ -150,7 +149,7 @@ export default function Sidebar() {
               </Link>
               <button
                 className={`w-full flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary`}
-                onClick={() => signOut()}
+                onClick={logout}
               >
                 <LogOut className="w-5 aspect-square" />
                 <span className="text-sm font-medium">Logout</span>

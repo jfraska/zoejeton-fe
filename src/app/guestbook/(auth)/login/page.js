@@ -1,10 +1,6 @@
-import Image from "next/image";
 import LoginButton from "../_components/login-button";
 import { Suspense } from "react";
-import { Button } from "@/components/UI/button";
-import { Input } from "@/components/UI/input";
-import { Label } from "@/components/UI/label";
-import Link from "next/link";
+import CredentialLogin from "../_components/credential-login";
 
 export const metadata = {
   title: "Login | Gusetbook ZoeJeton",
@@ -20,25 +16,7 @@ export default function Page() {
         </p>
       </div>
       <div className="space-y-4 max-w-sm w-full">
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center">
-            <Label htmlFor="password">Password</Label>
-            {/* <Link
-                  href="/forgot-password"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link> */}
-          </div>
-          <Input id="password" type="password" required />
-        </div>
-        <Button type="submit" className="w-full">
-          Login
-        </Button>
+        <CredentialLogin />
         <Suspense
           fallback={
             <div className="h-10 w-full rounded-md border border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800" />

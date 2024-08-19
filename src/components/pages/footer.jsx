@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { faq } from "@/constants";
-import FAQ from "@/components/container/faq";
-import Contact from "@/components/container/contact";
+import { faq } from "@/constant";
+import FAQ from "@/components/container/home/faq";
+import Contact from "@/components/container/home/contact";
 
 export default function Footer() {
   const [selected, setSelected] = useState(null);

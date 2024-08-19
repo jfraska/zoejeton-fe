@@ -25,8 +25,8 @@ import { Button } from "@/components/UI/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { generateSlug } from "@/libs/utils";
-import PortalContext from "@/context/portal";
+import { generateSlug } from "@/lib/utils";
+import PortalContext from "@/context/PortalContext";
 
 const formSchema = z.object({
   title: z

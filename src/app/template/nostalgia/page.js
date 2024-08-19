@@ -12,17 +12,18 @@ import Music from "./_components/Music";
 import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
+import { Main, Template } from "@/components/container/wrapper-template";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Page() {
   return (
-    <section
-      className={`${montserrat.className} absolute inset-0 flex justify-between w-full h-full bg-primary-bg`}
-    >
+    <Main className={`${montserrat.className}`}>
       <Cover />
-      <LockScreen />
-      <div className="relative w-full h-full overflow-y-auto md:max-w-md scroll">
+      <Music />
+      <LockScreen type="lock" />
+      <Template className="w-full h-full">
+        <LockScreen id="lockscreen" />
         <Beranda />
         <Couple />
         <LoveStory />
@@ -31,8 +32,7 @@ export default function Page() {
         <LiveStream />
         <Galery />
         <Thanks />
-      </div>
-      <Music />
-    </section>
+      </Template>
+    </Main>
   );
 }

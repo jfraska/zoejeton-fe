@@ -1,6 +1,6 @@
 "use client";
 
-import { WaContact } from "@/libs/contact";
+import { WaContact } from "@/lib/contact";
 
 export default function Header() {
   return (

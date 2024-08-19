@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { CustomizeProvider } from "@/context/customize";
+import { CustomizeProvider } from "@/context/CustomizeContext";
 import Loading from "./loading";
 
 export async function generateMetadata() {

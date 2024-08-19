@@ -10,7 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
 import TemplateCard from "./_components/template-card";
 import EventCard from "./_components/event-card";
-import NotfoundDashboard from "@/components/container/notfound-dashboard";
+import NotfoundDashboard from "@/components/container/dashboard/notfound-dashboard";
 
 async function getData() {
   const invitation = hasCookie("invitation", { cookies })

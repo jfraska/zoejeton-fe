@@ -1,94 +1,94 @@
-import { auth } from "@/libs/auth";
-import { NextResponse } from "next/server";
-import prisma from "@/libs/prisma";
-import { z } from "zod";
+// import { auth } from "@/lib/auth";
+// import { NextResponse } from "next/server";
+// import prisma from "@/lib/prisma";
+// import { z } from "zod";
 
-export const GET = auth(async function GET(req) {
-  if (req.auth) {
-    try {
-      const url = new URL(req.url);
-      const search = url.searchParams.get("search") || "";
-      
-      const offset = parseInt(url.searchParams.get("offset")) || 0;
-      const limit = parseInt(url.searchParams.get("limit")) || 2;
+// export const GET = auth(async function GET(req) {
+//   if (req.auth) {
+//     try {
+//       const url = new URL(req.url);
+//       const search = url.searchParams.get("search") || "";
 
-      const data = await prisma.Invitation.findMany({
-        where: {
-          title: { contains: search },
-          userId: req.auth.user.id,
-        },
-        skip: offset,
-        take: limit,
-      });
+//       const offset = parseInt(url.searchParams.get("offset")) || 0;
+//       const limit = parseInt(url.searchParams.get("limit")) || 2;
 
-      const totalData = await prisma.Invitation.count();
-      const totalPage = Math.ceil(totalData / limit);
+//       const data = await prisma.Invitation.findMany({
+//         where: {
+//           title: { contains: search },
+//           userId: req.auth.user.id,
+//         },
+//         skip: offset,
+//         take: limit,
+//       });
 
-      const meta = { totalData, totalPage };
+//       const totalData = await prisma.Invitation.count();
+//       const totalPage = Math.ceil(totalData / limit);
 
-      return NextResponse.json({ message: "OK", data, meta }, { status: 200 });
-    } catch (err) {
-      return NextResponse.json(
-        { message: "Internal Server Error", err },
-        { status: 500 }
-      );
-    }
-  }
-  return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-});
+//       const meta = { totalData, totalPage };
 
-export const POST = auth(async function POST(req) {
-  if (req.auth) {
-    try {
-      const invitationSchema = z.object({
-        title: z.string().min(2).max(50),
-        subdomain: z.string().min(2).max(50),
-        // template: z.object().optional(),
-      });
+//       return NextResponse.json({ message: "OK", data, meta }, { status: 200 });
+//     } catch (err) {
+//       return NextResponse.json(
+//         { message: "Internal Server Error", err },
+//         { status: 500 }
+//       );
+//     }
+//   }
+//   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+// });
 
-      const body = await req.json();
+// export const POST = auth(async function POST(req) {
+//   if (req.auth) {
+//     try {
+//       const invitationSchema = z.object({
+//         title: z.string().min(2).max(50),
+//         subdomain: z.string().min(2).max(50),
+//         // template: z.object().optional(),
+//       });
 
-      const validator = invitationSchema.safeParse(body);
-      if (!validator.success) {
-        return NextResponse.json(
-          {
-            message: "Unprocessable Entity",
-            errors: validator.error.errors,
-          },
-          { status: 422 }
-        );
-      }
+//       const body = await req.json();
 
-      const { title, subdomain } = validator.data;
+//       const validator = invitationSchema.safeParse(body);
+//       if (!validator.success) {
+//         return NextResponse.json(
+//           {
+//             message: "Unprocessable Entity",
+//             errors: validator.error.errors,
+//           },
+//           { status: 422 }
+//         );
+//       }
 
-      let config = {
-        data: {
-          title,
-          subdomain,
-          user: { connect: { id: req.auth.user.id } },
-        },
-        include: {
-          user: true,
-        },
-      };
+//       const { title, subdomain } = validator.data;
 
-      // if (template) {
-      //   config.data.template = {
-      //     create: {
-      //       template,
-      //     },
-      //   };
-      // }
+//       let config = {
+//         data: {
+//           title,
+//           subdomain,
+//           user: { connect: { id: req.auth.user.id } },
+//         },
+//         include: {
+//           user: true,
+//         },
+//       };
 
-      const data = await prisma.Invitation.create(config);
+//       // if (template) {
+//       //   config.data.template = {
+//       //     create: {
+//       //       template,
+//       //     },
+//       //   };
+//       // }
 
-      return NextResponse.json({ message: "Created", data }, { status: 201 });
-    } catch (err) {
-      return NextResponse.json(
-        { message: "Internal Server Error", err },
-        { status: 500 }
-      );
-    }
-  }
-  return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-});
+//       const data = await prisma.Invitation.create(config);
+
+//       return NextResponse.json({ message: "Created", data }, { status: 201 });
+//     } catch (err) {
+//       return NextResponse.json(
+//         { message: "Internal Server Error", err },
+//         { status: 500 }
+//       );
+//     }
+//   }
+//   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+// });

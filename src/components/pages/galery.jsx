@@ -1,4 +1,4 @@
-import { price } from "@/constants";
+import { price } from "@/constant";
 import Image from "next/image";
 
 export default function Galery() {

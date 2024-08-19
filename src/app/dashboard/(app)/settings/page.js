@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/UI/card";
-import PortalContext from "@/context/portal";
+import PortalContext from "@/context/PortalContext";
 import { DescriptionOutlined } from "@mui/icons-material";
 import { Edit2, PackagePlus, UserPlus } from "lucide-react";
 import Image from "next/image";

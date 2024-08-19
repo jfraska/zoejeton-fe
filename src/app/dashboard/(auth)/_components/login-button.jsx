@@ -1,29 +1,66 @@
 "use client";
 
+import { signIn } from "@/services/auth-service";
 import LoadingDots from "@/components/icons/loading-dots";
-import { signIn } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginButton({ children, provider }) {
-  const [loading, setLoading] = useState(false);
+  const { login, loading, setLoading } = useAuth();
 
-  // Get error message added by next/auth in URL.
-  const searchParams = useSearchParams();
-  const error = searchParams?.get("error");
+  function openOAuthPopup(url, width = 500, height = 600) {
+    const left = window.screen.width / 2 - width / 2;
+    const top = window.screen.height / 2 - height / 2;
+    return window.open(
+      url,
+      "OAuthLogin",
+      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars,status`
+    );
+  }
 
-  useEffect(() => {
-    const errorMessage = Array.isArray(error) ? error.pop() : error;
-    errorMessage && toast.error(errorMessage);
-  }, [error]);
+  const handleLogin = async () => {
+    try {
+      const auth = await signIn(provider);
+      const redirectUrl = auth?.data?.data?.provider_redirect;
+
+      if (redirectUrl) {
+        const popup = openOAuthPopup(redirectUrl);
+        if (popup) {
+          const checkPopupClosed = setInterval(() => {
+            if (popup.closed) {
+              clearInterval(checkPopupClosed);
+              setLoading(false);
+            }
+          }, 500);
+
+          const messageListener = (event) => {
+            if (event.origin === "https://api.zoejeton.com") {
+              const token = event.data.token;
+              if (token) {
+                login(token);
+                window.removeEventListener("message", messageListener);
+              }
+            }
+          };
+
+          window.addEventListener("message", messageListener);
+        } else {
+          console.error("Popup failed to open.");
+        }
+      } else {
+        console.error("Invalid provider redirect URL.");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
 
   return (
     <button
       disabled={loading}
       onClick={() => {
+        handleLogin();
         setLoading(true);
-        signIn(provider);
       }}
       className={`${
         loading

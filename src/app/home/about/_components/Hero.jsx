@@ -2,9 +2,9 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Gunterz } from "@/styles/fonts";
-import Statue from "@/components/container/statue";
+import Statue from "@/components/container/home/statue";
 import CursorProvider from "@/context/cursor";
-import { zoomOut } from "@/libs/motion";
+import { zoomOut } from "@/lib/motion";
 
 export default function Hero() {
   const containerRef = useRef();

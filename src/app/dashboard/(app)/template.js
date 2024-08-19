@@ -3,10 +3,9 @@
 import { useContext, useEffect, useState } from "react";
 import { getCookie, hasCookie } from "cookies-next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import PortalContext from "@/context/portal";
+import PortalContext from "@/context/PortalContext";
 import Loading from "@/components/UI/loading";
-import NotfoundDashboard from "@/components/container/notfound-dashboard";
-import axios from "axios";
+import NotfoundDashboard from "@/components/container/dashboard/notfound-dashboard";
 
 export default function Template({ children }) {
   const [loading, setLoading] = useState(true);
@@ -36,14 +35,14 @@ export default function Template({ children }) {
           setStateSwitcher(true);
           return;
         }
-        const res = await axios.get(`/api/invitation/${selected.id}`);
-        if (res.status !== 200) {
-          throw new Error(res.statusText);
-        }
+        // const res = await axios.get(`/api/invitation/${selected.id}`);
+        // if (res.status !== 200) {
+        //   throw new Error(res.statusText);
+        // }
 
-        const { data } = res.data;
+        // const { data } = res.data;
 
-        updateInvitation(data);
+        // updateInvitation(data);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {

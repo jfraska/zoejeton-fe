@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,7 +11,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/UI/navigation-menu";
 import CustomizeContext from "@/context/customize";
-import ConfirmSave from "@/components/container/confirm-save";
+import ConfirmSave from "@/components/container/template/confirm-save";
 
 export default function ModeCustomize({ handleOpenTool = () => {} }) {
   const [alertSave, setAlertSave] = React.useState(false);

@@ -1,6 +1,6 @@
-import { auth } from "@/libs/auth";
+// import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import prisma from "@/libs/prisma";
+import prisma from "@/lib/prisma";
 import { z } from "zod";
 
 export async function GET(req, { params }) {
@@ -33,106 +33,106 @@ export async function GET(req, { params }) {
   }
 }
 
-export const PUT = auth(async function PUT(req, { params }) {
-  if (req.auth) {
-    try {
-      const contentSchema = z.object({
-        key: z.string(),
-        value: z.record(z.any()),
-      });
+// export const PUT = auth(async function PUT(req, { params }) {
+//   if (req.auth) {
+//     try {
+//       const contentSchema = z.object({
+//         key: z.string(),
+//         value: z.record(z.any()),
+//       });
 
-      const colorSchema = z.object({
-        key: z.string(),
-        value: z.object({
-          background: z.string(),
-          foreground: z.string(),
-          primary: z.string(),
-          "primary-foreground": z.string(),
-          secondary: z.string(),
-          "secondary-foreground": z.string(),
-          accent: z.string(),
-          "accent-foreground": z.string(),
-        }),
-      });
+//       const colorSchema = z.object({
+//         key: z.string(),
+//         value: z.object({
+//           background: z.string(),
+//           foreground: z.string(),
+//           primary: z.string(),
+//           "primary-foreground": z.string(),
+//           secondary: z.string(),
+//           "secondary-foreground": z.string(),
+//           accent: z.string(),
+//           "accent-foreground": z.string(),
+//         }),
+//       });
 
-      const templateSchema = z.object({
-        title: z.string(),
-        slug: z.string(),
-        thumbnail: z.string(),
-        discount: z.number(),
-        price: z.number(),
-        category: z.string(),
-        content: z.array(contentSchema),
-        color: z.array(colorSchema),
-        music: z.string(),
-      });
+//       const templateSchema = z.object({
+//         title: z.string(),
+//         slug: z.string(),
+//         thumbnail: z.string(),
+//         discount: z.number(),
+//         price: z.number(),
+//         category: z.string(),
+//         content: z.array(contentSchema),
+//         color: z.array(colorSchema),
+//         music: z.string(),
+//       });
 
-      const body = await req.json();
+//       const body = await req.json();
 
-      const validator = templateSchema.safeParse(body);
-      if (!validator.success) {
-        return NextResponse.json(
-          {
-            message: "Unprocessable Entity",
-            errors: validator.error.errors,
-          },
-          { status: 422 }
-        );
-      }
+//       const validator = templateSchema.safeParse(body);
+//       if (!validator.success) {
+//         return NextResponse.json(
+//           {
+//             message: "Unprocessable Entity",
+//             errors: validator.error.errors,
+//           },
+//           { status: 422 }
+//         );
+//       }
 
-      const { id } = params;
-      const template = await prisma.template.findFirst({
-        where: {
-          OR: [{ slug: id }, { id }],
-        },
-      });
+//       const { id } = params;
+//       const template = await prisma.template.findFirst({
+//         where: {
+//           OR: [{ slug: id }, { id }],
+//         },
+//       });
 
-      if (!template) {
-        return NextResponse.json(
-          {
-            message: "Data Not Found",
-            data,
-          },
-          {
-            status: 404,
-          }
-        );
-      }
+//       if (!template) {
+//         return NextResponse.json(
+//           {
+//             message: "Data Not Found",
+//             data,
+//           },
+//           {
+//             status: 404,
+//           }
+//         );
+//       }
 
-      const {
-        title,
-        slug,
-        thumbnail,
-        discount,
-        price,
-        category,
-        content,
-        color,
-        music,
-      } = validator.data;
+//       const {
+//         title,
+//         slug,
+//         thumbnail,
+//         discount,
+//         price,
+//         category,
+//         content,
+//         color,
+//         music,
+//       } = validator.data;
 
-      const data = await prisma.Template.update({
-        where: { id: template.id },
-        data: {
-          title,
-          slug,
-          thumbnail,
-          discount,
-          price,
-          category,
-          content,
-          color,
-          music,
-        },
-      });
+//       const data = await prisma.Template.update({
+//         where: { id: template.id },
+//         data: {
+//           title,
+//           slug,
+//           thumbnail,
+//           discount,
+//           price,
+//           category,
+//           content,
+//           color,
+//           music,
+//         },
+//       });
 
-      return NextResponse.json({ message: "Updated", data }, { status: 201 });
-    } catch (err) {
-      return NextResponse.json(
-        { message: "Internal Server Error", error: err.message },
-        { status: 500 }
-      );
-    }
-  }
-  return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-});
+//       return NextResponse.json({ message: "Updated", data }, { status: 201 });
+//     } catch (err) {
+//       return NextResponse.json(
+//         { message: "Internal Server Error", error: err.message },
+//         { status: 500 }
+//       );
+//     }
+//   }
+//   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+// });

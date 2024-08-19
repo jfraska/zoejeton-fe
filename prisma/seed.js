@@ -44,13 +44,13 @@ const templateData = [
         key: "event",
         value: {
           akad: {
-            date: "Maret 10 2024",
+            date: "Mei 10 2024",
             time: "12.00 - 14.00",
             loc: "Grand Hotel",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
           resepsi: {
-            date: "Maret 10 2024",
+            date: "Mei 10 2024",
             time: "12.00 - 14.00",
             loc: "Grand Hotel",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
@@ -164,7 +164,7 @@ const templateData = [
         value: {
           heading: "Zoe & Jeton",
           subheading: "We invite you to our wedding ceremony",
-          background: ["7.heic"],
+          background: ["lockscreen.png"],
         },
       },
       {
@@ -173,16 +173,18 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+          background: ["lockscreen.png"],
         },
       },
       {
         key: "beranda",
         value: {
           heading: "Zoe & Jeton",
+          date: "Minggu, 30 September 2026",
           subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+            "Glory be to Allah who has created humans in pairs. By asking for the Grace and Ridho of Allah SWT, we intend to invite you to our wedding reception.",
+          references: "QS AR-RUM 21",
+          background: ["beranda.png"],
         },
         visible: {
           disable: false,
@@ -193,13 +195,13 @@ const templateData = [
         key: "event",
         value: {
           akad: {
-            date: "Maret 10 2024",
+            date: "Minggu, 30 Juni 2023",
             time: "12.00 - 14.00",
             loc: "Grand Hotel",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
           resepsi: {
-            date: "Maret 10 2024",
+            date: "Senin, 31 Juni 2023",
             time: "12.00 - 14.00",
             loc: "Grand Hotel",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
@@ -215,14 +217,14 @@ const templateData = [
         value: {
           groom: {
             name: "Jeton Hizaya",
-            desc: "Putra dari Bapak Demak Parsaoran (Alm) & Ibu Ratnawati Hutauruk",
-            image: "5.heic",
+            desc: "Bapak Elkana & Ibu Shopia",
+            image: "couple-1.png",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "Zoe Himaya",
-            desc: "Putri dari Bpk M Syarik & Ibu Isharni",
-            image: "5.heic",
+            desc: "Bapak Sotama & Ibu Aishah",
+            image: "couple-2.png",
             instagram: "https://instagram.com",
           },
         },
@@ -235,9 +237,14 @@ const templateData = [
         key: "love-story",
         value: {
           story1: {
-            heading: "Semarang, 19 Juni 2021",
+            heading: "SEMARANG, 19 JUNI 2021",
             subheading:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.",
+          },
+          story2: {
+            heading: "SEMARANG, 19 JUNI 2021",
+            subheading:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.",
           },
         },
         visible: {
@@ -248,8 +255,11 @@ const templateData = [
       {
         key: "galery",
         value: {
-          image1: "5.heic",
-          image2: "5.heic",
+          image1: "gallery-1.png",
+          image2: "gallery-2.png",
+          image3: "gallery-3.png",
+          image4: "gallery-4.png",
+          image5: "gallery-5.png",
         },
         visible: {
           disable: false,
@@ -265,7 +275,7 @@ const templateData = [
           date: "Minggu, 30 Juni 2023",
           time: "12.00 - 14.00",
           link: "https://youtube.com",
-          background: ["4.heic"],
+          background: [],
         },
         visible: {
           disable: false,
@@ -278,7 +288,7 @@ const templateData = [
           heading: "Thank You",
           subheading:
             "Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada kami.",
-          background: ["8.heic"],
+          background: [],
         },
         visible: {
           disable: false,
@@ -290,10 +300,10 @@ const templateData = [
       {
         key: "natural",
         value: {
-          primary: "#263234",
-          "primary-text": "#fff",
-          secondary: "#9D9E9A",
-          "secondary-text": "#fff",
+          primary: "#333333",
+          "primary-text": "#FFFFFF",
+          secondary: "#FFFFFF",
+          "secondary-text": "#000000",
           accent: "#ff4081",
           "accent-text": "#fff",
         },
@@ -708,25 +718,26 @@ const templateData = [
         value: {
           heading: "Zoe & Jeton",
           subheading: "We invite you to our wedding ceremony",
-          background: ["7.heic"],
+          background: ["lockscreen.png"],
         },
       },
       {
         key: "cover",
         value: {
-          heading: "Zoe & Jeton",
+          heading: "Zoel & Cali",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+          background: ["lockscreen.png"],
         },
       },
       {
         key: "beranda",
         value: {
           heading: "Zoe & Jeton",
+          date: "Minggu, 30 September 2026",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+          background: ["beranda.png"],
         },
         visible: {
           disable: false,
@@ -737,15 +748,15 @@ const templateData = [
         key: "event",
         value: {
           akad: {
-            date: "Maret 10 2024",
+            date: "Minggu, 30 Juni 2023",
             time: "12.00 - 14.00",
-            loc: "Grand Hotel",
+            loc: "https://www.google.com/maps",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
           resepsi: {
-            date: "Maret 10 2024",
+            date: "Minggu, 30 Juni 2023",
             time: "12.00 - 14.00",
-            loc: "Grand Hotel",
+            loc: "https://www.google.com/maps",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
         },
@@ -760,13 +771,13 @@ const templateData = [
           groom: {
             name: "Jeton Hizaya",
             desc: "Putra dari Bapak Demak Parsaoran (Alm) & Ibu Ratnawati Hutauruk",
-            image: "5.heic",
+            image: "couple-1.png",
             instagram: "https://instagram.com",
           },
           bride: {
             name: "Zoe Himaya",
             desc: "Putri dari Bpk M Syarik & Ibu Isharni",
-            image: "5.heic",
+            image: "couple-2.png",
             instagram: "https://instagram.com",
           },
         },
@@ -783,6 +794,8 @@ const templateData = [
             subheading:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
           },
+          more: "https://instagram.com",
+          image: "love-story.png",
         },
         visible: {
           disable: false,
@@ -792,8 +805,12 @@ const templateData = [
       {
         key: "galery",
         value: {
-          image1: "5.heic",
-          image2: "5.heic",
+          image1: "gallery-1.png",
+          image2: "gallery-2.png",
+          image3: "gallery-3.png",
+          image4: "gallery-4.png",
+          image5: "gallery-5.png",
+          more: "https://google.com",
         },
         visible: {
           disable: false,
@@ -809,7 +826,20 @@ const templateData = [
           date: "Minggu, 30 Juni 2023",
           time: "12.00 - 14.00",
           link: "https://youtube.com",
-          background: ["4.heic"],
+          image: "streaming.png",
+        },
+        visible: {
+          disable: false,
+          group: [],
+        },
+      },
+      {
+        key: "gift",
+        value: {
+          heading: "WEDDING GIFT",
+          subheading:
+            "For those of you who want to give a token of love to the bride and groom, you can use the virtual account / E-wallet below:",
+          link: "https://www.bni.co.id/id-id/",
         },
         visible: {
           disable: false,
@@ -822,7 +852,7 @@ const templateData = [
           heading: "Thank You",
           subheading:
             "Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada kami.",
-          background: ["8.heic"],
+          background: ["thanks.png"],
         },
         visible: {
           disable: false,
@@ -987,9 +1017,11 @@ const templateData = [
       {
         key: "lockscreen",
         value: {
-          heading: "Zoe & Jeton",
-          subheading: "We invite you to our wedding ceremony",
-          background: ["7.heic"],
+          heading: "SPECIAL INVITATION",
+          subheading: "Kepada Yth.",
+          name: "Zoel & Cali",
+          date: "Minggu, 30 September 2026",
+          background: ["lockscreen.png"],
         },
       },
       {
@@ -998,16 +1030,17 @@ const templateData = [
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+          background: ["lockscreen.png"],
         },
       },
       {
         key: "beranda",
         value: {
-          heading: "Zoe & Jeton",
+          heading: "Zoel & Cali",
           subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+            "Glory be to Allah who has created humans in pairs. By asking for the Grace and Ridho of Allah SWT, we intend to invite you to our wedding reception.",
+          image: "beranda.png",
+          background: [],
         },
         visible: {
           disable: false,
@@ -1018,15 +1051,15 @@ const templateData = [
         key: "event",
         value: {
           akad: {
-            date: "Maret 10 2024",
+            date: "Minggu, 30 Juni 2023",
             time: "12.00 - 14.00",
-            loc: "Grand Hotel",
+            loc: "https://maps.google.com/maps",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
           resepsi: {
-            date: "Maret 10 2024",
+            date: "Minggu, 30 Juni 2023",
             time: "12.00 - 14.00",
-            loc: "Grand Hotel",
+            loc: "https://maps.google.com/maps",
             desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
         },
@@ -1039,14 +1072,14 @@ const templateData = [
         key: "couple",
         value: {
           groom: {
-            name: "Jeton Hizaya",
-            desc: "Putra dari Bapak Demak Parsaoran (Alm) & Ibu Ratnawati Hutauruk",
+            name: "Zoel Ale",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.",
             image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
-            name: "Zoe Himaya",
-            desc: "Putri dari Bpk M Syarik & Ibu Isharni",
+            name: "Cali Vila",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.",
             image: "5.heic",
             instagram: "https://instagram.com",
           },
@@ -1062,7 +1095,9 @@ const templateData = [
           story1: {
             heading: "Semarang, 19 Juni 2021",
             subheading:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.",
+            more: "https://youtube.com",
+            image: "beranda.png",
           },
         },
         visible: {
@@ -1073,8 +1108,12 @@ const templateData = [
       {
         key: "galery",
         value: {
-          image1: "5.heic",
-          image2: "5.heic",
+          image1: "gallery-1.png",
+          image2: "gallery-2.png",
+          image3: "gallery-3.png",
+          image4: "gallery-4.png",
+          image5: "gallery-5.png",
+          more: "https://google.com",
         },
         visible: {
           disable: false,
@@ -1090,7 +1129,20 @@ const templateData = [
           date: "Minggu, 30 Juni 2023",
           time: "12.00 - 14.00",
           link: "https://youtube.com",
-          background: ["4.heic"],
+          background: [],
+        },
+        visible: {
+          disable: false,
+          group: [],
+        },
+      },
+      {
+        key: "gift",
+        value: {
+          heading: "WEDDING GIFT",
+          subheading:
+            "For those of you who want to give a token of love to the bride and groom, you can use the virtual account / E-wallet below:",
+          link: "https://www.bni.co.id/id-id/",
         },
         visible: {
           disable: false,
@@ -1103,7 +1155,7 @@ const templateData = [
           heading: "Thank You",
           subheading:
             "Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada kami.",
-          background: ["8.heic"],
+          background: ["thanks.png"],
         },
         visible: {
           disable: false,

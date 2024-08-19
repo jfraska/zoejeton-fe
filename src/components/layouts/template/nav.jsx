@@ -12,19 +12,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/UI/sheet";
-import ButtonCustomize from "@/components/container/button-customize";
-import CustomizeContext from "@/context/customize";
-import ConfirmSave from "@/components/container/confirm-save";
-import { useSession } from "next-auth/react";
-import PortalContext from "@/context/portal";
+import ButtonCustomize from "@/components/container/template/button-customize";
+import CustomizeContext from "@/context/CustomizeContext";
+import ConfirmSave from "@/components/container/template/confirm-save";
+import PortalContext from "@/context/PortalContext";
 import Link from "next/link";
 import Image from "next/image";
-import ListPage from "@/components/container/list-page";
 import { getCookie, hasCookie } from "cookies-next";
+import CustomizeList from "@/components/container/template/customize-list";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const { data: session } = useSession();
   const [alertSave, setAlertSave] = useState(false);
   const { invitation, updateInvitation, setStateSwitcher } =
     useContext(PortalContext);
@@ -80,11 +78,11 @@ export default function Nav() {
             <ButtonCustomize type="color" />
 
             <h1 className="mt-5">Page</h1>
-            <ListPage content={dataContent} />
+            <CustomizeList content={dataContent} />
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">
-          {session ? (
+          {/* {session ? (
             <Button
               variant="outline"
               onClick={() => setStateSwitcher(true)}
@@ -117,7 +115,7 @@ export default function Nav() {
                 Sign in
               </Link>
             </Button>
-          )}
+          )} */}
         </div>
         <button>
           <MoreHorizontal className="w-5 aspect-square" />
