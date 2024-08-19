@@ -36,18 +36,18 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "id",
+    accessorKey: "nama",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Task" />
+      <DataTableColumnHeader column={column} title="Nama" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="w-[80px]">{row.getValue("nama")}</div>,
     enableSorting: false,
     enableHiding: false,
   },
   {
-    accessorKey: "title",
+    accessorKey: "grup",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader column={column} title="Grup" />
     ),
     cell: ({ row }) => {
       // const label = labels.find((label) => label.value === row.original.label);
@@ -56,11 +56,67 @@ export const columns = [
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
           <span className="max-w-[500px] truncate font-medium">
-            {row.getValue("title")}
+            {row.getValue("grup")}
           </span>
         </div>
       );
     },
+    enableSorting: false,
+    enableHiding: true,
+  },
+  {
+    accessorKey: "email",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Email" />
+    ),
+    cell: ({ row }) => <div className="max-w-[150px]">{row.getValue("email")}</div>,
+    enableSorting: false,
+    enableHiding: true,
+  },
+  {
+    accessorKey: "nohp",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="No. HP" />
+    ),
+    cell: ({ row }) => <div className="w-[80px]">{row.getValue("nohp")}</div>,
+    enableSorting: false,
+    enableHiding: true,
+  },
+  {
+    accessorKey: "kode",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Kode" />
+    ),
+    cell: ({ row }) => <div className="w-[50px]">{row.getValue("kode")}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: "status",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Status" />
+    ),
+    cell: ({ row }) => <div className="w-[80px]">{row.getValue("status")}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: "jumlah",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Jumlah" />
+    ),
+    cell: ({ row }) => <div className="w-[50px]">{row.getValue("jumlah")}</div>,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: "date",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Dibuat" />
+    ),
+    cell: ({ row }) => <div className="w-[80px]">{row.getValue("date")}</div>,
+    enableSorting: false,
+    enableHiding: false,
   },
   // {
   //   accessorKey: "status",

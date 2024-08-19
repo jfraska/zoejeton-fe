@@ -62,7 +62,7 @@ export default function DataTable({ columns, data }) {
     <Card className="w-full overflow-hidden">
       <CardHeader>
         <CardTitle>Data Tamu</CardTitle>
-        <CardDescription>Recent orders from your store.</CardDescription>
+        <CardDescription>Rincian data tamu yang telah diinputkan</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <DataTableToolbar table={table} />
@@ -77,9 +77,9 @@ export default function DataTable({ columns, data }) {
                         {header.isPlaceholder
                           ? null
                           : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                       </TableHead>
                     );
                   })}
