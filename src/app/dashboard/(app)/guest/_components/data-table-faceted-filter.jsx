@@ -2,7 +2,7 @@ import * as React from "react"
 import { CheckIcon, PlusCircledIcon } from "@radix-ui/react-icons"
 import { Column } from "@tanstack/react-table"
 
-import { cn } from "@/libs/utils"
+import { cn } from "@/lib/utils"
 import { Badge } from "@/components/UI/badge"
 import { Button } from "@/components/UI/button"
 import {
