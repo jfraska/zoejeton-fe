@@ -92,6 +92,7 @@
     "react-spring": "^9.7.3",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
+    "recharts": "^2.12.7",
     "sass": "^1.69.5",
     "sonner": "^1.4.41",
     "swiper": "^11.0.4",

@@ -6,8 +6,8 @@ import { Button } from "@/components/UI/button";
 import { Input } from "@/components/UI/input";
 import { DataTableViewOptions } from "./data-table-view-options";
 
-// import { priorities, statuses } from "../data/data";
-// import { DataTableFacetedFilter } from "./data-table-faceted-filter";
+import { statuses, groupes } from "../_constants";
+import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 
 export function DataTableToolbar({ table }) {
   const isFiltered = table.getState().columnFilters.length > 0;
@@ -23,20 +23,20 @@ export function DataTableToolbar({ table }) {
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
-        {/* {table.getColumn("status") && (
+        {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
             title="Status"
             options={statuses}
           />
         )}
-        {table.getColumn("priority") && (
+        {table.getColumn("grup") && (
           <DataTableFacetedFilter
-            column={table.getColumn("priority")}
-            title="Priority"
-            options={priorities}
+            column={table.getColumn("grup")}
+            title="Grup"
+            options={groupes}
           />
-        )} */}
+        )}
         {isFiltered && (
           <Button
             variant="ghost"

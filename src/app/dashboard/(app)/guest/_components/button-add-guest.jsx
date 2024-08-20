@@ -13,20 +13,35 @@ import {
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/UI/form";
+} from "@/components/UI/form"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/UI/select"
 import { Input } from "@/components/UI/input";
 import { Button } from "@/components/UI/button";
 import { useForm } from "react-hook-form";
+import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { PlusCircle } from "lucide-react";
 
 const formSchema = z.object({
-  title: z.string().min(2).max(50),
+  nama: z.string().min(2).max(50),
+  grup: z.string().min(1),
+  email: z.string().email(),
+  nohp: z.string().min(8).max(15),
+  kode: z.string().min(8).max(50),
+  status: z.string().min(8).max(50),
+  jumlah: z.number().int().min(0),
 });
 
 export default function ButtonAddGuest() {
@@ -37,7 +52,7 @@ export default function ButtonAddGuest() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title: e.title }),
+        body: JSON.stringify({ nama: e.nama, grup: e.grup, email: e.email }),
       });
 
       if (!response.ok) {
@@ -53,7 +68,13 @@ export default function ButtonAddGuest() {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
+      nama: "",
+      grup: "",
+      email: "",
+      nohp: "",
+      kode: "",
+      status: "",
+      jumlah: "",
     },
   });
 
@@ -67,7 +88,7 @@ export default function ButtonAddGuest() {
           </span>
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="h-3/4 overflow-y-scroll">
         <DialogHeader>
           <DialogTitle>Create Tamu</DialogTitle>
           <DialogDescription>Add a new tamu</DialogDescription>
@@ -78,12 +99,85 @@ export default function ButtonAddGuest() {
               <div className="space-y-4 py-2 pb-4">
                 <FormField
                   control={form.control}
-                  name="title"
+                  name="nama"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Title</FormLabel>
+                      <FormLabel>Nama</FormLabel>
                       <FormControl>
-                        <Input placeholder="jeton&zoe" {...field} />
+                        <Input placeholder="Zoe Hinata" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="grup"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Grup</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a grup" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="Keluarga Mempelai Pria">Keluarga Mempelai Pria</SelectItem>
+                          <SelectItem value="Keluarga Mempelai Wanita">Keluarga Mempelai Wanita</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="zoehinata@gmail.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="nohp"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>No.HP</FormLabel>
+                      <FormControl>
+                        <Input placeholder="088806640808" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="kode"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Kode</FormLabel>
+                      <FormControl>
+                        <Input placeholder="47289" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="jumlah"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Jumlah</FormLabel>
+                      <FormControl>
+                        <Input placeholder="3" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
