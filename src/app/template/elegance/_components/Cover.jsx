@@ -1,6 +1,6 @@
 import Editable from "@/components/container/editable";
 import { Selina, Catamaran } from "@/styles/fonts";
-import { Cover as CoverWrapper } from "@/components/container/wrapper-template";
+import { Cover as CoverWrapper } from "@/components/container/template/wrapper-template";
 
 export default function Cover() {
   return (

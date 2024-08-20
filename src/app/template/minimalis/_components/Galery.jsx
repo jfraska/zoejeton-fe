@@ -1,5 +1,5 @@
 import Editable from "@/components/container/editable";
-import { Section } from "@/components/container/wrapper-template";
+import { Section } from "@/components/container/template/wrapper-template";
 import Image from "next/image";
 
 export default function Galery() {

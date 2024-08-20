@@ -1,6 +1,6 @@
 import { Selina, Catamaran } from "@/styles/fonts";
 import Editable from "@/components/container/editable";
-import { Section } from "@/components/container/wrapper-template";
+import { Section } from "@/components/container/template/wrapper-template";
 
 export default function Couple() {
   return (

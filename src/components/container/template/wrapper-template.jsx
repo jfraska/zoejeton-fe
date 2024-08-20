@@ -7,8 +7,9 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { extractClass } from "@/lib/utils";
 import gsap from "gsap";
-import Splide from "@splidejs/splide";
 import dynamic from "next/dynamic";
+import Splide from "@splidejs/splide";
+import "@splidejs/splide/css/core";
 
 export function Main({ children, className }) {
   const { isEdit } = useContext(CustomizeContext);
@@ -40,7 +41,6 @@ export function Template() {
       const loadedPages = await Promise.all(
         dataContent.map(async (page) => {
           try {
-            console.log(page);
             const module = await import(
               `@/app/template/${data.parent ?? data.slug}/_components/${
                 page.key
@@ -61,31 +61,62 @@ export function Template() {
   }, [dataContent]);
 
   useEffect(() => {
-    const splide = new Splide(".splide", {
+    const main = new Splide("#main", {
       direction: "ttb",
-      height: "100vh",
+      width: "100%",
+      heightRatio: 16,
       releaseWheel: true,
       wheel: true,
+      speed: 100,
       pagination: false,
       arrows: false,
     });
-
-    splide.mount();
+    const navbar = new Splide("#navbar", {
+      height: 60,
+      releaseWheel: true,
+      wheel: true,
+      speed: 100,
+      pagination: false,
+      arrows: false,
+    });
+    main.sync(navbar);
+    main.mount();
+    navbar.mount();
   }, []);
 
   return (
-    <div className={`${isEdit && "@3xl:max-w-md scroll"} w-full h-full splide`}>
-      <div className="splide__track">
-        <ul className="splide__list">
-          {pages.map(
-            (PageComponent, index) =>
-              PageComponent && (
-                <li key={index} className="splide__slide h-full">
-                  <PageComponent />
-                </li>
-              )
-          )}
-        </ul>
+    <div className={`${isEdit && "@3xl:max-w-md scroll"} w-full`}>
+      <div id="main" className="splide h-full">
+        <div className="splide__track">
+          <ul className="splide__list">
+            {pages.map(
+              (PageComponent, index) =>
+                PageComponent && (
+                  <li key={index} className="splide__slide">
+                    <PageComponent />
+                  </li>
+                )
+            )}
+          </ul>
+        </div>
+      </div>
+
+      <div
+        id="navbar"
+        className="splide fixed bottom-0 inset-x-0 bg-white text-black"
+      >
+        <div className="splide__track">
+          <ul className="splide__list">
+            {dataContent.map(
+              (data, index) =>
+                data && (
+                  <li key={index} className="splide__slide">
+                    {data.key}
+                  </li>
+                )
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );

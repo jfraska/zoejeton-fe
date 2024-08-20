@@ -1,4 +1,4 @@
-import { Section } from "@/components/container/wrapper-template";
+import { Section } from "@/components/container/template/wrapper-template";
 
 export default function Quotes() {
   return (

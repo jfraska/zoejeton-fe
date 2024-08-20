@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import CustomizeContext from "@/context/CustomizeContext";
-import { LockScreen as LockScreenWrapper } from "@/components/container/wrapper-template";
+import { LockScreen as LockScreenWrapper } from "@/components/container/template/wrapper-template";
 
 export default function LockScreen({ type, id }) {
   const [state, setState] = useState(false);

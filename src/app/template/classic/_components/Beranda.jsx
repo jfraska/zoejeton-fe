@@ -1,7 +1,7 @@
 "use client";
 
 import Editable from "@/components/container/editable";
-import { Section } from "@/components/container/wrapper-template";
+import { Section } from "@/components/container/template/wrapper-template";
 import { Selina, Catamaran } from "@/styles/fonts";
 import Image from "next/image";
 

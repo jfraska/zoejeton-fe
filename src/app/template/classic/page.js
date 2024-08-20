@@ -14,7 +14,10 @@ import Gift from "./_components/Gift";
 import Thanks from "./_components/Thanks";
 import Galery from "./_components/Galery";
 import LiveStream from "./_components/LiveStream";
-import { Main, Template } from "@/components/container/wrapper-template";
+import {
+  Main,
+  Template,
+} from "@/components/container/template/wrapper-template";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 

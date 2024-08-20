@@ -31,7 +31,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/UI/collapsible";
 import { Badge } from "@/components/UI/badge";
-import ButtonPublish from "@/components/container/button-publish";
+import ButtonPublish from "@/components/container/template/button-publish";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Nav() {

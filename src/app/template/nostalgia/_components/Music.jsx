@@ -1,6 +1,6 @@
 "use client";
 
-import { Floating } from "@/components/container/wrapper-template";
+import { Floating } from "@/components/container/template/wrapper-template";
 import { useEffect, useRef, useState } from "react";
 
 export default function Music() {

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { GenteRomantica, Catamaran } from "@/styles/fonts";
 import gsap from "gsap";
 import CountDown from "./CountDown";
-import { LockScreen as LockScreenWrapper } from "@/components/container/wrapper-template";
+import { LockScreen as LockScreenWrapper } from "@/components/container/template/wrapper-template";
 
 export default function LockScreen({ type }) {
   const [state, setState] = useState(false);

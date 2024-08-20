@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Floating } from "@/components/container/wrapper-template";
+import { Floating } from "@/components/container/template/wrapper-template";
 
 export default function Music() {
   const [isPlaying, setIsPlaying] = useState(true);

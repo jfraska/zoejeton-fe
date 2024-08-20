@@ -5,7 +5,7 @@ import { animate, stagger } from "motion";
 import { Runalto } from "@/styles/fonts";
 import CountDown from "./CountDown";
 import Editable from "@/components/container/editable";
-import { Section } from "@/components/container/wrapper-template";
+import { Section } from "@/components/container/template/wrapper-template";
 
 export default function Beranda() {
   useEffect(() => {

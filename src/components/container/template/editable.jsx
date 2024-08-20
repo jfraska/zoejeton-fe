@@ -3,7 +3,7 @@
 import { cloneElement, useContext, useState } from "react";
 import CustomizeContext from "@/context/CustomizeContext";
 import ContentEditable from "react-contenteditable";
-import EditableDate from "@/components/container/editable-date";
+import EditableDate from "@/components/container/template/editable-date";
 import EditableImage from "@/components/container/template/editable-image";
 import { cn, getDataContent } from "@/lib/utils";
 import EditableLink from "./template/editable-link";

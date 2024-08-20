@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ColorPicker from "@/components/container/color-picker";
+import ColorPicker from "@/components/container/template/color-picker";
 import { rgbToHex } from "@mui/material";
 import ColorThief from "color-thief-ts/node";
 

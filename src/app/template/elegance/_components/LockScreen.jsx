@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Selina, Catamaran } from "@/styles/fonts";
 import gsap from "gsap";
-import { LockScreen as LockScreenWrapper } from "@/components/container/wrapper-template";
+import { LockScreen as LockScreenWrapper } from "@/components/container/template/wrapper-template";
 import Editable from "@/components/container/editable";
 
 export default function LockScreen({ type, id }) {
