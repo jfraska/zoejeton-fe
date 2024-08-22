@@ -319,6 +319,14 @@ const templateData = [
     category: "Premium",
     content: [
       {
+        key: "lockscreen",
+        value: {
+          heading: "Zoe & Jeton",
+          subheading: "We invite you to our wedding ceremony",
+          background: ["7.heic"],
+        },
+      },
+      {
         key: "cover",
         value: {
           heading: "Zoe & Jeton",
@@ -344,10 +352,16 @@ const templateData = [
         key: "event",
         value: {
           akad: {
-            date: "Maret 10 2024",
+            date: "Mei 10 2024",
+            time: "12.00 - 14.00",
+            loc: "Grand Hotel",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
           resepsi: {
-            date: "Maret 10 2024",
+            date: "Mei 10 2024",
+            time: "12.00 - 14.00",
+            loc: "Grand Hotel",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
           },
         },
         visible: {
@@ -359,12 +373,14 @@ const templateData = [
         key: "couple",
         value: {
           groom: {
-            name: "jeton",
+            name: "Jeton Hizaya",
+            desc: "Putra dari Bapak Demak Parsaoran (Alm) & Ibu Ratnawati Hutauruk",
             image: "5.heic",
             instagram: "https://instagram.com",
           },
           bride: {
-            name: "zoe",
+            name: "Zoe Himaya",
+            desc: "Putri dari Bpk M Syarik & Ibu Isharni",
             image: "5.heic",
             instagram: "https://instagram.com",
           },
@@ -375,12 +391,13 @@ const templateData = [
         },
       },
       {
-        key: "love story",
+        key: "love-story",
         value: {
-          heading: "Zoe & Jeton",
-          subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+          story1: {
+            heading: "Semarang, 19 Juni 2021",
+            subheading:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          },
         },
         visible: {
           disable: false,
@@ -390,7 +407,6 @@ const templateData = [
       {
         key: "galery",
         value: {
-          heading: "Our Galery",
           image1: "5.heic",
           image2: "5.heic",
         },
@@ -400,13 +416,15 @@ const templateData = [
         },
       },
       {
-        key: "live streaming",
+        key: "live-streaming",
         value: {
           heading: "Zoe & Jeton",
           subheading:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
+          date: "Minggu, 30 Juni 2023",
+          time: "12.00 - 14.00",
           link: "https://youtube.com",
-          background: ["5.heic"],
+          background: ["4.heic"],
         },
         visible: {
           disable: false,
@@ -416,10 +434,10 @@ const templateData = [
       {
         key: "thanks",
         value: {
-          heading: "Zoe & Jeton",
+          heading: "Thank You",
           subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+            "Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada kami.",
+          background: ["8.heic"],
         },
         visible: {
           disable: false,
@@ -432,7 +450,7 @@ const templateData = [
         key: "natural",
         value: {
           primary: "#263234",
-          "primary-text": "#000",
+          "primary-text": "#fff",
           secondary: "#9D9E9A",
           "secondary-text": "#fff",
           accent: "#ff4081",
