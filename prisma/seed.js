@@ -321,27 +321,30 @@ const templateData = [
       {
         key: "lockscreen",
         value: {
-          heading: "Zoe & Jeton",
-          subheading: "We invite you to our wedding ceremony",
-          background: ["7.heic"],
+          heading: "We invite you to our wedding ceremony",
+          subheading: "SPECIAL INVITATION",
+          name: "Agus & Septa",
+          guest: "Guest Name",
+          background: ["lockscreen.png"],
         },
       },
       {
         key: "cover",
         value: {
-          heading: "Zoe & Jeton",
-          subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+          heading: "Agus & Septa",
+          subheading: "Hai",
+          guest: "Guest Name",
+          background: ["lockscreen.png"],
         },
       },
       {
         key: "beranda",
         value: {
-          heading: "Zoe & Jeton",
-          subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["5.heic"],
+          heading: "Wedding Invitation",
+          subheading: "Agus & Septa",
+          date: "August 27th, 2024",
+          image: "beranda.png",
+          background: [],
         },
         visible: {
           disable: false,
@@ -449,12 +452,12 @@ const templateData = [
       {
         key: "natural",
         value: {
-          primary: "#263234",
-          "primary-text": "#fff",
-          secondary: "#9D9E9A",
-          "secondary-text": "#fff",
-          accent: "#ff4081",
-          "accent-text": "#fff",
+          primary: "#FFFEF0",
+          "primary-text": "#32130F",
+          secondary: "#584949",
+          "secondary-text": "#FFFFFF",
+          accent: "#9C2F2F",
+          "accent-text": "#9D1835",
         },
       },
     ],

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Runalto } from "@/styles/fonts";
 import CustomizeContext from "@/context/CustomizeContext";
 import { LockScreen as LockScreenWrapper } from "@/components/container/wrapper-template";
+import Editable from "@/components/container/editable";
 
 export default function LockScreen({ type, id }) {
   const [state, setState] = useState(false);
@@ -14,7 +15,7 @@ export default function LockScreen({ type, id }) {
     <LockScreenWrapper
       open={state}
       type={type}
-      className="flex flex-col justify-around items-center"
+      className="flex flex-col justify-around items-center text-secondary-text"
       id={id}
     >
       <div className="max-w-xs text-center ">
@@ -25,18 +26,21 @@ export default function LockScreen({ type, id }) {
           height={20}
           alt="logo"
         />
-        <h1 className="mt-5 text-xl">We invite you to our wedding ceremony</h1>
+        <h1 className="mt-5 text-xl">
+          <Editable type="text" field="heading" section="lockscreen" />
+        </h1>
       </div>
 
       <h1
-        className={`${Runalto.className} flex flex-col text-center text-6xl font-bold`}
+        className={`${Runalto.className} flex items-center justify-center text-6xl font-bold`}
       >
-        <span>Jeton</span> <span>&</span>
-        <span>Zoe</span>
+        <Editable type="text" field="name" section="lockscreen" />
       </h1>
 
       <div className="w-64">
-        <h1 className="text-center text-sm uppercase">spesial invitation</h1>
+        <h1 className="text-center text-sm uppercase">
+          <Editable type="text" field="subheading" section="lockscreen" />
+        </h1>
         <h1 className="text-center font-medium capitalize mt-2">
           {dataGuest?.name || "guest"}
         </h1>
