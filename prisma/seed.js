@@ -324,7 +324,6 @@ const templateData = [
           heading: "We invite you to our wedding ceremony",
           subheading: "SPECIAL INVITATION",
           name: "Agus & Septa",
-          guest: "Guest Name",
           background: ["lockscreen.png"],
         },
       },
@@ -333,7 +332,6 @@ const templateData = [
         value: {
           heading: "Agus & Septa",
           subheading: "Hai",
-          guest: "Guest Name",
           background: ["lockscreen.png"],
         },
       },
@@ -344,6 +342,19 @@ const templateData = [
           subheading: "Agus & Septa",
           date: "August 27th, 2024",
           image: "beranda.png",
+          background: [],
+        },
+        visible: {
+          disable: false,
+          group: [],
+        },
+      },
+      {
+        key: "quotes",
+        value: {
+          quotes:
+            "And among His Signs is this, that He created for you mates from among yourselves, that He may dwell in tranquillity with them, and He has put love and mercy between your (hearts): verily in that are Signs for those who reflect.",
+          tag: "(QS. Ar-Rum:21)",
           background: [],
         },
         visible: {

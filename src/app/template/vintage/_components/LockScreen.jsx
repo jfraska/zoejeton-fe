@@ -32,7 +32,7 @@ export default function LockScreen({ type, id }) {
       </div>
 
       <h1
-        className={`${Runalto.className} flex items-center justify-center text-6xl font-bold`}
+        className={`${Runalto.className} flex flex-wrap text-6xl font-bold text-center`}
       >
         <Editable type="text" field="name" section="lockscreen" />
       </h1>

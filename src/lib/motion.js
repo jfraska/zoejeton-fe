@@ -1,3 +1,17 @@
+import { motion } from "framer-motion";
+
+export const rotateLoop = {
+  animate: {
+    rotate: [0, 90],
+    transition: {
+      repeat: Infinity,
+      repeatType: "loop",
+      duration: 2,
+      ease: "linear",
+    },
+  },
+};
+
 export const textVariant = (delay) => {
   return {
     hidden: {
