@@ -26,15 +26,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/UI/card";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
+import { getAllGuest } from "@/services/guest-service";
+import PortalContext from "@/context/PortalContext";
 
-export default function DataTable({ columns, data }) {
+export default function DataTable({ columns }) {
   const [rowSelection, setRowSelection] = useState({});
   const [columnVisibility, setColumnVisibility] = useState({});
   const [columnFilters, setColumnFilters] = useState([]);
   const [sorting, setSorting] = useState([]);
+  const [data, setData] = useState([]);
+  const {
+    invitation,
+  } = useContext(PortalContext);
 
   const table = useReactTable({
     data,
@@ -57,6 +63,24 @@ export default function DataTable({ columns, data }) {
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const params = {
+          invitation: invitation.id
+        };
+        const result = await getAllGuest(params);
+
+        console.log(result.data.data)
+        setData(result.data.data)
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      } finally {
+        // setLoading(false);
+      }
+    })();
+  }, []);
 
   return (
     <Card className="w-full overflow-hidden">

@@ -5,11 +5,11 @@ export function getAllInvitation() {
 }
 
 export function createInvitation(data) {
-  return request.get("/v1/invitation", data);
+  return request.post("/v1/invitation", data);
 }
 
 export function showInvitation(params) {
-  return request.get(`/v1/invitation/${id}`, { params });
+  return request.get(`/v1/invitation/${params}`);
 }
 
 export function updateInvitation(data) {

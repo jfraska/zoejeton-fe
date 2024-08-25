@@ -33,53 +33,64 @@ import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { PlusCircle } from "lucide-react";
+import { createGuest } from "@/services/guest-service";
+import { Combobox } from "./combobox-group";
+import { useContext, useState } from "react";
+import PortalContext from "@/context/PortalContext";
 
 const formSchema = z.object({
-  nama: z.string().min(2).max(50),
-  grup: z.string().min(1),
-  email: z.string().email(),
-  nohp: z.string().min(8).max(15),
-  kode: z.string().min(8).max(50),
-  status: z.string().min(8).max(50),
-  jumlah: z.number().int().min(0),
+  name: z.string().min(2).max(50),
+  group_id: z.string().optional(),
+  category: z.string().min(1),
+  whatsapp: z.string().min(1),
+  // instagram: z.string().min(1),
+  code: z.string().min(8).max(50),
+  address: z.string().min(8).max(50),
 });
 
 export default function ButtonAddGuest() {
-  const onSubmit = async (e) => {
+  const [open, setOpen] = useState(false);
+  const {
+    invitation,
+  } = useContext(PortalContext);
+
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      group_id: "",
+      category: "",
+      whatsapp: "",
+      // instagram: "",
+      code: "",
+      address: "",
+    },
+  });
+
+  const onSubmit = async (payload) => {
+    console.log("Form submitted:", payload);
+    const data = [{
+      ...payload,
+      category: 0,
+      sosmed: {
+        whatsapp: payload.whatsapp,
+      },
+      invitation_id: invitation.id,
+    }];
+
+    console.log(data);
     try {
-      const response = await fetch("/api/invitation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nama: e.nama, grup: e.grup, email: e.email }),
-      });
+      const response = await createGuest(data);
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const result = await response.json();
+      form.reset();
+      setOpen(false);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
   };
 
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      nama: "",
-      grup: "",
-      email: "",
-      nohp: "",
-      kode: "",
-      status: "",
-      jumlah: "",
-    },
-  });
-
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="sm" className="h-8 gap-1">
           <PlusCircle className="h-3.5 w-3.5" />
@@ -99,7 +110,7 @@ export default function ButtonAddGuest() {
               <div className="space-y-4 py-2 pb-4">
                 <FormField
                   control={form.control}
-                  name="nama"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Nama</FormLabel>
@@ -112,33 +123,50 @@ export default function ButtonAddGuest() {
                 />
                 <FormField
                   control={form.control}
-                  name="grup"
+                  name="group_id"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel>Grup</FormLabel>
+                      <Combobox />
+                      <FormDescription>
+                        Pilih grup untuk guest.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="category"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Grup</FormLabel>
+                      <FormLabel>Kategori</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select a grup" />
+                            <SelectValue placeholder="Select category for guest" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="Keluarga Mempelai Pria">Keluarga Mempelai Pria</SelectItem>
-                          <SelectItem value="Keluarga Mempelai Wanita">Keluarga Mempelai Wanita</SelectItem>
+                          <SelectItem value="reguler">Reguler</SelectItem>
+                          <SelectItem value="vip">VIP</SelectItem>
                         </SelectContent>
                       </Select>
+                      <FormDescription>
+                        Pilih kategori guest.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="whatsapp"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>WhatsApp</FormLabel>
                       <FormControl>
-                        <Input placeholder="zoehinata@gmail.com" {...field} />
+                        <Input placeholder="085740636055" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -146,20 +174,7 @@ export default function ButtonAddGuest() {
                 />
                 <FormField
                   control={form.control}
-                  name="nohp"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>No.HP</FormLabel>
-                      <FormControl>
-                        <Input placeholder="088806640808" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="kode"
+                  name="code"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Kode</FormLabel>
@@ -172,12 +187,12 @@ export default function ButtonAddGuest() {
                 />
                 <FormField
                   control={form.control}
-                  name="jumlah"
+                  name="address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Jumlah</FormLabel>
+                      <FormLabel>Alamat</FormLabel>
                       <FormControl>
-                        <Input placeholder="3" {...field} />
+                        <Input placeholder="Sleman, Yogyakarta" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
