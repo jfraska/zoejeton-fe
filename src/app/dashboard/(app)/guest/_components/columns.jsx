@@ -36,16 +36,16 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "nama",
+    accessorKey: "name",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Nama" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("nama")}</div>,
+    cell: ({ row }) => <div className="w-[80px]">{row.getValue("name")}</div>,
     enableSorting: false,
     enableHiding: false,
   },
   {
-    accessorKey: "grup",
+    accessorKey: "group",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Grup" />
     ),
@@ -55,8 +55,8 @@ export const columns = [
       return (
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-          <span className="max-w-[500px] truncate font-medium">
-            {row.getValue("grup")}
+          <span className="max-w-[500px] truncate">
+            {row.getValue("group")?.name}
           </span>
         </div>
       );
@@ -65,29 +65,31 @@ export const columns = [
     enableHiding: true,
   },
   {
-    accessorKey: "email",
+    accessorKey: "category",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Email" />
+      <DataTableColumnHeader column={column} title="Kategori" />
     ),
-    cell: ({ row }) => <div className="max-w-[150px]">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div className="max-w-[150px]">{row.getValue("category")}</div>,
     enableSorting: false,
     enableHiding: true,
   },
   {
-    accessorKey: "nohp",
+    accessorKey: "sosmed",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="No. HP" />
+      <DataTableColumnHeader column={column} title="Sosmed" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("nohp")}</div>,
+    cell: ({ row }) => (
+      <div className="max-w-[200px]">{row.getValue("sosmed").instagram}</div>
+    ),
     enableSorting: false,
     enableHiding: true,
   },
   {
-    accessorKey: "kode",
+    accessorKey: "code",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Kode" />
     ),
-    cell: ({ row }) => <div className="w-[50px]">{row.getValue("kode")}</div>,
+    cell: ({ row }) => <div className="w-[50px]">{row.getValue("code")}</div>,
     enableSorting: false,
     enableHiding: false,
   },
@@ -101,20 +103,11 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "jumlah",
+    accessorKey: "address",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Jumlah" />
+      <DataTableColumnHeader column={column} title="Alamat" />
     ),
-    cell: ({ row }) => <div className="w-[50px]">{row.getValue("jumlah")}</div>,
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "date",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Dibuat" />
-    ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("date")}</div>,
+    cell: ({ row }) => <div className="w-[50px]">{row.getValue("address")}</div>,
     enableSorting: false,
     enableHiding: false,
   },

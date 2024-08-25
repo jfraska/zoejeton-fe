@@ -158,144 +158,138 @@ const templateData = [
     thumbnail: "thumbnail.jpg",
     price: 120000,
     category: "Basic",
-    content: [
-      {
-        key: "lockscreen",
-        value: {
-          heading: "Zoe & Jeton",
-          subheading: "We invite you to our wedding ceremony",
-          background: ["lockscreen.png"],
-        },
-      },
-      {
-        key: "cover",
-        value: {
-          heading: "Zoe & Jeton",
-          subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          background: ["lockscreen.png"],
-        },
-      },
-      {
-        key: "beranda",
-        value: {
-          heading: "Zoe & Jeton",
-          date: "Minggu, 30 September 2026",
-          subheading:
-            "Glory be to Allah who has created humans in pairs. By asking for the Grace and Ridho of Allah SWT, we intend to invite you to our wedding reception.",
-          references: "QS AR-RUM 21",
-          background: ["beranda.png"],
-        },
-        visible: {
-          disable: false,
-          group: [],
-        },
-      },
-      {
-        key: "event",
-        value: {
-          akad: {
-            date: "Minggu, 30 Juni 2023",
-            time: "12.00 - 14.00",
-            loc: "Grand Hotel",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
-          },
-          resepsi: {
-            date: "Senin, 31 Juni 2023",
-            time: "12.00 - 14.00",
-            loc: "Grand Hotel",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eu turpis molestie",
-          },
-        },
-        visible: {
-          disable: false,
-          group: [],
-        },
-      },
-      {
-        key: "couple",
-        value: {
-          groom: {
-            name: "Jeton Hizaya",
-            desc: "Bapak Elkana & Ibu Shopia",
-            image: "couple-1.png",
-            instagram: "https://instagram.com",
-          },
-          bride: {
-            name: "Zoe Himaya",
-            desc: "Bapak Sotama & Ibu Aishah",
-            image: "couple-2.png",
-            instagram: "https://instagram.com",
-          },
-        },
-        visible: {
-          disable: false,
-          group: [],
-        },
-      },
-      {
-        key: "love-story",
-        value: {
-          story1: {
-            heading: "SEMARANG, 19 JUNI 2021",
-            subheading:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.",
-          },
-          story2: {
-            heading: "SEMARANG, 19 JUNI 2021",
-            subheading:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.",
-          },
-        },
-        visible: {
-          disable: false,
-          group: [],
-        },
-      },
-      {
-        key: "galery",
-        value: {
-          image1: "gallery-1.png",
-          image2: "gallery-2.png",
-          image3: "gallery-3.png",
-          image4: "gallery-4.png",
-          image5: "gallery-5.png",
-        },
-        visible: {
-          disable: false,
-          group: [],
-        },
-      },
-      {
-        key: "live-streaming",
-        value: {
-          heading: "Zoe & Jeton",
-          subheading:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum",
-          date: "Minggu, 30 Juni 2023",
-          time: "12.00 - 14.00",
-          link: "https://youtube.com",
-          background: [],
-        },
-        visible: {
-          disable: false,
-          group: [],
-        },
-      },
-      {
-        key: "thanks",
-        value: {
-          heading: "Thank You",
-          subheading:
-            "Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada kami.",
-          background: [],
-        },
-        visible: {
-          disable: false,
-          group: [],
-        },
-      },
-    ],
+    'content' => json_encode([
+                [
+                    'key' => 'lockscreen',
+                    'value' => [
+                        'heading' => 'Zoe & Jeton',
+                        'subheading' => 'We invite you to our wedding ceremony',
+                        'background' => ['lockscreen.png'],
+                    ],
+                ],
+                [
+                    'key' => 'cover',
+                    'value' => [
+                        'heading' => 'Zoe & Jeton',
+                        'subheading' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum',
+                        'background' => ['lockscreen.png'],
+                    ],
+                ],
+                [
+                    'key' => 'beranda',
+                    'value' => [
+                        'heading' => 'Zoe & Jeton',
+                        'date' => 'Minggu, 30 September 2026',
+                        'subheading' => 'Glory be to Allah who has created humans in pairs. By asking for the Grace and Ridho of Allah SWT, we intend to invite you to our wedding reception.',
+                        'references' => 'QS AR-RUM 21',
+                        'background' => ['beranda.png'],
+                    ],
+                    'visible' => [
+                        'disable' => false,
+                        'group' => [],
+                    ],
+                ],
+                [
+                    'key' => 'event',
+                    'value' => [
+                        'akad' => [
+                            'date' => 'Minggu, 30 Juni 2023',
+                            'time' => '12.00 - 14.00',
+                            'loc' => 'Grand Hotel',
+                            'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie',
+                        ],
+                        'resepsi' => [
+                            'date' => 'Senin, 31 Juni 2023',
+                            'time' => '12.00 - 14.00',
+                            'loc' => 'Grand Hotel',
+                            'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie',
+                        ],
+                    ],
+                    'visible' => [
+                        'disable' => false,
+                        'group' => [],
+                    ],
+                ],
+                [
+                    'key' => 'couple',
+                    'value' => [
+                        'groom' => [
+                            'name' => 'Jeton Hizaya',
+                            'desc' => 'Bapak Elkana & Ibu Shopia',
+                            'image' => 'couple-1.png',
+                            'instagram' => 'https://instagram.com',
+                        ],
+                        'bride' => [
+                            'name' => 'Zoe Himaya',
+                            'desc' => 'Bapak Sotama & Ibu Aishah',
+                            'image' => 'couple-2.png',
+                            'instagram' => 'https://instagram.com',
+                        ],
+                    ],
+                    'visible' => [
+                        'disable' => false,
+                        'group' => [],
+                    ],
+                ],
+                [
+                    'key' => 'love-story',
+                    'value' => [
+                        'story1' => [
+                            'heading' => 'SEMARANG, 19 JUNI 2021',
+                            'subheading' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.',
+                        ],
+                        'story2' => [
+                            'heading' => 'SEMARANG, 19 JUNI 2021',
+                            'subheading' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.',
+                        ],
+                    ],
+                    'visible' => [
+                        'disable' => false,
+                        'group' => [],
+                    ],
+                ],
+                [
+                    'key' => 'galery',
+                    'value' => [
+                        'image1' => 'gallery-1.png',
+                        'image2' => 'gallery-2.png',
+                        'image3' => 'gallery-3.png',
+                        'image4' => 'gallery-4.png',
+                        'image5' => 'gallery-5.png',
+                    ],
+                    'visible' => [
+                        'disable' => false,
+                        'group' => [],
+                    ],
+                ],
+                [
+                    'key' => 'live-streaming',
+                    'value' => [
+                        'heading' => 'Zoe & Jeton',
+                        'subheading' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum',
+                        'date' => 'Minggu, 30 Juni 2023',
+                        'time' => '12.00 - 14.00',
+                        'link' => 'https://youtube.com',
+                        'background' => [],
+                    ],
+                    'visible' => [
+                        'disable' => false,
+                        'group' => [],
+                    ],
+                ],
+                [
+                    'key' => 'thanks',
+                    'value' => [
+                        'heading' => 'Thank You',
+                        'subheading' => 'Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada kami.',
+                        'background' => [],
+                    ],
+                    'visible' => [
+                        'disable' => false,
+                        'group' => [],
+                    ],
+                ],
+            ]),
     color: [
       {
         key: "natural",

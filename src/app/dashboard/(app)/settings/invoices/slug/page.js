@@ -24,62 +24,6 @@ import {
 } from "@/components/UI/dropdown-menu";
 import { Separator } from "@/components/UI/separator";
 import { Copy, CreditCard, MoreVertical, Printer } from "lucide-react";
-import Link from "next/link";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/UI/table";
-
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-];
 
 export default function Page() {
   return (
@@ -94,46 +38,15 @@ export default function Page() {
             <BreadcrumbItem>
               <BreadcrumbPage>Tagihan</BreadcrumbPage>
             </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Slug</BreadcrumbPage>
+            </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       </div>
       <div className="grid md:grid-cols-1 xl:grid-cols-10">
-        <Card className="space-y-4 col-span-4 md:col-span-10">
-          <CardHeader>
-            <CardTitle>Tagihan</CardTitle>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[100px]">Invoice</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="w-2/5">Keterangan</TableHead>
-                  <TableHead>Total</TableHead>
-                  <TableHead></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {invoices.map((invoice) => (
-                  <TableRow key={invoice.invoice}>
-                    <TableCell className="font-medium">
-                      {invoice.invoice}
-                    </TableCell>
-                    <TableCell>{invoice.paymentStatus}</TableCell>
-                    <TableCell>{invoice.paymentMethod}</TableCell>
-                    <TableCell>{invoice.totalAmount}</TableCell>
-                    <TableCell className="text-right">
-                      <Button>
-                        <Link href="invoices/slug">Detail Tagihan</Link>
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-        {/* <Card className="col-span-4 md:col-span-4">
+        <Card className="col-start-4 col-end-7 md:col-start-4 md:col-end-8">
           <CardHeader className="flex flex-row items-start bg-muted/50">
             <div className="grid gap-0.5">
               <CardTitle className="group flex items-center gap-2 text-lg">
@@ -222,29 +135,29 @@ export default function Page() {
                 </div>
               </dl>
             </div>
-          </CardContent> */}
-        {/* <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
-            <div className="text-xs text-muted-foreground">
-              Updated <time dateTime="2023-11-23">November 23, 2023</time>
-            </div>
-            <Pagination className="ml-auto mr-0 w-auto">
-              <PaginationContent>
-                <PaginationItem>
-                  <Button size="icon" variant="outline" className="h-6 w-6">
-                    <ChevronLeft className="h-3.5 w-3.5" />
-                    <span className="sr-only">Previous Order</span>
-                  </Button>
-                </PaginationItem>
-                <PaginationItem>
-                  <Button size="icon" variant="outline" className="h-6 w-6">
-                    <ChevronRight className="h-3.5 w-3.5" />
-                    <span className="sr-only">Next Order</span>
-                  </Button>
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
-          </CardFooter> */}
-        {/* </Card> */}
+          </CardContent>
+          {/* <CardFooter className="flex flex-row items-center border-t bg-muted/50 px-6 py-3">
+              <div className="text-xs text-muted-foreground">
+                Updated <time dateTime="2023-11-23">November 23, 2023</time>
+              </div>
+              <Pagination className="ml-auto mr-0 w-auto">
+                <PaginationContent>
+                  <PaginationItem>
+                    <Button size="icon" variant="outline" className="h-6 w-6">
+                      <ChevronLeft className="h-3.5 w-3.5" />
+                      <span className="sr-only">Previous Order</span>
+                    </Button>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <Button size="icon" variant="outline" className="h-6 w-6">
+                      <ChevronRight className="h-3.5 w-3.5" />
+                      <span className="sr-only">Next Order</span>
+                    </Button>
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+            </CardFooter> */}
+        </Card>
       </div>
     </section>
   );

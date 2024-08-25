@@ -12,10 +12,29 @@ import {
 import { PiechartGroup } from "./piechart-group";
 import Link from "next/link";
 import DialogCreateGroup from "./dialog-create-group";
+import { useEffect, useState } from "react";
+import { getAllGroup } from "@/services/group-service";
 
 export default function DataGroup() {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const result = await getAllGroup();
+
+                console.log(result.data.data)
+                setData(result.data.data)
+            } catch (error) {
+                console.log("Error fetching data:", error);
+            } finally {
+                // setLoading(false);
+            }
+        })();
+    }, []);
+
     return (
-        <Card className="w-full overflow-hidden">
+        <Card className="w-full overflow-hidden flex-wrap">
             <CardHeader>
                 <CardTitle>Data Grup</CardTitle>
                 <CardDescription>Grup Mempelai Pria dan Wanita</CardDescription>
@@ -29,24 +48,17 @@ export default function DataGroup() {
                         <DialogCreateGroup />
                     </CardContent>
                 </Card>
-                <Card className="w-[300px] h-[300px] flex flex-col items-center justify-center">
-                    <CardHeader className="text-center">
-                        <CardDescription><Link href={''} className="text-yellow-500 hover:underline">Keluarga Mempelai Pria</Link></CardDescription>
-                    </CardHeader>
-                    <PiechartGroup />
-                </Card>
-                <Card className="w-[300px] h-[300px] flex flex-col items-center justify-center">
-                    <CardHeader className="text-center">
-                        <CardDescription><Link href={''} className="text-yellow-500 hover:underline">Keluarga Mempelai Wanita</Link></CardDescription>
-                    </CardHeader>
-                    <PiechartGroup />
-                </Card>
-                <Card className="w-[300px] h-[300px] flex flex-col items-center justify-center">
-                    <CardHeader className="text-center">
-                        <CardDescription><Link href={''} className="text-yellow-500 hover:underline">Bapak Bapak Garing</Link></CardDescription>
-                    </CardHeader>
-                    {/* <PiechartGroup /> */}
-                </Card>
+                {data.map((group, index) => (
+                    <Card key={index} className="w-[300px] h-[300px] flex flex-col items-center justify-center">
+                        <CardHeader className="text-center">
+                            <CardDescription>
+                                <h1 className="text-yellow-500 hover:underline">
+                                    {group.name}
+                                </h1>
+                            </CardDescription>
+                        </CardHeader>
+                    </Card>
+                ))}
             </CardContent>
         </Card>
     );

@@ -29,7 +29,7 @@ import DataGroup from "./_components/data-group";
 import DataMeja from "./_components/data-meja";
 import ButtonAddGuest from "./_components/button-add-guest";
 
-export default function Tamu() {
+export default async function Guest() {
   return (
     <section className="flex h-full flex-col gap-4 lg:gap-6">
       <div className="flex items-center">
@@ -110,7 +110,7 @@ export default function Tamu() {
         </div>
         <TabsContent value="week">
           <div className="grid">
-            <DataTable data={tasks} columns={columns} />
+            <DataTable columns={columns} />
           </div>
         </TabsContent>
         <TabsContent value="month">
@@ -127,56 +127,3 @@ export default function Tamu() {
     </section>
   );
 }
-
-const tasks = [
-  {
-    nama: "Kylian Mbappuk",
-    grup: "keluarga CPP",
-    email: "mbapperacing@gmail.com",
-    nohp: "089765457284",
-    kode: "0001",
-    status: "datang",
-    jumlah: "3",
-    date: "13 Agt 2024, 12:00",
-  },
-  {
-    nama: "Ousmane Demblenger",
-    grup: "keluarga CPP",
-    email: "gedebuk@yahoo.com",
-    nohp: "02724000356",
-    kode: "0002",
-    status: "datang",
-    jumlah: "5",
-    date: "13 Agt 2024, 12:09",
-  },
-  {
-    nama: "Lionel Pessi",
-    grup: "keluarga CPW",
-    email: "messiunhaha@gmail.co.id",
-    nohp: "088806646808",
-    kode: "0003",
-    status: "pulang",
-    jumlah: "3",
-    date: "13 Agt 2024, 12:18",
-  },
-  {
-    nama: "Cristiano Penaldo",
-    grup: "keluarga CPW",
-    email: "penaldog123@gmail.com",
-    nohp: "089765123424",
-    kode: "0004",
-    status: "pulang",
-    jumlah: "7",
-    date: "13 Agt 2024, 13:20",
-  },
-  {
-    nama: "Onanana El Silahkan",
-    grup: "keluarga CPW",
-    email: "onanaelsilahkan@yahoo.co.id",
-    nohp: "0274366687",
-    kode: "0005",
-    status: "pulang",
-    jumlah: "2",
-    date: "13 Agt 2024, 12:27",
-  },
-];
