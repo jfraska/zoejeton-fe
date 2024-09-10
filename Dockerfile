@@ -1,10 +1,57 @@
-FROM node:20-alpine
+FROM node:20.10-alpine AS base
+
+### Dependencies ###
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
-COPY . ./
+COPY package.json package-lock.json ./
+RUN npm install --legacy-peer-deps
 
-RUN npm install
-RUN npx next build
+# Builder
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
-CMD ["npx", "next", "start"]
+ENV NEXT_TELEMETRY_DISABLED 1
+RUN npx prisma generate                   
+RUN npm run build
+
+### Production image runner ###
+FROM base AS runner
+WORKDIR /app
+    
+# Set NODE_ENV to production
+ENV NODE_ENV production
+
+# Disable Next.js telemetry
+# Learn more here: https://nextjs.org/telemetry
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Set correct permissions for nextjs user and don't run as root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --chown=nextjs:nodejs prisma ./prisma/                
+
+USER nextjs
+
+# Exposed port (for orchestrators and dynamic reverse proxies)
+EXPOSE 3000
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD wget -q --spider http://0.0.0.0:3000 || exit 1
+
+# Run the nextjs app
+CMD ["node", "server.js"]

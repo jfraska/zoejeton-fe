@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -40,7 +40,7 @@ const formSchema = z.object({
 export default function CreateInvitation() {
   const { updateInvitation, stateCreateInvitation, setStateCreateInvitation } =
     useContext(PortalContext);
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
   const form = useForm({
     resolver: zodResolver(formSchema),

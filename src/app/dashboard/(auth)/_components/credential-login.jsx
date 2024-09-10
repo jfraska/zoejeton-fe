@@ -15,7 +15,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { login } from "@/services/auth-service";
+import { login as loginService } from "@/services/auth-service";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/useAuth";
 import LoadingDots from "@/components/icons/loading-dots";
@@ -39,13 +39,15 @@ export default function CredentialLogin() {
   const onSubmit = async (payload) => {
     try {
       setLoading(true);
-      await login(payload);
+      const auth = await loginService(payload);
+      await login(auth?.data?.data?.token);
       form.reset();
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
       toast.error(
         "Login tidak berhasil. Silakan periksa kembali email dan password Anda."
       );
+      setLoading(false);
     }
   };
 

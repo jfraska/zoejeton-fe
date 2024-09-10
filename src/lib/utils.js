@@ -36,3 +36,11 @@ export function extractClass(className, prefix) {
   const filteredClasses = classes.filter((cls) => cls.startsWith(prefix));
   return filteredClasses.join(" ");
 }
+
+export function getUrl(path = "", subdomain = "") {
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+  const domain = process.env.NEXT_PUBLIC_ROOT_DOMAIN;
+  const sub = subdomain ? `${subdomain}.` : "";
+
+  return `${protocol}://${sub}${domain}${path}`;
+}

@@ -1,7 +1,9 @@
 import request from "@/lib/request";
 
-export function getAllInvitation() {
-  return request.get("/v1/invitation");
+export function getAllInvitation(params) {
+  return request.get("/v1/invitation", {
+    params,
+  });
 }
 
 export function createInvitation(data) {

@@ -49,6 +49,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function Layout({ children }) {
+export default function DomainLayout({ children }) {
   return <CustomizeProvider>{children}</CustomizeProvider>;
 }

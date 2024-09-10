@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import { Analytics } from "@vercel/analytics/react";
 import { MonumentExtended, NeueMontreal } from "@/styles/fonts";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
@@ -21,10 +20,7 @@ export default function RootLayout({ children }) {
           NeueMontreal.variable
         )} font-default bg-background scroll`}
       >
-        <Providers>
-          {children}
-          <Analytics />
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

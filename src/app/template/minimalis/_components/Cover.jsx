@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Editable from "@/components/container/editable";
+import Editable from "@/components/container/template/editable";
 import { Runalto } from "@/styles/fonts";
 import { Cover as CoverWrapper } from "@/components/container/template/wrapper-template";
 

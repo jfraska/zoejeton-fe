@@ -4,24 +4,13 @@ export default function Button({
   className = null,
   title = "",
   desc = "",
-  type,
   href,
   ...props
 }) {
-  const url = () => {
-    if (type) {
-      return process.env.NEXT_PUBLIC_VERCEL_ENV
-        ? `https://${type}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}${href}`
-        : `http://${type}.localhost:3000${href}`;
-    } else {
-      return href;
-    }
-  };
-
   return (
     <Link
       {...props}
-      href={url()}
+      href={href}
       className={`${className} w-full flex items-center gap-4 rounded-lg p-2 shadow-lg group transition-all ease-linear duration-100 hover:bg-opacity-90`}
     >
       <div className="flex justify-center items-center bg-white h-full p-3 rounded-lg group-hover:scale-105">

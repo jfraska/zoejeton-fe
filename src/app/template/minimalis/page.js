@@ -5,8 +5,8 @@ import {
   Main,
   Template,
 } from "@/components/container/template/wrapper-template";
-import LockScreen from "./_components/LockScreen";
-import Cover from "./_components/Cover";
+import LockScreen from "./_components/lockscreen";
+import Cover from "./_components/cover";
 import Music from "./_components/Music";
 
 const montserrat = Montserrat({ subsets: ["latin"] });

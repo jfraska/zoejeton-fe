@@ -6,7 +6,7 @@ import ContentEditable from "react-contenteditable";
 import EditableDate from "@/components/container/template/editable-date";
 import EditableImage from "@/components/container/template/editable-image";
 import { cn, getDataContent } from "@/lib/utils";
-import EditableLink from "./template/editable-link";
+import EditableLink from "@/components/container/template/editable-link";
 
 export default function Editable({
   children,

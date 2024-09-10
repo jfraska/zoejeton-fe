@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 const CustomizeContext = createContext();
@@ -37,25 +37,27 @@ export const CustomizeProvider = ({ children }) => {
   };
 
   return (
-    <CustomizeContext.Provider
-      value={{
-        initData,
-        data,
-        setData,
-        dataContent,
-        setDataContent,
-        dataColor,
-        setDataColor,
-        dataGuest,
-        setDataGuest,
-        isEdit,
-        setIsEdit,
-        saveDraftContent,
-        deleteDraftContent,
-      }}
-    >
-      {children}
-    </CustomizeContext.Provider>
+    <Suspense>
+      <CustomizeContext.Provider
+        value={{
+          initData,
+          data,
+          setData,
+          dataContent,
+          setDataContent,
+          dataColor,
+          setDataColor,
+          dataGuest,
+          setDataGuest,
+          isEdit,
+          setIsEdit,
+          saveDraftContent,
+          deleteDraftContent,
+        }}
+      >
+        {children}
+      </CustomizeContext.Provider>
+    </Suspense>
   );
 };
 

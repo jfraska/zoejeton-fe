@@ -9,6 +9,7 @@ import { Button } from "@/components/UI/button";
 import { CloudUpload, Layers, LayoutDashboard, Settings } from "lucide-react";
 import ButtonTooltip from "@/components/container/button-tooltip";
 import CustomizeList from "@/components/container/template/customize-list";
+import { getUrl } from "@/lib/utils";
 
 export default function Sidebar() {
   const [tabs, setTabs] = useState("page");
@@ -19,11 +20,7 @@ export default function Sidebar() {
       <div className="flex h-full max-h-screen flex-col">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link
-            href={
-              process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                : `http://localhost:3000`
-            }
+            href={getUrl("/")}
             className="flex items-center gap-4 font-medium"
           >
             <Image
@@ -37,13 +34,7 @@ export default function Sidebar() {
           </Link>
           <ButtonTooltip content="Dashboard">
             <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-              <Link
-                href={
-                  process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                    : `http://dashboard.localhost:3000`
-                }
-              >
+              <Link href={getUrl("/", "dashboard")}>
                 <LayoutDashboard className="h-4 w-4" />
                 <span className="sr-only">Toggle Dashboard</span>
               </Link>

@@ -9,7 +9,7 @@ import { toast } from "sonner";
 const SessionContext = createContext();
 
 const options = {
-  // path: "/",
+  path: "/",
   domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
     ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
     : null,

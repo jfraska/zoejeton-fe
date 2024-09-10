@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Selina, Catamaran } from "@/styles/fonts";
 import gsap from "gsap";
 import { LockScreen as LockScreenWrapper } from "@/components/container/template/wrapper-template";
-import Editable from "@/components/container/editable";
+import Editable from "@/components/container/template/editable";
 
 export default function LockScreen({ type, id }) {
   const [state, setState] = useState(false);

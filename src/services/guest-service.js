@@ -2,7 +2,7 @@ import request from "@/lib/request";
 
 export function getAllGuest(params) {
   return request.get("/v1/guest", {
-    params: params,
+    params,
   });
 }
 

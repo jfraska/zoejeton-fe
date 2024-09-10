@@ -5,6 +5,7 @@ import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
 import LoadingButton from "@/components/UI/loading-button";
 import { useRouter } from "next/navigation";
+import { getUrl } from "@/lib/utils";
 
 export default function TemplateList() {
   const [data, setData] = useState([]);
@@ -82,11 +83,7 @@ export default function TemplateList() {
             </div>
 
             <a
-              href={
-                process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                  ? `https://template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/${e.slug}`
-                  : `http://template.localhost:3000/${e.slug}`
-              }
+              href={getUrl(`/${e.slug}`, "template")}
               target="_blank"
               className="flex items-center justify-center w-fit gap-1 border bg-white border-black px-2 rounded-full transition-transform ease-in-out group-hover:scale-100 scale-0"
             >

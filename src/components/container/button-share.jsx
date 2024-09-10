@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/UI/input";
 import { Label } from "@/components/UI/label";
 import { toast } from "sonner";
+import { getUrl } from "@/lib/utils";
 
 export default function ButtonShare({ children, classname, link, ...props }) {
   const handleCopy = () => {
@@ -46,7 +47,7 @@ export default function ButtonShare({ children, classname, link, ...props }) {
             <Input
               className="focus-visible:ring-0"
               id="link"
-              defaultValue={link}
+              defaultValue={getUrl(link)}
               readOnly
             />
           </div>

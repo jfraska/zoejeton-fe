@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import CustomizeContext from "@/context/CustomizeContext";
 import { GlobalStyles } from "@mui/material";
 import dynamic from "next/dynamic";
@@ -9,7 +9,7 @@ import Loading from "@/app/template/loading";
 
 export default function Publish({ params }) {
   const [loading, setLoading] = useState(true);
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const { initData, dataColor, setDataGuest, data } =
     useContext(CustomizeContext);
   const domain = decodeURIComponent(params.domain);

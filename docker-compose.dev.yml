@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  frontend_dev:
+    image: ${APP_IMAGE_DEV}:${APP_IMAGE_DEV_TAG}
+    container_name: fe_dev
+    env_file:
+      - ./.env
+    environment:
+      - NEXT_PUBLIC_ROOT_DOMAIN=frontend_dev:3000
+      - NEXT_PUBLIC_API_BASE_URL=php_backend_dev:9000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./.env:/app/.env:rw

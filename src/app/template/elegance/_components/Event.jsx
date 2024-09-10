@@ -1,5 +1,5 @@
 import { Selina, Catamaran } from "@/styles/fonts";
-import Editable from "@/components/container/editable";
+import Editable from "@/components/container/template/editable";
 import { Section } from "@/components/container/template/wrapper-template";
 import Image from "next/image";
 

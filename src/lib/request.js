@@ -12,7 +12,6 @@ REQUEST.interceptors.request.use(
   (config) => {
     if (hasCookie("client")) {
       const tokenClient = getCookie("client");
-      console.log(tokenClient);
       config.headers.Authorization = `Bearer ${tokenClient}`;
     }
     return config;

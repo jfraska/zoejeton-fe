@@ -5,6 +5,7 @@ import Image from "next/image";
 import Brand from "./_components/Brand";
 import Button from "./_components/Button";
 import ButtonShare from "@/components/container/button-share";
+import { getUrl } from "@/lib/utils";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -14,10 +15,6 @@ export const metadata = {
 };
 
 export default function Page() {
-  const urlShare = process.env.NEXT_PUBLIC_ROOT_DOMAIN
-    ? `${process.env.NEXT_PUBLIC_ROOT_DOMAIN}/bio`
-    : `localhost:3000/bio`;
-
   return (
     <main
       className={`${montserrat.className} h-screen relative lg:my-10 lg:max-w-md w-full min-h-full px-5 pt-24 pb-5 mx-auto lg:rounded-lg lg:overflow-hidden`}
@@ -31,7 +28,7 @@ export default function Page() {
         priority
       />
 
-      <ButtonShare link={urlShare}>
+      <ButtonShare link="/bio">
         <button className="absolute top-4 right-4 w-10 aspect-square rounded-lg flex justify-center items-center bg-white backdrop-filter backdrop-blur-md bg-opacity-60 shadow-lg transition-all ease-linear duration-100 hover:scale-105 hover:bg-opacity-90 focus:outline-none">
           <Image
             src={"/assets/icons/qrcode.svg"}
@@ -49,21 +46,19 @@ export default function Page() {
           className="text-black bg-white backdrop-filter backdrop-blur-sm bg-opacity-60"
           title={"Katalog & Price List"}
           desc={"lihat desain undangan "}
-          href={"/"}
+          href={getUrl("/")}
         />
         <Button
           className="text-black bg-white backdrop-filter backdrop-blur-md bg-opacity-60"
           title={"Dashboard"}
           desc={"kelola undanganmu dengan mudah"}
-          type="dashboard"
-          href={"/"}
+          href={getUrl("/", "dashboard")}
         />
         <Button
           className="text-black bg-white backdrop-filter backdrop-blur-md bg-opacity-60"
           title={"Guestbook"}
           desc={"sistem check in acaramu"}
-          type="guestbook"
-          href={"/"}
+          href={getUrl("/", "guestbook")}
         />
       </section>
 

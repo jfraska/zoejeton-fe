@@ -1,32 +1,28 @@
 import request from "@/lib/request";
 
-export function getAllTemplate() {
-  return request({
-    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/template`,
-    method: "GET",
-  });
-}
-
-export function createTemplate(data) {
-  return request({
-    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/template`,
-    method: "POST",
-    data,
-  });
-}
-
-export function showTemplate(params) {
-  return request({
-    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/template/${slug}`,
-    method: "GET",
+const getAllTemplate = (params) => {
+  return request.get("/v1/template", {
     params,
   });
-}
+};
 
-export function updateTemplate(data) {
-  return request({
-    url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/template`,
-    method: "PATCH",
-    data,
-  });
-}
+const createTemplate = (data) => {
+  return request.post("/v1/template", data);
+};
+
+const showTemplate = (slug, params) => {
+  return request.get(`/v1/template/${slug}`, { params });
+};
+
+const updateTemplate = (data) => {
+  return request.patch("/v1/template", data);
+};
+
+const TemplateService = {
+  getAllTemplate,
+  createTemplate,
+  showTemplate,
+  updateTemplate,
+};
+
+export default TemplateService;

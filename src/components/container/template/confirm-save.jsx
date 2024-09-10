@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -20,14 +20,14 @@ export default function ConfirmSave({ open, onOpenChange }) {
     useContext(CustomizeContext);
   const { invitation, updateInvitation, setStateSwitcher } =
     useContext(PortalContext);
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
-  useEffect(() => {
-    if (searchParams.has("save")) {
-      handleSave();
-      router.push(data.slug);
-    }
-  }, [searchParams]);
+  // useEffect(() => {
+  //   if (searchParams.has("save")) {
+  //     handleSave();
+  //     router.push(data.slug);
+  //   }
+  // }, [searchParams]);
 
   const handleLogin = () => {
     saveDraftContent();
