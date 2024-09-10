@@ -1,6 +1,7 @@
 version: "3.8"
 
 networks:
+  fe-i-dev:
 
 services:
   frontend_dev:
@@ -13,3 +14,5 @@ services:
       - "3000:3000"
     volumes:
       - ./.env:/app/.env:rw
+    networks:
+      - fe-i-dev
