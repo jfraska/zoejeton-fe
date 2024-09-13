@@ -4,7 +4,7 @@ networks:
   fe-i-dev:
 
 services:
-  nginx_frontend_prod:
+  nginx_frontend_dev:
     image: nginx:stable
     container_name: fe_nginx_dev
     restart: unless-stopped
@@ -13,7 +13,6 @@ services:
     links:
       - frontend_dev
     volumes:
-      - ./:/var/www/html
       - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:rw
       - ./docker/logs/nginx:/var/logs/nginx:rw
     depends_on:
