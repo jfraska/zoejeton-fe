@@ -10,6 +10,8 @@ services:
       dockerfile: DockerFile
     container_name: fe_dev
     env_file: ./.env
+    environment:
+      NEXT_PUBLIC_ROOT_DOMAIN: frontend_dev
     ports:
       - "3000:3000"
     volumes:
