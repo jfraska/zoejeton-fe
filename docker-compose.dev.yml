@@ -4,16 +4,28 @@ networks:
   fe-i-dev:
 
 services:
+  nginx_frontend_prod:
+    image: nginx:stable
+    container_name: fe_nginx_dev
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    links:
+      - frontend_dev
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:rw
+      - ./docker/logs/nginx:/var/logs/nginx:rw
+    depends_on:
+      - frontend_dev
+    networks:
+      - fe-i-dev
   frontend_dev:
     build:
       context: .
       dockerfile: DockerFile
     container_name: fe_dev
     env_file: ./.env
-    environment:
-      NEXT_PUBLIC_ROOT_DOMAIN: frontend_dev
-    ports:
-      - "3000:3000"
     volumes:
       - ./.env:/app/.env:rw
     networks:
