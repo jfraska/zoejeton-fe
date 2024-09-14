@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
   output: "standalone",
   eslint: {
     ignoreDuringBuilds: true,
@@ -21,11 +20,7 @@ const nextConfig = {
         headers: [
           {
             key: "Cross-Origin-Opener-Policy",
-            value: "same-origin-allow-popups",
-          },
-          {
-            key: "Cross-Origin-Embedder-Policy",
-            value: "require-corp",
+            value: "unsafe-none",
           },
         ],
       },
