@@ -14,7 +14,7 @@ export default function LoginButton({ children, provider }) {
     return window.open(
       url,
       "OAuthLogin",
-      `width=${width},height=${height},top=${top},left=${left},resizable,scrollbars,status`
+      `width=${width},height=${height},top=${top},left=${left},status,noopener,noreferrer`
     );
   }
 
@@ -26,18 +26,12 @@ export default function LoginButton({ children, provider }) {
       if (redirectUrl) {
         const popup = openOAuthPopup(redirectUrl);
         if (popup) {
-          const checkPopupClosed = setInterval(() => {
-            if (popup.closed) {
-              clearInterval(checkPopupClosed);
-              setLoading(false);
-            }
-          }, 500);
-
           const messageListener = (event) => {
             if (event.origin === "https://api.zoejeton.com") {
               const token = event.data.token;
               if (token) {
                 login(token);
+                setLoading(false);
                 window.removeEventListener("message", messageListener);
               }
             }
