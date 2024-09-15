@@ -14,7 +14,7 @@ export default function LoginButton({ children, provider }) {
     return window.open(
       url,
       "OAuthLogin",
-      `width=${width},height=${height},top=${top},left=${left},status,noopener,noreferrer`
+      `width=${width},height=${height},top=${top},left=${left},status`
     );
   }
 
