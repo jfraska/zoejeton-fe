@@ -26,6 +26,13 @@ export default function LoginButton({ children, provider }) {
       if (redirectUrl) {
         const popup = openOAuthPopup(redirectUrl);
         if (popup) {
+          const checkPopupClosed = setInterval(() => {
+            if (popup.closed) {
+              clearInterval(checkPopupClosed);
+              setLoading(false);
+            }
+          }, 500);
+
           const messageListener = (event) => {
             if (event.origin === "https://api.zoejeton.com") {
               const token = event.data.token;
