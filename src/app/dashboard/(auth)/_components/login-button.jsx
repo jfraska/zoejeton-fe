@@ -48,6 +48,14 @@ export default function LoginButton({ children, provider }) {
         },
         false
       );
+
+      popup.addEventListener(
+        "unload",
+        () => {
+          setLoading(false);
+        },
+        false
+      );
     } catch (error) {
       console.error("Login failed:", error);
     }
