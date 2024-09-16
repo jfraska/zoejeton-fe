@@ -13,20 +13,6 @@ const nextConfig = {
       { hostname: "flag.vercel.app" },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; script-src 'self' https://accounts.google.com;",
-          },
-        ],
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;

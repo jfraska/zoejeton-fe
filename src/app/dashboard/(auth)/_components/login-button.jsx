@@ -9,48 +9,45 @@ export default function LoginButton({ children, provider }) {
   const { login, loading, setLoading } = useAuth();
 
   function openOAuthPopup(url, width = 500, height = 600) {
-    const left = window.screen.width / 2 - width / 2;
-    const top = window.screen.height / 2 - height / 2;
+    const left = window.screenX + (window.outerWidth - width) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2.5;
     return window.open(
       url,
       "OAuthLogin",
-      `width=${width},height=${height},top=${top},left=${left},noopener,noreferrer`
+      `width=${width},height=${height},top=${top},left=${left},toolbar=0,scrollbars=1,status=1,resizable=0,location=1,menuBar=0`
     );
   }
 
   const handleLogin = async () => {
     try {
       const auth = await signIn(provider);
-      const redirectUrl = auth?.data?.data?.provider_redirect;
 
-      if (redirectUrl) {
-        const popup = openOAuthPopup(redirectUrl);
-        if (popup) {
-          const checkPopupClosed = setInterval(() => {
-            if (popup.closed) {
-              clearInterval(checkPopupClosed);
+      const popup = openOAuthPopup(auth?.data?.data?.provider_redirect);
+
+      const messageListener = (event) => {
+        try {
+          if (event.origin === "https://api.zoejeton.com") {
+            const token = event.data.token;
+            if (token) {
+              login(token);
               setLoading(false);
+              window.removeEventListener("message", messageListener);
             }
-          }, 500);
-
-          const messageListener = (event) => {
-            if (event.origin === "https://api.zoejeton.com") {
-              const token = event.data.token;
-              if (token) {
-                login(token);
-                setLoading(false);
-                window.removeEventListener("message", messageListener);
-              }
-            }
-          };
-
-          window.addEventListener("message", messageListener);
-        } else {
-          console.error("Popup failed to open.");
+          }
+        } catch (e) {
+          window.removeEventListener("message", messageListener);
         }
-      } else {
-        console.error("Invalid provider redirect URL.");
-      }
+      };
+
+      window.addEventListener("message", messageListener);
+
+      popup.addEventListener(
+        "beforeunload",
+        () => {
+          setLoading(false);
+        },
+        false
+      );
     } catch (error) {
       console.error("Login failed:", error);
     }
