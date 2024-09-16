@@ -42,17 +42,11 @@ export default function LoginButton({ children, provider }) {
       window.addEventListener("message", messageListener);
 
       popup.addEventListener(
-        "beforeunload",
-        () => {
-          setLoading(false);
-        },
-        false
-      );
-
-      popup.addEventListener(
         "unload",
         () => {
-          setLoading(false);
+          if (popup.closed) {
+            setLoading(false);
+          }
         },
         false
       );
