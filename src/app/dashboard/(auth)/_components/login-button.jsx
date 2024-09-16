@@ -13,7 +13,7 @@ export default function LoginButton({ children, provider }) {
     const top = window.screenY + (window.outerHeight - height) / 2.5;
     return window.open(
       url,
-      "OAuthLogin",
+      "_blank",
       `width=${width},height=${height},top=${top},left=${left},toolbar=0,scrollbars=1,status=1,resizable=0,location=1,menuBar=0`
     );
   }
@@ -23,6 +23,13 @@ export default function LoginButton({ children, provider }) {
       const auth = await signIn(provider);
 
       const popup = openOAuthPopup(auth?.data?.data?.provider_redirect);
+
+      const checkPopupClosed = setInterval(() => {
+        if (popup.closed) {
+          clearInterval(checkPopupClosed);
+          setLoading(false);
+        }
+      }, 500);
 
       const messageListener = (event) => {
         try {
@@ -40,16 +47,6 @@ export default function LoginButton({ children, provider }) {
       };
 
       window.addEventListener("message", messageListener);
-
-      popup.addEventListener(
-        "unload",
-        () => {
-          if (popup.closed) {
-            setLoading(false);
-          }
-        },
-        false
-      );
     } catch (error) {
       console.error("Login failed:", error);
     }
