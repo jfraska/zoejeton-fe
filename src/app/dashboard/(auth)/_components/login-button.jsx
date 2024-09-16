@@ -13,7 +13,7 @@ export default function LoginButton({ children, provider }) {
     const top = window.screenY + (window.outerHeight - height) / 2.5;
     return window.open(
       url,
-      "_self",
+      "_parent",
       `width=${width},height=${height},top=${top},left=${left},toolbar=0,scrollbars=1,status=1,resizable=0,location=1,menuBar=0`
     );
   }
