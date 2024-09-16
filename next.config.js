@@ -19,8 +19,9 @@ const nextConfig = {
         source: "/(.*)",
         headers: [
           {
-            key: "Cross-Origin-Opener-Policy",
-            value: "unsafe-none",
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; script-src 'self' https://accounts.google.com;",
           },
         ],
       },
