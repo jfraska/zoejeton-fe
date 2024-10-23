@@ -59,7 +59,7 @@ export default function LoginButton({ children, provider }) {
       disabled={loading}
       onClick={() => {
         // handleLogin();
-        onClick();
+        onClick(provider);
         setLoading(true);
       }}
       className={`${

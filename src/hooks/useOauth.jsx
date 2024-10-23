@@ -1,4 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+"use client";
+
+import { signIn } from "@/services/auth-service";
+import { useEffect, useState, useRef } from "react";
 
 const createPopup = ({ url, title = "", height = 500, width = 500 }) => {
   const left = window.screenX + (window.outerWidth - width) / 2;
@@ -18,7 +21,7 @@ const useOauth = () => {
     window.clearInterval(intervalRef.current);
   };
 
-  const onClick = async () => {
+  const onClick = async (provider) => {
     try {
       const auth = await signIn(provider);
 

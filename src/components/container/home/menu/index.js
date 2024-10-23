@@ -5,6 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { navLinks } from "@/constant";
 import { useRouter } from "next/navigation";
+import { getUrl } from "@/lib/utils";
 
 export default function Menu({ state, setState }) {
   const router = useRouter();
@@ -77,16 +78,7 @@ export default function Menu({ state, setState }) {
 
         <div className="flex flex-col h-full justify-between items-start">
           <div className="flex flex-col gap-1 items-start text-xl">
-            <button
-              onClick={() => {
-                setState(false);
-                router.push(
-                  process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `https://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                    : `http://dashboard.localhost:3000`
-                );
-              }}
-            >
+            <button onClick={() => router.push(getUrl("/", "dashboard"))}>
               Dashboard
             </button>
 
@@ -102,11 +94,7 @@ export default function Menu({ state, setState }) {
             <button
               onClick={() => {
                 setState(false);
-                router.push(
-                  process.env.NEXT_PUBLIC_ROOT_DOMAIN
-                    ? `https://guestbook.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-                    : `http://guestbook.localhost:3000`
-                );
+                router.push(getUrl("/", "guestbook"));
               }}
             >
               Guestbook
