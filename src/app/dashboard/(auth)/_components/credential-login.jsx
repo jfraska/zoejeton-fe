@@ -41,7 +41,6 @@ export default function CredentialLogin() {
       setLoading(true);
       const auth = await loginService(payload);
       await login(auth?.data?.data?.token);
-      console.log(auth);
       form.reset();
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
