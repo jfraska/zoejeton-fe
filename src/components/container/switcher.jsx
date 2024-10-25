@@ -20,7 +20,6 @@ import PortalContext from "@/context/PortalContext";
 import { Drawer, DrawerContent } from "@/components/UI/drawer";
 import { toast } from "sonner";
 import { getAllInvitation } from "@/services/invitation-service";
-import qs from "qs";
 
 export default function Switcher() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -84,18 +83,13 @@ export function ListInvitation({
   useEffect(() => {
     (async () => {
       try {
-        const params = qs.stringify(
-          {
-            filters: {
-              name: {
-                $in: "Shahin",
-              },
+        const params = {
+          filters: {
+            title: {
+              $contains: search,
             },
           },
-          {
-            encodeValuesOnly: true,
-          }
-        );
+        };
 
         const result = await getAllInvitation(params);
 

@@ -1,9 +1,9 @@
 import request from "@/lib/request";
+import qs from "qs";
 
 export function getAllInvitation(params) {
-  return request.get("/v1/invitation", {
-    params,
-  });
+  const query = qs.stringify(params, { encodeValuesOnly: true });
+  return request.get(`/v1/invitation?${query}`);
 }
 
 export function createInvitation(data) {

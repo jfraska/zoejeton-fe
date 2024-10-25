@@ -10,9 +10,10 @@ const SessionContext = createContext();
 
 const options = {
   path: "/",
-  domain: process.env.NEXT_PUBLIC_ROOT_DOMAIN
-    ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-    : null,
+  domain:
+    process.env.NODE_ENV === "production"
+      ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+      : null,
   secure: true,
 };
 
