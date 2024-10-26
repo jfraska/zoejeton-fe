@@ -3,7 +3,7 @@ import { Section } from "@/components/container/template/wrapper-template";
 export default function Story() {
   return (
     <Section
-      className="h-fit pt-10 pb-20 px-10 bg-secondary-bg flex flex-col justify-start items-center gap-4 text-center"
+      className="h-full pt-10 pb-20 px-10 bg-secondary-bg flex flex-col justify-start items-center gap-4 text-center"
       id="love-story"
     >
       <h1 className="mb-4 text-2xl">Love Story</h1>

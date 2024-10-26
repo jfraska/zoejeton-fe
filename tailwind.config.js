@@ -5,24 +5,21 @@ const { addDynamicIconSelectors } = require("@iconify/tailwind");
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   mode: "jit",
-  darkMode: ["class"],
-  prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       fontFamily: {
         default: ["var(--font-NeueMontreal)", ...fontFamily.sans],
-        title: ["var(--font-MonumentExtended)", ...fontFamily.sans],
+        title: ["var(--font-MonumentExtended)", ...fontFamily.serif],
+
+        //template
+        body: "var(--font-body)",
+        title: "var(--font-title)",
       },
+
       aspectRatio: {
         "9/16": "9/16",
       },
+
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -70,11 +67,13 @@ module.exports = {
           foreground: "var(--popover-foreground)",
         },
       },
+
       // borderRadius: {
       //   lg: "var(--radius)",
       //   md: "calc(var(--radius) - 2px)",
       //   sm: "calc(var(--radius) - 4px)",
       // },
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -85,6 +84,7 @@ module.exports = {
           to: { height: "0" },
         },
       },
+
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",

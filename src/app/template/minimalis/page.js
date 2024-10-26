@@ -1,10 +1,7 @@
 import "./style.css";
 import { Montserrat } from "next/font/google";
 
-import {
-  Main,
-  Template,
-} from "@/components/container/template/wrapper-template";
+import { Main } from "@/components/container/template/wrapper-template";
 import LockScreen from "./_components/lockscreen";
 import Cover from "./_components/cover";
 import Music from "./_components/Music";
@@ -17,7 +14,6 @@ export default function Page() {
       <Cover />
       <Music />
       <LockScreen type="lock" />
-      <Template />
     </Main>
   );
 }

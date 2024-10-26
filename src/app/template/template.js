@@ -97,6 +97,11 @@ export default function Template({ children }) {
                 // accent
                 "--accent-bg": dataColor.value.accent,
                 "--accent-text": dataColor.value["accent-text"],
+
+                //breakpoint
+                "--mobile": isEdit ? "	640px" : "768px",
+                "--tablet": isEdit ? "	1536px" : "1024px",
+                "--desktop": isEdit ? "	1536px" : "1280px",
               },
               main: {
                 color: "var(--primary-text)",

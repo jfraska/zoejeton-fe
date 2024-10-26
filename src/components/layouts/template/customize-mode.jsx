@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import Nav from "@/components/layouts/template/nav";
 import Sidebar from "@/components/layouts/template/sidebar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/UI/tabs";
 
-export default function CustomizeMode({ children }) {
+const CustomizeMode = React.forwardRef(({ children }, ref) => {
   const [mode, setMode] = useState("mobile");
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -13,7 +13,7 @@ export default function CustomizeMode({ children }) {
       <Sidebar />
       <div className="flex flex-col bg-[#f3f3f3]">
         <Nav />
-        <main className="flex-1 flex justify-start lg:justify-center h-full p-4 overflow-hidden">
+        <div className="flex-1 flex justify-start lg:justify-center h-full p-4 overflow-hidden">
           <Tabs
             value={mode}
             onValueChange={setMode}
@@ -26,7 +26,8 @@ export default function CustomizeMode({ children }) {
               <TabsTrigger value="desktop">Desktop</TabsTrigger>
               <TabsTrigger value="mobile">Mobile</TabsTrigger>
             </TabsList>
-            <div
+            <main
+              ref={ref}
               className={`relative overflow-hidden ${
                 mode === "mobile" &&
                 isDesktop &&
@@ -40,10 +41,12 @@ export default function CustomizeMode({ children }) {
               rounded-lg border border-[#737373] bg-[#b4b4b4]`}
             >
               {children}
-            </div>
+            </main>
           </Tabs>
-        </main>
+        </div>
       </div>
     </div>
   );
-}
+});
+
+export default CustomizeMode;
