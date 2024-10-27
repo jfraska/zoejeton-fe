@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import CustomizeContext from "@/context/CustomizeContext";
 import Aos from "aos";
@@ -36,6 +36,8 @@ export function Main({ children, className }) {
 export function Template() {
   const { isEdit, dataContent, data } = useContext(CustomizeContext);
   const [pages, setPages] = useState([]);
+  const ref = useRef(null);
+  const [mainDimensions, setMainDimensions] = useState({ width: 0, height: 0 });
   const mainRef = useRef(null);
   const bnavbarRef = useRef(null);
 
@@ -69,10 +71,19 @@ export function Template() {
     }
   }, []);
 
+  useEffect(() => {
+    if (ref.current) {
+      setMainDimensions({
+        width: ref.current.clientWidth,
+        height: ref.current.clientHeight,
+      });
+    }
+  }, []);
+
   const mainOptions = {
     direction: "ttb",
     width: "100%",
-    heightRatio: 2,
+    height: `${mainDimensions.height - 55}px`,
     wheel: true,
     releaseWheel: true,
     wheelMinThreshold: 30,
@@ -81,8 +92,8 @@ export function Template() {
   };
 
   const bnavbarOptions = {
-    height: 50,
-    fixedWidth: 50,
+    fixedWidth: 70,
+    height: 55,
     pagination: false,
     arrows: false,
     focus: "center",
@@ -90,7 +101,10 @@ export function Template() {
   };
 
   return (
-    <div className={`${isEdit && "@3xl:!w-[48rem] scroll"} w-full`}>
+    <div
+      ref={ref}
+      className={`${isEdit && "@3xl:!w-[32rem] scroll"} h-full w-full`}
+    >
       {/* Main Page */}
       <Splide
         ref={mainRef}
@@ -132,7 +146,6 @@ export function Template() {
 export function Section({ children, className, id }) {
   const { dataContent, data } = useContext(CustomizeContext);
   const [background, setBackground] = useState(null);
-  const [mainDimensions, setMainDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     const section = dataContent.find((item) => item.key === id);
@@ -147,28 +160,12 @@ export function Section({ children, className, id }) {
     }
   }, [dataContent]);
 
-  useEffect(() => {
-    const mainElement = document.querySelector("main");
-    if (mainElement) {
-      setMainDimensions({
-        width: mainElement.offsetWidth,
-        height: mainElement.offsetHeight,
-      });
-    }
-  }, []);
-
   return (
     <section
       id={id}
       className={`${extractClass(className, "h-")} ${
         background && "relative"
       } w-full`}
-      // style={{
-      //   height:
-      //     extractClass(className, "h-") === "h-full"
-      //       ? `${mainDimensions.height}px`
-      //       : null,
-      // }}
     >
       {background && (
         <Image
@@ -328,3 +325,33 @@ export function Floating({ children, className, id }) {
     </div>
   );
 }
+
+const BottomNavbar = React.forwardRef(({ className, items }, ref) => {
+  const bnavbarOptions = {
+    height: 50,
+    fixedWidth: 50,
+    pagination: false,
+    arrows: false,
+    focus: "center",
+    isNavigation: true,
+  };
+
+  return (
+    <Splide
+      ref={ref}
+      options={bnavbarOptions}
+      hasTrack={false}
+      aria-label="bottom-navbar"
+      className={`!sticky bottom-0 w-full inset-x-0 bg-white text-black z-10`}
+    >
+      <SplideTrack>
+        {items.map(
+          (data, index) =>
+            data && <SplideSlide key={index}>{data.key}</SplideSlide>
+        )}
+      </SplideTrack>
+    </Splide>
+  );
+});
+
+export { BottomNavbar };
