@@ -6,7 +6,7 @@ import ButtonAction from "@/components/container/template/button-action";
 import CustomizeMode from "@/components/layouts/template/customize-mode";
 import useCustomize from "@/hooks/useCustomize";
 
-export default function Customize({ children }) {
+export default function Template({ children }) {
   const { loading, isEdit, dataColor } = useCustomize();
 
   return (

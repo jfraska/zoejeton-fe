@@ -115,7 +115,7 @@ export default function Sidebar() {
               <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary">
                 <Image
                   src={
-                    session?.user.image ??
+                    session?.user.linked_social_accounts[0]?.avatar ??
                     `https://avatar.vercel.sh/${session?.user.email}`
                   }
                   width={40}

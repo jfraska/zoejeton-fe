@@ -3,6 +3,7 @@ import PortalContext from "@/context/PortalContext";
 
 import { useContext, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { getCookie, hasCookie } from "cookies-next";
 
 const usePortal = () => {
   const router = useRouter();

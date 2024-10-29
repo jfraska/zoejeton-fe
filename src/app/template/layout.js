@@ -1,7 +1,6 @@
 import { headers } from "next/headers";
 import { CustomizeProvider } from "@/context/CustomizeContext";
 import Loading from "./loading";
-import Customize from "@/components/layouts/template/customize";
 import TemplateService from "@/services/template-service";
 
 export async function generateMetadata() {
@@ -45,7 +44,7 @@ export default function TemplateLayout({ children }) {
   return (
     <CustomizeProvider>
       <Loading />
-      <Customize>{children}</Customize>
+      {children}
     </CustomizeProvider>
   );
 }

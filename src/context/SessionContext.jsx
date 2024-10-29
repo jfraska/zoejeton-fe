@@ -24,11 +24,17 @@ export const SessionProvider = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    const token = hasCookie("client");
-    if (token) {
-      const auth = getSession();
-      setSession(auth.data);
-    }
+    (async () => {
+      try {
+        const token = hasCookie("client");
+        if (token) {
+          const auth = await getSession();
+          setSession(auth.data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    })();
   }, []);
 
   const login = (token) => {

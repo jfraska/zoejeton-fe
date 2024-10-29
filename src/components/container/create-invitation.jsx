@@ -27,6 +27,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { generateSlug } from "@/lib/utils";
 import PortalContext from "@/context/PortalContext";
+import InvitationService from "@/services/invitation-service";
 
 const formSchema = z.object({
   title: z
@@ -57,8 +58,6 @@ export default function CreateInvitation() {
         ...e,
       };
 
-      console.log(e);
-
       // if (template) {
       //   data = {
       //     ...data,
@@ -71,21 +70,13 @@ export default function CreateInvitation() {
       //   };
       // }
 
-      const res = await fetch("/api/invitation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await InvitationService.createInvitation(data);
 
-      if (!res.ok) {
+      if (!res.success) {
         throw new Error(res);
       }
 
-      const result = await res.json();
-
-      updateInvitation(result.data);
+      updateInvitation(res.data);
       setStateCreateInvitation(false);
       form.reset();
     } catch (error) {
@@ -138,9 +129,7 @@ export default function CreateInvitation() {
                           className="focus-visible:ring-0 focus-visible:ring-offset-0"
                         />
                         <div className="flex items-center rounded-r-lg border border-l-0 border-stone-200 bg-stone-100 px-3 text-sm dark:border-stone-600 dark:bg-stone-800 dark:text-stone-400">
-                          .
-                          {process.env.NEXT_PUBLIC_ROOT_DOMAIN ??
-                            "localhost:3000"}
+                          .{process.env.NEXT_PUBLIC_ROOT_DOMAIN}
                         </div>
                       </div>
                     </FormControl>

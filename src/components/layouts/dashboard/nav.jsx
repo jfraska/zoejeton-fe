@@ -41,8 +41,6 @@ export default function Nav() {
   const [openProfile, setOpenProfile] = useState(false);
   const { invitation, setStateSwitcher } = useContext(PortalContext);
 
-  console.log(session);
-
   const tabs = useMemo(() => {
     return [
       {
@@ -136,7 +134,7 @@ export default function Nav() {
                 <button className="flex w-full items-center gap-3 rounded-lg p-2 text-muted-foreground transition-all hover:text-primary">
                   <Image
                     src={
-                      session?.user.linked_social_accounts[0].avatar ??
+                      session?.user.linked_social_accounts[0]?.avatar ??
                       `https://avatar.vercel.sh/${session?.user.email}`
                     }
                     width={40}
