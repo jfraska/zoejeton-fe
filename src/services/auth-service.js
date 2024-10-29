@@ -18,7 +18,7 @@ export async function getSession(req, res) {
   }
 
   try {
-    const res = request.get(`/auth/check`, { headers });
+    const res = await request.get(`/auth/check`, { headers });
 
     if (!res.success) {
       return null;

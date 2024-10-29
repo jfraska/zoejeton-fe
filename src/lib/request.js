@@ -42,7 +42,7 @@ REQUEST.interceptors.response.use(
     const message = error.response?.data?.message || fallbackMessage;
     const validationErrors = error.response?.data?.errors || {};
 
-    console.error("Response error:", error);
+    // console.error("Response error:", error);
 
     return Promise.reject({
       success: false,
