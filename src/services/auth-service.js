@@ -18,12 +18,13 @@ export async function getSession(req, res) {
   }
 
   try {
-    const res = await request({
-      url: `/auth/check`,
-      method: "GET",
-      headers,
-    });
-    return res.data;
+    const res = request.get(`/auth/check`, { headers });
+
+    if (!res.success) {
+      return null;
+    }
+
+    return res;
   } catch (e) {
     return null;
   }

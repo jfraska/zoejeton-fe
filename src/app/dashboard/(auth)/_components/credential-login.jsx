@@ -40,7 +40,7 @@ export default function CredentialLogin() {
     try {
       setLoading(true);
       const auth = await loginService(payload);
-      await login(auth?.data?.data?.token);
+      await login(auth?.data?.token);
       form.reset();
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);

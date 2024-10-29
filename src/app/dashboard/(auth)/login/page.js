@@ -1,6 +1,5 @@
 import LoginButton from "../_components/login-button";
 import { Suspense } from "react";
-import { Button } from "@/components/UI/button";
 import Link from "next/link";
 import CredentialLogin from "../_components/credential-login";
 

@@ -19,7 +19,7 @@ import {
 import PortalContext from "@/context/PortalContext";
 import { Drawer, DrawerContent } from "@/components/UI/drawer";
 import { toast } from "sonner";
-import { getAllInvitation } from "@/services/invitation-service";
+import InvitationService from "@/services/invitation-service";
 
 export default function Switcher() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -91,15 +91,15 @@ export function ListInvitation({
           },
         };
 
-        const result = await getAllInvitation(params);
+        const result = await InvitationService.getAllInvitation(params);
 
-        if (result.data.data < 1) {
+        if (result.data < 1) {
           create(true);
           setStateSwitcher(false);
           return;
         }
 
-        setDataInvitation(result.data.data);
+        setDataInvitation(result.data);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {

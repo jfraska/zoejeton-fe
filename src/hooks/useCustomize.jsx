@@ -1,36 +1,55 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import useSWR from "swr";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import PortalContext from "@/context/PortalContext";
 import TemplateService from "@/services/template-service";
+import CustomizeContext from "@/context/CustomizeContext";
 
-export default function useCustomize() {
+const useCustomize = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [loading, setLoading] = useState(true);
 
-  const { data, error, isLoading } = useSWR(
-    pathname && `/api/template${pathname}`,
-    () => pathname && TemplateService.showTemplate
-  );
+  const {
+    initData,
+    data,
+    setData,
+    dataContent,
+    setDataContent,
+    dataColor,
+    setDataColor,
+    dataGuest,
+    setDataGuest,
+    isEdit,
+    setIsEdit,
+    saveDraftContent,
+    deleteDraftContent,
+  } = useContext(CustomizeContext);
 
   const { invitation, updateInvitation, setStateSwitcher } =
     useContext(PortalContext);
 
   useEffect(() => {
+    if (searchParams.has("customize")) {
+      setIsEdit(true);
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
     (async () => {
       try {
-        let res = await fetch(`/api/template${pathname}`).then((res) =>
-          res.json()
-        );
+        const res = await TemplateService.showTemplate(pathname);
+
+        let template = res.data;
 
         const local = localStorage?.getItem("template")
           ? JSON.parse(localStorage.getItem("template"))
           : null;
 
         if (local) {
-          res.data = {
-            ...res.data,
+          template = {
+            ...res.data.data,
             ...local,
           };
           deleteDraftContent();
@@ -59,7 +78,7 @@ export default function useCustomize() {
         //   }
         // }
 
-        initData(res.data);
+        initData(template);
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
@@ -67,4 +86,23 @@ export default function useCustomize() {
       }
     })();
   }, [invitation]);
-}
+
+  return {
+    loading,
+    initData,
+    data,
+    setData,
+    dataContent,
+    setDataContent,
+    dataColor,
+    setDataColor,
+    dataGuest,
+    setDataGuest,
+    isEdit,
+    setIsEdit,
+    saveDraftContent,
+    deleteDraftContent,
+  };
+};
+
+export default useCustomize;

@@ -24,7 +24,7 @@ export default function LoginButton({ children, provider }) {
     try {
       const auth = await signIn(provider);
 
-      const popup = openOAuthPopup(auth?.data?.data?.provider_redirect);
+      const popup = openOAuthPopup(auth?.data?.provider_redirect);
 
       const checkPopupClosed = setInterval(() => {
         if (popup.closed) {

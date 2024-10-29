@@ -10,8 +10,8 @@ const createTemplate = (data) => {
   return request.post("/v1/template", data);
 };
 
-const showTemplate = (slug, params) => {
-  return request.get(`/v1/template/${slug}`, { params });
+const showTemplate = (slug) => {
+  return request.get(`/v1/template${slug}`);
 };
 
 const updateTemplate = (data) => {

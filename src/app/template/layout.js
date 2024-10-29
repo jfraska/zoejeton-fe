@@ -1,23 +1,16 @@
 import { headers } from "next/headers";
 import { CustomizeProvider } from "@/context/CustomizeContext";
 import Loading from "./loading";
-import { getUrl } from "@/lib/utils";
+import Customize from "@/components/layouts/template/customize";
+import TemplateService from "@/services/template-service";
 
 export async function generateMetadata() {
   const pathname = headers().get("pathname");
-  const url = getUrl(`/api/template/${pathname}`);
 
   try {
-    const res = await fetch(`/api/template/${pathname}`);
+    const res = await TemplateService.showTemplate(pathname);
 
-    if (!res.ok) {
-      console.error(`HTTP error! Status: ${response.status}`);
-      return null;
-    }
-
-    const data = await res.json();
-
-    const { title, description, thumbnail } = data.data;
+    const { title, description, thumbnail } = res.data;
 
     return {
       title: `${title} | ZoeJeton`,
@@ -51,7 +44,8 @@ export async function generateMetadata() {
 export default function TemplateLayout({ children }) {
   return (
     <CustomizeProvider>
-      <Loading>{children}</Loading>
+      <Loading />
+      <Customize>{children}</Customize>
     </CustomizeProvider>
   );
 }

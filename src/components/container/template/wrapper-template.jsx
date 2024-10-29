@@ -14,11 +14,6 @@ import "@splidejs/react-splide/css/core";
 export function Main({ children, className }) {
   const { isEdit } = useContext(CustomizeContext);
 
-  useEffect(() => {
-    Aos.init({ disable: isEdit });
-    Aos.refreshHard();
-  }, [isEdit]);
-
   return (
     <div
       className={`${className} ${
@@ -34,12 +29,9 @@ export function Main({ children, className }) {
 }
 
 export function Template() {
+  const ref = useRef(null);
   const { isEdit, dataContent, data } = useContext(CustomizeContext);
   const [pages, setPages] = useState([]);
-  const ref = useRef(null);
-  const [mainDimensions, setMainDimensions] = useState({ width: 0, height: 0 });
-  const mainRef = useRef(null);
-  const bnavbarRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -63,83 +55,21 @@ export function Template() {
       );
       setPages(loadedPages);
     })();
-  }, [dataContent]);
-
-  useEffect(() => {
-    if (mainRef.current && bnavbarRef.current && bnavbarRef.current.splide) {
-      mainRef.current.sync(bnavbarRef.current.splide);
-    }
   }, []);
-
-  useEffect(() => {
-    if (ref.current) {
-      setMainDimensions({
-        width: ref.current.clientWidth,
-        height: ref.current.clientHeight,
-      });
-    }
-  }, []);
-
-  const mainOptions = {
-    direction: "ttb",
-    width: "100%",
-    height: `${mainDimensions.height - 55}px`,
-    wheel: true,
-    releaseWheel: true,
-    wheelMinThreshold: 30,
-    pagination: false,
-    arrows: false,
-  };
-
-  const bnavbarOptions = {
-    fixedWidth: 70,
-    height: 55,
-    pagination: false,
-    arrows: false,
-    focus: "center",
-    isNavigation: true,
-  };
 
   return (
-    <div
-      ref={ref}
-      className={`${isEdit && "@3xl:!w-[32rem] scroll"} h-full w-full`}
-    >
-      {/* Main Page */}
-      <Splide
-        ref={mainRef}
-        options={mainOptions}
-        hasTrack={false}
-        aria-label="main"
-      >
-        <SplideTrack>
-          {pages.map(
-            (PageComponent, index) =>
-              PageComponent && (
-                <SplideSlide key={index}>
-                  <PageComponent />
-                </SplideSlide>
-              )
-          )}
-        </SplideTrack>
-      </Splide>
-
-      {/* Bottom Navbar */}
-      <Splide
-        ref={bnavbarRef}
-        options={bnavbarOptions}
-        hasTrack={false}
-        aria-label="bottom-navbar"
-        className={`!sticky bottom-0 w-full inset-x-0 bg-white text-black z-10`}
-      >
-        <SplideTrack>
-          {dataContent.map(
-            (data, index) =>
-              data && <SplideSlide key={index}>{data.key}</SplideSlide>
-          )}
-        </SplideTrack>
-      </Splide>
-    </div>
+    <>
+      {data?.type === "slide" ? (
+        <Slide
+          ref={ref}
+          isEdit={isEdit}
+          pages={pages}
+          dataContent={dataContent}
+        />
+      ) : (
+        <Scroll ref={ref} isEdit={isEdit} pages={pages} />
+      )}
+    </>
   );
 }
 
@@ -326,10 +256,40 @@ export function Floating({ children, className, id }) {
   );
 }
 
-const BottomNavbar = React.forwardRef(({ className, items }, ref) => {
+const Slide = React.forwardRef(({ pages, dataContent, isEdit }, ref) => {
+  const [mainDimensions, setMainDimensions] = useState({ width: 0, height: 0 });
+  const mainRef = useRef(null);
+  const bnavbarRef = useRef(null);
+
+  useEffect(() => {
+    if (mainRef.current && bnavbarRef.current && bnavbarRef.current.splide) {
+      mainRef.current.sync(bnavbarRef.current.splide);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (ref.current) {
+      setMainDimensions({
+        width: ref.current.clientWidth,
+        height: ref.current.clientHeight,
+      });
+    }
+  }, []);
+
+  const mainOptions = {
+    direction: "ttb",
+    width: "100%",
+    height: `${mainDimensions.height - 55}px`,
+    wheel: true,
+    releaseWheel: true,
+    wheelMinThreshold: 30,
+    pagination: false,
+    arrows: false,
+  };
+
   const bnavbarOptions = {
-    height: 50,
-    fixedWidth: 50,
+    fixedWidth: 70,
+    height: 55,
     pagination: false,
     arrows: false,
     focus: "center",
@@ -337,21 +297,64 @@ const BottomNavbar = React.forwardRef(({ className, items }, ref) => {
   };
 
   return (
-    <Splide
+    <div
       ref={ref}
-      options={bnavbarOptions}
-      hasTrack={false}
-      aria-label="bottom-navbar"
-      className={`!sticky bottom-0 w-full inset-x-0 bg-white text-black z-10`}
+      className={`${isEdit && "@3xl:!w-[32rem] scroll"} h-full w-full`}
     >
-      <SplideTrack>
-        {items.map(
-          (data, index) =>
-            data && <SplideSlide key={index}>{data.key}</SplideSlide>
-        )}
-      </SplideTrack>
-    </Splide>
+      {/* Main Page */}
+      <Splide
+        ref={mainRef}
+        options={mainOptions}
+        hasTrack={false}
+        aria-label="main"
+      >
+        <SplideTrack>
+          {pages.map(
+            (PageComponent, index) =>
+              PageComponent && (
+                <SplideSlide key={index}>
+                  <PageComponent />
+                </SplideSlide>
+              )
+          )}
+        </SplideTrack>
+      </Splide>
+
+      {/* Bottom Navbar */}
+      <Splide
+        ref={bnavbarRef}
+        options={bnavbarOptions}
+        hasTrack={false}
+        aria-label="bottom-navbar"
+        className={`!sticky bottom-0 w-full inset-x-0 bg-white text-black z-10`}
+      >
+        <SplideTrack>
+          {dataContent.map(
+            (data, index) =>
+              data && <SplideSlide key={index}>{data.key}</SplideSlide>
+          )}
+        </SplideTrack>
+      </Splide>
+    </div>
   );
 });
 
-export { BottomNavbar };
+const Scroll = React.forwardRef(({ pages, isEdit }, ref) => {
+  useEffect(() => {
+    Aos.init({ disable: isEdit });
+    Aos.refreshHard();
+  }, [isEdit]);
+
+  return (
+    <div
+      ref={ref}
+      className={`${
+        isEdit && "@3xl:max-w-md overflow-y-auto scroll"
+      } h-full  w-full`}
+    >
+      {pages.map(
+        (PageComponent, index) => PageComponent && <PageComponent key={index} />
+      )}
+    </div>
+  );
+});

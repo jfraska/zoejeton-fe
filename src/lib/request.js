@@ -17,7 +17,7 @@ REQUEST.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.log("interceptors request error", error);
+    // console.error("interceptors request error", error);
     Promise.reject(error);
   }
 );
@@ -25,36 +25,32 @@ REQUEST.interceptors.request.use(
 // response interceptor
 REQUEST.interceptors.response.use(
   (response) => {
-    return Promise.resolve(response);
+    // return Promise.resolve(response);
+
+    return {
+      success: true,
+      data: response.data.data,
+      status: response.status,
+      message: response.data?.message || "Request successful",
+    };
+  },
+  (error) => {
+    // unformatted error data
+    const fallbackMessage = "Request failed, please try again";
+
+    const status = error.response?.status || 500;
+    const message = error.response?.data?.message || fallbackMessage;
+    const validationErrors = error.response?.data?.errors || {};
+
+    console.error("Response error:", error);
+
+    return Promise.reject({
+      success: false,
+      status,
+      message,
+      validationErrors,
+    });
   }
-  // (error) => {
-  //   // unformatted error data
-  //   console.log("interceptors response error", error);
-  //   const fallbackMessage = "Request failed, please try again";
-  //   let statusCode = 500;
-  //   let message = fallbackMessage;
-  //   let errorValidationObj = {};
-  //   if (error.response) {
-  //     console.log("interceptors response error obj", error.response);
-  //     if (error.response.data.message) {
-  //       message = error.response.data.message;
-  //     }
-  //     if (error.response.data.code) {
-  //       statusCode = error.response.data.code;
-  //     }
-  //     if (error.response.data?.errors) {
-  //       if (Object.keys(error.response.data.errors).length >= 1) {
-  //         errorValidationObj = error.response.data.errors;
-  //       }
-  //     }
-  //   }
-  //   return Promise.reject({
-  //     error,
-  //     message,
-  //     statusCode,
-  //     errorValidationObj,
-  //   });
-  // }
 );
 
 export default REQUEST;

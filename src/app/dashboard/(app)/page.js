@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
 import TemplateCard from "./_components/template-card";
 import EventCard from "./_components/event-card";
 import NotfoundDashboard from "@/components/container/dashboard/notfound-dashboard";
+import useSWR from "swr";
 
 async function getData() {
   const invitation = hasCookie("invitation", { cookies })
@@ -32,6 +33,11 @@ async function getData() {
 
 export default async function Dashboard() {
   const res = await getData();
+
+  // const { data, error, isLoading } = useSWR(
+  //   pathname,
+  //   TemplateService.showTemplate
+  // );
 
   return (
     <section className="flex h-full flex-col gap-4 lg:gap-6">

@@ -1,19 +1,15 @@
 "use client";
 
-import { createContext, useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { createContext, useState } from "react";
 
 const CustomizeContext = createContext();
 
 export const CustomizeProvider = ({ children }) => {
-  const searchParams = useSearchParams();
   const [data, setData] = useState({});
   const [dataContent, setDataContent] = useState([]);
   const [dataColor, setDataColor] = useState({});
   const [dataGuest, setDataGuest] = useState({});
-  const [isEdit, setIsEdit] = useState(
-    searchParams.has("customize") ? true : false
-  );
+  const [isEdit, setIsEdit] = useState(false);
 
   const saveDraftContent = () => {
     localStorage.setItem(
@@ -21,7 +17,7 @@ export const CustomizeProvider = ({ children }) => {
       JSON.stringify({
         ...data,
         content: dataContent,
-        color: [dataColor, ...data.color],
+        color: dataColor,
       })
     );
   };
@@ -37,27 +33,25 @@ export const CustomizeProvider = ({ children }) => {
   };
 
   return (
-    <Suspense>
-      <CustomizeContext.Provider
-        value={{
-          initData,
-          data,
-          setData,
-          dataContent,
-          setDataContent,
-          dataColor,
-          setDataColor,
-          dataGuest,
-          setDataGuest,
-          isEdit,
-          setIsEdit,
-          saveDraftContent,
-          deleteDraftContent,
-        }}
-      >
-        {children}
-      </CustomizeContext.Provider>
-    </Suspense>
+    <CustomizeContext.Provider
+      value={{
+        initData,
+        data,
+        setData,
+        dataContent,
+        setDataContent,
+        dataColor,
+        setDataColor,
+        dataGuest,
+        setDataGuest,
+        isEdit,
+        setIsEdit,
+        saveDraftContent,
+        deleteDraftContent,
+      }}
+    >
+      {children}
+    </CustomizeContext.Provider>
   );
 };
 
