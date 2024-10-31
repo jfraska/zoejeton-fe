@@ -32,7 +32,7 @@ export default function Beranda() {
         </h3>
       </div>
       <div className={`${Runalto.className} absolute bottom-[20%] inset-x-10`}>
-        <Editable type="date" field="akad" subfield="date" section="event">
+        <Editable type="date" field="date" section="live-streaming">
           <CountDown />
         </Editable>
       </div>

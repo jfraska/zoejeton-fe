@@ -1,20 +1,20 @@
 import "./style.css";
-import { Montserrat } from "next/font/google";
+import { Catamaran } from "next/font/google";
 
-import LockScreen from "./_components/LockScreen";
+import Lockscreen from "./_components/lockscreen";
 import Cover from "./_components/Cover";
 
 import Music from "./_components/Music";
 import { Main } from "@/components/container/template/wrapper-template";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const catamaran = Catamaran({ subsets: ["latin"] });
 
 export default function Page() {
   return (
-    <Main className={`${montserrat.className}`}>
+    <Main className={`${catamaran.className}`}>
       <Cover />
       <Music />
-      <LockScreen type="lock" />
+      <Lockscreen type="lock" />
     </Main>
   );
 }

@@ -5,9 +5,12 @@ import { GlobalStyles } from "@mui/material";
 import ButtonAction from "@/components/container/template/button-action";
 import CustomizeMode from "@/components/layouts/template/customize-mode";
 import useCustomize from "@/hooks/useCustomize";
+import { usePathname } from "next/navigation";
 
 export default function Template({ children }) {
-  const { loading, isEdit, dataColor } = useCustomize();
+  const pathname = usePathname();
+
+  const { loading, isEdit, dataColor } = useCustomize(pathname);
 
   return (
     <>

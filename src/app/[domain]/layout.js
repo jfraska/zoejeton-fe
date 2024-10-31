@@ -1,5 +1,6 @@
 import { CustomizeProvider } from "@/context/CustomizeContext";
 import { notFound } from "next/navigation";
+import TemplateService from "@/services/template-service";
 
 export async function generateMetadata({ params }) {
   const domain = decodeURIComponent(params.domain);
@@ -7,23 +8,16 @@ export async function generateMetadata({ params }) {
     ? domain.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
     : null;
 
-  const res = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_ROOT_DOMAIN
-        ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-        : "http://localhost:3000"
-    }/api/template/${subdomain}`
-  );
+  const res = await TemplateService.showTemplate(`/${subdomain}`);
 
-  if (!res.ok) {
+  if (!res.success) {
     return notFound();
   }
 
-  const result = await res.json();
-  const { title, description, thumbnail } = result.data;
+  const { title, description, thumbnail } = res.data;
 
   return {
-    title,
+    title: `${title} | ZoeJeton`,
     description,
     openGraph: {
       title,
@@ -39,6 +33,7 @@ export async function generateMetadata({ params }) {
     },
     // icons: [logo],
     metadataBase: new URL(`https://${domain}`),
+
     // Optional: Set canonical URL to custom domain if it exists
     // ...(params.domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) &&
     //   data.customDomain && {
