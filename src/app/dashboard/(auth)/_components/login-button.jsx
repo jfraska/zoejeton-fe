@@ -5,17 +5,7 @@ import LoadingDots from "@/components/icons/loading-dots";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function LoginButton({ children, provider }) {
-  const { login, loading, setLoading } = useAuth();
-
-  function openOAuthPopup(url, width = 500, height = 600) {
-    const left = window.screenX + (window.outerWidth - width) / 2;
-    const top = window.screenY + (window.outerHeight - height) / 2.5;
-    return window.open(
-      url,
-      "Oauth Login",
-      `width=${width},height=${height},top=${top},left=${left},toolbar=0,scrollbars=1,status=1,resizable=0,location=1,menuBar=0`
-    );
-  }
+  const { loading, setLoading } = useAuth();
 
   const handleLogin = async () => {
     try {

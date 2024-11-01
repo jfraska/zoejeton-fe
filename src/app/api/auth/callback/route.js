@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { getUrl } from "@/lib/utils";
 import { setCookie } from "cookies-next";
 
@@ -16,7 +17,11 @@ export async function GET(res) {
   const state = searchParams.get("state");
 
   if (token) {
-    setCookie("client", token, options);
+    setCookie("client", token, {
+      ...options,
+      req: request,
+      res: NextResponse.next(),
+    });
 
     return new Response(null, {
       status: 302,
