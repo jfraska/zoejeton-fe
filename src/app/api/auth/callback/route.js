@@ -1,6 +1,3 @@
-import { NextResponse } from "next/server";
-import { getUrl } from "@/lib/utils";
-
 const options = {
   path: "/",
   domain:
@@ -10,21 +7,28 @@ const options = {
   secure: process.env.NODE_ENV === "production",
 };
 
-export async function GET(request) {
+export function GET(request) {
   const { searchParams } = new URL(request.url);
   const token = searchParams.get("access_token");
-  const state = searchParams.get("state");
 
   if (token) {
     const cookieValue = `client=${token}; Path=${options.path}; ${
       options.domain ? `Domain=${options.domain}; ` : ""
-    }${options.secure ? "Secure; " : ""}HttpOnly; SameSite=Strict`;
+    }${options.secure ? "Secure; " : ""}`;
 
-    const response = NextResponse.redirect(getUrl("/", state));
-    response.headers.set("Set-Cookie", cookieValue);
-
-    return response;
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: "/",
+        "Set-Cookie": cookieValue,
+      },
+    });
   } else {
-    return NextResponse.redirect(getUrl("/login", state));
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: "/login",
+      },
+    });
   }
 }

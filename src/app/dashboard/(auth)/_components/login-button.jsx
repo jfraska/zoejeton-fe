@@ -9,7 +9,10 @@ export default function LoginButton({ children, provider }) {
 
   const handleLogin = async () => {
     try {
-      const auth = await signIn(provider, "dashboard");
+      const auth = await signIn(
+        provider,
+        `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+      );
       window.location.href = auth?.data?.provider_redirect;
     } catch (error) {
       console.error("Login failed:", error);
