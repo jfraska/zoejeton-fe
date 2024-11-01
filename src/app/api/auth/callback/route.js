@@ -1,14 +1,13 @@
 import { NextResponse } from "next/server";
 import { getUrl } from "@/lib/utils";
-import { setCookie } from "cookies-next";
 
 const options = {
   path: "/",
   domain:
     process.env.NODE_ENV === "production"
       ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-      : null,
-  secure: true,
+      : undefined,
+  secure: process.env.NODE_ENV === "production",
 };
 
 export async function GET(request) {
@@ -17,22 +16,15 @@ export async function GET(request) {
   const state = searchParams.get("state");
 
   if (token) {
-    setCookie("client", token, {
-      ...options,
-      req: request,
-      res: NextResponse.next(),
-    });
+    const cookieValue = `client=${token}; Path=${options.path}; ${
+      options.domain ? `Domain=${options.domain}; ` : ""
+    }${options.secure ? "Secure; " : ""}HttpOnly; SameSite=Strict`;
 
-    return new Response(null, {
-      status: 302,
-      headers: {
-        Location: getUrl("/", state),
-      },
-    });
+    const response = NextResponse.redirect(getUrl("/", state));
+    response.headers.set("Set-Cookie", cookieValue);
+
+    return response;
   } else {
-    return new Response(null, {
-      status: 302,
-      headers: { Location: getUrl("/login", state) },
-    });
+    return NextResponse.redirect(getUrl("/login", state));
   }
 }
