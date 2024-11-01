@@ -43,6 +43,7 @@ export default function LockScreen({ type, id }) {
 
         {type === "lock" && (
           <button
+            id="open"
             onClick={() => setState(true)}
             className="relative rounded-full p-2 w-full bg-white text-black flex justify-between items-center backdrop-filter backdrop-blur-md bg-opacity-50 mt-5"
           >
