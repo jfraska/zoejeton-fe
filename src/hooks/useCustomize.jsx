@@ -1,13 +1,14 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import PortalContext from "@/context/PortalContext";
 import TemplateService from "@/services/template-service";
 import CustomizeContext from "@/context/CustomizeContext";
 
-const useCustomize = (pathname) => {
+const useCustomize = () => {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const [loading, setLoading] = useState(true);
 
   const {

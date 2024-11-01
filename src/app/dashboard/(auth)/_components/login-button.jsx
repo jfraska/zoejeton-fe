@@ -14,6 +14,8 @@ export default function LoginButton({ children, provider }) {
         `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
       );
       window.location.href = auth?.data?.provider_redirect;
+
+      setLoading(false);
     } catch (error) {
       console.error("Login failed:", error);
     }

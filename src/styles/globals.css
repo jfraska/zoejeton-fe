@@ -33,6 +33,10 @@
 
 @tailwind components;
 @layer components {
+  .no-scroll {
+    overflow: hidden;
+  }
+
   @screen md {
     .scroll::-webkit-scrollbar {
       width: 5px;

@@ -2,7 +2,7 @@ import "./style.css";
 import { Catamaran } from "next/font/google";
 
 import Lockscreen from "./_components/lockscreen";
-import Cover from "./_components/Cover";
+import Cover from "./_components/cover";
 
 import Music from "./_components/Music";
 import { Main } from "@/components/container/template/wrapper-template";

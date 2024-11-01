@@ -36,7 +36,7 @@ export default function Music() {
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, audioRef]);
+  }, [isPlaying]);
 
   return (
     <Floating className="bottom-5 left-5 z-40 w-12 aspect-square border-none rounded-full bg-white backdrop-filter backdrop-blur-md bg-opacity-70 shadow-md">

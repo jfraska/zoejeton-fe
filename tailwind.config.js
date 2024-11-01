@@ -7,6 +7,7 @@ module.exports = {
   mode: "jit",
   darkMode: ["class"],
   prefix: "",
+
   theme: {
     extend: {
       fontFamily: {
@@ -69,12 +70,6 @@ module.exports = {
           foreground: "var(--popover-foreground)",
         },
       },
-
-      // borderRadius: {
-      //   lg: "var(--radius)",
-      //   md: "calc(var(--radius) - 2px)",
-      //   sm: "calc(var(--radius) - 4px)",
-      // },
 
       keyframes: {
         "accordion-down": {

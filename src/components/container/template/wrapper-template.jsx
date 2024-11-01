@@ -14,6 +14,45 @@ import "@splidejs/react-splide/css/core";
 export function Main({ children, className }) {
   const { isEdit } = useContext(CustomizeContext);
 
+  useEffect(() => {
+    document.body.classList.add("no-scroll");
+
+    function fullscreenAndScroll() {
+      document.body.classList.remove("no-scroll");
+
+      const element = document.documentElement; // Ganti ini jika Anda ingin elemen lain
+
+      if (element.requestFullscreen) {
+        element.requestFullscreen().catch((err) => {
+          console.error("Error attempting to enable full-screen mode:", err);
+        });
+      } else if (element.mozRequestFullScreen) {
+        // Firefox
+        element.mozRequestFullScreen().catch((err) => {
+          console.error("Error attempting to enable full-screen mode:", err);
+        });
+      } else if (element.webkitRequestFullscreen) {
+        // Safari
+        element.webkitRequestFullscreen().catch((err) => {
+          console.error("Error attempting to enable full-screen mode:", err);
+        });
+      } else if (element.msRequestFullscreen) {
+        // IE/Edge
+        element.msRequestFullscreen().catch((err) => {
+          console.error("Error attempting to enable full-screen mode:", err);
+        });
+      }
+    }
+
+    const lockButton = document.getElementById("open");
+
+    lockButton.addEventListener("click", fullscreenAndScroll);
+
+    return () => {
+      lockButton.removeEventListener("click", fullscreenAndScroll);
+    };
+  }, []);
+
   return (
     <div
       className={`${className} ${
