@@ -5,8 +5,8 @@ export function login(data) {
   return request.post("/login", data);
 }
 
-export function signIn(provider) {
-  return request.get(`/auth/redirect/${provider}`);
+export function signIn(provider, state) {
+  return request.get(`/auth/redirect/${provider}?state=${state}`);
 }
 
 export async function getSession(req, res) {
