@@ -11,8 +11,8 @@ const options = {
   secure: true,
 };
 
-export async function GET(res) {
-  const { searchParams } = new URL(res.url);
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
   const token = searchParams.get("access_token");
   const state = searchParams.get("state");
 
