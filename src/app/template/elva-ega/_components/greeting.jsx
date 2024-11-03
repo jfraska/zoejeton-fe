@@ -20,7 +20,9 @@ export default function Beranda() {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
-        <h2 className={`${Selina.className} text-6xl my-8`}>Elva & Ega</h2>
+        <h2 className={`${Selina.className} text-6xl font-medium my-8`}>
+          Elva & Ega
+        </h2>
         <p className="text-center">
           Glory be to Allah who has created humans in pairs. By asking for the
           Grace and Ridho of Allah SWT, we intend to invite you to our wedding

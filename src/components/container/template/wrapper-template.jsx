@@ -20,27 +20,29 @@ export function Main({ children, className }) {
     function fullscreenAndScroll() {
       document.body.classList.remove("no-scroll");
 
-      const element = document.documentElement; // Ganti ini jika Anda ingin elemen lain
+      const element = document.documentElement;
 
-      if (element.requestFullscreen) {
-        element.requestFullscreen().catch((err) => {
-          console.error("Error attempting to enable full-screen mode:", err);
-        });
-      } else if (element.mozRequestFullScreen) {
-        // Firefox
-        element.mozRequestFullScreen().catch((err) => {
-          console.error("Error attempting to enable full-screen mode:", err);
-        });
-      } else if (element.webkitRequestFullscreen) {
-        // Safari
-        element.webkitRequestFullscreen().catch((err) => {
-          console.error("Error attempting to enable full-screen mode:", err);
-        });
-      } else if (element.msRequestFullscreen) {
-        // IE/Edge
-        element.msRequestFullscreen().catch((err) => {
-          console.error("Error attempting to enable full-screen mode:", err);
-        });
+      if (!isEdit) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen().catch((err) => {
+            console.error("Error attempting to enable full-screen mode:", err);
+          });
+        } else if (element.mozRequestFullScreen) {
+          // Firefox
+          element.mozRequestFullScreen().catch((err) => {
+            console.error("Error attempting to enable full-screen mode:", err);
+          });
+        } else if (element.webkitRequestFullscreen) {
+          // Safari
+          element.webkitRequestFullscreen().catch((err) => {
+            console.error("Error attempting to enable full-screen mode:", err);
+          });
+        } else if (element.msRequestFullscreen) {
+          // IE/Edge
+          element.msRequestFullscreen().catch((err) => {
+            console.error("Error attempting to enable full-screen mode:", err);
+          });
+        }
       }
     }
 

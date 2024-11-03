@@ -4,23 +4,21 @@ import { Selina } from "@/styles/fonts";
 export default function Closing() {
   return (
     <Section
-      className="relative flex flex-col items-center justify-start h-full text-accent-text"
+      className="relative flex flex-col justify-center items-center text-secondary-text h-full"
       id="closing"
     >
-      <div
-        className="flex flex-col items-start justify-start gap-5 mt-20 w-full pl-10 pr-28"
+      <h1
         data-aos="fade-up"
         data-aos-duration="1000"
+        className={`${Selina.className} text-8xl text-left font-medium w-64`}
       >
-        <h1 className={`${Selina.className} text-6xl text-left`}>
-          Terima Kasih
-        </h1>
-        <h2>
-          Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila
-          Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada
-          kami.
-        </h2>
-      </div>
+        Terima Kasih
+      </h1>
+      <p data-aos="fade-up" data-aos-duration="1000" className="mt-2 w-64">
+        Merupakan suatu kebahagiaan dan kehormataan bagi kami, apabila
+        Bapak/Ibu/Saudara, berkenaan hadir dan memberikan do’a restu kepada
+        kami.
+      </p>
       <div className="absolute bottom-5 inset-x-0 w-full text-center">
         <a
           href="https://www.instagram.com/zoejeton"

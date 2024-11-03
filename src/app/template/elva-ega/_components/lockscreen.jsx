@@ -17,7 +17,7 @@ export default function Lockscreen({ type, id }) {
       className="flex flex-col justify-between py-16 items-center text-secondary-text"
       id={id}
     >
-      <div className="text-center w-full max-w-xs">
+      <div className="mt-10 text-center w-full max-w-xs">
         <Image
           className="w-6 aspect-square mx-auto mb-5"
           src={"/assets/icons/zoejeton-outline.svg"}
@@ -25,8 +25,13 @@ export default function Lockscreen({ type, id }) {
           height={20}
           alt="logo"
         />
-        <h2 className="uppercase mb-2">The Wedding of</h2>
-        <h1 className={`${Selina.className} text-7xl`}>Elva & Ega</h1>
+        <h2 className="uppercase mt-2">The Wedding of</h2>
+        <h1
+          className={`${Selina.className} flex flex-col text-center mt-20 text-8xl font-medium`}
+        >
+          <span>Elva</span> <span>&</span>
+          <span>Ega</span>
+        </h1>
       </div>
 
       <div className="mb-10 w-64 text-center">
