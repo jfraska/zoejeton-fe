@@ -10,7 +10,7 @@ export default function Closing() {
       <h1
         data-aos="fade-up"
         data-aos-duration="1000"
-        className={`${Selina.className} text-8xl text-left font-medium w-64`}
+        className={`${Selina.className} text-7xl text-left font-medium w-64`}
       >
         Terima Kasih
       </h1>

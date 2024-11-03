@@ -13,7 +13,7 @@ export default function Couple() {
         alt="decor bl"
         className="-z-[1] w-52 absolute top-0 left-0 transform scale-y-[-1]"
       />
-      <div className="relative w-full h-screen rounded-[100px] px-8 py-32 overflow-hidden shadow-lg">
+      <div className="relative w-full rounded-[100px] px-8 py-32 overflow-hidden shadow-lg">
         <Image
           fill
           src="/templates/elva-ega/1.jpg"
