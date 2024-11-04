@@ -2,20 +2,11 @@
 
 import { createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { deleteCookie, hasCookie, setCookie } from "cookies-next";
-import { getSession, logout as logoutService } from "@/services/auth-service";
+import AuthService from "@/services/auth-service";
 import { toast } from "sonner";
+import { createSession, deleteSession, getSession } from "@/lib/session";
 
 const SessionContext = createContext();
-
-const options = {
-  path: "/",
-  domain:
-    process.env.NODE_ENV === "production"
-      ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-      : null,
-  secure: true,
-};
 
 export const SessionProvider = ({ children }) => {
   const [session, setSession] = useState(null);
@@ -26,9 +17,9 @@ export const SessionProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const token = hasCookie("client");
+        const token = getSession();
         if (token) {
-          const auth = await getSession();
+          const auth = await AuthService.getSession();
           setSession(auth.data);
         }
       } catch (error) {
@@ -37,15 +28,15 @@ export const SessionProvider = ({ children }) => {
     })();
   }, []);
 
-  const login = (token) => {
-    setCookie("client", token, options);
+  const login = (e) => {
+    createSession(e.token, e.expires_in);
     router.push("/");
   };
 
   const logout = async () => {
     try {
-      await logoutService();
-      deleteCookie("client", options);
+      await AuthService.logout();
+      deleteSession();
       router.push("/login");
     } catch (error) {
       toast.error("Logout tidak berhasil.");

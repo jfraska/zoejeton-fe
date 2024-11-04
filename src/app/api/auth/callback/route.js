@@ -3,8 +3,10 @@ const options = {
   domain:
     process.env.NODE_ENV === "production"
       ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-      : undefined,
-  secure: process.env.NODE_ENV === "production",
+      : null,
+  secure: true,
+  httpOnly: true,
+  sameSite: "lax",
 };
 
 export function GET(request) {
@@ -12,9 +14,13 @@ export function GET(request) {
   const token = searchParams.get("access_token");
 
   if (token) {
-    const cookieValue = `client=${token}; Path=${options.path}; ${
-      options.domain ? `Domain=${options.domain}; ` : ""
-    }${options.secure ? "Secure; " : ""}`;
+    const cookieValue =
+      `session=${token}; Path=${options.path}; ` +
+      (options.domain ? `Domain=${options.domain}; ` : "") +
+      "Secure; " +
+      // "HttpOnly; " +
+      // `Expires=${expires};` +
+      `SameSite=${options.sameSite};`;
 
     return new Response(null, {
       status: 302,

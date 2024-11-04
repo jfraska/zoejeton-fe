@@ -1,15 +1,15 @@
 "use client";
 
-import { signIn } from "@/services/auth-service";
 import LoadingDots from "@/components/icons/loading-dots";
 import { useAuth } from "@/hooks/useAuth";
+import AuthService from "@/services/auth-service";
 
 export default function LoginButton({ children, provider }) {
   const { loading, setLoading } = useAuth();
 
   const handleLogin = async () => {
     try {
-      const auth = await signIn(
+      const auth = await AuthService.signIn(
         provider,
         `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
       );

@@ -2,7 +2,7 @@ import { CustomizeProvider } from "@/context/CustomizeContext";
 import { notFound } from "next/navigation";
 import TemplateService from "@/services/template-service";
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params, searchParams }, parent) {
   const domain = decodeURIComponent(params.domain);
   const subdomain = domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
     ? domain.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
@@ -16,13 +16,15 @@ export async function generateMetadata({ params }) {
 
   const { title, description, thumbnail } = res.data;
 
+  const previousImages = (await parent).openGraph?.images || [];
+
   return {
     title: `${title} | ZoeJeton`,
     description,
     openGraph: {
       title,
       description,
-      images: [thumbnail],
+      images: [thumbnail, ...previousImages],
     },
     twitter: {
       card: "summary_large_image",

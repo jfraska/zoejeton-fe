@@ -15,7 +15,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { login as loginService } from "@/services/auth-service";
+import AuthService from "@/services/auth-service";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/useAuth";
 import LoadingDots from "@/components/icons/loading-dots";
@@ -39,8 +39,8 @@ export default function CredentialLogin() {
   const onSubmit = async (payload) => {
     try {
       setLoading(true);
-      const auth = await loginService(payload);
-      await login(auth?.data?.token);
+      const auth = await AuthService.loginService(payload);
+      login(auth?.data);
       form.reset();
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);

@@ -75,10 +75,14 @@ export default function Page() {
           </LoginButton>
         </Suspense>
       </div>
-      <div className="mt-4 text-center text-sm">
-        Don&apos;t have an account?
-        <Link href="/signup" className="underline">
-          Sign up
+      <div className="mt-4 text-sm flex justify-center gap-2">
+        <h1>Belum punya akun? </h1>
+        <Link
+          href="/signup"
+          className="underline"
+          aria-label="Daftar untuk membuat akun"
+        >
+          Daftar akun
         </Link>
       </div>
     </div>

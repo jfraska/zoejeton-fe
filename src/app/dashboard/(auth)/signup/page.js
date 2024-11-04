@@ -13,9 +13,9 @@ export default function Page() {
   return (
     <div className="mx-auto grid w-[350px] gap-6">
       <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-bold">Sign up</h1>
+        <h1 className="text-3xl font-bold">Daftar Akun</h1>
         <p className="text-balance text-muted-foreground">
-          Enter your email below to login to your account
+          Masukkan email Anda di bawah ini untuk membuat akun
         </p>
       </div>
       <div className="grid gap-4">
@@ -97,9 +97,9 @@ export default function Page() {
           </LoginButton>
         </Suspense>
       </div>
-      <div className="mt-4 text-center text-sm">
-        You have an account?
-        <Link href="/login" className="underline">
+      <div className="mt-4 text-sm flex justify-center gap-2">
+        <h1>Anda sudah punya akun?</h1>
+        <Link href="/login" aria-label="Masuk akun" className="underline">
           Login
         </Link>
       </div>

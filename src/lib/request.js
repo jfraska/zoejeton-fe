@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie, hasCookie } from "cookies-next";
+import { getSession } from "./session";
 
 // create an axios instance
 const REQUEST = axios.create({
@@ -10,9 +10,9 @@ const REQUEST = axios.create({
 // request interceptor
 REQUEST.interceptors.request.use(
   (config) => {
-    if (hasCookie("client")) {
-      const tokenClient = getCookie("client");
-      config.headers.Authorization = `Bearer ${tokenClient}`;
+    const token = getSession();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },

@@ -1,6 +1,5 @@
 import { Section } from "@/components/container/template/wrapper-template";
 import { Selina, Catamaran } from "@/styles/fonts";
-import Editable from "@/components/container/template/editable";
 import Image from "next/image";
 
 export default function Galery() {
