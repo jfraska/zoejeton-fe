@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { Button } from "@/components/UI/button";
 import { Input } from "@/components/UI/input";
 import { Label } from "@/components/UI/label";
-import Link from "next/link";
 
 export const metadata = {
   title: "Sign Up | ZoeJeton",
@@ -99,9 +98,9 @@ export default function Page() {
       </div>
       <div className="mt-4 text-sm flex justify-center gap-2">
         <h1>Anda sudah punya akun?</h1>
-        <Link href="/login" aria-label="Masuk akun" className="underline">
+        <a href="/login" aria-label="Masuk akun" className="underline">
           Login
-        </Link>
+        </a>
       </div>
     </div>
   );

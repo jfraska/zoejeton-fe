@@ -1,6 +1,5 @@
 import LoginButton from "../_components/login-button";
 import { Suspense } from "react";
-import Link from "next/link";
 import CredentialLogin from "../_components/credential-login";
 
 export const metadata = {
@@ -77,13 +76,13 @@ export default function Page() {
       </div>
       <div className="mt-4 text-sm flex justify-center gap-2">
         <h1>Belum punya akun? </h1>
-        <Link
+        <a
           href="/signup"
           className="underline"
           aria-label="Daftar untuk membuat akun"
         >
           Daftar akun
-        </Link>
+        </a>
       </div>
     </div>
   );

@@ -5,9 +5,11 @@ import Image from "next/image";
 import { Selina } from "@/styles/fonts";
 import { LockScreen as LockScreenWrapper } from "@/components/container/template/wrapper-template";
 import CustomizeContext from "@/context/CustomizeContext";
+import { useSearchParams } from "next/navigation";
 
 export default function Lockscreen({ type, id }) {
   const [state, setState] = useState(false);
+  const searchParams = useSearchParams();
   const { dataGuest } = useContext(CustomizeContext);
 
   return (
@@ -38,14 +40,16 @@ export default function Lockscreen({ type, id }) {
         <h1 className={`uppercase`}>Special Invitation</h1>
         <h1>Kepada Yth:</h1>
         <h1 className="text-lg font-medium capitalize mt-2">
-          {dataGuest?.name || "guest"}
+          {dataGuest?.name || searchParams.has("tamu")
+            ? searchParams.get("tamu")
+            : "tamu"}
         </h1>
 
         {type === "lock" && (
           <button
             id="open"
             onClick={() => setState(true)}
-            className="relative rounded-full p-1 w-full bg-white text-black flex justify-between items-center backdrop-filter backdrop-blur-md bg-opacity-50 mt-5"
+            className="relative rounded-full p-1 w-full bg-white text-black flex justify-between items-center backdrop-filter backdrop-blur-md bg-opacity-50 mt-10"
           >
             <div className="h-10 aspect-square rounded-full bg-black flex justify-center items-center z-10">
               <span
