@@ -6,7 +6,9 @@ const login = (data) => {
 };
 
 const signIn = (provider, state) => {
-  return request.get(`/auth/redirect/${provider}?state=${state}`);
+  return request.get(
+    `/auth/redirect/${provider}?state=${state}&app=${process.env.NODE_ENV}`
+  );
 };
 
 const getSession = async (req, res) => {

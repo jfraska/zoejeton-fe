@@ -24,8 +24,6 @@ services:
       context: .
       dockerfile: DockerFile
     container_name: fe_prod
-    env_file: ./.env
-    volumes:
-      - ./.env:/app/.env:rw
+    env_file: .env
     networks:
       - fe-i-prod

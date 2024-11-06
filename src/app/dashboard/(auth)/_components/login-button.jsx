@@ -11,7 +11,7 @@ export default function LoginButton({ children, provider }) {
     try {
       const auth = await AuthService.signIn(
         provider,
-        `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
+        `dashboard`
       );
       window.location.href = auth?.data?.provider_redirect;
 

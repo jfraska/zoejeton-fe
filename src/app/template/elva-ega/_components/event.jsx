@@ -1,21 +1,44 @@
 import { Section } from "@/components/container/template/wrapper-template";
 import { Selina } from "@/styles/fonts";
+import Image from "next/image";
 
 export default function Event() {
   return (
-    <Section
-      className="bg-secondary-bg text-secondary-text flex items-center justify-center w-full h-96 px-5 py-10 mx-auto"
-      id="event"
-    >
-      <div
-        className="flex flex-col gap-5 pt-7 items-center justify-center"
-        data-aos="zoom-in"
-        data-aos-duration="1000"
-      >
-        <h1 className={`${Selina.className} text-5xl`}>Akad Nikah</h1>
+    <Section className="text-secondary-text w-full" id="event">
+      <div className="relative w-full h-24">
+        <Image
+          fill
+          src="/templates/elva-ega/asset-1.svg"
+          alt="image"
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </div>
+      <div className="relative flex flex-col gap-5 h-screen py-10 px-5 items-center justify-center bg-[#c74848]">
+        <Image
+          src="/templates/elva-ega/asset-3.svg"
+          width={300}
+          height={300}
+          alt="image"
+          className="absolute top-0 left-0"
+        />
+        <Image
+          src="/templates/elva-ega/asset-4.svg"
+          width={300}
+          height={300}
+          alt="image"
+          className="absolute bottom-10 right-0"
+        />
+        <h1
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+          className={`${Selina.className} text-6xl`}
+        >
+          Akad Nikah
+        </h1>
         <p></p>
 
-        <h1 className={`${Selina.className} text-5xl`}>Resepsi</h1>
+        <h1 className={`${Selina.className} text-6xl`}>Resepsi</h1>
         <p></p>
 
         <a

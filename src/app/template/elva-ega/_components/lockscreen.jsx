@@ -6,6 +6,7 @@ import { Selina } from "@/styles/fonts";
 import { LockScreen as LockScreenWrapper } from "@/components/container/template/wrapper-template";
 import CustomizeContext from "@/context/CustomizeContext";
 import { useSearchParams } from "next/navigation";
+import CountDown from "./countdown";
 
 export default function Lockscreen({ type, id }) {
   const [state, setState] = useState(false);
@@ -35,6 +36,8 @@ export default function Lockscreen({ type, id }) {
           <span>Ega</span>
         </h1>
       </div>
+
+      <CountDown deadline={"Sabtu, 24 November 2024"} />
 
       <div className="mb-10 w-64 text-center">
         <h1 className={`uppercase`}>Special Invitation</h1>
