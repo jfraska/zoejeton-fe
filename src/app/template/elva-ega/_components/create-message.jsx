@@ -26,14 +26,16 @@ import LoadingDots from "@/components/icons/loading-dots";
 import { Selina } from "@/styles/fonts";
 import GreetingService from "@/services/greeting-service";
 import { Textarea } from "@/components/UI/textarea";
+import Template from "../../template";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Nama tidak boleh kosong" }),
   message: z.string().min(1, { message: "Pesan tidak boleh kosong" }),
 });
 
-const CreateMessage = ({ mutate }) => {
+const CreateMessage = ({ mutate, data }) => {
   const [loading, setLoading] = useState(false);
+  const [state, setState] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -44,24 +46,29 @@ const CreateMessage = ({ mutate }) => {
   });
 
   const onSubmit = async (payload) => {
-    try {
-      setLoading(true);
-      await GreetingService.createGreeting(payload);
+    setLoading(true);
+    payload = {
+      ...payload,
+      template_id: data.id,
+    };
 
+    try {
+      await GreetingService.createGreeting(payload);
       mutate();
       toast.success("Pesan berhasil dikirim");
       form.reset();
+      setState(false);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={setState} open={state}>
       <DialogTrigger asChild>
-        <button className="w-full bg-white text-gray-700 py-2 rounded-[40px]">
+        <button className="w-full py-2 rounded-xl bg-white text-black backdrop-filter backdrop-blur-md bg-opacity-90">
           Kirim Ucapan
         </button>
       </DialogTrigger>

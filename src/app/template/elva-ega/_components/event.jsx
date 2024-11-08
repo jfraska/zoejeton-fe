@@ -10,7 +10,7 @@ export default function Event() {
       id="event"
     >
       <div className="bg-[#EEEEEE] rounded-[100px] overflow-hidden w-full p-4 shadow-lg">
-        <div className="relative w-full h-96 rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text filter grayscale">
+        <div className="relative w-full h-[600px] rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text filter grayscale">
           <CountDown deadline={"Sabtu, 24 November 2024"} />
           <Image
             fill

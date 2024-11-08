@@ -5,7 +5,6 @@ import { Section } from "@/components/container/template/wrapper-template";
 import { Selina } from "@/styles/fonts";
 import GreetingService from "@/services/greeting-service";
 import CustomizeContext from "@/context/CustomizeContext";
-import { ScrollArea } from "@/components/UI/scroll-area";
 import usePagination from "@/hooks/usePagination";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CreateMessage from "./create-message";
@@ -18,6 +17,8 @@ export default function Wish() {
     GreetingService.getAllGreeting,
     template.id
   );
+
+  console.log(paginatedData);
 
   return (
     <Section
@@ -51,30 +52,36 @@ export default function Wish() {
         <h1
           data-aos="zoom-in"
           data-aos-duration="1000"
-          className={`${Selina.className} text-6xl font-medium text-center`}
+          className={`${Selina.className} text-6xl font-medium text-center mt-5`}
         >
-          Wedding WIsh
+          Wedding Wish
         </h1>
 
-        {/* <ScrollArea
-          id="scrollableDiv"
-          className="h-2/3 w-full rounded-md border"
-        > */}
-        <InfiniteScroll
-          dataLength={paginatedData?.length ?? 0}
-          next={() => setSize(size + 1)}
-          hasMore={!isReachedEnd}
-          loader={<h4>Loading...</h4>}
-          height={400}
-          // scrollableTarget="scrollableDiv"
-        >
-          {paginatedData?.map((message) => {
-            <div key={message.id}>{message.name}</div>;
-          })}
-        </InfiniteScroll>
-        {/* </ScrollArea> */}
+        <div id="scrollableDiv" className="h-2/3 w-full mt-5 overflow-y-auto">
+          <InfiniteScroll
+            dataLength={paginatedData?.length ?? 0}
+            next={() => setSize(size + 1)}
+            hasMore={!isReachedEnd}
+            loader={<h4>Loading...</h4>}
+            endMessage={<p>Reached to the end</p>}
+            scrollableTarget="scrollableDiv"
+            className="scroll space-y-4"
+          >
+            {paginatedData?.map((messages, index) => {
+              return messages.data.map((e) => (
+                <div
+                  key={e.id}
+                  className="w-full flex flex-col gap-2 rounded-xl px-6 py-2 bg-white text-black backdrop-filter backdrop-blur-md bg-opacity-60"
+                >
+                  <h1 className="font-medium text-lg capitalize">{e.name}</h1>
+                  <p className="text-sm">{e.message}</p>
+                </div>
+              ));
+            })}
+          </InfiniteScroll>
+        </div>
 
-        <CreateMessage mutate={mutate} />
+        <CreateMessage mutate={mutate} data={template} />
       </div>
     </Section>
   );

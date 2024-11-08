@@ -34,9 +34,9 @@ export default function Couple() {
           <a
             data-aos="fade-up"
             data-aos-duration="1000"
-            href="/"
+            href="https://www.instagram.com/elvaasys_"
             target="_blank"
-            className={`w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center`}
+            className="w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center z-20"
           >
             Instagram
           </a>
@@ -53,14 +53,14 @@ export default function Couple() {
           </h2>
           <p data-aos="fade-up" data-aos-duration="1000">
             Putra Bapak Sugiyarto & Ibu Indah WIdiyanti Kupang Lor, Rt 04 Rw 03,
-            Kec. Ambarawa{" "}
+            Kec. Ambarawa
           </p>
           <a
             data-aos="fade-up"
             data-aos-duration="1000"
-            href="/"
+            href="https://www.instagram.com/egachandraaa"
             target="_blank"
-            className={`w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center`}
+            className="w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center z-20"
           >
             Instagram
           </a>
