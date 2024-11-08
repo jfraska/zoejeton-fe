@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Beranda() {
   return (
-    <Section className="bg-primary-bg w-full h-full" id="greeting">
+    <Section className="bg-primary-bg w-full h-full" id="beranda">
       <div
         className="relative h-full w-full px-4 py-10 flex flex-col justify-start items-center"
         data-aos="fade-right"

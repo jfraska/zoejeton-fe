@@ -8,11 +8,6 @@ export default function Couple() {
       className="relative bg-primary-bg w-full text-secondary-text p-5 -z-[1]"
       id="couple"
     >
-      <img
-        src="/templates/classic/decor-bl.png"
-        alt="decor bl"
-        className="-z-[1] w-52 absolute top-0 left-0 transform scale-y-[-1]"
-      />
       <div className="relative w-full rounded-[100px] px-8 py-32 overflow-hidden shadow-lg">
         <Image
           fill

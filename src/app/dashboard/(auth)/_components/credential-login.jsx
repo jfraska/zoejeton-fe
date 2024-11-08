@@ -39,7 +39,7 @@ export default function CredentialLogin() {
   const onSubmit = async (payload) => {
     try {
       setLoading(true);
-      const auth = await AuthService.loginService(payload);
+      const auth = await AuthService.login(payload);
       login(auth?.data);
       form.reset();
     } catch (error) {

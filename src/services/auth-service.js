@@ -7,7 +7,7 @@ const login = (data) => {
 
 const signIn = (provider, state) => {
   return request.get(
-    `/auth/redirect/${provider}?state=${state}&app=${process.env.NODE_ENV}`
+    `/auth/redirect/${provider}?state=${state}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
   );
 };
 

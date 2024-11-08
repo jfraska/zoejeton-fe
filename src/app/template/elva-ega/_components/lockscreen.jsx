@@ -6,7 +6,6 @@ import { Selina } from "@/styles/fonts";
 import { LockScreen as LockScreenWrapper } from "@/components/container/template/wrapper-template";
 import CustomizeContext from "@/context/CustomizeContext";
 import { useSearchParams } from "next/navigation";
-import CountDown from "./countdown";
 
 export default function Lockscreen({ type, id }) {
   const [state, setState] = useState(false);
@@ -28,7 +27,7 @@ export default function Lockscreen({ type, id }) {
           height={20}
           alt="logo"
         />
-        <h2 className="uppercase mt-2">The Wedding of</h2>
+        <h2 className="uppercase mt-6 text-xl">The Wedding of</h2>
         <h1
           className={`${Selina.className} flex flex-col text-center mt-10 text-8xl font-medium`}
         >
@@ -37,14 +36,12 @@ export default function Lockscreen({ type, id }) {
         </h1>
       </div>
 
-      <CountDown deadline={"Sabtu, 24 November 2024"} />
-
       <div className="mb-10 w-64 text-center">
         <h1 className={`uppercase`}>Special Invitation</h1>
         <h1>Kepada Yth:</h1>
         <h1 className="text-lg font-medium capitalize mt-2">
-          {dataGuest?.name || searchParams.has("tamu")
-            ? searchParams.get("tamu")
+          {dataGuest?.name || searchParams.has("to")
+            ? searchParams.get("to")
             : "tamu"}
         </h1>
 
