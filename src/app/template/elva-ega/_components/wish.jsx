@@ -23,7 +23,7 @@ export default function Wish() {
       className="bg-primary-bg text-secondary-text w-full h-fit"
       id="wish"
     >
-      <div className="relative w-full h-28">
+      <div className="relative w-full h-28 shadow-lg">
         <Image
           fill
           src="/templates/elva-ega/asset-1.svg"
@@ -66,8 +66,6 @@ export default function Wish() {
           >
             {paginatedData.map((e) => (
               <div
-                data-aos="fade-up"
-                data-aos-duration="1000"
                 key={e.id}
                 className="w-full flex flex-col gap-2 rounded-xl px-6 py-2 bg-white text-black backdrop-filter backdrop-blur-md bg-opacity-60"
               >
