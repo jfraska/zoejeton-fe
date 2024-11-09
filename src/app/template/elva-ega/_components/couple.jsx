@@ -5,11 +5,8 @@ import SimpleParallax from "simple-parallax-js";
 
 export default function Couple() {
   return (
-    <Section
-      className=" bg-primary-bg w-full text-secondary-text p-4"
-      id="couple"
-    >
-      <diV className="relative w-full h-full px-8 py-40">
+    <Section className="w-full text-secondary-text p-4" id="couple">
+      <diV className="relative w-full h-full px-8 pt-40 pb-52  opacity-90">
         <div className="absolute inset-0 w-full h-full rounded-[100px] overflow-hidden shadow-lg -z-0">
           <SimpleParallax delay={1} transition="cubic-bezier(0,0,0,1)">
             <Image

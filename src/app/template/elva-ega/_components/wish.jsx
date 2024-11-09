@@ -19,41 +19,16 @@ export default function Wish() {
   );
 
   return (
-    <Section
-      className="bg-primary-bg text-secondary-text w-full h-fit"
-      id="wish"
-    >
-      <div className="relative w-full h-28 shadow-lg">
-        <Image
-          fill
-          src="/templates/elva-ega/asset-1.svg"
-          alt="image"
-          style={{ objectFit: "cover" }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
-      <div className="relative flex flex-col gap-5 aspect-9/16 py-10 px-10 items-center bg-[#c74848]">
-        <Image
-          src="/templates/elva-ega/asset-3.svg"
-          width={300}
-          height={300}
-          alt="image"
-          className="absolute top-0 left-0 "
-        />
-        <Image
-          src="/templates/elva-ega/asset-4.svg"
-          width={300}
-          height={300}
-          alt="image"
-          className="absolute bottom-10 right-0 "
-        />
+    <Section className="text-secondary-text w-full h-fit" id="wish">
+      <div className="relative flex flex-col gap-5 aspect-9/16 py-10 px-10 items-center bg-[#23282A] rounded-[99px]">
         <h1
           data-aos="zoom-in"
           data-aos-duration="1000"
-          className={`${Selina.className} text-6xl font-medium text-center mt-5`}
+          className={`${Selina.className} text-4xl font-medium text-center mt-5 uppercase`}
         >
-          Wedding Wish
+          UCAPAN & DOA
         </h1>
+        <h2 className="text-xl">Berikan doa dan harapan terbaik untuk kami</h2>
 
         <div className="w-full mt-5">
           <InfiniteScroll
@@ -69,7 +44,10 @@ export default function Wish() {
                 key={e.id}
                 className="w-full flex flex-col gap-2 rounded-xl px-6 py-2 bg-white shadow-lg text-black backdrop-filter backdrop-blur-md bg-opacity-60"
               >
-                <h1 className="font-medium text-lg capitalize">{e.name}</h1>
+                <div className=" flex justify-between">
+                  <h1 className="font-medium text-lg capitalize">{e.name}</h1>
+                  <h2 className="text-xs">{e.name}</h2>
+                </div>
                 <p className="text-sm">{e.message}</p>
               </div>
             ))}
