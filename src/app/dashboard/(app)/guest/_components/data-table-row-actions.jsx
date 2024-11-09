@@ -19,6 +19,7 @@ import {
 } from "@/components/UI/dropdown-menu";
 import { DialogEditDataTable } from "./dialog-edit-data-table";
 import { useState } from "react";
+import { deleteGuest } from "@/services/guest-service";
 
 // import { labels } from "../data/data";
 // import { taskSchema } from "../data/schema";
@@ -26,6 +27,16 @@ import { useState } from "react";
 export function DataTableRowActions({ row }) {
   //   const task = taskSchema.parse(row.original);
   const [edit, setEdit] = useState(false)
+
+  const handleDelete = async () => {
+    try {
+      await deleteGuest(row.original.id); // Pastikan `id` ada di `row.original`
+      console.log("Guest deleted successfully.");
+      // Refresh data table or perform additional actions after deletion
+    } catch (error) {
+      console.error("Error deleting guest:", error);
+    }
+  };
 
   return (
     <>
@@ -55,7 +66,7 @@ export function DataTableRowActions({ row }) {
         </DropdownMenuSub> */}
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            Delete
+            <button className="w-full text-left" onClick={handleDelete}>Delete</button>
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>

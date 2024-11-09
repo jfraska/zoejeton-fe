@@ -17,9 +17,9 @@ export function DataTableToolbar({ table }) {
       <div className="flex flex-1 items-center space-x-2">
         <Input
           placeholder="Search Tamu"
-          value={table.getColumn("title")?.getFilterValue() ?? ""}
+          value={table.getColumn("name")?.getFilterValue() ?? ""}
           onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
@@ -30,13 +30,13 @@ export function DataTableToolbar({ table }) {
             options={statuses}
           />
         )}
-        {table.getColumn("grup") && (
+        {/* {table.getColumn("grup") && (
           <DataTableFacetedFilter
             column={table.getColumn("grup")}
             title="Grup"
             options={groupes}
           />
-        )}
+        )} */}
         {isFiltered && (
           <Button
             variant="ghost"

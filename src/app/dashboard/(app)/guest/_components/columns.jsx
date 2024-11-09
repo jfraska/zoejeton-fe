@@ -79,7 +79,7 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Sosmed" />
     ),
     cell: ({ row }) => (
-      <div className="max-w-[200px]">{row.getValue("sosmed").instagram}</div>
+      <div className="max-w-[200px]">{row.getValue("sosmed").whatsapp}</div>
     ),
     enableSorting: false,
     enableHiding: true,

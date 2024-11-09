@@ -34,13 +34,13 @@ import * as z from "zod";
 import { PlusCircle } from "lucide-react";
 
 const formSchema = z.object({
-    nama: z.string().min(2).max(50),
-    grup: z.string().min(1),
-    email: z.string().email(),
-    nohp: z.string().min(8).max(15),
-    kode: z.string().min(8).max(50),
-    status: z.string().min(8).max(50),
-    jumlah: z.number().int().min(0),
+    name: z.string().min(2).max(50),
+    group_id: z.string().optional(),
+    category: z.string().min(1),
+    whatsapp: z.string().min(1),
+    // instagram: z.string().min(1),
+    code: z.string().min(8).max(50),
+    address: z.string().min(8).max(50),
 });
 
 export function DialogEditDataTable({ setOpen, open }) {
@@ -67,13 +67,12 @@ export function DialogEditDataTable({ setOpen, open }) {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            nama: "",
-            grup: "",
-            email: "",
-            nohp: "",
-            kode: "",
-            status: "",
-            jumlah: "",
+            name: "",
+            group_id: "",
+            category: "",
+            whatsapp: "",
+            code: "",
+            address: "",
         },
     });
 
@@ -90,7 +89,7 @@ export function DialogEditDataTable({ setOpen, open }) {
                             <div className="space-y-4 py-2 pb-4">
                                 <FormField
                                     control={form.control}
-                                    name="nama"
+                                    name="name"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Nama</FormLabel>
@@ -103,7 +102,7 @@ export function DialogEditDataTable({ setOpen, open }) {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="grup"
+                                    name="group_id"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Grup</FormLabel>
@@ -124,12 +123,36 @@ export function DialogEditDataTable({ setOpen, open }) {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="email"
+                                    name="category"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Email</FormLabel>
+                                            <FormLabel>Kategori</FormLabel>
+                                            <FormDescription>
+                                                Pilih kategori guest.
+                                            </FormDescription>
+                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Select category for guest" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="reguler">Reguler</SelectItem>
+                                                    <SelectItem value="vip">VIP</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="whatsapp"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>WhatsApp</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="zoehinata@gmail.com" {...field} />
+                                                <Input placeholder="085740636055" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -137,20 +160,7 @@ export function DialogEditDataTable({ setOpen, open }) {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="nohp"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>No.HP</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="088806640808" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="kode"
+                                    name="code"
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>Kode</FormLabel>
@@ -163,12 +173,12 @@ export function DialogEditDataTable({ setOpen, open }) {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="jumlah"
+                                    name="address"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Jumlah</FormLabel>
+                                            <FormLabel>Alamat</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="3" {...field} />
+                                                <Input placeholder="Sleman, Yogyakarta" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>

@@ -141,6 +141,9 @@ export default function ButtonAddGuest() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Kategori</FormLabel>
+                      <FormDescription>
+                        Pilih kategori guest.
+                      </FormDescription>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
@@ -152,9 +155,6 @@ export default function ButtonAddGuest() {
                           <SelectItem value="vip">VIP</SelectItem>
                         </SelectContent>
                       </Select>
-                      <FormDescription>
-                        Pilih kategori guest.
-                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
