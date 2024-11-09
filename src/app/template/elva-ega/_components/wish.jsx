@@ -67,7 +67,7 @@ export default function Wish() {
             {paginatedData.map((e) => (
               <div
                 key={e.id}
-                className="w-full flex flex-col gap-2 rounded-xl px-6 py-2 bg-white text-black backdrop-filter backdrop-blur-md bg-opacity-60"
+                className="w-full flex flex-col gap-2 rounded-xl px-6 py-2 bg-white shadow-lg text-black backdrop-filter backdrop-blur-md bg-opacity-60"
               >
                 <h1 className="font-medium text-lg capitalize">{e.name}</h1>
                 <p className="text-sm">{e.message}</p>

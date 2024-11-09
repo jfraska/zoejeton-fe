@@ -34,7 +34,7 @@ const CountDown = ({ deadline }) => {
   }, [deadline]);
 
   return (
-    <div className="flex justify-around items-center text-center text-lg w-full">
+    <div className="flex justify-around items-center text-center text-lg w-full !z-10">
       <div>
         <h2>{leading0(days)}</h2>
         <h1 className="text-xl font-medium">day</h1>

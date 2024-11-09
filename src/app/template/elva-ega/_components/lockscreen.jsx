@@ -29,7 +29,7 @@ export default function Lockscreen({ type, id }) {
         />
         <h2 className="uppercase mt-6 text-xl">The Wedding of</h2>
         <h1
-          className={`${Selina.className} flex flex-col text-center mt-10 text-8xl font-medium`}
+          className={`${Selina.className} flex flex-col text-center mt-10 text-7xl font-medium`}
         >
           <span>Elva</span> <span>&</span>
           <span>Ega</span>

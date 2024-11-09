@@ -9,7 +9,7 @@ export default function Couple() {
       className=" bg-primary-bg w-full text-secondary-text p-4"
       id="couple"
     >
-      <diV className="relative w-full h-full px-8 py-32">
+      <diV className="relative w-full h-full px-8 py-40">
         <div className="absolute inset-0 w-full h-full rounded-[100px] overflow-hidden shadow-lg -z-0">
           <SimpleParallax delay={1} transition="cubic-bezier(0,0,0,1)">
             <Image
@@ -20,6 +20,14 @@ export default function Couple() {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </SimpleParallax>
+
+          <Image
+            src="/templates/elva-ega/asset-2.svg"
+            alt="couple bg"
+            className="absolute top-0 right-0"
+            width={200}
+            height={200}
+          />
         </div>
         <div className="relative w-full h-fit">
           {/* mempelai wanita */}
