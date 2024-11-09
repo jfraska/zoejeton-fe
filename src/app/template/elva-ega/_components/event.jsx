@@ -2,6 +2,7 @@ import { Section } from "@/components/container/template/wrapper-template";
 import { Selina } from "@/styles/fonts";
 import Image from "next/image";
 import CountDown from "./countdown";
+import SimpleParallax from "simple-parallax-js";
 
 export default function Event() {
   return (
@@ -12,17 +13,20 @@ export default function Event() {
       <div className="bg-[#EEEEEE] rounded-[100px] overflow-hidden w-full p-4 shadow-lg">
         <div className="relative w-full h-[600px] rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text filter grayscale">
           <CountDown deadline={"Sabtu, 24 November 2024"} />
-          <Image
-            fill
-            src="/templates/elva-ega/2.jpg"
-            alt="image"
-            style={{
-              objectFit: "cover",
-              transform: "scale(1.5)",
-              objectPosition: "center",
-            }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+
+          <SimpleParallax delay={1} transition="cubic-bezier(0,0,0,1)">
+            <Image
+              fill
+              src="/templates/elva-ega/2.jpg"
+              alt="image"
+              style={{
+                objectFit: "cover",
+                transform: "scale(1.5)",
+                objectPosition: "center",
+              }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </SimpleParallax>
         </div>
         <div className="relative flex flex-col gap-5 py-10 px-5 items-center justify-center">
           <h1

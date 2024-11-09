@@ -1,6 +1,7 @@
 import { Section } from "@/components/container/template/wrapper-template";
 import { Selina } from "@/styles/fonts";
 import Image from "next/image";
+import SimpleParallax from "simple-parallax-js";
 
 export default function Couple() {
   return (
@@ -9,13 +10,15 @@ export default function Couple() {
       id="couple"
     >
       <div className="relative w-full rounded-[100px] px-8 py-32 overflow-hidden shadow-lg">
-        <Image
-          fill
-          src="/templates/elva-ega/1.jpg"
-          alt="couple bg"
-          className="absolute top-[50px] left-[20px] object-cover scale-110 brightness-[.6] saturate-[.8] -z-[1]"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+        <SimpleParallax delay={1} transition="cubic-bezier(0,0,0,1)">
+          <Image
+            fill
+            src="/templates/elva-ega/1.jpg"
+            alt="couple bg"
+            className="absolute top-[50px] left-[20px] object-cover scale-110 brightness-[.6] saturate-[.8] -z-[1]"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </SimpleParallax>
 
         {/* mempelai wanita */}
         <div className="space-y-4 w-64">

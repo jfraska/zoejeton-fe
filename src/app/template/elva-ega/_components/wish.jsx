@@ -18,8 +18,6 @@ export default function Wish() {
     template.id
   );
 
-  console.log(paginatedData);
-
   return (
     <Section
       className="bg-primary-bg text-secondary-text w-full h-fit"
@@ -57,27 +55,26 @@ export default function Wish() {
           Wedding Wish
         </h1>
 
-        <div id="scrollableDiv" className="h-2/3 w-full mt-5 overflow-y-auto">
+        <div className="w-full mt-5">
           <InfiniteScroll
             dataLength={paginatedData?.length ?? 0}
             next={() => setSize(size + 1)}
             hasMore={!isReachedEnd}
             loader={<h4>Loading...</h4>}
-            endMessage={<p>Reached to the end</p>}
-            scrollableTarget="scrollableDiv"
-            className="scroll space-y-4"
+            height={500}
+            className="space-y-4 scroll"
           >
-            {paginatedData?.map((messages, index) => {
-              return messages.data.map((e) => (
-                <div
-                  key={e.id}
-                  className="w-full flex flex-col gap-2 rounded-xl px-6 py-2 bg-white text-black backdrop-filter backdrop-blur-md bg-opacity-60"
-                >
-                  <h1 className="font-medium text-lg capitalize">{e.name}</h1>
-                  <p className="text-sm">{e.message}</p>
-                </div>
-              ));
-            })}
+            {paginatedData.map((e) => (
+              <div
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                key={e.id}
+                className="w-full flex flex-col gap-2 rounded-xl px-6 py-2 bg-white text-black backdrop-filter backdrop-blur-md bg-opacity-60"
+              >
+                <h1 className="font-medium text-lg capitalize">{e.name}</h1>
+                <p className="text-sm">{e.message}</p>
+              </div>
+            ))}
           </InfiniteScroll>
         </div>
 

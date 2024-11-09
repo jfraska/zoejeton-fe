@@ -1,10 +1,12 @@
+"use client";
+
 import useSWRInfinite from "swr/infinite";
 
 const usePagination = (service, id = null, PAGE_SIZE = 6) => {
   const getKey = (pageIndex, previousPageData) => {
     pageIndex = pageIndex + 1;
 
-    if (previousPageData && !previousPageData.length) return null;
+    if (previousPageData?.data && !previousPageData.data?.length) return null;
 
     if (id) return `?page=${pageIndex}&per_page=${PAGE_SIZE}&id=${id}`;
 
@@ -16,9 +18,11 @@ const usePagination = (service, id = null, PAGE_SIZE = 6) => {
     service
   );
 
-  const paginatedData = data?.flat();
+  const paginatedData = data ? data.flatMap((page) => page.data || []) : [];
 
-  const isReachedEnd = data && data[data.length - 1]?.length < PAGE_SIZE;
+  const isReachedEnd =
+    data?.[data.length - 1]?.data &&
+    data[data.length - 1].data.length < PAGE_SIZE;
 
   return { paginatedData, isReachedEnd, size, setSize, error, mutate };
 };

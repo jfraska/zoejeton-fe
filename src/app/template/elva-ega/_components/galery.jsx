@@ -1,6 +1,8 @@
 import { Section } from "@/components/container/template/wrapper-template";
 import { Selina, Catamaran } from "@/styles/fonts";
 import Image from "next/image";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 export default function Galery() {
   return (
@@ -12,49 +14,59 @@ export default function Galery() {
         <h2 className={`${Selina.className} text-7xl font-medium`}>GALLERY</h2>
       </div>
 
-      <div className="flex items-center justify-between w-full gap-5">
-        <div className="relative w-full flex flex-col items-center justify-between gap-5 mb-4 py-5">
-          <div className="relative w-full h-60 rounded-2xl overflow-hidden">
-            <Image
-              fill
-              src="/templates/elva-ega/1.jpg"
-              alt="image"
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+      <PhotoProvider>
+        <div className="flex items-center justify-between w-full gap-5">
+          <div className="relative w-full flex flex-col items-center justify-between gap-5 mb-4 py-5">
+            <PhotoView src="/templates/elva-ega/1.jpg">
+              <div className="relative w-full h-60 rounded-2xl overflow-hidden">
+                <Image
+                  fill
+                  src="/templates/elva-ega/1.jpg"
+                  alt="image"
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </PhotoView>
+            <PhotoView src="/templates/elva-ega/1.jpg">
+              <div className="relative w-full h-60 rounded-2xl overflow-hidden">
+                <Image
+                  fill
+                  src="/templates/elva-ega/1.jpg"
+                  alt="image"
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </PhotoView>
           </div>
-          <div className="relative w-full h-60 rounded-2xl overflow-hidden">
-            <Image
-              fill
-              src="/templates/elva-ega/1.jpg"
-              alt="image"
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-        </div>
 
-        <div className="relative w-full flex flex-col items-center justify-between gap-5 mb-4 py-5">
-          <div className="relative w-full h-40 rounded-2xl overflow-hidden">
-            <Image
-              fill
-              src="/templates/elva-ega/1.jpg"
-              alt="image"
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-          <div className="relative w-full h-80 rounded-2xl overflow-hidden">
-            <Image
-              fill
-              src="/templates/elva-ega/1.jpg"
-              alt="image"
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+          <div className="relative w-full flex flex-col items-center justify-between gap-5 mb-4 py-5">
+            <PhotoView src="/templates/elva-ega/1.jpg">
+              <div className="relative w-full h-40 rounded-2xl overflow-hidden">
+                <Image
+                  fill
+                  src="/templates/elva-ega/1.jpg"
+                  alt="image"
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </PhotoView>
+            <PhotoView src="/templates/elva-ega/1.jpg">
+              <div className="relative w-full h-80 rounded-2xl overflow-hidden">
+                <Image
+                  fill
+                  src="/templates/elva-ega/1.jpg"
+                  alt="image"
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </PhotoView>
           </div>
         </div>
-      </div>
+      </PhotoProvider>
     </Section>
   );
 }
