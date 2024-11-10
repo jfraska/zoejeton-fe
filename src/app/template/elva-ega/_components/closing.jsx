@@ -8,7 +8,7 @@ export default function Closing() {
       id="closing"
       styles={{
         objectPosition: "40% center",
-        filter: "brightness(0.7)",
+        filter: "brightness(0.8)",
       }}
     >
       <h1

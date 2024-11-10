@@ -13,17 +13,17 @@ export default function Event() {
       <div className="bg-[#EEEEEE] rounded-[100px] overflow-hidden w-full p-4 shadow-lg opacity-90">
         <div className="relative w-full h-[700px] rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text !opacity-100">
           <CountDown deadline={"Sabtu, 24 November 2024"} />
-
           <SimpleParallax delay={1} transition="cubic-bezier(0,0,0,1)">
             <Image
               fill
               src="/templates/elva-ega/2.jpg"
               alt="image"
-              className="absolute top-[700px] object-cover scale-110 filter grayscale -z-0"
+              className="absolute top-[700px] object-cover scale-75 filter grayscale -z-0"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </SimpleParallax>
         </div>
+
         <div className="relative flex flex-col gap-4 py-10 px-5 items-center justify-center">
           <h1
             data-aos="zoom-in"
@@ -32,7 +32,11 @@ export default function Event() {
           >
             Akad Nikah
           </h1>
-          <div className="flex gap-4 items-center uppercase">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            className="flex gap-4 items-center uppercase"
+          >
             <h1>Minggu</h1>
             <div className="flex flex-col justify-between px-4 border-l border-l-black border-r border-r-black">
               <h1 className="font-semibold text-4xl">24</h1>
@@ -40,11 +44,25 @@ export default function Event() {
             </div>
             <h1>November</h1>
           </div>
-          <p>08.00 - selesai</p>
-          <p>Dsn. Ba’an Rt 01 Rw 03 Ds. Asinan, Kec. Bawen </p>
+          <p data-aos="zoom-in" data-aos-duration="1000">
+            08.00 - selesai
+          </p>
+          <p data-aos="zoom-in" data-aos-duration="1000" className="w-40">
+            Dsn. Ba’an Rt 01 Rw 03 Ds. Asinan, Kec. Bawen{" "}
+          </p>
 
-          <h1 className={`${Selina.className} text-6xl mt-5`}>Resepsi</h1>
-          <div className="flex gap-4 items-center uppercase">
+          <h1
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            className={`${Selina.className} text-6xl mt-5`}
+          >
+            Resepsi
+          </h1>
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            className="flex gap-4 items-center uppercase"
+          >
             <div className="flex flex-col justify-between">
               <h1>Sabtu</h1>
               <h2>Minggu</h2>
@@ -55,12 +73,19 @@ export default function Event() {
             </div>
             <h1>November</h1>
           </div>
-          <p>jam : -</p>
-          <p>Dsn. Ba’an Rt 01 Rw 03 Ds. Asinan, Kec. Bawen </p>
+          <p data-aos="zoom-in" data-aos-duration="1000">
+            jam : -
+          </p>
+          <p data-aos="zoom-in" data-aos-duration="1000" className="w-40">
+            Dsn. Ba’an Rt 01 Rw 03 Ds. Asinan, Kec. Bawen
+          </p>
 
           <a
-            href="#"
-            className="flex items-center justify-center bg-white text-gray-800 px-4 py-2 rounded-full mt-5"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            target="_blank"
+            href="https://maps.app.goo.gl/r6wiHxmwSZ8Fup7Y6"
+            className="flex items-center justify-center bg-white text-gray-800 px-4 py-2 rounded-full mt-16"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -74,7 +99,15 @@ export default function Event() {
         </div>
       </div>
 
-      <div className="h-40"></div>
+      <div className="h-40">
+        <p className="text-center mt-16 mx-auto w-5/6">
+          “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan
+          pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+          dan merasa tenteram kepadanya, dan Diamenjadikan di antaramau rasa
+          kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat
+          tanda-tanda (kebesaran Allah) bagi kaum yang berpikir”
+        </p>
+      </div>
     </Section>
   );
 }

@@ -2,7 +2,7 @@
 
 import useSWRInfinite from "swr/infinite";
 
-const usePagination = (service, id = null, PAGE_SIZE = 6) => {
+const usePagination = (service, id = null, PAGE_SIZE = 4) => {
   const getKey = (pageIndex, previousPageData) => {
     pageIndex = pageIndex + 1;
 

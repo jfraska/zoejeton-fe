@@ -15,13 +15,20 @@ export default function Galery() {
       </div>
 
       <PhotoProvider>
-        <div className="relative w-full h-56 rounded-2xl overflow-hidden mt-10">
-          <PhotoView src="/templates/elva-ega/1.jpg">
+        <div
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+          className="relative w-full h-64 rounded-2xl overflow-hidden mt-10"
+        >
+          <PhotoView src="/templates/elva-ega/5.jpg">
             <Image
               fill
-              src="/templates/elva-ega/1.jpg"
+              src="/templates/elva-ega/5.jpg"
               alt="image"
-              style={{ objectFit: "cover" }}
+              style={{
+                objectFit: "cover",
+                objectPosition: "40% 0%",
+              }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </PhotoView>
@@ -29,24 +36,36 @@ export default function Galery() {
 
         <div className="flex items-center justify-between w-full gap-5">
           <div className="relative w-full flex flex-col items-center justify-between gap-5 mb-4 py-5">
-            <PhotoView src="/templates/elva-ega/1.jpg">
-              <div className="relative w-full h-60 rounded-2xl overflow-hidden">
+            <PhotoView src="/templates/elva-ega/4.jpg">
+              <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+                className="relative w-full h-72 rounded-2xl overflow-hidden"
+              >
                 <Image
                   fill
-                  src="/templates/elva-ega/1.jpg"
+                  src="/templates/elva-ega/4.jpg"
                   alt="image"
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
             </PhotoView>
-            <PhotoView src="/templates/elva-ega/1.jpg">
-              <div className="relative w-full h-60 rounded-2xl overflow-hidden">
+            <PhotoView src="/templates/elva-ega/3.jpg">
+              <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+                className="relative w-full h-72 rounded-2xl overflow-hidden"
+              >
                 <Image
                   fill
-                  src="/templates/elva-ega/1.jpg"
+                  src="/templates/elva-ega/3.jpg"
                   alt="image"
-                  style={{ objectFit: "cover" }}
+                  className="filter grayscale"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "40% 0%",
+                  }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
@@ -55,21 +74,33 @@ export default function Galery() {
 
           <div className="relative w-full flex flex-col items-center justify-between gap-5 mb-4 py-5">
             <PhotoView src="/templates/elva-ega/1.jpg">
-              <div className="relative w-full h-40 rounded-2xl overflow-hidden">
+              <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+                className="relative w-full h-48 rounded-2xl overflow-hidden"
+              >
                 <Image
                   fill
                   src="/templates/elva-ega/1.jpg"
                   alt="image"
-                  style={{ objectFit: "cover" }}
+                  className="filter grayscale"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "40% 0%",
+                  }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
             </PhotoView>
-            <PhotoView src="/templates/elva-ega/1.jpg">
-              <div className="relative w-full h-80 rounded-2xl overflow-hidden">
+            <PhotoView src="/templates/elva-ega/6.jpg">
+              <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+                className="relative w-full h-96 rounded-2xl overflow-hidden"
+              >
                 <Image
                   fill
-                  src="/templates/elva-ega/1.jpg"
+                  src="/templates/elva-ega/6.jpg"
                   alt="image"
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

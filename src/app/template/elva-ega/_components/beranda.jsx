@@ -29,6 +29,18 @@ export default function Beranda() {
           sizes="1750px"
         />
       </div>
+      <div className="absolute inset-0 top-[3500px] h-[1750px] w-full -z-[1]">
+        <Image
+          fill
+          src="/templates/elva-ega/7.jpg"
+          alt="beranda bg"
+          style={{
+            objectFit: "cover",
+            objectPosition: "40% center",
+          }}
+          sizes="1750px"
+        />
+      </div>
       <div
         className="relative h-full w-full px-4 pt-28 pb-40 flex flex-col justify-start items-center"
         data-aos="fade-right"

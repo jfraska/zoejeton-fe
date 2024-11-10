@@ -8,7 +8,8 @@ import CustomizeContext from "@/context/CustomizeContext";
 import usePagination from "@/hooks/usePagination";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CreateMessage from "./create-message";
-import Image from "next/image";
+import { formatDistanceToNow } from "date-fns";
+import { id } from "date-fns/locale";
 
 export default function Wish() {
   const { data: template } = useContext(CustomizeContext);
@@ -19,8 +20,8 @@ export default function Wish() {
   );
 
   return (
-    <Section className="text-secondary-text w-full h-fit" id="wish">
-      <div className="relative flex flex-col gap-5 pt-20 pb-36 px-10 items-center bg-[#23282A] rounded-[99px]">
+    <Section className="text-secondary-text w-full" id="wish">
+      <div className="relative flex flex-col gap-5 pt-20 pb-28 px-10 items-center bg-[#23282A] rounded-[70px] opacity-90">
         <h1
           data-aos="zoom-in"
           data-aos-duration="1000"
@@ -36,8 +37,8 @@ export default function Wish() {
             next={() => setSize(size + 1)}
             hasMore={!isReachedEnd}
             loader={<h4>Loading...</h4>}
-            height={500}
-            className="space-y-4 scroll"
+            height={300}
+            className="space-y-4 rounded-2xl scroll"
           >
             {paginatedData.map((e) => (
               <div
@@ -46,7 +47,12 @@ export default function Wish() {
               >
                 <div className=" flex justify-between">
                   <h1 className="font-medium text-lg capitalize">{e.name}</h1>
-                  <h2 className="text-xs">{e.name}</h2>
+                  <h2 className="text-xs">
+                    {formatDistanceToNow(e.created_at, {
+                      addSuffix: true,
+                      locale: id,
+                    })}
+                  </h2>
                 </div>
                 <p className="text-sm">{e.message}</p>
               </div>
