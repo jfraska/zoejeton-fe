@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Selina } from "@/styles/fonts";
 
 const CountDown = ({ deadline }) => {
   const [days, setDays] = useState(0);
@@ -34,22 +35,26 @@ const CountDown = ({ deadline }) => {
   }, [deadline]);
 
   return (
-    <div className="flex justify-around items-center text-center text-lg w-full z-20">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+      className={`${Selina.className}  absolute inset-x-0 top-28 flex justify-around items-center text-center text-2xl text-secondary-text w-full z-20`}
+    >
       <div>
         <h2>{leading0(days)}</h2>
-        <h1 className="text-xl font-medium">day</h1>
+        <h1 className="font-medium">day</h1>
       </div>
       <div>
         <h2>{leading0(hours)}</h2>
-        <h1 className="text-xl font-medium">hour</h1>
+        <h1 className="font-medium">hour</h1>
       </div>
       <div>
         <h2>{leading0(minutes)}</h2>
-        <h1 className="text-xl font-medium">minute</h1>
+        <h1 className="font-medium">minute</h1>
       </div>
       <div>
         <h2>{leading0(seconds)}</h2>
-        <h1 className="text-xl font-medium">second</h1>
+        <h1 className="font-medium">second</h1>
       </div>
     </div>
   );

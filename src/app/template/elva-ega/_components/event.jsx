@@ -11,15 +11,15 @@ export default function Event() {
       id="event"
     >
       <div className="bg-[#EEEEEE] rounded-[100px] overflow-hidden w-full p-4 shadow-lg opacity-90">
-        <div className="relative w-full h-[700px] rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text !opacity-100">
+        <div className="relative w-full rounded-[100px] overflow-hidden !opacity-100">
           <CountDown deadline={"Sabtu, 24 November 2024"} />
           <SimpleParallax delay={1} transition="cubic-bezier(0,0,0,1)">
             <Image
-              fill
               src="/templates/elva-ega/2.jpg"
               alt="image"
-              className="absolute top-[700px] object-cover scale-75 filter grayscale -z-0"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="filter grayscale -z-[1]"
+              width={900}
+              height={900}
             />
           </SimpleParallax>
         </div>

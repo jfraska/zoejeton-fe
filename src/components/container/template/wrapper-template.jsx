@@ -200,15 +200,7 @@ export function Cover({ children, className }) {
   );
 }
 
-export function LockScreen({
-  children,
-  className,
-  type = "page",
-  open,
-  id,
-  handleOpen,
-  handleClose,
-}) {
+export function LockScreen({ children, className, type = "page", open, id }) {
   let lockRef = useRef(null);
   const timeline = useRef(null);
   const { isEdit, dataContent, data } = useContext(CustomizeContext);
@@ -221,22 +213,6 @@ export function LockScreen({
       setBackground(section.value.background);
     }
   }, [dataContent]);
-
-  // useEffect(() => {
-  //   const handleHashChange = () => {
-  //     if (window.location.hash === "#lockscreen") {
-  //       handleClose();
-  //     } else {
-  //       handleOpen();
-  //     }
-  //   };
-
-  //   window.addEventListener("hashchange", handleHashChange);
-
-  //   return () => {
-  //     window.removeEventListener("hashchange", handleHashChange);
-  //   };
-  // }, []);
 
   useEffect(() => {
     timeline.current = gsap.timeline({ paused: true });
@@ -280,6 +256,10 @@ export function LockScreen({
           }
           alt="background"
           className="object-cover brightness-90"
+          styles={{
+            objectPosition: "40% center",
+            filter: "brightness(0.8)",
+          }}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       )}

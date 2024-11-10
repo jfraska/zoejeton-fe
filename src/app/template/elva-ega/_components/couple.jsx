@@ -22,10 +22,11 @@ export default function Couple() {
             src="/templates/elva-ega/asset-2.svg"
             alt="couple bg"
             className="absolute top-0 right-0"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
           />
         </div>
+
         <div className="relative w-full h-fit">
           {/* mempelai wanita */}
           <div className="space-y-4 w-64 z-10">

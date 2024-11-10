@@ -7,7 +7,7 @@ import "react-photo-view/dist/react-photo-view.css";
 export default function Galery() {
   return (
     <Section
-      className="relative flex flex-col w-full px-5 pt-20 pb-32 items-center mx-auto bg-[#262B2E] text-secondary-text rounded-tr-[99px] rounded-tl-[99px]"
+      className="relative flex flex-col w-full px-5 pt-20 pb-20 items-center mx-auto bg-[#262B2E] text-secondary-text rounded-tr-[60px] rounded-tl-[60px]"
       id="galery"
     >
       <div className="flex gap-3 w-full justify-around h-20">
