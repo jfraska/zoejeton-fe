@@ -99,15 +99,7 @@ export default function Event() {
         </div>
       </div>
 
-      <div className="h-40">
-        <p className="text-center mt-16 mx-auto w-5/6">
-          “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan
-          pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
-          dan merasa tenteram kepadanya, dan Diamenjadikan di antaramau rasa
-          kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat
-          tanda-tanda (kebesaran Allah) bagi kaum yang berpikir”
-        </p>
-      </div>
+      <div className="h-40"></div>
     </Section>
   );
 }

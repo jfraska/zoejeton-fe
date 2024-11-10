@@ -1,6 +1,10 @@
 import { Section } from "@/components/container/template/wrapper-template";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/UI/collapsible";
 import { Selina } from "@/styles/fonts";
-import Image from "next/image";
 
 export default function Gift() {
   return (
@@ -16,9 +20,17 @@ export default function Gift() {
             mempermudah. Terima kasih.
           </p>
 
-          <button className="flex items-center justify-center bg-white text-gray-800 px-4 py-2 rounded-full mt-10">
-            Klik disini
-          </button>
+          <Collapsible>
+            <CollapsibleTrigger asChild>
+              <button className="flex items-center justify-center bg-white text-gray-800 px-4 py-2 rounded-full mt-10">
+                Klik disini
+              </button>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              Yes. Free to use for personal and commercial projects. No
+              attribution required.
+            </CollapsibleContent>
+          </Collapsible>
         </div>
       </div>
     </Section>

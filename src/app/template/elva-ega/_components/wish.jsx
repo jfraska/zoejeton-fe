@@ -21,7 +21,7 @@ export default function Wish() {
 
   return (
     <Section className="text-secondary-text w-full" id="wish">
-      <div className="relative flex flex-col gap-5 pt-20 pb-28 px-10 items-center bg-[#23282A] rounded-[70px] opacity-90">
+      <div className="relative flex flex-col gap-5 pt-20 pb-28 px-10 items-center text-center bg-[#23282A] rounded-[70px] opacity-90">
         <h1
           data-aos="zoom-in"
           data-aos-duration="1000"
@@ -29,7 +29,7 @@ export default function Wish() {
         >
           UCAPAN & DOA
         </h1>
-        <h2 className="text-xl">Berikan doa dan harapan terbaik untuk kami</h2>
+        <h2 className="text-xl ">Berikan doa dan harapan terbaik untuk kami</h2>
 
         <div className="w-full mt-5">
           <InfiniteScroll
