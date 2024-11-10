@@ -20,11 +20,11 @@ export default function Wish() {
 
   return (
     <Section className="text-secondary-text w-full h-fit" id="wish">
-      <div className="relative flex flex-col gap-5 aspect-9/16 py-10 px-10 items-center bg-[#23282A] rounded-[99px]">
+      <div className="relative flex flex-col gap-5 pt-20 pb-36 px-10 items-center bg-[#23282A] rounded-[99px]">
         <h1
           data-aos="zoom-in"
           data-aos-duration="1000"
-          className={`${Selina.className} text-4xl font-medium text-center mt-5 uppercase`}
+          className={`${Selina.className} text-4xl font-medium text-center uppercase`}
         >
           UCAPAN & DOA
         </h1>

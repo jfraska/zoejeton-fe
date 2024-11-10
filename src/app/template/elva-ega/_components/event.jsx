@@ -7,11 +7,11 @@ import SimpleParallax from "simple-parallax-js";
 export default function Event() {
   return (
     <Section
-      className="relative w-full h-fit p-4 text-primary-text text-center"
+      className="relative w-full h-fit p-4 text-primary-text text-center "
       id="event"
     >
       <div className="bg-[#EEEEEE] rounded-[100px] overflow-hidden w-full p-4 shadow-lg opacity-90">
-        <div className="relative w-full h-[700px] rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text">
+        <div className="relative w-full h-[700px] rounded-[100px] overflow-hidden outline-primary-text focus:outline-primary-text !opacity-100">
           <CountDown deadline={"Sabtu, 24 November 2024"} />
 
           <SimpleParallax delay={1} transition="cubic-bezier(0,0,0,1)">
@@ -34,7 +34,7 @@ export default function Event() {
           </h1>
           <div className="flex gap-4 items-center uppercase">
             <h1>Minggu</h1>
-            <div className="flex flex-col justify-between px-4 border-l-black border-r-black">
+            <div className="flex flex-col justify-between px-4 border-l border-l-black border-r border-r-black">
               <h1 className="font-semibold text-4xl">24</h1>
               <h2>2024</h2>
             </div>
@@ -49,7 +49,7 @@ export default function Event() {
               <h1>Sabtu</h1>
               <h2>Minggu</h2>
             </div>
-            <div className="flex flex-col justify-between px-4 border-l-black border-r-black">
+            <div className="flex flex-col justify-between px-4 border-l border-l-black border-r border-r-black">
               <h1 className="font-semibold text-2xl"> 23 -24</h1>
               <h2>2024</h2>
             </div>
@@ -73,6 +73,8 @@ export default function Event() {
           </a>
         </div>
       </div>
+
+      <div className="h-40"></div>
     </Section>
   );
 }

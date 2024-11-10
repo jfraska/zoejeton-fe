@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Beranda() {
   return (
     <Section className="w-full text-secondary-text" id="beranda">
-      <div className="absolute inset-0 h-[160vh] w-full -z-[1]">
+      <div className="absolute inset-0 h-[1750px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -14,7 +14,19 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="160vh"
+          sizes="1750px"
+        />
+      </div>
+      <div className="absolute inset-0 top-[1750px] h-[1750px] w-full -z-[1]">
+        <Image
+          fill
+          src="/templates/elva-ega/7.jpg"
+          alt="beranda bg"
+          style={{
+            objectFit: "cover",
+            objectPosition: "40% center",
+          }}
+          sizes="1750px"
         />
       </div>
       <div
@@ -28,7 +40,7 @@ export default function Beranda() {
           width={100}
           height={100}
         />
-        <p className="text-center mt-16 w-96">
+        <p className="text-center mt-16 w-5/6">
           “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan
           pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
           dan merasa tenteram kepadanya, dan Diamenjadikan di antaramau rasa

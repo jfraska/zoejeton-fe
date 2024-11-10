@@ -114,7 +114,7 @@ export function Template() {
   );
 }
 
-export function Section({ children, className, id }) {
+export function Section({ children, className, id, styles }) {
   const { dataContent, data } = useContext(CustomizeContext);
   const [background, setBackground] = useState(null);
 
@@ -148,7 +148,8 @@ export function Section({ children, className, id }) {
               : `/templates/${data.slug}/${background[0]}`
           }
           alt="background"
-          className="object-cover brightness-90 image"
+          className={`object-cover brightness-90 image`}
+          style={styles}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       )}

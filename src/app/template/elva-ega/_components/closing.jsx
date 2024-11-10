@@ -4,8 +4,12 @@ import { Selina } from "@/styles/fonts";
 export default function Closing() {
   return (
     <Section
-      className="relative flex flex-col justify-center items-center text-secondary-text h-full"
+      className="flex flex-col justify-center items-center text-secondary-text h-full"
       id="closing"
+      styles={{
+        objectPosition: "40% center",
+        filter: "brightness(0.7)",
+      }}
     >
       <h1
         data-aos="fade-up"
