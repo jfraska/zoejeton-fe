@@ -23,13 +23,13 @@ export async function generateMetadata({ params, searchParams }, parent) {
     title: `The Wedding Of ${title}`,
     description: meta?.description,
     openGraph: {
-      title: `${title} | ZoeJeton`,
+      title: `The Wedding Of ${title}`,
       description: meta?.description,
       images: [image],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ZoeJeton`,
+      title: `The Wedding Of ${title}`,
       description: meta?.description,
       images: [image],
       creator: "@zoejeton",
