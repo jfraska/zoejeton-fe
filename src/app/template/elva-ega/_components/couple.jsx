@@ -27,59 +27,59 @@ export default function Couple() {
           />
         </div>
 
-        <div className="relative w-full h-fit">
+        <div className="relative w-full h-fit space-y-4">
           {/* mempelai wanita */}
-          <div className="space-y-4 w-64 z-10">
-            <h2
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              className={`${Selina.className} text-5xl font-medium`}
-            >
-              Elva Asy Syifa Mujahidin
-            </h2>
+          <h2
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className={`${Selina.className} w-64 text-5xl font-medium`}
+          >
+            Elva Asy Syifa Mujahidin
+          </h2>
+          <div className="w-3/4">
             <p data-aos="fade-up" data-aos-duration="1000">
               Putri Bapak Mujahidin & Ibu Margiyanti
             </p>
             <p data-aos="fade-up" data-aos-duration="1000">
               Dsn. Ba’an Rt 01 Rw 03 Ds. Asinan, Kec. Bawen
             </p>
-
-            <a
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              href="https://www.instagram.com/elvaasys_"
-              target="_blank"
-              className="w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center"
-            >
-              Instagram
-            </a>
           </div>
 
+          <a
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            href="https://www.instagram.com/elvaasys_"
+            target="_blank"
+            className="w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center"
+          >
+            Instagram
+          </a>
+
           {/* mempelai pria */}
-          <div className="mt-28 space-y-4 w-64">
-            <h2
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              className={`${Selina.className} text-5xl font-medium`}
-            >
-              Ega Chandra Pratama
-            </h2>
+          <h2
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className={`${Selina.className} text-5xl font-medium w-64 mt-40`}
+          >
+            Ega Chandra Pratama
+          </h2>
+          <div className="w-3/4">
             <p data-aos="fade-up" data-aos-duration="1000">
               Putra Bapak Sugiyarto & Ibu Indah Widayanti
             </p>
             <p data-aos="fade-up" data-aos-duration="1000">
               Kupang Lor, Rt 04 Rw 03, Kec. Ambarawa
             </p>
-            <a
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              href="https://www.instagram.com/egachandraaa"
-              target="_blank"
-              className="w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center z-20"
-            >
-              Instagram
-            </a>
           </div>
+          <a
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            href="https://www.instagram.com/egachandraaa"
+            target="_blank"
+            className="w-28 h-8 bg-white text-black rounded-lg flex items-center justify-center z-20"
+          >
+            Instagram
+          </a>
         </div>
       </diV>
     </Section>

@@ -24,7 +24,7 @@ export default function Event() {
           </SimpleParallax>
         </div>
 
-        <div className="relative flex flex-col gap-4 py-10 px-5 items-center justify-center">
+        <div className="relative flex flex-col gap-4 py-10 px-4 items-center justify-center">
           <h1
             data-aos="zoom-in"
             data-aos-duration="1000"
