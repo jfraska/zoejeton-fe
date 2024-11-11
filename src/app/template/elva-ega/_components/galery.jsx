@@ -7,7 +7,7 @@ import "react-photo-view/dist/react-photo-view.css";
 export default function Galery() {
   return (
     <Section
-      className="relative flex flex-col w-full px-5 pt-20 pb-20 items-center mx-auto bg-[#262B2E] text-secondary-text rounded-tr-[60px] rounded-tl-[60px]"
+      className="relative flex flex-col w-full px-5 pt-20 items-center mx-auto bg-[#262B2E] text-secondary-text rounded-tr-[60px] rounded-tl-[60px]"
       id="galery"
     >
       <div className="flex gap-3 w-full justify-around h-20">
@@ -111,7 +111,7 @@ export default function Galery() {
         </div>
       </PhotoProvider>
 
-      <div className="py-28 w-full flex flex-col gap-2 justify-center items-center">
+      <div className="py-20 w-full flex flex-col gap-2 justify-center items-center text-center">
         <p>ꦠꦿꦼꦱꦤ ꦱꦼꦗꦶꦠꦶ ꦠꦤꦱꦃ ꦭꦁꦒꦼꦤ꧀ ꦱꦃ ꦄꦧꦏꦤꦶ</p>
         <p>"Tresna sejati tansah langgeng saha abadi"</p>
       </div>
