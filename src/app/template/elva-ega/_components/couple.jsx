@@ -63,7 +63,7 @@ export default function Couple() {
               Ega Chandra Pratama
             </h2>
             <p data-aos="fade-up" data-aos-duration="1000">
-              Putra Bapak Sugiyarto & Ibu Indah Widiyanti Kupang Lor, Rt 04 Rw
+              Putra Bapak Sugiyarto & Ibu Indah Widayanti Kupang Lor, Rt 04 Rw
               03, Kec. Ambarawa
             </p>
             <a

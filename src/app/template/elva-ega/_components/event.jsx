@@ -45,7 +45,7 @@ export default function Event() {
             <h1>November</h1>
           </div>
           <p data-aos="zoom-in" data-aos-duration="1000">
-            09.00
+            09.00 WIB
           </p>
           <p data-aos="zoom-in" data-aos-duration="1000" className="w-40">
             Dsn. Ba’an Rt 01 Rw 03 Ds. Asinan, Kec. Bawen{" "}

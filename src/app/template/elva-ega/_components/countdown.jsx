@@ -37,8 +37,8 @@ const CountDown = ({ deadline }) => {
   return (
     <div
       data-aos="zoom-in"
-      data-aos-duration="1000"
-      className={`${Selina.className}  absolute inset-x-0 top-28 flex justify-around items-center text-center text-2xl text-secondary-text w-full z-20`}
+      data-aos-duration="800"
+      className={`${Selina.className}  absolute inset-x-0 top-24 flex justify-around items-center text-center text-2xl text-secondary-text w-full z-20`}
     >
       <div>
         <h2>{leading0(days)}</h2>

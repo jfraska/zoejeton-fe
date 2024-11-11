@@ -49,7 +49,7 @@ export default function Gift() {
               </button>
             </CollapsibleTrigger>
             <CollapsibleContent>
-              <div className="flex w-full rounded-xl mt-5 p-6 bg-white shadow-lg text-gray-900 backdrop-filter backdrop-blur-md bg-opacity-60">
+              <div className="flex w-full rounded-xl mt-5 p-4 bg-white shadow-lg text-gray-900 backdrop-filter backdrop-blur-md bg-opacity-60">
                 <div className="w-full flex flex-col gap-1 ">
                   <h1 className="text-xl font-medium">E-Wallet Dana</h1>
                   <h2 className="text-lg mt-2">0859-4314-6709</h2>
