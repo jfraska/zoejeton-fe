@@ -1,5 +1,8 @@
 "use client";
 
+import { Button } from "@/components/UI/button";
+import { Input } from "@/components/UI/input";
+import { Copy } from "lucide-react";
 import { useState } from "react";
 
 export default function LinkGenerator() {
@@ -8,7 +11,7 @@ export default function LinkGenerator() {
   const [copied, setCopied] = useState(false);
 
   const handleGenerate = () => {
-    const formattedName = name.replace(/ /g, "%20");
+    const formattedName = encodeURIComponent(name);
     setGeneratedLink(`https://elva-ega.zoejeton.com?to=${formattedName}`);
   };
 
@@ -23,19 +26,16 @@ export default function LinkGenerator() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-10">
       <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4">Generate Link</h1>
-        <input
+        <Input
           type="text"
           placeholder="Enter the name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded mb-4"
         />
-        <button
-          onClick={handleGenerate}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors"
-        >
+        <Button onClick={handleGenerate} className="w-full transition-colors">
           Generate
-        </button>
+        </Button>
         {generatedLink && (
           <div className="mt-4 text-center">
             <p>Generated Link:</p>
@@ -48,30 +48,19 @@ export default function LinkGenerator() {
               >
                 {generatedLink}
               </a>
-              <button
+              <Button
                 onClick={handleCopy}
-                className="bg-gray-200 p-2 rounded hover:bg-gray-300 transition-colors"
+                type="submit"
+                variant="outline"
+                className="py-2 px-4 rounded transition-colors"
                 title="Copy link"
               >
                 {copied ? (
                   <span className="text-green-500">Copied!</span>
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="w-5 h-5 text-gray-600"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 15.75H5.25a2.25 2.25 0 01-2.25-2.25v-9A2.25 2.25 0 015.25 2.25h9a2.25 2.25 0 012.25 2.25v3M15.75 8.25H18.75a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-3"
-                    />
-                  </svg>
+                  <Copy className="h-4 w-4" />
                 )}
-              </button>
+              </Button>
             </div>
           </div>
         )}
