@@ -65,6 +65,7 @@ export default function DataTable({ columns }) {
   });
 
   useEffect(() => {
+    console.log("Invitation ID:", invitation?.id);
     (async () => {
       try {
         const params = {
@@ -72,8 +73,8 @@ export default function DataTable({ columns }) {
         };
         const result = await getAllGuest(params);
 
-        console.log(result.data.data)
-        setData(result.data.data)
+        console.log(result.data)
+        setData(result.data)
       } catch (error) {
         console.log("Error fetching data:", error);
       } finally {
