@@ -20,7 +20,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const image = `/templates/${subdomain}/${meta?.image}`;
 
   return {
-    title: `${title} | ZoeJeton`,
+    title: `The Wedding Of ${title}`,
     description: meta?.description,
     openGraph: {
       title: `${title} | ZoeJeton`,
