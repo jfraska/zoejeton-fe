@@ -27,7 +27,7 @@ export default function Couple() {
           />
         </div>
 
-        <div className="relative w-full h-fit space-y-4">
+        <div className="relative w-full flex flex-col gap-4 justify-around">
           {/* mempelai wanita */}
           <h2
             data-aos="fade-up"
@@ -59,7 +59,7 @@ export default function Couple() {
           <h2
             data-aos="fade-up"
             data-aos-duration="1000"
-            className={`${Selina.className} text-5xl font-medium w-64 mt-40`}
+            className={`${Selina.className} text-5xl font-medium w-64 mt-28`}
           >
             Ega Chandra Pratama
           </h2>
