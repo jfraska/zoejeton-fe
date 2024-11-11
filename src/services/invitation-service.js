@@ -10,8 +10,8 @@ const createInvitation = (data) => {
   return request.post("/v1/invitation", data);
 };
 
-const showInvitation = (params) => {
-  return request.get(`/v1/invitation/${params}`);
+const showInvitation = (id) => {
+  return request.get(`/v1/invitation/${id}`);
 };
 
 const updateInvitation = (data) => {

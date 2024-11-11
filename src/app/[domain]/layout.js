@@ -1,6 +1,6 @@
 import { CustomizeProvider } from "@/context/CustomizeContext";
+import InvitationService from "@/services/invitation-service";
 import { notFound } from "next/navigation";
-import TemplateService from "@/services/template-service";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const domain = decodeURIComponent(params.domain);
@@ -8,30 +8,31 @@ export async function generateMetadata({ params, searchParams }, parent) {
     ? domain.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
     : null;
 
-  const res = await TemplateService.showTemplate(`/${subdomain}`);
+  const res = await InvitationService.showInvitation(subdomain);
 
   if (!res.success) {
     return notFound();
   }
 
-  const { title, description, thumbnail } = res.data;
+  const { title, meta } = res.data;
 
-  const previousImages = (await parent).openGraph?.images || [];
+  // const previousImages = (await parent).openGraph?.images || [];
+  const image = `/templates/${subdomain}/${meta?.image}`;
 
   return {
     title: `${title} | ZoeJeton`,
-    description,
+    description: meta?.description,
     openGraph: {
-      title,
-      description,
-      images: [thumbnail, ...previousImages],
+      title: `${title} | ZoeJeton`,
+      description: meta?.description,
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      images: [thumbnail],
-      creator: "@vercel",
+      title: `${title} | ZoeJeton`,
+      description: meta?.description,
+      images: [image],
+      creator: "@zoejeton",
     },
     // icons: [logo],
     metadataBase: new URL(`https://${domain}`),

@@ -22,8 +22,8 @@ export default function Couple() {
             src="/templates/elva-ega/asset-2.svg"
             alt="couple bg"
             className="absolute top-0 right-0"
-            width={150}
-            height={150}
+            width={170}
+            height={170}
           />
         </div>
 

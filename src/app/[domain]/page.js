@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalStyles } from "@mui/material";
 import dynamic from "next/dynamic";
 import Loading from "@/app/template/loading";
-import TemplateService from "@/services/template-service";
 import CustomizeContext from "@/context/CustomizeContext";
+import InvitationService from "@/services/invitation-service";
 
 export default function Publish({ params }) {
   const [loading, setLoading] = useState(true);
@@ -21,13 +21,13 @@ export default function Publish({ params }) {
   useEffect(() => {
     (async () => {
       try {
-        const res = await TemplateService.showTemplate(`/${subdomain}`);
+        const res = await InvitationService.showInvitation(`${subdomain}`);
 
         if (!res.success) {
           throw new Error(res);
         }
 
-        initData(res.data);
+        initData(res.data.template);
 
         // if (searchParams.has("guest")) {
         //   res = await fetch(

@@ -55,7 +55,7 @@ export default function Beranda() {
         <p className="text-center mt-16 w-5/6">
           “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan
           pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
-          dan merasa tenteram kepadanya, dan Diamenjadikan di antaramau rasa
+          dan merasa tenteram kepadanya, dan Dia menjadikan di antara mau rasa
           kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat
           tanda-tanda (kebesaran Allah) bagi kaum yang berpikir”
         </p>

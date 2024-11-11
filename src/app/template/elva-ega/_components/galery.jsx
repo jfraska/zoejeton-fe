@@ -110,6 +110,11 @@ export default function Galery() {
           </div>
         </div>
       </PhotoProvider>
+
+      <div className="py-28 w-full flex flex-col gap-2 justify-center items-center">
+        <p>ꦠꦿꦼꦱꦤ ꦱꦼꦗꦶꦠꦶ ꦠꦤꦱꦃ ꦭꦁꦒꦼꦤ꧀ ꦱꦃ ꦄꦧꦏꦤꦶ</p>
+        <p>"Tresna sejati tansah langgeng saha abadi"</p>
+      </div>
     </Section>
   );
 }
