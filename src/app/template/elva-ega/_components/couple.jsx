@@ -38,8 +38,10 @@ export default function Couple() {
               Elva Asy Syifa Mujahidin
             </h2>
             <p data-aos="fade-up" data-aos-duration="1000">
-              Putri Bapak Mujahidin & Ibu Margiyanti Dsn. Ba’an Rt 01 Rw 03 Ds.
-              Asinan, Kec. Bawen
+              Putri Bapak Mujahidin & Ibu Margiyanti
+            </p>
+            <p data-aos="fade-up" data-aos-duration="1000">
+              Dsn. Ba’an Rt 01 Rw 03 Ds. Asinan, Kec. Bawen
             </p>
 
             <a
@@ -63,8 +65,10 @@ export default function Couple() {
               Ega Chandra Pratama
             </h2>
             <p data-aos="fade-up" data-aos-duration="1000">
-              Putra Bapak Sugiyarto & Ibu Indah Widayanti Kupang Lor, Rt 04 Rw
-              03, Kec. Ambarawa
+              Putra Bapak Sugiyarto & Ibu Indah Widayanti
+            </p>
+            <p data-aos="fade-up" data-aos-duration="1000">
+              Kupang Lor, Rt 04 Rw 03, Kec. Ambarawa
             </p>
             <a
               data-aos="fade-up"
