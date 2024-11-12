@@ -10,7 +10,7 @@ export default function EditableLink({ children, name, ...props }) {
   return (
     <Popover>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className="bg-neutral-200">
         <div className="flex flex-col gap-3">
           <Label htmlFor="link" className="capitalize">
             {name}
