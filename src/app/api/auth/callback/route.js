@@ -1,12 +1,13 @@
 const options = {
   path: "/",
   domain:
-    process.env.NODE_ENV === "production"
+    process.env.NODE_ENV === "production" ||
+    process.env.NODE_ENV === "development"
       ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
       : null,
-  secure: true,
-  httpOnly: true,
-  sameSite: "lax",
+  secure: process.env.NODE_ENV === "production",
+  httpOnly: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "strict" : "none",
 };
 
 export function GET(request) {
@@ -17,9 +18,8 @@ export function GET(request) {
     const cookieValue =
       `session=${token}; Path=${options.path}; ` +
       (options.domain ? `Domain=${options.domain}; ` : "") +
-      "Secure; " +
-      // "HttpOnly; " +
-      // `Expires=${expires};` +
+      (options.secure ? "Secure; " : "") +
+      (options.httpOnly ? "HttpOnly; " : "") +
       `SameSite=${options.sameSite};`;
 
     return new Response(null, {
