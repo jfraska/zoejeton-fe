@@ -4,9 +4,9 @@ const options = {
     process.env.NODE_ENV === "local"
       ? undefined
       : `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`,
-  secure: process.env.NODE_ENV === "production",
-  httpOnly: process.env.NODE_ENV === "production",
-  sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+  // secure: process.env.NODE_ENV === "production",
+  // httpOnly: process.env.NODE_ENV === "production",
+  // sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
 };
 
 export function GET(request) {
