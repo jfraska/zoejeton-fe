@@ -3,12 +3,12 @@ import { deleteCookie, getCookie, hasCookie, setCookie } from "cookies-next";
 const options = {
   path: "/",
   domain:
-    process.env.NODE_ENV === "production"
-      ? `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
-      : null,
-  secure: true,
-  // httpOnly: true,
-  sameSite: "lax",
+    process.env.NEXT_PUBLIC_APP_ENV === "local"
+      ? ""
+      : `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`,
+  secure: process.env.NEXT_PUBLIC_APP_ENV === "production",
+  httpOnly: process.env.NEXT_PUBLIC_APP_ENV === "production",
+  sameSite: process.env.NEXT_PUBLIC_APP_ENV === "production" ? "strict" : "lax",
 };
 
 export function deleteSession() {
@@ -16,7 +16,12 @@ export function deleteSession() {
 }
 
 export function createSession(token, expires) {
-  setCookie("session", token, { ...options, expires });
+  const expiresDate = new Date(expires);
+
+  setCookie("session", token, {
+    ...options,
+    expires: expiresDate,
+  });
 }
 
 export function getSession() {

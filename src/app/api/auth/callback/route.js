@@ -1,12 +1,12 @@
 const options = {
   path: "/",
   domain:
-    process.env.NODE_ENV === "local"
-      ? undefined
+    process.env.NEXT_PUBLIC_APP_ENV === "local"
+      ? null
       : `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`,
-  // secure: process.env.NODE_ENV === "production",
-  // httpOnly: process.env.NODE_ENV === "production",
-  // sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+  secure: process.env.NEXT_PUBLIC_APP_ENV === "production",
+  httpOnly: process.env.NEXT_PUBLIC_APP_ENV === "production",
+  sameSite: process.env.NEXT_PUBLIC_APP_ENV === "production" ? "strict" : "lax",
 };
 
 export function GET(request) {
