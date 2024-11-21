@@ -1,11 +1,10 @@
 import { Section } from "@/components/container/template/wrapper-template";
-import { Selina } from "@/styles/fonts";
 import Image from "next/image";
 
 export default function Beranda() {
   return (
     <Section className="w-full text-secondary-text" id="beranda">
-      <div className="absolute inset-0 h-[1900px] w-full -z-[1]">
+      <div className="absolute inset-0 h-[1700px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -14,10 +13,10 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="1900px"
+          sizes="1700px"
         />
       </div>
-      <div className="absolute inset-0 top-[1900px] h-[1900px] w-full -z-[1]">
+      <div className="absolute inset-0 top-[1700px] h-[1700px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -26,10 +25,10 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="1900px"
+          sizes="1700px"
         />
       </div>
-      <div className="absolute inset-0 top-[3800px] h-[1900px] w-full -z-[1]">
+      <div className="absolute inset-0 top-[3400px] h-[1700px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -38,7 +37,7 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="1900px"
+          sizes="1700px"
         />
       </div>
       <div
