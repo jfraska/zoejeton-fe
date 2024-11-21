@@ -54,32 +54,6 @@ export default function Event() {
           <h1
             data-aos="zoom-in"
             data-aos-duration="1000"
-            className={`${Selina.className} text-6xl mt-5`}
-          >
-            Tasyakuran
-          </h1>
-          <div
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            className="flex gap-4 items-center uppercase"
-          >
-            <h1>Sabtu</h1>
-            <div className="flex flex-col justify-between px-4 border-l border-l-black border-r border-r-black">
-              <h1 className="font-semibold text-4xl">30</h1>
-              <h2>2024</h2>
-            </div>
-            <h1>November</h1>
-          </div>
-          <p data-aos="zoom-in" data-aos-duration="1000">
-            Jam : -
-          </p>
-          <p data-aos="zoom-in" data-aos-duration="1000" className="w-56">
-            Belakang SMP Islam Sudirman Kupang Lor, Rt 04 Rw 03, Kec. Ambarawa
-          </p>
-
-          <h1
-            data-aos="zoom-in"
-            data-aos-duration="1000"
             className={`${Selina.className} text-5xl mt-5`}
           >
             Ngunduh Mantu
@@ -103,11 +77,56 @@ export default function Event() {
             Belakang SMP Islam Sudirman Kupang Lor, Rt 04 Rw 03, Kec. Ambarawa
           </p>
 
+          <h1
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            className={`${Selina.className} text-6xl mt-5`}
+          >
+            Tasyakuran
+          </h1>
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            className="flex gap-4 items-center uppercase"
+          >
+            <h1>Sabtu</h1>
+            <div className="flex flex-col justify-between px-4 border-l border-l-black border-r border-r-black">
+              <h1 className="font-semibold text-4xl">30</h1>
+              <h2>2024</h2>
+            </div>
+            <h1>November</h1>
+          </div>
+          <p data-aos="zoom-in" data-aos-duration="1000">
+            Jam : -
+          </p>
+          <p data-aos="zoom-in" data-aos-duration="1000" className="w-56">
+            Belakang SMP Islam Sudirman Kupang Lor, Rt 04 Rw 03, Kec. Ambarawa
+          </p>
+
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            className="flex gap-4 items-center uppercase"
+          >
+            <h1>Minggu</h1>
+            <div className="flex flex-col justify-between px-4 border-l border-l-black border-r border-r-black">
+              <h1 className="font-semibold text-4xl">01</h1>
+              <h2>2024</h2>
+            </div>
+            <h1>Desember</h1>
+          </div>
+          <p data-aos="zoom-in" data-aos-duration="1000">
+            Jam : 12.00 - selesai
+          </p>
+          <p data-aos="zoom-in" data-aos-duration="1000" className="w-56">
+            Belakang SMP Islam Sudirman Kupang Lor, Rt 04 Rw 03, Kec. Ambarawa
+          </p>
+
           <a
             data-aos="zoom-in"
             data-aos-duration="1000"
             target="_blank"
-            href="https://maps.app.goo.gl/r6wiHxmwSZ8Fup7Y6"
+            href="https://maps.app.goo.gl/2tH4opCbcX9NqUuc7"
             className="flex items-center justify-center bg-white text-gray-800 px-4 py-2 rounded-full mt-16"
           >
             <svg
