@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Beranda() {
   return (
     <Section className="w-full text-secondary-text" id="beranda">
-      <div className="absolute inset-0 h-[1750px] w-full -z-[1]">
+      <div className="absolute inset-0 h-[1900px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -14,10 +14,10 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="1750px"
+          sizes="1900px"
         />
       </div>
-      <div className="absolute inset-0 top-[1750px] h-[1750px] w-full -z-[1]">
+      <div className="absolute inset-0 top-[1900px] h-[1900px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -26,10 +26,10 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="1750px"
+          sizes="1900px"
         />
       </div>
-      <div className="absolute inset-0 top-[3500px] h-[1750px] w-full -z-[1]">
+      <div className="absolute inset-0 top-[3800px] h-[1900px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -38,7 +38,7 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="1750px"
+          sizes="1900px"
         />
       </div>
       <div
