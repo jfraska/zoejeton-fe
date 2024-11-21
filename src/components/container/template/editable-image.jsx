@@ -17,6 +17,7 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 // import FilePondPluginImageTransform from "filepond-plugin-image-transform";
 // import "filepond-plugin-file-poster/dist/filepond-plugin-file-poster.min.css";
 // import "filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/tabs";
 
 registerPlugin(
   // FilePondPluginFilePoster,
@@ -60,22 +61,42 @@ export default function EditableImage({
   return (
     <Popover>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
-      <PopoverContent>
-        <FilePond
-          files={
-            image?.getFileEncodeDataURL
-              ? [image.getFileEncodeDataURL()]
-              : [`/templates/${slug}/${image}`]
-          }
-          allowMultiple
-          allowRemove={false}
-          dropOnPage
-          // onupdatefiles={handleFileUpload}
-          onaddfile={handleAddFile}
-          acceptedFileTypes={["image/*"]}
-          labelFileTypeNotAllowed={"File of invalid type"}
-          credits=""
-        />
+      <PopoverContent className="bg-neutral-200">
+        <Tabs defaultValue="upload" className="w-full">
+          <TabsList className="w-full">
+            <TabsTrigger className="w-full" value="upload">
+              Upload
+            </TabsTrigger>
+            <TabsTrigger className="w-full" value="setting">
+              Setting
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="upload">
+            <FilePond
+              // files={
+              //   image?.getFileEncodeDataURL
+              //     ? [image.getFileEncodeDataURL()]
+              //     : [`/templates/${slug}/${image}`]
+              // }
+              allowMultiple
+              allowRemove={false}
+              dropOnPage
+              // onupdatefiles={handleFileUpload}
+              onaddfile={handleAddFile}
+              acceptedFileTypes={["image/*"]}
+              labelFileTypeNotAllowed={"File of invalid type"}
+              credits=""
+            />
+
+            <div className="flex w-full flex-wrap gap-2">
+              <button className="relative w-[30%] aspect-square bg-slate-500 rounded-lg group"></button>
+              <button className="relative w-[30%] aspect-square bg-slate-500 rounded-lg"></button>
+              <button className="relative w-[30%] aspect-square bg-slate-500 rounded-lg"></button>
+              <button className="relative w-[30%] aspect-square bg-slate-500 rounded-lg"></button>
+            </div>
+          </TabsContent>
+          <TabsContent value="setting"></TabsContent>
+        </Tabs>
       </PopoverContent>
     </Popover>
   );

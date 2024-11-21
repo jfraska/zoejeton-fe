@@ -8,9 +8,9 @@ const usePagination = (service, id = null, PAGE_SIZE = 4) => {
 
     if (previousPageData?.data && !previousPageData.data?.length) return null;
 
-    if (id) return `?page=${pageIndex}&per_page=${PAGE_SIZE}&id=${id}`;
+    if (id) return `page=${pageIndex}&per_page=${PAGE_SIZE}&id=${id}`;
 
-    return `?page=${pageIndex}&per_page=${PAGE_SIZE}`;
+    return `page=${pageIndex}&per_page=${PAGE_SIZE}`;
   };
 
   const { data, size, setSize, error, mutate } = useSWRInfinite(

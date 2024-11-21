@@ -2,24 +2,20 @@
 
 import { useContext, useEffect, useState } from "react";
 import { MoreHorizontal, PanelLeft, PlayCircle, Save } from "lucide-react";
-import { CaretSortIcon } from "@radix-ui/react-icons";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/avatar";
 import { Button } from "@/components/UI/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/UI/sheet";
-import ButtonCustomize from "@/components/container/template/button-customize";
 import CustomizeContext from "@/context/CustomizeContext";
 import ConfirmSave from "@/components/container/template/confirm-save";
 import PortalContext from "@/context/PortalContext";
 import Link from "next/link";
 import Image from "next/image";
 import { getCookie, hasCookie } from "cookies-next";
-import CustomizeList from "@/components/container/template/customize-list";
+import SidebarContent from "@/components/container/template/sidebar-content";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -53,7 +49,7 @@ export default function Nav() {
           <SheetContent
             side="left"
             overlay="false"
-            className="h-full overflow-y-auto scrollbar-default md:scrollbar-hide"
+            className="h-full px-2 overflow-y-auto scrollbar-default md:scrollbar-hide"
           >
             <SheetHeader>
               <Link
@@ -62,7 +58,7 @@ export default function Nav() {
                     ? `https://${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`
                     : `http://localhost:3000`
                 }
-                className="flex items-center gap-4 text-lg font-medium"
+                className="flex px-4 items-center gap-4 text-lg font-medium"
               >
                 <Image
                   src="/assets/icons/zoejeton.svg"
@@ -74,11 +70,7 @@ export default function Nav() {
                 <span className="">ZoeJeton</span>
               </Link>
             </SheetHeader>
-            <h1 className="mt-5 mb-2">Fitur</h1>
-            <ButtonCustomize type="color" />
-
-            <h1 className="mt-5">Page</h1>
-            <CustomizeList content={dataContent} />
+            <SidebarContent />
           </SheetContent>
         </Sheet>
         <div className="w-full flex-1">

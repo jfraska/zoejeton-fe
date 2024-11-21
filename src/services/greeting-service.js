@@ -1,7 +1,7 @@
 import request from "@/lib/request";
 
 const getAllGreeting = (params) => {
-  return request.get(`/v1/greeting${params}`);
+  return request.get(`/v1/greeting?${params}`);
 };
 
 const createGreeting = (data) => {

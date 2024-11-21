@@ -9,7 +9,7 @@ export default function EditableDate({ children, date, setDate }) {
   return (
     <Popover>
       <PopoverTrigger asChild>{children}</PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className="bg-slate-200">
         <Calendar
           mode="single"
           selected={date}

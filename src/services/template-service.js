@@ -1,9 +1,9 @@
 import request from "@/lib/request";
+import qs from "qs";
 
 const getAllTemplate = (params) => {
-  return request.get("/v1/template", {
-    params,
-  });
+  const query = qs.stringify(params, { encodeValuesOnly: true });
+  return request.get(`/v1/template?${query}`);
 };
 
 const createTemplate = (data) => {

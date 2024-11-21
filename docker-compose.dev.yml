@@ -23,6 +23,8 @@ services:
     build:
       context: .
       dockerfile: DockerFile
+      # args:
+      #   NODE_ENV: development
     container_name: fe_dev
     env_file: .env
     networks:
