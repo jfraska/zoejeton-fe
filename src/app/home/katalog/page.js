@@ -1,5 +1,5 @@
 import Header from "./_components/header";
-import TemplateList from "./_components/template-list";
+// import TemplateList from "./_components/template-list";
 
 export const metadata = {
   title: "Katalog | ZoeJeton",
@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <>
       <Header />
-      <TemplateList />
+      {/* <TemplateList /> */}
     </>
   );
 }

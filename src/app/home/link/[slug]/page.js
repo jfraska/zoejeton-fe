@@ -5,6 +5,6 @@ export const metadata = {
   description: "by zoejeton",
 };
 
-export default async function Page({ params }) {
+export default function Page({ params }) {
   return <LinkGenerator url={params.slug} />;
 }
