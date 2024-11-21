@@ -1,53 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
 import LoadingButton from "@/components/UI/loading-button";
 import { useRouter } from "next/navigation";
 import { getUrl } from "@/lib/utils";
+import useSWR from "swr";
+import TemplateService from "@/services/template-service";
 
 export default function TemplateList() {
-  const [data, setData] = useState([]);
-  const [meta, setMeta] = useState({});
   const [category, setCategory] = useState("All");
-  const [pagination, setPagination] = useState({ limit: 5, offset: 0 });
+  const [pagination, setPagination] = useState(0);
   const router = useRouter();
+
+  const getKey = () => {
+    return {
+      page: pagination,
+      per_page: 5,
+      filters: {
+        category: {
+          $in: category,
+        },
+      },
+    };
+  };
+
+  const { data } = useSWR(getKey, TemplateService.getAllTemplate);
 
   const handleCategory = (event) => {
     setCategory(event.target.value);
   };
 
   const handleNextPage = () => {
-    setPagination((prevPagination) => ({
-      ...prevPagination,
-      offset: prevPagination.offset + 1,
-    }));
+    setPagination((prev) => prev + 1);
   };
 
   const handlePrevPage = () => {
-    setPagination((prevPagination) => ({
-      ...prevPagination,
-      offset: prevPagination.offset - 1,
-    }));
+    setPagination((prev) => prev - 1);
   };
-
-  useEffect(() => {
-    const params = new URLSearchParams({
-      category,
-      limit: pagination.limit,
-      offset: pagination.offset,
-    });
-
-    const fetchData = async () => {
-      const response = await fetch(`/api/template?${params.toString()}`);
-      const result = await response.json();
-      setData(result.data);
-      setMeta(result.meta);
-    };
-
-    fetchData();
-  }, [category, pagination]);
 
   return (
     <section className="w-full p-[3%] mb-10" id="katalog">
@@ -64,9 +55,7 @@ export default function TemplateList() {
           </select>
           <span className="absolute right-0 bottom-4 w-3 text-black aspect-square icon-[foundation--play] rotate-90" />
         </div>
-        <h1>
-          Page {pagination.offset + 1} of {meta.totalPage}
-        </h1>
+        <h1>{/* Page {pagination + 1} of {meta.totalPage} */}</h1>
       </div>
 
       <div className="flex flex-wrap gap-4 justify-between my-5 w-full">
@@ -139,7 +128,7 @@ export default function TemplateList() {
           </button>
         )}
 
-        {pagination.offset + 1 < meta.totalPage && (
+        {/* {pagination.offset + 1 < meta.totalPage && (
           <button
             onClick={handleNextPage}
             className="absolute top-0 right-0 flex justify-center items-center gap-1 border border-black py-1 px-2 rounded-full hover:bg-black hover:scale-110 hover:text-white group transition-all duration-200 ease-in-out"
@@ -150,7 +139,7 @@ export default function TemplateList() {
               style={{ transform: "rotate(90deg)" }}
             />
           </button>
-        )}
+        )} */}
       </div>
     </section>
   );

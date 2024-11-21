@@ -2,7 +2,7 @@ import request from "@/lib/request";
 
 export function getAllGroup(params) {
   return request.get("/v1/group", {
-    params: params,
+    params,
   });
 }
 
