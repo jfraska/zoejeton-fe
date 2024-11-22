@@ -28,7 +28,7 @@ export default function Beranda() {
           sizes="1700px"
         />
       </div>
-      <div className="absolute inset-0 top-[3400px] h-[1700px] w-full -z-[1]">
+      <div className="absolute inset-0 top-[3400px] h-[1800px] w-full -z-[1]">
         <Image
           fill
           src="/templates/elva-ega/7.jpg"
@@ -37,7 +37,7 @@ export default function Beranda() {
             objectFit: "cover",
             objectPosition: "40% center",
           }}
-          sizes="1700px"
+          sizes="1800px"
         />
       </div>
       <div
