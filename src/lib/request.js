@@ -25,14 +25,7 @@ REQUEST.interceptors.request.use(
 // response interceptor
 REQUEST.interceptors.response.use(
   (response) => {
-    // return Promise.resolve(response);
-
-    return {
-      success: true,
-      data: response.data.data,
-      status: response.status,
-      message: response.data?.message || "Request successful",
-    };
+    return Promise.resolve(response.data);
   },
   (error) => {
     // unformatted error data
