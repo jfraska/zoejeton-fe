@@ -53,7 +53,7 @@ export default function Publish({ params }) {
   const Template = dynamic(async () => {
     const slug = data.parent ?? data.slug;
 
-    const module = await import(`@/app/template/${slug}/page`);
+    const module = await import(`@/app/customize/_invitations/${slug}/page`);
     return {
       default: module.default,
       ssr: false,
