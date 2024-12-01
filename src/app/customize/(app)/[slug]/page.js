@@ -3,10 +3,11 @@
 import ButtonAction from "@/components/container/customize/button-action";
 import CustomizeMode from "@/components/layouts/customize/customize-mode";
 import useCustomize from "@/hooks/useCustomize";
+import { getUrl } from "@/lib/utils";
 import dynamic from "next/dynamic";
 
 export default function Page({ params }) {
-  const { isEdit } = useCustomize();
+  const { isEdit, data } = useCustomize();
 
   const Invitation = dynamic(async () => {
     const module = await import(
@@ -24,7 +25,7 @@ export default function Page({ params }) {
         <CustomizeMode>
           <iframe
             className="w-full h-full"
-            src="http://customize.localhost:3000/preview/minimalis?edit"
+            src={getUrl(`/preview/${data.slug}?edit`, "customize")}
           />
         </CustomizeMode>
       ) : (
