@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Separator } from "@/components/UI/separator";
 import { Badge } from "@/components/UI/badge";
-import Notification from "@/components/container/template/notification";
+import Notification from "@/components/container/customize/notification";
 import {
   Collapsible,
   CollapsibleContent,

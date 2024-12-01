@@ -8,7 +8,7 @@ import CustomizeContext from "@/context/CustomizeContext";
 
 const useCustomize = () => {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
+  let pathname = usePathname();
   const [loading, setLoading] = useState(true);
 
   const {
@@ -31,7 +31,7 @@ const useCustomize = () => {
     useContext(PortalContext);
 
   useEffect(() => {
-    if (searchParams.has("customize")) {
+    if (searchParams.has("edit")) {
       setIsEdit(true);
     }
   }, [searchParams]);
@@ -39,6 +39,13 @@ const useCustomize = () => {
   useEffect(() => {
     (async () => {
       try {
+        if (pathname.startsWith("/preview")) {
+          const path = pathname.split("/");
+          if (path[2]) {
+            pathname = `/${path[2]}`;
+          }
+        }
+
         const res = await TemplateService.showTemplate(pathname);
 
         let template = res.data;

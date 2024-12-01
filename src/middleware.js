@@ -58,10 +58,11 @@ export async function middleware(req) {
   }
 
   // rewrites for template pages
-  if (hostname == `template.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
+  if (hostname == `customize.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     const response = NextResponse.rewrite(
-      new URL(`/template${path}`, req.nextUrl)
+      new URL(`/customize${path}`, req.nextUrl)
     );
+
     response.headers.set("pathname", url.pathname);
 
     return response;

@@ -2,11 +2,18 @@
 
 import useSWRInfinite from "swr/infinite";
 
-const usePagination = (service, id = null, PAGE_SIZE = 4) => {
+const usePagination = (service, id = null, params = null, PAGE_SIZE = 4) => {
   const getKey = (pageIndex, previousPageData) => {
     pageIndex = pageIndex + 1;
 
     if (previousPageData?.data && !previousPageData.data?.length) return null;
+
+    if (params)
+      return `${
+        params.slug ? `/${params.slug}` : ""
+      }?page=${pageIndex}&per_page=${PAGE_SIZE}${
+        params.query ? `&${params.query}` : ""
+      }`;
 
     if (id) return `page=${pageIndex}&per_page=${PAGE_SIZE}&id=${id}`;
 

@@ -91,7 +91,6 @@ module.exports = {
   plugins: [
     require("tailwindcss-animate"),
     require("tailwind-scrollbar-hide"),
-    require("@tailwindcss/container-queries"),
     addDynamicIconSelectors({ scale: 0 }),
   ],
 };

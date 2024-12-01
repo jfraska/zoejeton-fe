@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalStyles } from "@mui/material";
 import dynamic from "next/dynamic";
-import Loading from "@/app/template/loading";
+import Loading from "@/app/customize/loading";
 import CustomizeContext from "@/context/CustomizeContext";
 import InvitationService from "@/services/invitation-service";
 

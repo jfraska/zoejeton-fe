@@ -11,6 +11,8 @@ const nextConfig = {
       { hostname: "avatars.githubusercontent.com" },
       { hostname: "lh3.googleusercontent.com" },
       { hostname: "flag.vercel.app" },
+      { hostname: "dev.zoejeton.com" },
+      { hostname: "api.zoejeton.com" },
     ],
   },
 };
