@@ -6,18 +6,17 @@ import Image from "next/image";
 
 export default function AuthLayout({ children }) {
   return (
-    <div className="w-full h-screen lg:grid lg:grid-cols-2">
-      <div className="hidden bg-muted lg:block">
-        <Image
-          src="/assets/images/dashboard.png"
-          alt="Image"
-          width="1920"
-          height="1080"
-          priority
-          className="h-screen w-full object-cover"
-        />
+    <div className="relative w-full h-screen flex items-center justify-center">
+      <Image
+        fill
+        src="/assets/images/dashboard.png"
+        alt="Image"
+        className="object-cover -z-10 lg:block hidden"
+        sizes="1920px"
+      />
+      <div className="lg:w-[550px] w-full lg:h-fit h-full bg-secondary lg:px-20 py-16 px-10 backdrop-filter backdrop-blur-sm bg-opacity-90 bg-clip-padding rounded-2xl shadow-2xl">
+        {children}
       </div>
-      <div className="flex items-center justify-center py-12">{children}</div>
     </div>
   );
 }

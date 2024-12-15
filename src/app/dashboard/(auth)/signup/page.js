@@ -10,16 +10,14 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="mx-auto grid w-[350px] gap-6">
-      <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-bold">Daftar Akun</h1>
-        <p className="text-balance text-muted-foreground">
-          Masukkan email Anda di bawah ini untuk membuat akun
-        </p>
-      </div>
+    <div className="mx-auto grid w-full gap-6">
+      <h1 className="text-3xl text-center font-semibold uppercase mb-2">
+        Daftar Akun
+      </h1>
+
       <div className="grid gap-4">
         <div className="grid gap-2">
-          <Label htmlFor="email">Name</Label>
+          <Label htmlFor="email">Nama</Label>
           <Input id="name" type="text" placeholder="zoe" required />
         </div>
         <div className="grid gap-2">
@@ -34,11 +32,12 @@ export default function Page() {
         </div>
         <div className="grid gap-2">
           <div className="flex items-center">
-            <Label htmlFor="re-password">Re-Password</Label>
+            <Label htmlFor="re-password">Ulangi Password</Label>
           </div>
           <Input id="re-password" type="password" required />
         </div>
-        <Button type="submit">Signup</Button>
+        <Button type="submit">Daftar</Button>
+        <span className="text-center text-muted-foreground">atau</span>
         <Suspense
           fallback={
             <div className="h-10 w-full rounded-md border border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800" />

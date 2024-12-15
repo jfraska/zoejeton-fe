@@ -8,15 +8,13 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <div className="mx-auto grid w-[350px] gap-6">
-      <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-bold">Login</h1>
-        <p className="text-balance text-muted-foreground">
-          Enter your email below to login to your account
-        </p>
-      </div>
+    <div className="w-full grid gap-6">
+      <h1 className="text-3xl text-center font-semibold uppercase mb-2">
+        Login
+      </h1>
       <div className="grid gap-4">
         <CredentialLogin />
+        <span className="text-center text-muted-foreground">atau</span>
         <Suspense
           fallback={
             <div className="h-10 w-full rounded-md border border-stone-200 bg-stone-100 dark:border-stone-700 dark:bg-stone-800" />
