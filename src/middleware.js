@@ -46,14 +46,6 @@ export async function middleware(req) {
       return NextResponse.rewrite(new URL(`/bio`, req.nextUrl));
     }
 
-    if (url.pathname === "/") {
-      return NextResponse.rewrite(new URL(`/home/katalog`, req.nextUrl));
-    }
-
-    if (url.pathname === "/link") {
-      return NextResponse.rewrite(new URL(`/home/link`, req.nextUrl));
-    }
-
     return NextResponse.rewrite(new URL(`/home${path}`, req.nextUrl));
   }
 

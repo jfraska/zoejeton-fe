@@ -78,7 +78,7 @@ export default function TemplateList() {
               </div>
 
               <a
-                href={getUrl(`/${e.slug}`, "template")}
+                href={getUrl(`/${e.id}`, "template")}
                 target="_blank"
                 className="flex items-center justify-center w-fit gap-1 border bg-white border-black px-2 rounded-full transition-transform ease-in-out group-hover:scale-100 scale-0"
               >
@@ -104,7 +104,7 @@ export default function TemplateList() {
                 </div>
 
                 <LoadingButton
-                  onClick={() => router.push(`/katalog/${e.slug}`)}
+                  onClick={() => router.push(`/katalog/${e.id}`)}
                   className="flex justify-center items-center p-2 rounded-lg hover:scale-110 transition-all ease-in-out"
                 >
                   <Image

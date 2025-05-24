@@ -4,10 +4,10 @@ import Loading from "./loading";
 import TemplateService from "@/services/template-service";
 
 export async function generateMetadata() {
-  const pathname = headers().get("pathname");
+  const id = headers().get("pathname");
 
   try {
-    const res = await TemplateService.showTemplate(pathname);
+    const res = await TemplateService.showTemplate(id);
 
     const { title } = res.data;
 

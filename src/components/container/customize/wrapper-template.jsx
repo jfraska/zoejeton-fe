@@ -73,9 +73,9 @@ export function Template() {
         dataContent.map(async (page) => {
           try {
             const module = await import(
-              `@/app/customize/_invitations/${
-                data.parent ?? data.slug
-              }/_components/${page.key}.jsx`
+              `@/templates/${data.parent ?? data.path}/components/${
+                page.key
+              }.jsx`
             );
 
             return dynamic(() => Promise.resolve({ default: module.default }), {
@@ -133,7 +133,7 @@ export function Section({ children, className, id, styles }) {
           src={
             background[0]?.getFileEncodeDataURL
               ? background[0].getFileEncodeDataURL()
-              : `/templates/${data.slug}/${background[0]}`
+              : `/templates/${data.path}/${background[0]}`
           }
           alt="background"
           className={`object-cover brightness-90 image`}
@@ -171,7 +171,7 @@ export function Cover({ children, className }) {
           src={
             background[0]?.getFileEncodeDataURL
               ? background[0].getFileEncodeDataURL()
-              : `/templates/${data.slug}/${background[0]}`
+              : `/templates/${data.path}/${background[0]}`
           }
           alt="background"
           className="object-cover brightness-90"
@@ -236,7 +236,7 @@ export function LockScreen({ children, className, type = "page", open, id }) {
           src={
             background[0]?.getFileEncodeDataURL
               ? background[0].getFileEncodeDataURL()
-              : `/templates/${data.slug}/${background[0]}`
+              : `/templates/${data.path}/${background[0]}`
           }
           alt="background"
           className="object-cover brightness-90"

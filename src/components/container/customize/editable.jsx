@@ -125,7 +125,7 @@ export default function Editable({
               cloneElement(children, {
                 src: state?.getFileEncodeDataURL
                   ? state.getFileEncodeDataURL()
-                  : `/templates/${data.slug}/${state}`,
+                  : `/templates/${data.path}/${state}`,
                 className: "image",
               })}
           </button>
